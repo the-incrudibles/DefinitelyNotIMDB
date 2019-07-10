@@ -8,6 +8,6 @@ app.use(express.json())
 
 require(`./routes`)(app)
 
-require(`mongoose`).connect(`mongodb://localhost/__db`)
+require(`mongoose`).connect(`mongodb://localhost/__db`, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: true })
   .then(_ => app.listen(3001))
   .catch(e => console.log(e))
