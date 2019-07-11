@@ -16,11 +16,12 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-const classes = useStyles();
 
 const ThreadApp = _ => {
 const [threads, setThreads] = useState([])
 const [comments, setComments] = useState([])
+
+const classes = useStyles();
 
     return(
         <div>
@@ -42,3 +43,5 @@ const [comments, setComments] = useState([])
         </div>
     )
 }
+
+export default ThreadApp
