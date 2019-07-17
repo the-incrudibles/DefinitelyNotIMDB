@@ -1,0 +1,26 @@
+{
+  "name": "DefinitelyNotIMDB",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-incrudibles/DefinitelyNotIMDB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/the-incrudibles/DefinitelyNotIMDB/issues"
+  },
+  "homepage": "https://github.com/the-incrudibles/DefinitelyNotIMDB#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.4"
+  }
+}

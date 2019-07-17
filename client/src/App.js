@@ -1,17 +1,17 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import NavBar from './components/NavBar'
+import Navbar from './components/Navbar'
 import Threads from './Pages/Thread/Thread.js'
+import LoginPage from './Pages/Login'
 
 const App = _ => {
   return (
     <>
       <Router>
-        <NavBar />
-        <Route path='/threads' render={_ => (
-          <Threads
-          />
-        )} />
+        <Navbar />
+
+        <Route path='/threads' render={_ => (<Threads/>)} />
+        <Route path='/login' render={_ => (<LoginPage/>)} />
       </Router>
     </>
   )
