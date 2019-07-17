@@ -37,7 +37,7 @@ const Navbar = _ => {
           </IconButton>
           <Typography variant='h6' className={classes.title}>
             <Button className={classes.navTitle}>
-              <Link className={classes.navTitle} to='/threads'>Threads</Link>
+              <Link className={classes.navTitle} to='/movie'>Movie</Link>
             </Button>
           </Typography>
           <Button color='inherit'>
