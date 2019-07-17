@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import LoginPage from './Pages/Login'
+import SignupPage from './Pages/Signup'
 import axios from 'axios'
 import NavBar from './components/NavBar'
 
@@ -68,8 +70,9 @@ const App = _ => {
   return (
     <>
       <Router>
-        <NavBar />
-        <Route />
+        <Navbar />
+        <Route path='/login' render={_ => (<LoginPage/>)} />
+        <Route path='/signup' render={_ => (<SignupPage/>)} />
       </Router>
     </>
   )
