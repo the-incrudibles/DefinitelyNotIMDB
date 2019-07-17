@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "proxy": "http://localhost:3001",
   "private": true,
-  "proxy": "http://localhost:3000/",
+  "engines": {
+    "npm": "6.5.0",
+    "node": "11.9.0"
+  },
   "dependencies": {
     "@material-ui/core": "^4.2.0",
     "@material-ui/icons": "^4.2.1",
