@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import LoginPage from './Pages/Login'
-import SignupPage from './components/SignupForm'
+import SignupForm from './components/SignupForm'
 import axios from 'axios'
 import Navbar from './components/Navbar'
 import Search from './Pages/Search'
@@ -76,7 +76,7 @@ const App = _ => {
             <Search />
           )} />
           <Route path='/login' render={_ => (<LoginPage />)} />
-          <Route path='/signup' render={_ => (<SignupPage />)} />
+          <Route path='/signup' render={_ => (<SignupForm />)} />
         </Router>
     </>
   )
