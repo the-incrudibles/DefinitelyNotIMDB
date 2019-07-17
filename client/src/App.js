@@ -4,6 +4,7 @@ import LoginPage from './Pages/Login'
 import SignupPage from './Pages/Signup'
 import axios from 'axios'
 import NavBar from './components/NavBar'
+import Search from './Pages/Search'
 
 const App = _ => {
   const name = useRef()
@@ -71,6 +72,9 @@ const App = _ => {
     <>
       <Router>
         <Navbar />
+        <Route path='/search' render={_ => (
+          <Search />
+        )} />
         <Route path='/login' render={_ => (<LoginPage/>)} />
         <Route path='/signup' render={_ => (<SignupPage/>)} />
       </Router>
