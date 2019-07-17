@@ -8,6 +8,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 
 
@@ -17,10 +19,11 @@ const useStyles = makeStyles(theme => ({
       padding: 25
     },
     card: {
-        maxWidth: 275
+        maxWidth: 350
     },
     media:{
-        height: 0
+        maxHeight: 200,
+        maxWidth:200
     }
   }))
 
@@ -31,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 
 
       useEffect(_ =>{
-        axios.get('https://api.themoviedb.org/3/movie/550?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US')
+        axios.get('https://api.themoviedb.org/3/movie/399579?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US')
         .then(r => {
             setData(r.data)
             console.log(r)
@@ -42,8 +45,8 @@ const useStyles = makeStyles(theme => ({
     return(
         <div>
       <Paper className={classes.root}>
-      <Grid container spacing={2}>
-      <Grid item xs={3}>
+      <Grid container spacing={1}>
+      <Grid item xs={6}>
       <Card className={classes.card}>
         <CardContent>
             <CardMedia
@@ -52,13 +55,10 @@ const useStyles = makeStyles(theme => ({
             image="https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Alita_Battle_Angel_%282019_poster%29.png/220px-Alita_Battle_Angel_%282019_poster%29.png"
             title="Alita"
             />
-            <Typography>
-                MOVIE POSTER GOES HERE
-            </Typography>
             </CardContent>
         </Card>        
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={6}>
             <Typography variant="h5" component="h3">
                 {data.title}
             </Typography>
@@ -66,9 +66,18 @@ const useStyles = makeStyles(theme => ({
                 Rating: {data.vote_average}
             </Typography>
             <Typography>
-                {data.overview}
-            </Typography>    
+            <Fab color="default" aria-label="Add" className={classes.fab} size="small">
+                <AddIcon />
+            </Fab>
+            </Typography>
+               
         </Grid>
+        <Typography variant="h6" gutterBottom>
+        <strong>Overview</strong>
+      </Typography>
+        <Typography>
+                {data.overview}
+            </Typography> 
         </Grid>
       </Paper>
     </div>
