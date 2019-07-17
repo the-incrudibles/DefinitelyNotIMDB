@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles'
@@ -85,3 +86,15 @@ const useStyles = makeStyles(theme => ({
   }
 
   export default MoviePage;
+=======
+import React from 'react'
+
+const Movie = _ => {
+  return (
+    <>
+    </>
+  )
+}
+
+export default Movie
+>>>>>>> master
