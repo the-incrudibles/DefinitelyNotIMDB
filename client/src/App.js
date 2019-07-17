@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar/Navbar.js'
 import LoginPage from './Pages/Login'
 import SignupForm from './components/SignupForm'
 import axios from 'axios'
