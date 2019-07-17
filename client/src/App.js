@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import LoginPage from './Pages/Login'
 import SignupPage from './components/SignupForm'
 import axios from 'axios'
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar/Navbar.js'
 import Search from './Pages/Search'
 
 const App = _ => {
