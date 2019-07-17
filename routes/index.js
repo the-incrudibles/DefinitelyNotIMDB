@@ -1,4 +1,4 @@
 module.exports = app => {
-  userRoutes: require(`./userRoutes`)(app)
-  movieRoutes: require(`./movieRoutes`)(app)
+  require(`./userRoutes`)(app)
+  require(`./movieRoutes`)(app)
 }
