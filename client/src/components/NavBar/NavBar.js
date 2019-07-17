@@ -1,13 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from './node_modules/react'
+import { Link } from './node_modules/react-router-dom'
 // material ui imports
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography'
-import { fade, makeStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
-import MenuIcon from '@material-ui/icons/Menu'
+import AppBar from './node_modules/@material-ui/core/AppBar'
+import Toolbar from './node_modules/@material-ui/core/Toolbar'
+import IconButton from './node_modules/@material-ui/core/IconButton'
+import Typography from './node_modules/@material-ui/core/Typography'
+import { fade, makeStyles } from './node_modules/@material-ui/core/styles'
+import Button from './node_modules/@material-ui/core/Button'
+import MenuIcon from './node_modules/@material-ui/icons/Menu'
 
 const useStyles = makeStyles(theme => ({
   root: {
