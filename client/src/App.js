@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import LoginPage from './Pages/Login'
 import SignupForm from './components/SignupForm'
 import axios from 'axios'
-// import Navbar from './components/Navbar'
+import Navbar from './components/Navbar'
 import Search from './Pages/Search'
 
 const App = _ => {
@@ -71,7 +71,7 @@ const App = _ => {
   return (
       <>
         <Router>
-          {/* <Navbar /> */}
+          <Navbar />
           <Route path='/search' render={_ => (
             <Search />
           )} />
