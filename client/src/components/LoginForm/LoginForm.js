@@ -12,7 +12,7 @@ const LoginForm = _ => {
     <div className="loginDiv">
 
       <div className="blockTypography">
-        <Typography >In order to leave comments or reviews or join movie clubs, you'll have to log into your account.</Typography>
+        <Typography >In order to leave comments or reviews, or join movie clubs, you'll have to log into your account.</Typography>
       </div>
 
       <form>
