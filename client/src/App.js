@@ -71,8 +71,10 @@ const App = _ => {
   return (
     <>
       <Router>
-        <NavBar />
-        <Route path='/search' render={_ => (<Search />)} />
+        <Navbar />
+        <Route path='/search' render={_ => (
+          <Search />
+        )} />
         <Route path='/login' render={_ => (<LoginPage/>)} />
         <Route path='/signup' render={_ => (<SignupPage/>)} />
       </Router>
