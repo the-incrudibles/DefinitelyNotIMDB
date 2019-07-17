@@ -26,7 +26,7 @@ const App = _ => {
       name: name.current.value,
       username: username.current.value,
       email: email.current.value,
-      password: password.current.value
+      passord: password.current.value
     })
       .then(({ data }) => {
         if (data.isLoggedIn) {
@@ -43,7 +43,7 @@ const App = _ => {
 
     axios.post('/login', {
       username: _username.current.value,
-      password: _password.current.value
+      passord: _password.current.value
     })
       .then(({ data }) => {
         if (data.isLoggedIn) {
@@ -69,15 +69,15 @@ const App = _ => {
       })
   }, [])
   return (
-    <>
-      <Router>
-        <Navbar />
-        <Route path='/search' render={_ => (
-          <Search />
-        )} />
-        <Route path='/login' render={_ => (<LoginPage/>)} />
-        <Route path='/signup' render={_ => (<SignupPage/>)} />
-      </Router>
+      <>
+        <Router>
+          <Navbar />
+          <Route path='/search' render={_ => (
+            <Search />
+          )} />
+          <Route path='/login' render={_ => (<LoginPage />)} />
+          <Route path='/signup' render={_ => (<SignupPage />)} />
+        </Router>
     </>
   )
 }

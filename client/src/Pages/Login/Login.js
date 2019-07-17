@@ -1,10 +1,10 @@
-import React, { useState } from 'react' 
+import React, { useState } from 'react'
 import LoginForm from '../../components/LoginForm'
 
 const LoginPage = _ => {
-  return(
+  return (
     <div>
-      <LoginForm></LoginForm>
+      <LoginForm />
     </div>
   )
 }
