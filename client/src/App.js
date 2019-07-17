@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import LoginPage from './Pages/Login'
-import SignupPage from './Pages/Signup'
+import SignupPage from './components/SignupForm'
 import axios from 'axios'
-import Navbar from './components/NavBar'
+import Navbar from './components/Navbar'
 import Search from './Pages/Search'
 
 const App = _ => {
