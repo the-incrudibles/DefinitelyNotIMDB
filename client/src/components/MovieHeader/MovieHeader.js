@@ -70,9 +70,9 @@ const useStyles = makeStyles(theme => ({
             </Typography>
                
         </Grid>
-        <Typography variant="h6" gutterBottom>
-        <strong>Overview</strong>
-      </Typography>
+            <Typography variant="h6" gutterBottom>
+            <strong>Overview</strong>
+            </Typography>
         <Typography>
                 {data.overview}
             </Typography> 
