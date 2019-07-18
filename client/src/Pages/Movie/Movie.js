@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   }))
 
 
-  const MoviePage = _ => {
+  const Movie = _ => {
     const [data, setData] = useState([])
     const classes = useStyles()
 
@@ -84,4 +84,4 @@ const useStyles = makeStyles(theme => ({
     )
   }
 
-  export default MoviePage;
+  export default Movie;
