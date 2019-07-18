@@ -5,6 +5,7 @@ import LoginPage from './Pages/Login'
 import SignupForm from './components/SignupForm'
 import axios from 'axios'
 import Search from './Pages/Search'
+import Movie from './Pages/Movie'
 
 const App = _ => {
   const name = useRef()
@@ -75,6 +76,7 @@ const App = _ => {
           <Route path='/search' render={_ => (
             <Search />
           )} />
+          <Route path='/movie' render={_ => ( <Movie />)} />
           <Route path='/login' render={_ => (<LoginPage />)} />
           <Route path='/signup' render={_ => (<SignupForm />)} />
         </Router>
@@ -82,4 +84,4 @@ const App = _ => {
   )
 }
 
-export default App
+export default App;
