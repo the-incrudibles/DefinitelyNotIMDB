@@ -22,14 +22,16 @@ const App = _ => {
 
   userState.handleRegisterUser = event => {
     event.preventDefault()
+    console.log(password.current.value)
 
     axios.post('/register', {
       name: name.current.value,
       username: username.current.value,
       email: email.current.value,
-      passord: password.current.value
+      password: password.current.value
     })
       .then(({ data }) => {
+        console.log(data)
         if (data.isLoggedIn) {
           localStorage.setItem('token', data.token)
           localStorage.setItem('user', data.user)
@@ -41,10 +43,11 @@ const App = _ => {
 
   userState.handleLogInUser = event => {
     event.preventDefault()
+    console.log(_password.current.value)
 
     axios.post('/login', {
       username: _username.current.value,
-      passord: _password.current.value
+      password: _password.current.value
     })
       .then(({ data }) => {
         if (data.isLoggedIn) {
@@ -76,7 +79,7 @@ const App = _ => {
           <Route path='/search' render={_ => (
             <Search />
           )} />
-          <Route path='/movie' render={_ => ( <Movie />)} />
+          <Route path='/movie' render={_ => (<Movie />)} />
           <Route path='/login' render={_ => (<LoginPage />)} />
           <Route path='/signup' render={_ => (<SignupForm />)} />
         </Router>
@@ -84,4 +87,4 @@ const App = _ => {
   )
 }
 
-export default App;
+export default App
