@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react'
+import Axios from 'axios';
 
 const Search = _ => {
   const [searchState, setSearchState] = useState({
-    searchArea: 'nothing',
-    searchTerm: ''
+    searchArea: 'nothing'
   })
 
   const searchTerm = useRef()
@@ -16,6 +16,17 @@ const Search = _ => {
     event.preventDefault()
     console.log(searchState.searchArea)
     console.log(searchTerm.current.value)
+    // axios stuff here
+    // if movie
+    if (searchState.searchArea === 'movie') {
+      Axios.get(`https://api.themoviedb.org/3/search/multi?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
+        .then(data => {
+          console.log(data.data)
+        })
+        .catch(e => console.log(e))
+    }
+    // if celeb
+    // if genre
   }
 
   return (
@@ -37,10 +48,7 @@ const Search = _ => {
       </form>
 
       <div>
-        <h6>Movies/Celebrities/Genres</h6>
-        <h6>Movies/Celebrities/Genres</h6>
-        <h6>Movies/Celebrities/Genres</h6>
-        <h6>Movies/Celebrities/Genres</h6>
+
       </div>
     </>
   )
