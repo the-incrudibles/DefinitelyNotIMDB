@@ -1,17 +1,29 @@
-import React, { useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import Typography from '@material-ui/core/Typography'
 // Text Input Imports:
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Signup from '../../utils/Signup.js'
 
 const SignupForm = _ => {
 
-  const name = useRef()
-  const username = useRef()
-  const email = useRef()
-  const password = useRef()
+  const [userState, setUserState] = useState({
+    name: '',
+    username: '',
+    email: '',
+    password: '',
+    isLoggedIn: false,
+  })
+
+  userState.handleInputChange = event => {
+    setUserState({ ...userState, [event.target.id]: event.target.value })
+  }
+
+  userState.handleSignUp = _ => {
+    Signup.register(userState)
+  }
 
   return (
     <div className='loginDiv'>
@@ -26,7 +38,8 @@ const SignupForm = _ => {
           margin="normal"
           variant="outlined"
           className="textInput"
-          ref={name}
+          onChange={userState.handleInputChange}
+          id="name"
         />
 
         <TextField
@@ -34,7 +47,8 @@ const SignupForm = _ => {
           margin="normal"
           variant="outlined"
           className="usernameInput"
-          ref={username}
+          onChange={userState.handleInputChange}
+          id="username"
         />
 
         <TextField
@@ -42,7 +56,8 @@ const SignupForm = _ => {
           margin="normal"
           variant="outlined"
           className="usernameInput"
-          ref={email}
+          onChange={userState.handleInputChange}
+          id="email"
         />
 
         <TextField
@@ -50,7 +65,8 @@ const SignupForm = _ => {
           margin="normal"
           variant="outlined"
           className="passwordInput"
-          ref={password}
+          onChange={userState.handleInputChange}
+          id="password"
         />
 
         <div>
@@ -62,7 +78,7 @@ const SignupForm = _ => {
           />
         </div>
         <div className='loginButtons'>
-          <Button variant='contained' color='primary'>
+          <Button variant='contained' color='primary' onClick={userState.handleSignUp}>
             Sign Up
           </Button>
           <Button color='primary'>
