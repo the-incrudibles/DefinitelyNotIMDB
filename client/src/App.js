@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Navbar from './components/Bullshit'
 import LoginPage from './Pages/Login'
-import SignupPage from './Pages/Signup'
+import SignupForm from './components/SignupForm'
 import axios from 'axios'
-import NavBar from './components/NavBar'
+import Search from './Pages/Search'
+import Movie from './Pages/Movie'
 
 const App = _ => {
   const name = useRef()
@@ -25,7 +27,7 @@ const App = _ => {
       name: name.current.value,
       username: username.current.value,
       email: email.current.value,
-      password: password.current.value
+      passord: password.current.value
     })
       .then(({ data }) => {
         if (data.isLoggedIn) {
@@ -42,7 +44,7 @@ const App = _ => {
 
     axios.post('/login', {
       username: _username.current.value,
-      password: _password.current.value
+      passord: _password.current.value
     })
       .then(({ data }) => {
         if (data.isLoggedIn) {
@@ -68,14 +70,18 @@ const App = _ => {
       })
   }, [])
   return (
-    <>
-      <Router>
-        <Navbar />
-        <Route path='/login' render={_ => (<LoginPage/>)} />
-        <Route path='/signup' render={_ => (<SignupPage/>)} />
-      </Router>
+      <>
+        <Router>
+          <Navbar />
+          <Route path='/search' render={_ => (
+            <Search />
+          )} />
+          <Route path='/movie' render={_ => ( <Movie />)} />
+          <Route path='/login' render={_ => (<LoginPage />)} />
+          <Route path='/signup' render={_ => (<SignupForm />)} />
+        </Router>
     </>
   )
 }
 
-export default App
+export default App;

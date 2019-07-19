@@ -33,5 +33,6 @@ passport.use(new JWTStrategy({
 require('./routes')(app)
 
 require('mongoose').connect('mongodb://Nick:ZSETcEus7ZfxBtn@ds251877.mlab.com:51877/heroku_tpghhn6q', { useNewUrlParser: true, useFindAndModify: true, useCreateIndex: true })
-  .then(_ => app.listen(process.env.PORT || 3001))
-  .catch(e => console.log(e))
+.then(_ => app.listen(process.env.PORT || 3001))
+.catch(e => console.log(e))
+console.log('png')

@@ -1,10 +1,14 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+import MovieHeader from '../../components/MovieHeader'
 
-const Movie = _ => {
-  return (
-    <>
-    </>
-  )
-}
+  const Movie = _ => {
 
-export default Movie
+    return(
+        <div>
+        <MovieHeader/>
+    </div>
+    )
+  }
+
+  export default Movie;

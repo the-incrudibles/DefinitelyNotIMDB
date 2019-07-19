@@ -3,8 +3,8 @@ import Typography from '@material-ui/core/Typography'
 // Text Input Imports:
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
 
 const SignupForm = _ => {
 
@@ -14,11 +14,11 @@ const SignupForm = _ => {
   const password = useRef()
 
   return (
-    <div className="loginDiv">
+    <div className='loginDiv'>
 
       <form>
-        <div className="loginHeader">
-          <Typography variant="h5" >Sign up for an account</Typography>
+        <div className='loginHeader'>
+          <Typography variant='h5' >Sign up for an account</Typography>
         </div>
 
         <TextField
@@ -56,19 +56,19 @@ const SignupForm = _ => {
         <div>
           <FormControlLabel
             control={
-              <Checkbox value="checkedA" />
+              <Checkbox value='checkedA' />
             }
-            label="I agree to the terms and conditions"
+            label='I agree to the terms and conditions'
           />
         </div>
-        <div className="loginButtons">
-          <Button variant="contained" color="primary">
+        <div className='loginButtons'>
+          <Button variant='contained' color='primary'>
             Sign Up
           </Button>
-          <Button color="primary">
+          <Button color='primary'>
             Cancel
           </Button>
-          <Typography><p className="loginLink">Already have an account? <a href="/login">Log in here</a></p></Typography>
+          <Typography><p className='loginLink'>Already have an account? <a href='/login'>Log in here</a></p></Typography>
         </div>
 
       </form>
