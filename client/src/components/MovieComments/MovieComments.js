@@ -8,6 +8,11 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
+import Paper from '@material-ui/core/Paper';
+import AddMovieComments from '../AddMovieComments'
+import Flag from '@material-ui/icons/Flag';
+import ReportCommentButton from '../ReportCommentButton/ReportCommentButton'
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -18,6 +23,12 @@ const useStyles = makeStyles(theme => ({
     inline: {
       display: 'inline',
     },
+    rootTwo:{
+        padding: 25
+    },
+    flag:{
+        color:'red'
+    }
   }));
 const MovieComments = _ =>{
  const [comments, setComments]= useState([])
@@ -31,51 +42,56 @@ const MovieComments = _ =>{
 //  }, [])
     return(
         <div>
-    <List className={classes.root}>
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
-        </ListItemAvatar>
-        <ListItemText
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                Quinton Fultz
-              </Typography>
-              {" — Best movie EVA"}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
-        </ListItemAvatar>
-        <ListItemText
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                Justin Biele
-              </Typography>
-              {" — Movie sucks"}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-    </List>
-        </div>
+            <Paper className={classes.rootTwo}>
+            <AddMovieComments/>
+            <List className={classes.root}>
+            <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
+                </ListItemAvatar>
+                <ListItemText
+                secondary={
+                    <React.Fragment>
+                    <Typography
+                        component="span"
+                        variant="body2"
+                        className={classes.inline}
+                        color="textPrimary"
+                    >
+                        Quinton Fultz
+                    </Typography>
+                    {" — Best movie EVA"}
+                    </React.Fragment>
+                }
+                
+                />
+            </ListItem>
+            <Divider variant="inset" component="li" />
+            <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
+                </ListItemAvatar>
+                <ListItemText
+                secondary={
+                    <React.Fragment>
+                    <Typography
+                        component="span"
+                        variant="body2"
+                        className={classes.inline}
+                        color="textPrimary"
+                    >
+                        Justin Biele
+                    </Typography>
+                    {" — Movie sucks"}
+                    </React.Fragment>
+                }
+                />
+                <ReportCommentButton/>
+            </ListItem>
+            <Divider variant="inset" component="li" />
+            </List>
+            </Paper>
+     </div>
     )
 }
 
