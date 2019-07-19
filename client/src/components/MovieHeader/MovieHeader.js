@@ -8,11 +8,9 @@ import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
-import Fab from '@material-ui/core/Fab'
-import AddIcon from '@material-ui/icons/Add'
-import tileData from './tileData.js'
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
+import AddWatchListButton from '../../components/AddWatchListButton'
+import CastSlider from '../../components/CastSlider'
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,13 +20,6 @@ const useStyles = makeStyles(theme => ({
     card: {
         maxWidth: 350
     },
-    rootTwo: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
-      },
     media:{
         maxHeight: 200,
         maxWidth:200
@@ -40,11 +31,7 @@ const useStyles = makeStyles(theme => ({
       },
       title: {
         color: theme.palette.primary.light,
-      },
-      titleBar: {
-        background:
-          'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-      },
+      }
   }))
 
 
@@ -86,9 +73,7 @@ const useStyles = makeStyles(theme => ({
                 Rating: {data.vote_average}
             </Typography>
             <Typography>
-            <Fab color="default" aria-label="Add" className={classes.fab} size="small">
-                <AddIcon />
-            </Fab>
+           <AddWatchListButton/>
             </Typography>
                
         </Grid>
@@ -100,15 +85,7 @@ const useStyles = makeStyles(theme => ({
             </Typography> 
         </Grid>
       </Paper>
-      <div className={classes.rootTwo}>
-      <GridList className={classes.gridList} cols={2.5}>
-        {tileData.map(tile => (
-          <GridListTile key={tile.img}>
-            <img src={tile.img} alt={tile.title} />
-          </GridListTile>
-        ))}
-      </GridList>
-      </div>
+    <CastSlider/>
     </div>
     )
   }
