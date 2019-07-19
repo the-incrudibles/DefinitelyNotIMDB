@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef, createRef } from 'react'
+import axios from 'axios'
 import Typography from '@material-ui/core/Typography'
 // Text Input Imports:
 import TextField from '@material-ui/core/TextField'
@@ -8,19 +9,83 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Login from '../../utils/Login.js'
 
 const LoginForm = _ => {
+  // const [userState, setUserState] = useState({
+  //   username: '',
+  //   password: '',
+  //   isLoggedIn: false
+  // })
+
+  // userState.handleInputChange = event => {
+  //   setUserState({ ...userState, [event.target.id]: event.target.value })
+  // }
+
+  // userState.handleSignUp = _ => {
+  //   Login.loginUser(userState)
+  // }
+  const name = useRef()
+  const username = useRef()
+  const email = useRef()
+  const password = useRef()
+  const _username = createRef()
+  const _password = createRef()
+
   const [userState, setUserState] = useState({
-    username: '',
-    password: '',
-    isLoggedIn: false
+    isLoggedIn: false,
+    user: ''
   })
 
-  userState.handleInputChange = event => {
-    setUserState({ ...userState, [event.target.id]: event.target.value })
+  userState.handleRegisterUser = event => {
+    event.preventDefault()
+    console.log(password.current.value)
+
+    axios.post('/register', {
+      name: name.current.value,
+      username: username.current.value,
+      email: email.current.value,
+      password: password.current.value
+    })
+      .then(({ data }) => {
+        console.log(data)
+        if (data.isLoggedIn) {
+          localStorage.setItem('token', data.token)
+          localStorage.setItem('user', data.user)
+          setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
+        }
+      })
+      .catch(e => console.error(e))
   }
 
-  userState.handleSignUp = _ => {
-    Login.loginUser(userState)
+  userState.handleLogInUser = event => {
+    event.preventDefault()
+    console.log(_password.current.value)
+
+    axios.post('/login', {
+      username: _username.current.value,
+      password: _password.current.value
+    })
+      .then(({ data }) => {
+        if (data.isLoggedIn) {
+          localStorage.setItem('token', data.token)
+          localStorage.setItem('user', data.user)
+          setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
+        } else {
+          alert('Invalid username or password')
+        }
+      })
+      .catch(e => console.error(e))
   }
+
+  useEffect(_ => {
+    axios.post('/verify', {}, {
+      headers: { 'Authorization': `bearer ${localStorage.getItem('token')}` }
+    })
+      .then(_ => {
+        setUserState({ ...userState, isLoggedIn: true, user: localStorage.getItem('user') })
+      })
+      .catch(_ => {
+        setUserState({ ...userState, isLoggedIn: false, user: '' })
+      })
+  }, [])
 
   return (
     <div className='loginDiv'>
@@ -40,7 +105,7 @@ const LoginForm = _ => {
           margin='normal'
           variant='outlined'
           className='usernameInput'
-          onChange={userState.handleInputChange}
+          inputRef={_username}
         />
 
         <TextField
@@ -49,7 +114,7 @@ const LoginForm = _ => {
           margin='normal'
           variant='outlined'
           className='passwordInput'
-          onChange={userState.handleInputChange}
+          inputRef={_password}
         />
 
         <div>
@@ -61,7 +126,7 @@ const LoginForm = _ => {
           />
         </div>
         <div className='loginButtons'>
-          <Button variant='contained' color='primary'>
+          <Button variant='contained' color='primary' onClick={userState.handleLogInUser}>
             Login
           </Button>
           <Button color='primary'>
