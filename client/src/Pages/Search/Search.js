@@ -24,9 +24,20 @@ const Search = _ => {
           console.log(data.data)
         })
         .catch(e => console.log(e))
+    } else if (searchState.searchArea === 'celebrity') {
+      // if celeb
+      Axios.get(`https://api.themoviedb.org/3/search/person?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
+        .then(data => {
+          console.log(data.data)
+        })
+        .catch(e => console.log(e))
+    } else if (searchState.searchArea === 'tv') {
+      Axios.get(`https://api.themoviedb.org/3/search/tv?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US&query=${searchTerm.current.value}&page=1`)
+        .then(data => {
+          console.log(data.data)
+        })
+        .catch(e => console.log(e))
     }
-    // if celeb
-    // if genre
   }
 
   return (
@@ -42,7 +53,7 @@ const Search = _ => {
           <option />
           <option value='movie'>Movie</option>
           <option value='celebrity'>Celebrity</option>
-          <option value='genre'>Genre</option>
+          <option value='tv'>TV Show</option>
         </select>
         <button id='someBtn' onClick={searchState.buttonClick}>Click me</button>
       </form>
