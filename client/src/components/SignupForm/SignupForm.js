@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Typography from '@material-ui/core/Typography'
 // Text Input Imports:
 import TextField from '@material-ui/core/TextField'
@@ -7,6 +7,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const SignupForm = _ => {
+
+  const name = useRef()
+  const username = useRef()
+  const email = useRef()
+  const password = useRef()
 
   return (
     <div className="loginDiv">
@@ -21,6 +26,7 @@ const SignupForm = _ => {
           margin="normal"
           variant="outlined"
           className="textInput"
+          ref={name}
         />
 
         <TextField
@@ -28,6 +34,7 @@ const SignupForm = _ => {
           margin="normal"
           variant="outlined"
           className="usernameInput"
+          ref={username}
         />
 
         <TextField
@@ -35,6 +42,7 @@ const SignupForm = _ => {
           margin="normal"
           variant="outlined"
           className="usernameInput"
+          ref={email}
         />
 
         <TextField
@@ -42,6 +50,7 @@ const SignupForm = _ => {
           margin="normal"
           variant="outlined"
           className="passwordInput"
+          ref={password}
         />
 
         <div>
