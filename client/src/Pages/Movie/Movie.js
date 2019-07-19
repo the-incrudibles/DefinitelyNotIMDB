@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import MovieHeader from '../../components/MovieHeader'
 import CastSlider from '../../components/CastSlider'
@@ -14,7 +14,7 @@ import AddMovieComments from '../../components/AddMovieComments'
         <CastSlider/>
         <MovieComments/>
     </div>
-    )
-  }
+  )
+}
 
-  export default Movie;
+export default Movie

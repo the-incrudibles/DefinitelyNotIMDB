@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Typography from '@material-ui/core/Typography'
 // Text Input Imports:
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Login from '../../utils/Login.js'
 
 const LoginForm = _ => {
+  const [userState, setUserState] = useState({
+    username: '',
+    password: '',
+    isLoggedIn: false
+  })
+
+  userState.handleInputChange = event => {
+    setUserState({ ...userState, [event.target.id]: event.target.value })
+  }
+
+  userState.handleSignUp = _ => {
+    Login.loginUser(userState)
+  }
+
   return (
     <div className='loginDiv'>
 
@@ -25,6 +40,7 @@ const LoginForm = _ => {
           margin='normal'
           variant='outlined'
           className='usernameInput'
+          onChange={userState.handleInputChange}
         />
 
         <TextField
@@ -33,6 +49,7 @@ const LoginForm = _ => {
           margin='normal'
           variant='outlined'
           className='passwordInput'
+          onChange={userState.handleInputChange}
         />
 
         <div>

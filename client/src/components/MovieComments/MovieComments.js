@@ -10,7 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import Paper from '@material-ui/core/Paper';
 import AddMovieComments from '../AddMovieComments'
-import Flag from '@material-ui/icons/Flag';
 import ReportCommentButton from '../ReportCommentButton/ReportCommentButton'
 
 
