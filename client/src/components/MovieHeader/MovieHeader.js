@@ -11,28 +11,26 @@ import Grid from '@material-ui/core/Grid'
 import AddWatchListButton from '../../components/AddWatchListButton'
 // import MovieContext from '../../utils/movieContext'
 
-
-
 const useStyles = makeStyles(theme => ({
-    root: {
-      padding: 25
-    },
-    card: {
-        maxWidth: 350
-    },
-    media:{
-        maxHeight: 200,
-        maxWidth:200
-    },
-    gridList: {
-        flexWrap: 'nowrap',
-        // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-        transform: 'translateZ(0)',
-      },
-      title: {
-        color: theme.palette.primary.light,
-      }
-  }))
+  root: {
+    padding: 25
+  },
+  card: {
+    maxWidth: 350
+  },
+  media: {
+    maxHeight: 200,
+    maxWidth: 200
+  },
+  gridList: {
+    flexWrap: 'nowrap',
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)'
+  },
+  title: {
+    color: theme.palette.primary.light
+  }
+}))
 
 const MovieHeader = _ => {
   const [data, setData] = useState([])
@@ -70,7 +68,7 @@ const MovieHeader = _ => {
                 Rating: {data.vote_average}
             </Typography>
             <Typography>
-           <AddWatchListButton/>
+              <AddWatchListButton />
             </Typography>
 
           </Grid>

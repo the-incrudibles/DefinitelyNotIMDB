@@ -7,13 +7,15 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
     button: {
-        paddingTop:12
+        paddingTop:12,
+        display: 'none'
     }
   }));
 
 const DeleteCommentButton = _ =>{
 const classes = useStyles()
 const handleDeleteCommentButton = event =>{
+    console.log(event.target)
     axios.delete(`/movie/comment/id`)
         .then(_ =>console.log('deleted!'))
         .catch(e =>console.log('not deleted'))

@@ -9,11 +9,10 @@ import Icon from '@material-ui/core/Icon';
 import MovieContext from '../../utils/movieContext'
 
 
-
-const useStyles = makeStyles(theme =>({
-    root:{
-        padding: 25
-    }
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: 25
+  }
 }))
 
 

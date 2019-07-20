@@ -1,14 +1,14 @@
-import React,{useState, useEffect} from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
-import axios from 'axios';
-import Paper from '@material-ui/core/Paper';
+import React, { useState, useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import Divider from '@material-ui/core/Divider'
+import ListItemText from '@material-ui/core/ListItemText'
+import ListItemAvatar from '@material-ui/core/ListItemAvatar'
+import Avatar from '@material-ui/core/Avatar'
+import Typography from '@material-ui/core/Typography'
+import axios from 'axios'
+import Paper from '@material-ui/core/Paper'
 import AddMovieComments from '../AddMovieComments'
 import ReportCommentButton from '../ReportCommentButton/ReportCommentButton'
 import DeleteCommentButton from '../DeleteCommentButton/DeleteCommentButton'
@@ -18,24 +18,24 @@ import CommentData from './commentData'
 
 
 const useStyles = makeStyles(theme => ({
-    root: {
-      width: '100%',
-      maxWidth: 360,
-      backgroundColor: theme.palette.background.paper,
-    },
-    inline: {
-      display: 'inline',
-    },
-    rootTwo:{
-        padding: 25
-    },
-    flag:{
-        color:'red'
-    }
-  }));
-const MovieComments = _ =>{
- const [comments, setComments]= useState([])
- const classes = useStyles()
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper
+  },
+  inline: {
+    display: 'inline'
+  },
+  rootTwo: {
+    padding: 25
+  },
+  flag: {
+    color: 'red'
+  }
+}))
+const MovieComments = _ => {
+  const [comments, setComments] = useState([])
+  const classes = useStyles()
 
 
     return(

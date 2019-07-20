@@ -5,14 +5,12 @@ import CastSlider from '../../components/CastSlider'
 import MovieComments from '../../components/MovieComments'
 import AddMovieComments from '../../components/AddMovieComments'
 
-
-  const Movie = _ => {
-
-    return(
-        <div>
-        <MovieHeader/>
-        <CastSlider/>
-        <MovieComments/>
+const Movie = _ => {
+  return (
+    <div>
+      <MovieHeader />
+      <CastSlider />
+      <MovieComments />
     </div>
   )
 }
