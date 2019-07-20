@@ -35,10 +35,11 @@ const useStyles = makeStyles(theme => ({
     const classes = useStyles()
   
     useEffect(_ => {
-      axios.get(`https://api.themoviedb.org/3/movie/399579?api_key=${env.process.REACT_APP_TMDB_APIKEY}&language=en-US&sort_by=popularity.desc`)
+      axios.get(`https://api.themoviedb.org/3/movie/399579?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&sort_by=popularity.desc`)
         .then(r => {
           setData(r.data)
           console.log(r)
         })
     }, [])
 }
+export default TopRatedHeader
