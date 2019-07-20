@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Navbar from './components/Bullshit'
+import Footer from './components/Footer'
 import LoginPage from './Pages/Login'
 import SignupForm from './components/SignupForm'
 import axios from 'axios'
@@ -18,6 +19,7 @@ const App = _ => {
         <Route path='/movie' render={_ => (<Movie />)} />
         <Route path='/login' render={_ => (<LoginPage />)} />
         <Route path='/signup' render={_ => (<SignupForm />)} />
+        <Footer />
       </Router>
     </>
   )
