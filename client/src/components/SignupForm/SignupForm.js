@@ -65,7 +65,7 @@ const SignupForm = _ => {
   }
 
   userState.renderRedirect = _ => {
-    if (userState.redirect) {
+    if (userState.isLoggedIn) {
       return <Redirect to='/' />
     }
   }
@@ -76,12 +76,7 @@ const SignupForm = _ => {
     })
       .then(_ => {
         setUserState({ ...userState, isLoggedIn: true, user: localStorage.getItem('user') })
-
-        userState.renderRedirect = _ => {
-          if (userState.isLoggedIn) {
-            return <Redirect to='/' />
-          }
-        }
+        userState.renderRedirect()
       })
       .catch(_ => {
         setUserState({ ...userState, isLoggedIn: false, user: '' })
@@ -90,7 +85,8 @@ const SignupForm = _ => {
 
   return (
     <div className="loginDiv">
-      {userState.renderRedirect()}
+      {userState.isLoggedIn ? userState.renderRedirect() : null}
+
       {
         userState.failedRegistration === true ?
           <div className="blockTypography">

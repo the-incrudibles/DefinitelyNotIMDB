@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const passport = require('passport')
 
 module.exports = app => {
-  // app.post('/verify', passport.authenticate('jwt', { session: false }), (req, res) => res.sendStatus(200))
+  app.post('/verify', passport.authenticate('jwt', { session: false }), (req, res) => res.sendStatus(200))
 
   app.post('/register', (req, res) => {
     console.log(req.body)
