@@ -1,17 +1,13 @@
 import React from 'react'
-import SearchContext from '../../utils/searchContext'
+// import SearchContext from '../../utils/searchContext'
 
-const searchMovie = _ => {
+const searchMovie = props => {
   return (
-    <SearchContext.Consumer>
-      {
-        ({ movies }) => {
-          movies.map(movie => {
-            console.log(movie)
-          })
-        }
-      }
-    </SearchContext.Consumer>
+    <>
+      <div key={props.movie.id}>
+        <h1>{props.movie.title}</h1>
+      </div>
+    </>
   )
 }
 
