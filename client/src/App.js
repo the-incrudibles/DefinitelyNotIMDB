@@ -72,17 +72,18 @@ const App = _ => {
         setUserState({ ...userState, isLoggedIn: false, user: '' })
       })
   }, [])
+  
   return (
-      <>
-        <Router>
-          <Navbar />
-          <Route path='/search' render={_ => (
-            <Search />
-          )} />
-          <Route path='/movie' render={_ => (<Movie />)} />
-          <Route path='/login' render={_ => (<LoginPage />)} />
-          <Route path='/signup' render={_ => (<SignupForm />)} />
-        </Router>
+    <>
+      <Router>
+        <Navbar />
+        <Route path='/search' render={_ => (
+          <Search />
+        )} />
+        <Route path='/movie' render={_ => (<Movie />)} />
+        <Route path='/login' render={_ => (<LoginPage />)} />
+        <Route path='/signup' render={_ => (<SignupForm />)} />
+      </Router>
     </>
   )
 }

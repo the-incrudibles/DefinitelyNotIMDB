@@ -9,20 +9,18 @@ import Signup from '../../utils/Signup.js'
 
 const SignupForm = _ => {
 
+  const name = useRef()
+  const username = useRef()
+  const email = useRef()
+  const password = useRef()
+
   const [userState, setUserState] = useState({
-    name: '',
-    username: '',
-    email: '',
-    password: '',
-    isLoggedIn: false,
+    isLoggedIn: false
   })
 
-  userState.handleInputChange = event => {
-    setUserState({ ...userState, [event.target.id]: event.target.value })
-  }
-
   userState.handleSignUp = _ => {
-    Signup.register(userState)
+    Signup.register({ name: name.current.value, username: username.current.value, email: email.current.value, password: password.current.value})
+    setUserState({ ...userState, isLoggedIn: !userState.isLoggedIn })
   }
 
   return (
@@ -38,8 +36,7 @@ const SignupForm = _ => {
           margin="normal"
           variant="outlined"
           className="textInput"
-          onChange={userState.handleInputChange}
-          id="name"
+          inputRef={name}
         />
 
         <TextField
@@ -47,8 +44,7 @@ const SignupForm = _ => {
           margin="normal"
           variant="outlined"
           className="usernameInput"
-          onChange={userState.handleInputChange}
-          id="username"
+          inputRef={username}
         />
 
         <TextField
@@ -56,8 +52,7 @@ const SignupForm = _ => {
           margin="normal"
           variant="outlined"
           className="usernameInput"
-          onChange={userState.handleInputChange}
-          id="email"
+          inputRef={email}
         />
 
         <TextField
@@ -65,8 +60,7 @@ const SignupForm = _ => {
           margin="normal"
           variant="outlined"
           className="passwordInput"
-          onChange={userState.handleInputChange}
-          id="password"
+          inputRef={password}
         />
 
         <div>
