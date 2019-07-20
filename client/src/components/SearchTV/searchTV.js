@@ -1,13 +1,13 @@
 import React from 'react'
 import SearchContext from '../../utils/searchContext'
 
-const searchMovie = _ => {
+const searchTV = _ => {
   return (
     <SearchContext.Consumer>
       {
-        ({ movies }) => {
-          movies.map(movie => {
-            console.log(movie)
+        ({ shows }) => {
+          shows.map(show => {
+            console.log(show)
           })
         }
       }
@@ -15,4 +15,4 @@ const searchMovie = _ => {
   )
 }
 
-export default searchMovie
+export default searchTV

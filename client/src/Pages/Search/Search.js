@@ -1,5 +1,9 @@
 import React, { useState, useRef } from 'react'
 import axios from 'axios'
+import SearchContext from '../../utils/searchContext'
+import SearchMovie from '../../components/SearchMovie'
+import SearchTV from '../../components/SearchTV'
+import SearchCelebrities from '../../components/SearchCelebrities'
 
 const Search = _ => {
   const [searchState, setSearchState] = useState({
@@ -36,10 +40,9 @@ const Search = _ => {
       // if celeb
     } else if (searchState.searchArea === 'celebrity') {
       axios.get(`https://api.themoviedb.org/3/search/person?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
-        .then(data => {
-          console.log(data.data)
+        .then(({ data }) => {
           searchTerm.current.value = ''
-          setSearchState({ ...searchState, searchArea: '' })
+          setSearchState({ ...searchState, celebs: data.results, searchArea: '' })
         })
         .catch(e => console.log(e))
 
@@ -67,7 +70,11 @@ const Search = _ => {
       </form>
 
       <div>
-        <h1>movies go here</h1>
+        <SearchContext.Provider value={searchState}>
+          <SearchMovie />
+          <SearchTV />
+          <SearchCelebrities />
+        </SearchContext.Provider>
       </div>
     </>
   )
