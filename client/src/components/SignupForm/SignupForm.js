@@ -6,12 +6,11 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
-import FormHelperText from '@material-ui/core/FormHelperText';
+import FormHelperText from '@material-ui/core/FormHelperText'
 import Signup from '../../utils/Signup.js'
 import axios from 'axios'
 
 const SignupForm = _ => {
-
   const name = useRef()
   const username = useRef()
   const email = useRef()
@@ -84,140 +83,139 @@ const SignupForm = _ => {
   }, [])
 
   return (
-    <div className="loginDiv">
+    <div className='loginDiv'>
       {userState.isLoggedIn ? userState.renderRedirect() : null}
 
       {
-        userState.failedRegistration === true ?
-          <div className="blockTypography">
-            <Typography variant="h6" className="failedCardText">
+        userState.failedRegistration === true
+          ? <div className='blockTypography'>
+            <Typography variant='h6' className='failedCardText'>
               * Please be sure to completely fill out the form! *
-          </Typography>
+            </Typography>
           </div>
           : null
       }
 
       <form>
-        <div className="loginHeader">
-          <Typography variant="h5" >Sign up for an account</Typography>
+        <div className='loginHeader'>
+          <Typography variant='h5' >Sign up for an account</Typography>
         </div>
 
         {
-          userState.failedRegistration && name.current.value === '' ?
-            <>
+          userState.failedRegistration && name.current.value === ''
+            ? <>
               <TextField
-                label="Full Name"
-                margin="normal"
-                variant="outlined"
-                className="textInput"
+                label='Full Name'
+                margin='normal'
+                variant='outlined'
+                className='textInput'
                 inputRef={name}
                 error id
               />
-              <FormHelperText><p className="emptyInput">*Required field </p></FormHelperText>
+              <FormHelperText><p className='emptyInput'>*Required field </p></FormHelperText>
             </> : <TextField
-              label="Full Name"
-              margin="normal"
-              variant="outlined"
-              className="textInput"
+              label='Full Name'
+              margin='normal'
+              variant='outlined'
+              className='textInput'
               inputRef={name}
             />
         }
 
         {
-          userState.failedRegistration && username.current.value === '' ?
-            <>
+          userState.failedRegistration && username.current.value === ''
+            ? <>
               <TextField
-                label="Username"
-                margin="normal"
-                variant="outlined"
-                className="usernameInput"
+                label='Username'
+                margin='normal'
+                variant='outlined'
+                className='usernameInput'
                 inputRef={username}
                 error id
               />
-              <FormHelperText><p className="emptyInput">*Required field </p></FormHelperText>
+              <FormHelperText><p className='emptyInput'>*Required field </p></FormHelperText>
             </> : <TextField
-              label="Username"
-              margin="normal"
-              variant="outlined"
-              className="usernameInput"
+              label='Username'
+              margin='normal'
+              variant='outlined'
+              className='usernameInput'
               inputRef={username}
             />
         }
 
         {
-          userState.failedRegistration && email.current.value === '' ?
-            <>
+          userState.failedRegistration && email.current.value === ''
+            ? <>
               <TextField
-                label="Email"
-                margin="normal"
-                variant="outlined"
-                className="emailInput"
+                label='Email'
+                margin='normal'
+                variant='outlined'
+                className='emailInput'
                 inputRef={email}
                 error id
               />
-              <FormHelperText><p className="emptyInput">*Required field </p></FormHelperText>
+              <FormHelperText><p className='emptyInput'>*Required field </p></FormHelperText>
             </> : <TextField
-              label="Email"
-              margin="normal"
-              variant="outlined"
-              className="emailInput"
+              label='Email'
+              margin='normal'
+              variant='outlined'
+              className='emailInput'
               inputRef={email}
             />
         }
 
         {
-          userState.failedRegistration && password.current.value === '' ?
-            <>
+          userState.failedRegistration && password.current.value === ''
+            ? <>
               <TextField
-                label="Password"
-                margin="normal"
-                variant="outlined"
-                className="passwordInput"
+                label='Password'
+                margin='normal'
+                variant='outlined'
+                className='passwordInput'
                 inputRef={password}
                 error id
               />
-              <FormHelperText><p className="emptyInput">*Required field </p></FormHelperText>
+              <FormHelperText><p className='emptyInput'>*Required field </p></FormHelperText>
             </> : <TextField
-              label="Password"
-              margin="normal"
-              variant="outlined"
-              className="passwordInput"
+              label='Password'
+              margin='normal'
+              variant='outlined'
+              className='passwordInput'
               inputRef={password}
             />
         }
 
         <div>
           {
-            userState.failedRegistration && userState.checkedA === false ?
-              <>
+            userState.failedRegistration && userState.checkedA === false
+              ? <>
                 <FormControlLabel
                   control={
-                    <Checkbox value="checkedA" onClick={userState.handleCheckboxClick} />
+                    <Checkbox value='checkedA' onClick={userState.handleCheckboxClick} />
                   }
                   label="I agree to the site's terms and conditions"
-                  className="checkBox"
+                  className='checkBox'
                 />
-                <FormHelperText id="uncheckedBox" >*You must check this box to continue*</FormHelperText>
+                <FormHelperText id='uncheckedBox' >*You must check this box to continue*</FormHelperText>
               </>
-              :
-              <FormControlLabel
+              : <FormControlLabel
                 control={
-                  <Checkbox value="checkedA" onClick={userState.handleCheckboxClick} />
+                  <Checkbox value='checkedA' onClick={userState.handleCheckboxClick} />
                 }
                 label="I agree to the site's terms and conditions"
-                className="checkBox"
+                className='checkBox'
               />
           }
 
         </div>
-        <div className="loginButtons">
-          <Button variant="contained" color="primary" onClick={userState.handleRegisterUser}>
+        <div className='loginButtons'>
+          <Button variant='contained' color='primary' onClick={userState.handleRegisterUser}>
             Sign Up
           </Button>
-          <Button color="primary" onClick={userState.handleCancelButton}>
+          <Button color='primary' onClick={userState.handleCancelButton}>
             Cancel
           </Button>
-          <Typography><p className="loginLink">Already have an account? <a href="/login">Log in here</a></p></Typography>
+          <Typography><p className='loginLink'>Already have an account? <a href='/login'>Log in here</a></p></Typography>
         </div>
 
       </form>
