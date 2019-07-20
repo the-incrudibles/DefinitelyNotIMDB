@@ -34,9 +34,6 @@ const useStyles = makeStyles(theme => ({
   list: {
     width: 250,
   },
-  fullList: {
-    width: 'auto',
-  }
 }))
 
 const Navbar = _ => {
@@ -61,20 +58,27 @@ const Navbar = _ => {
       onKeyDown={drawerState.toggleDrawer(side, false)}
     >
       <List>
-        {['Latest News', 'Search Movies'].map((text, index) => (
-          <ListItem button key={text}>
-            <Link to="/movie" className="drawerLink"><ListItemText primary={text} /></Link>
-          </ListItem>
-        ))}
+        <ListItem>
+          <Link to="/movie" className="drawerLink"><ListItemText primary="Latest News" /></Link>
+        </ListItem>
+        <ListItem>
+          <Link to="/search" className="drawerLink"><ListItemText primary="Search Movies" /></Link>
+        </ListItem>
       </List>
       <Divider />
       <List>
-        {['My Account', 'My Watchlist', 'Login', 'Sign Up'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem>
+          <ListItemIcon className="drawerIcon"><InboxIcon /></ListItemIcon>
+          <Link to="/account" className="drawerLink"><ListItemText primary="My Account" /></Link>
+        </ListItem>
+        <ListItem>
+          <ListItemIcon className="drawerIcon"><InboxIcon /></ListItemIcon>
+          <Link to="/login" className="drawerLink"><ListItemText primary="Login" /></Link>
+        </ListItem>
+        <ListItem>
+          <ListItemIcon className="drawerIcon"><InboxIcon /></ListItemIcon>
+          <Link to="/signup" className="drawerLink"><ListItemText primary="Sign Up" /></Link>
+        </ListItem>
       </List>
     </div>
   );

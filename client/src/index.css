@@ -24,7 +24,7 @@ code {
   margin-bottom: 25px;
 }
 
-.usernameInput, .passwordInput, .textInput, .emailInput{
+.usernameInput, .passwordInput, .textInput, .emailInput {
   width: 100%;
 }
 
@@ -36,7 +36,7 @@ code {
   margin-top: 20px;
 }
 
-.signupLink, .loginLink{
+.signupLink, .loginLink {
   margin: auto;
   margin-top: 25px;
   text-decoration: none;
