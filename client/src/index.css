@@ -24,7 +24,7 @@ code {
   margin-bottom: 25px;
 }
 
-.usernameInput, .passwordInput, .textInput{
+.usernameInput, .passwordInput, .textInput, .emailInput{
   width: 100%;
 }
 
