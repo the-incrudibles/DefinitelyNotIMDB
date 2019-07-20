@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 // Text Input Imports:
@@ -8,6 +8,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Signup from '../../utils/Signup.js'
+import axios from 'axios'
 
 const SignupForm = _ => {
 
@@ -23,20 +24,29 @@ const SignupForm = _ => {
     failedRegistration: false
   })
 
-  userState.handleSignUp = _ => {
-    if (userState.checkedA === false || name.current.value === '' || username.current.value === '' || email.current.value === '' || password.current.value === '') {
-      setUserState({ ...userState, failedRegistration: true })
-    } else {
-      if (name.current.value !== '' && username.current.value !== '' && email.current.value !== '' && password.current.value !== '') {
-        Signup.register({ name: name.current.value, username: username.current.value, email: email.current.value, password: password.current.value })
-        setUserState({ ...userState, failedRegistration: false, isLoggedIn: true })
-        userState.setRedirect()
-      }
-    }
-  }
+  userState.handleRegisterUser = event => {
+    event.preventDefault()
+    console.log(password.current.value)
 
-  userState.handleCheckboxClick = _ => {
-    setUserState({ ...userState, checkedA: !userState.checkedA })
+    axios.post('/register', {
+      name: name.current.value,
+      username: username.current.value,
+      email: email.current.value,
+      password: password.current.value
+    })
+      .then(({ data }) => {
+        console.log(data)
+        if (data.isLoggedIn) {
+          localStorage.setItem('token', data.token)
+          localStorage.setItem('user', data.user)
+          setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
+        } else {
+          userState.handleCheckboxClick = _ => {
+            setUserState({ ...userState, checkedA: !userState.checkedA })
+          }
+        }
+      })
+      .catch(e => console.error(e))
   }
 
   userState.handleCancelButton = _ => {
@@ -59,6 +69,24 @@ const SignupForm = _ => {
       return <Redirect to='/' />
     }
   }
+
+  useEffect(_ => {
+    axios.post('/verify', {}, {
+      headers: { 'Authorization': `bearer ${localStorage.getItem('token')}` }
+    })
+      .then(_ => {
+        setUserState({ ...userState, isLoggedIn: true, user: localStorage.getItem('user') })
+
+        userState.renderRedirect = _ => {
+          if (userState.isLoggedIn) {
+            return <Redirect to='/' />
+          }
+        }
+      })
+      .catch(_ => {
+        setUserState({ ...userState, isLoggedIn: false, user: '' })
+      })
+  }, [])
 
   return (
     <div className="loginDiv">
@@ -187,7 +215,7 @@ const SignupForm = _ => {
 
         </div>
         <div className="loginButtons">
-          <Button variant="contained" color="primary" onClick={userState.handleSignUp}>
+          <Button variant="contained" color="primary" onClick={userState.handleRegisterUser}>
             Sign Up
           </Button>
           <Button color="primary" onClick={userState.handleCancelButton}>
