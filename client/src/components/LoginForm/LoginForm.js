@@ -37,6 +37,7 @@ const LoginForm = _ => {
         if (data.isLoggedIn) {
           localStorage.setItem('token', data.token)
           localStorage.setItem('user', data.user)
+          localStorage.setItem('admin', data.admin)
           setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
         } else {
           alert('Invalid username or password')
@@ -59,7 +60,7 @@ const LoginForm = _ => {
 
   return (
     <div className='loginDiv'>
-      {userState.isLoggedIn ? <Redirect to='/' /> : null}
+      {userState.isLoggedIn ? userState.renderRedirect() : null}
       <div className='blockTypography'>
         <Typography >In order to leave comments or reviews, or join movie clubs, you'll have to log into your account.</Typography>
       </div>
