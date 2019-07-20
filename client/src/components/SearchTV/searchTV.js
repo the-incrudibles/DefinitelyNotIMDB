@@ -3,16 +3,18 @@ import SearchContext from '../../utils/searchContext'
 
 const searchTV = _ => {
   return (
-    // <SearchContext.Consumer>
-    //   {
-    //     ({ shows }) => {
-    //       shows.map(show => {
-    //         console.log(show)
-    //       })
-    //     }
-    //   }
-    // </SearchContext.Consumer>
-    <h1>tv page</h1>
+    <SearchContext.Consumer>
+      {
+        ({ shows }) => (
+          shows.map(show =>
+            <div key={show.id}>
+              <h1>{show.name}</h1>
+              <img src={`https://image.tmdb.org/t/p/original${show.poster_path}`} alt={show.title} style={{ width: '200px' }} />
+            </div>
+          )
+        )
+      }
+    </SearchContext.Consumer>
   )
 }
 
