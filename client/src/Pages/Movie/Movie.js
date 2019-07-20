@@ -6,13 +6,13 @@ import MovieComments from '../../components/MovieComments'
 import AddMovieComments from '../../components/AddMovieComments'
 
 
-  const Movie = _ => {
+const Movie = _ => {
 
-    return(
-        <div>
-        <MovieHeader/>
-        <CastSlider/>
-        <MovieComments/>
+  return (
+    <div>
+      <MovieHeader />
+      <CastSlider />
+      <MovieComments />
     </div>
   )
 }
