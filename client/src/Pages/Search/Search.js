@@ -4,6 +4,7 @@ import SearchContext from '../../utils/searchContext'
 import SearchMovie from '../../components/SearchMovie'
 import SearchTV from '../../components/SearchTV'
 import SearchCelebrities from '../../components/SearchCelebrities'
+import SearchResult from '../../utils/SearchResult.js'
 
 const Search = _ => {
   const [searchState, setSearchState] = useState({
@@ -16,7 +17,7 @@ const Search = _ => {
     searchTV: false,
     searchCelebs: false,
     addCelebToDB: celeb => {
-      
+      SearchResult.addCelebrity(celeb)
     }
   })
 
