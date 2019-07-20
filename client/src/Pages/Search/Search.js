@@ -1,9 +1,16 @@
 import React, { useState, useRef } from 'react'
-import Axios from 'axios';
+import axios from 'axios'
+import SearchContext from '../../utils/searchContext'
+import SearchMovie from '../../components/SearchMovie'
+import SearchTV from '../../components/SearchTV'
+import SearchCelebrities from '../../components/SearchCelebrities'
 
 const Search = _ => {
   const [searchState, setSearchState] = useState({
-    searchArea: 'nothing'
+    searchArea: '',
+    movies: [],
+    shows: [],
+    celebs: []
   })
 
   const searchTerm = useRef()
@@ -14,41 +21,60 @@ const Search = _ => {
 
   searchState.buttonClick = event => {
     event.preventDefault()
-    console.log(searchState.searchArea)
-    console.log(searchTerm.current.value)
-    // axios stuff here
-    // if movie
-    if (searchState.searchArea === 'movie') {
-      Axios.get(`https://api.themoviedb.org/3/search/multi?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
-        .then(data => {
-          console.log(data.data)
+
+    // if title
+    if (searchState.searchArea === 'title') {
+      axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
+        .then(({ data }) => {
+          let movieArr = data.results
+          setSearchState({ ...searchState, movies: movieArr })
+          axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
+            .then(({ data }) => {
+              searchTerm.current.value = ''
+              setSearchState({ ...searchState, shows: data.results, searchArea: '' })
+            })
+            .catch(e => console.log(e))
         })
         .catch(e => console.log(e))
+
+      // if celeb
+    } else if (searchState.searchArea === 'celebrity') {
+      axios.get(`https://api.themoviedb.org/3/search/person?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
+        .then(({ data }) => {
+          searchTerm.current.value = ''
+          setSearchState({ ...searchState, celebs: data.results, searchArea: '' })
+        })
+        .catch(e => console.log(e))
+
+      // if nothing selected
+    } else if (searchState.searchArea === '') {
+      console.log('wrong')
     }
-    // if celeb
-    // if genre
   }
 
   return (
     <>
-      <input type='text' name='search' id='searchTerm' ref={searchTerm} />
-      <br />
       <form>
+        <input type='text' name='search' id='searchTerm' ref={searchTerm} />
+        <br />
         <select
           value={searchState.searchArea}
           onChange={searchState.handleSearchArea}
           id='searchArea'
         >
           <option />
-          <option value='movie'>Movie</option>
-          <option value='celebrity'>Celebrity</option>
-          <option value='genre'>Genre</option>
+          <option value='title'>Title Search</option>
+          <option value='celebrity'>Celebrity Search</option>
         </select>
         <button id='someBtn' onClick={searchState.buttonClick}>Click me</button>
       </form>
 
       <div>
-
+        <SearchContext.Provider value={searchState}>
+          <SearchMovie />
+          <SearchTV />
+          <SearchCelebrities />
+        </SearchContext.Provider>
       </div>
     </>
   )

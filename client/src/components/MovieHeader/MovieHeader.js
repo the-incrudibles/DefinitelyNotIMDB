@@ -8,21 +8,30 @@ import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
-import Fab from '@material-ui/core/Fab'
-import AddIcon from '@material-ui/icons/Add'
+import AddWatchListButton from '../../components/AddWatchListButton'
+
+
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    padding: 25
-  },
-  card: {
-    maxWidth: 350
-  },
-  media: {
-    maxHeight: 200,
-    maxWidth: 200
-  }
-}))
+    root: {
+      padding: 25
+    },
+    card: {
+        maxWidth: 350
+    },
+    media:{
+        maxHeight: 200,
+        maxWidth:200
+    },
+    gridList: {
+        flexWrap: 'nowrap',
+        // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+        transform: 'translateZ(0)',
+      },
+      title: {
+        color: theme.palette.primary.light,
+      }
+  }))
 
 const MovieHeader = _ => {
   const [data, setData] = useState([])
@@ -60,9 +69,7 @@ const MovieHeader = _ => {
                 Rating: {data.vote_average}
             </Typography>
             <Typography>
-              <Fab color='default' aria-label='Add' className={classes.fab} size='small'>
-                <AddIcon />
-              </Fab>
+           <AddWatchListButton/>
             </Typography>
 
           </Grid>
