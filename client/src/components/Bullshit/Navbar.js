@@ -92,11 +92,17 @@ const Navbar = _ => {
           <i className="material-icons">video_library</i>
           <Link to="/account" className="drawerLink"><ListItemText primary="My Watchlist" /></Link>
         </ListItem>
-        <ListItem>
-          <i className="material-icons">exit_to_app</i>
-          <Link to="/login" className="drawerLink"><ListItemText primary="Login / Sign Up" /></Link>
-        </ListItem>
+        {
+          localStorage.getItem('user') ? null :
+            <>
+              <ListItem>
+                <i className="material-icons">exit_to_app</i>
+                <Link to="/login" className="drawerLink"><ListItemText primary="Login / Sign Up" /></Link>
+              </ListItem>
+            </>
+        }
       </List>
+
     </div>
   );
 
