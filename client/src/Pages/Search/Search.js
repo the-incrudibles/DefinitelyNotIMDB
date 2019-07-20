@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react'
 import axios from 'axios'
+import SearchContext from '../../utils/searchContext'
+import SearchMovie from '../../components/SearchMovie'
 
 const Search = _ => {
   const [searchState, setSearchState] = useState({
@@ -67,7 +69,9 @@ const Search = _ => {
       </form>
 
       <div>
-        <h1>movies go here</h1>
+        <SearchContext.Provider value={searchState}>
+          <SearchMovie />
+        </SearchContext.Provider>
       </div>
     </>
   )

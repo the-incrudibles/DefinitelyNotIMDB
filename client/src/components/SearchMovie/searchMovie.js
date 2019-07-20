@@ -1,10 +1,17 @@
 import React from 'react'
+import SearchContext from '../../utils/searchContext'
 
 const searchMovie = _ => {
   return (
-    <>
-      <h1>hello</h1>
-    </>
+    <SearchContext.Consumer>
+      {
+        ({ movies }) => {
+          movies.map(movie => {
+            console.log(movie)
+          })
+        }
+      }
+    </SearchContext.Consumer>
   )
 }
 
