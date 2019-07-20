@@ -40,8 +40,12 @@ const Navbar = _ => {
               <Link className={classes.navTitle} to='/movie'>Movie</Link>
             </Button>
           </Typography>
-          <Button color='inherit'>
-            <Link>Login</Link></Button>
+          <Button color="inherit">
+            <Link to="/login" className="navbutton">Login</Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/signup" className="navbutton">Sign Up</Link>
+          </Button>
         </Toolbar>
       </AppBar>
     </div >
