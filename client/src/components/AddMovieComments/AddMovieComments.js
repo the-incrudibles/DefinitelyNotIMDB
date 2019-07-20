@@ -1,14 +1,13 @@
-import React, {useState, useEffect} from 'react'
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import axios from 'axios'
 
-
-const useStyles = makeStyles(theme =>({
-    root:{
-        padding: 25
-    }
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: 25
+  }
 }))
 
 // useEffect(_=>{
@@ -17,16 +16,16 @@ const useStyles = makeStyles(theme =>({
 //          console.log(r)
 //      })
 // })
-const AddMovieComments = _ =>{
-    const classes = useStyles()
-    return(
-        <div>
-            <Typography>
+const AddMovieComments = _ => {
+  const classes = useStyles()
+  return (
+    <div>
+      <Typography>
                 COMMENT BELOW
-            </Typography>
-            
-        </div>
-    )
+      </Typography>
+
+    </div>
+  )
 }
 
 export default AddMovieComments

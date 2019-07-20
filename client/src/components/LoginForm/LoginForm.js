@@ -7,11 +7,10 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
-import FormHelperText from '@material-ui/core/FormHelperText';
+import FormHelperText from '@material-ui/core/FormHelperText'
 import Login from '../../utils/Login.js'
 
 const LoginForm = _ => {
-
   const username = useRef()
   const password = useRef()
 
@@ -59,30 +58,30 @@ const LoginForm = _ => {
   }, [])
 
   return (
-    <div className="loginDiv">
+    <div className='loginDiv'>
       {userState.isLoggedIn ? <Redirect to='/' /> : null}
-      <div className="blockTypography">
+      <div className='blockTypography'>
         <Typography >In order to leave comments or reviews, or join movie clubs, you'll have to log into your account.</Typography>
       </div>
 
       <form>
-        <div className="loginHeader">
+        <div className='loginHeader'>
           <Typography variant='h5' >Log into your account</Typography>
         </div>
 
         {
-          userState.failedLogin && username.current.value === '' ?
-            <>
+          userState.failedLogin && username.current.value === ''
+            ? <>
               <TextField
                 id='outlined-name'
                 label='Username'
                 margin='normal'
                 variant='outlined'
                 inputRef={username}
-                className="usernameInput"
+                className='usernameInput'
                 error id
               />
-              <FormHelperText><p className="emptyInput">*Required field </p></FormHelperText>
+              <FormHelperText><p className='emptyInput'>*Required field </p></FormHelperText>
             </>
             : <TextField
               id='outlined-name'
@@ -90,23 +89,23 @@ const LoginForm = _ => {
               margin='normal'
               variant='outlined'
               inputRef={username}
-              className="usernameInput"
+              className='usernameInput'
             />
         }
 
         {
-          userState.failedLogin && password.current.value === '' ?
-            <>
+          userState.failedLogin && password.current.value === ''
+            ? <>
               <TextField
                 id='outlined-name'
                 label='Password'
                 margin='normal'
                 variant='outlined'
                 inputRef={password}
-                className="passwordInput"
+                className='passwordInput'
                 error id
               />
-              <FormHelperText><p className="emptyInput">*Required field </p></FormHelperText>
+              <FormHelperText><p className='emptyInput'>*Required field </p></FormHelperText>
             </>
             : <TextField
               id='outlined-name'
@@ -114,17 +113,17 @@ const LoginForm = _ => {
               margin='normal'
               variant='outlined'
               inputRef={password}
-              className="passwordInput"
+              className='passwordInput'
             />
         }
 
         <div>
           <FormControlLabel
             control={
-              <Checkbox value="checkedA" />
+              <Checkbox value='checkedA' />
             }
-            label="Remember me"
-            className="checkBox"
+            label='Remember me'
+            className='checkBox'
           />
         </div>
 
@@ -132,10 +131,10 @@ const LoginForm = _ => {
           <Button variant='contained' color='primary' onClick={userState.handleLogInUser}>
             Login
           </Button>
-          <Button color="primary">
+          <Button color='primary'>
             Forgot Password?
           </Button>
-          <Typography ><p className="signupLink">Don't have an account? <a href="/signup">Sign up here</a></p></Typography>
+          <Typography ><p className='signupLink'>Don't have an account? <a href='/signup'>Sign up here</a></p></Typography>
         </div>
 
       </form>
