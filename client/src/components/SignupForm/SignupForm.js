@@ -1,14 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
+import { Redirect } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 // Text Input Imports:
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormHelperText from '@material-ui/core/FormHelperText';
 import Signup from '../../utils/Signup.js'
-// Checkbox Card Imports: 
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 
 const SignupForm = _ => {
 
@@ -18,6 +17,7 @@ const SignupForm = _ => {
   const password = useRef()
 
   const [userState, setUserState] = useState({
+    redirect: false,
     checkedA: false,
     isLoggedIn: false,
     failedRegistration: false
@@ -25,10 +25,13 @@ const SignupForm = _ => {
 
   userState.handleSignUp = _ => {
     if (userState.checkedA === false || name.current.value === '' || username.current.value === '' || email.current.value === '' || password.current.value === '') {
-      setUserState({ ...userState, failedRegistration: !userState.failedRegistration })
+      setUserState({ ...userState, failedRegistration: true })
     } else {
-      Signup.register({ name: name.current.value, username: username.current.value, email: email.current.value, password: password.current.value })
-      setUserState({ ...userState, isLoggedIn: true })
+      if (name.current.value !== '' && username.current.value !== '' && email.current.value !== '' && password.current.value !== '') {
+        Signup.register({ name: name.current.value, username: username.current.value, email: email.current.value, password: password.current.value })
+        setUserState({ ...userState, failedRegistration: false, isLoggedIn: true })
+        userState.setRedirect()
+      }
     }
   }
 
@@ -36,38 +39,58 @@ const SignupForm = _ => {
     setUserState({ ...userState, checkedA: !userState.checkedA })
   }
 
-  return (
-    <div className='loginDiv'>
+  userState.handleCancelButton = _ => {
+    if (name.current.value === '' && username.current.value === '' && email.current.value === '' && password.current.value === '') {
+      userState.setRedirect()
+    } else {
+      name.current.value = ''
+      username.current.value = ''
+      email.current.value = ''
+      password.current.value = ''
+    }
+  }
 
+  userState.setRedirect = _ => {
+    setUserState({ ...userState, redirect: true })
+  }
+
+  userState.renderRedirect = _ => {
+    if (userState.redirect) {
+      return <Redirect to='/' />
+    }
+  }
+
+  return (
+    <div className="loginDiv">
+      {userState.renderRedirect()}
       {
-        userState.failedRegistration === true ? (
-          <Card>
-            <CardContent>
-              <Typography variant="h5" color="primary">
-                Please be sure to completely fill out the form and agree to the terms and conditions!
-              </Typography>
-            </CardContent>
-          </Card>
-        ) : (
-            null
-          )
+        userState.failedRegistration === true ?
+          <div className="blockTypography">
+            <Typography variant="h6" className="failedCardText">
+              * Please be sure to completely fill out the form! *
+          </Typography>
+          </div>
+          : null
       }
 
       <form>
         <div className="loginHeader">
-          <Typography variant='h5' >Sign up for an account</Typography>
+          <Typography variant="h5" >Sign up for an account</Typography>
         </div>
 
         {
           userState.failedRegistration && name.current.value === '' ?
-            <TextField
-              label="Full Name"
-              margin="normal"
-              variant="outlined"
-              className="textInput"
-              inputRef={name}
-              error id
-            /> : <TextField
+            <>
+              <TextField
+                label="Full Name"
+                margin="normal"
+                variant="outlined"
+                className="textInput"
+                inputRef={name}
+                error id
+              />
+              <FormHelperText><p className="emptyInput">*Required field </p></FormHelperText>
+            </> : <TextField
               label="Full Name"
               margin="normal"
               variant="outlined"
@@ -78,14 +101,17 @@ const SignupForm = _ => {
 
         {
           userState.failedRegistration && username.current.value === '' ?
-            <TextField
-              label="Username"
-              margin="normal"
-              variant="outlined"
-              className="usernameInput"
-              inputRef={username}
-              error id
-            /> : <TextField
+            <>
+              <TextField
+                label="Username"
+                margin="normal"
+                variant="outlined"
+                className="usernameInput"
+                inputRef={username}
+                error id
+              />
+              <FormHelperText><p className="emptyInput">*Required field </p></FormHelperText>
+            </> : <TextField
               label="Username"
               margin="normal"
               variant="outlined"
@@ -96,14 +122,17 @@ const SignupForm = _ => {
 
         {
           userState.failedRegistration && email.current.value === '' ?
-            <TextField
-              label="Email"
-              margin="normal"
-              variant="outlined"
-              className="emailInput"
-              inputRef={email}
-              error id
-            /> : <TextField
+            <>
+              <TextField
+                label="Email"
+                margin="normal"
+                variant="outlined"
+                className="emailInput"
+                inputRef={email}
+                error id
+              />
+              <FormHelperText><p className="emptyInput">*Required field </p></FormHelperText>
+            </> : <TextField
               label="Email"
               margin="normal"
               variant="outlined"
@@ -114,14 +143,17 @@ const SignupForm = _ => {
 
         {
           userState.failedRegistration && password.current.value === '' ?
-            <TextField
-              label="Password"
-              margin="normal"
-              variant="outlined"
-              className="passwordInput"
-              inputRef={password}
-              error id
-            /> : <TextField
+            <>
+              <TextField
+                label="Password"
+                margin="normal"
+                variant="outlined"
+                className="passwordInput"
+                inputRef={password}
+                error id
+              />
+              <FormHelperText><p className="emptyInput">*Required field </p></FormHelperText>
+            </> : <TextField
               label="Password"
               margin="normal"
               variant="outlined"
@@ -131,18 +163,34 @@ const SignupForm = _ => {
         }
 
         <div>
-          <FormControlLabel
-            control={
-              <Checkbox value="checkedA" onClick={userState.handleCheckboxClick} />
-            }
-            label="I agree to the terms and conditions"
-          />
+          {
+            userState.failedRegistration && userState.checkedA === false ?
+              <>
+                <FormControlLabel
+                  control={
+                    <Checkbox value="checkedA" onClick={userState.handleCheckboxClick} />
+                  }
+                  label="I agree to the site's terms and conditions"
+                  className="checkBox"
+                />
+                <FormHelperText id="uncheckedBox" >*You must check this box to continue*</FormHelperText>
+              </>
+              :
+              <FormControlLabel
+                control={
+                  <Checkbox value="checkedA" onClick={userState.handleCheckboxClick} />
+                }
+                label="I agree to the site's terms and conditions"
+                className="checkBox"
+              />
+          }
+
         </div>
         <div className="loginButtons">
           <Button variant="contained" color="primary" onClick={userState.handleSignUp}>
             Sign Up
           </Button>
-          <Button color="primary">
+          <Button color="primary" onClick={userState.handleCancelButton}>
             Cancel
           </Button>
           <Typography><p className="loginLink">Already have an account? <a href="/login">Log in here</a></p></Typography>
