@@ -34,6 +34,9 @@ const useStyles = makeStyles(theme => ({
   list: {
     width: 250,
   },
+  appBar: {
+    background: '#362c36'
+  }
 }))
 
 const Navbar = _ => {
@@ -99,7 +102,7 @@ const Navbar = _ => {
 
   return (
     <div className={classes.root}>
-      <AppBar position='static'>
+      <AppBar position='static' className={classes.appBar}>
         <Toolbar>
           <IconButton edge='start' className={classes.menuButton} color='inherit' aria-label='Menu' onClick={drawerState.toggleDrawer('left', true)}>
             <MenuIcon />

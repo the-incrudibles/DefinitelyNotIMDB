@@ -78,3 +78,25 @@ code {
 .material-icons {
   margin: 0 10px 0 0;
 }
+
+.movieImg {
+  width: 165px;
+  height: 244px;
+}
+
+.movieText {
+  text-align: center;
+}
+
+.addWatchlistButton {
+  margin-top: 20px;
+}
+
+.appBar {
+  color: #4d4c59
+}
+
+#submitButtons {
+  background-color: #71777d;
+  color: white;
+}
