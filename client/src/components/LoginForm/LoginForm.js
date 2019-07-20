@@ -8,18 +8,17 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Login from '../../utils/Login.js'
 
 const LoginForm = _ => {
+
+  const username = useRef()
+  const password = useRef()
+
   const [userState, setUserState] = useState({
-    username: '',
-    password: '',
     isLoggedIn: false
   })
 
-  userState.handleInputChange = event => {
-    setUserState({ ...userState, [event.target.id]: event.target.value })
-  }
-
   userState.handleSignUp = _ => {
-    Login.loginUser(userState)
+    Login.loginUser({ username: username.current.value, password: password.current.value })
+    setUserState({ ...userState, isLoggedIn: !userState.isLoggedIn })
   }
 
   return (
@@ -39,8 +38,7 @@ const LoginForm = _ => {
           label='Username'
           margin='normal'
           variant='outlined'
-          className='usernameInput'
-          onChange={userState.handleInputChange}
+          inputRef={username}
         />
 
         <TextField
@@ -48,8 +46,7 @@ const LoginForm = _ => {
           label='Password'
           margin='normal'
           variant='outlined'
-          className='passwordInput'
-          onChange={userState.handleInputChange}
+          inputRef={password}
         />
 
         <div>
