@@ -88,8 +88,8 @@ const SignupForm = _ => {
       {userState.isLoggedIn ? userState.renderRedirect() : null}
 
       {
-        userState.failedRegistration === true
-          ? <div className='blockTypography'>
+        userState.failedRegistration === true ?
+          <div className='blockTypography'>
             <Typography variant='h6' className='failedCardText'>
               * Please be sure to completely fill out the form! *
             </Typography>
@@ -103,8 +103,8 @@ const SignupForm = _ => {
         </div>
 
         {
-          userState.failedRegistration && name.current.value === ''
-            ? <>
+          userState.failedRegistration && name.current.value === '' ?
+            <>
               <TextField
                 label='Full Name'
                 margin='normal'
@@ -124,8 +124,8 @@ const SignupForm = _ => {
         }
 
         {
-          userState.failedRegistration && username.current.value === ''
-            ? <>
+          userState.failedRegistration && username.current.value === '' ?
+            <>
               <TextField
                 label='Username'
                 margin='normal'
@@ -145,8 +145,8 @@ const SignupForm = _ => {
         }
 
         {
-          userState.failedRegistration && email.current.value === ''
-            ? <>
+          userState.failedRegistration && email.current.value === '' ?
+            <>
               <TextField
                 label='Email'
                 margin='normal'
@@ -166,8 +166,8 @@ const SignupForm = _ => {
         }
 
         {
-          userState.failedRegistration && password.current.value === ''
-            ? <>
+          userState.failedRegistration && password.current.value === '' ?
+            <>
               <TextField
                 label='Password'
                 margin='normal'
@@ -188,8 +188,8 @@ const SignupForm = _ => {
 
         <div>
           {
-            userState.failedRegistration && userState.checkedA === false
-              ? <>
+            userState.failedRegistration && userState.checkedA === false ?
+              <>
                 <FormControlLabel
                   control={
                     <Checkbox value='checkedA' onClick={userState.handleCheckboxClick} />
