@@ -34,6 +34,9 @@ const useStyles = makeStyles(theme => ({
   list: {
     width: 250,
   },
+  appBar: {
+    background: '#362c36'
+  }
 }))
 
 const Navbar = _ => {
@@ -59,25 +62,39 @@ const Navbar = _ => {
     >
       <List>
         <ListItem>
-          <Link to="/movie" className="drawerLink"><ListItemText primary="Latest News" /></Link>
+          <i className="material-icons">library_books</i>
+          <Link to="/" className="drawerLink"><ListItemText primary="Latest News" /></Link>
         </ListItem>
         <ListItem>
+          <i className="material-icons">new_releases</i>
+          <Link to="/movie" className="drawerLink"><ListItemText primary="Latest Movies" /></Link>
+        </ListItem>
+        <ListItem>
+          <i className="material-icons">local_movies</i>
+          <Link to="/topmovie" className="drawerLink"><ListItemText primary="Top Movies" /></Link>
+        </ListItem>
+        <ListItem>
+          <i className="material-icons">search</i>
           <Link to="/search" className="drawerLink"><ListItemText primary="Search Movies" /></Link>
         </ListItem>
       </List>
       <Divider />
       <List>
         <ListItem>
-          <ListItemIcon className="drawerIcon"><InboxIcon /></ListItemIcon>
+          <i className="material-icons">vpn_key</i>
+          <Link to="/account" className="drawerLink"><ListItemText primary="Admin" /></Link>
+        </ListItem>
+        <ListItem>
+          <i className="material-icons">account_box</i>
           <Link to="/account" className="drawerLink"><ListItemText primary="My Account" /></Link>
         </ListItem>
         <ListItem>
-          <ListItemIcon className="drawerIcon"><InboxIcon /></ListItemIcon>
-          <Link to="/login" className="drawerLink"><ListItemText primary="Login" /></Link>
+          <i className="material-icons">video_library</i>
+          <Link to="/account" className="drawerLink"><ListItemText primary="My Watchlist" /></Link>
         </ListItem>
         <ListItem>
-          <ListItemIcon className="drawerIcon"><InboxIcon /></ListItemIcon>
-          <Link to="/signup" className="drawerLink"><ListItemText primary="Sign Up" /></Link>
+          <i className="material-icons">exit_to_app</i>
+          <Link to="/login" className="drawerLink"><ListItemText primary="Login / Sign Up" /></Link>
         </ListItem>
       </List>
     </div>
@@ -85,22 +102,11 @@ const Navbar = _ => {
 
   return (
     <div className={classes.root}>
-      <AppBar position='static'>
+      <AppBar position='static' className={classes.appBar}>
         <Toolbar>
           <IconButton edge='start' className={classes.menuButton} color='inherit' aria-label='Menu' onClick={drawerState.toggleDrawer('left', true)}>
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' className={classes.title}>
-            <Button className={classes.navTitle}>
-              <Link className={classes.navTitle} to='/movie'>Movie</Link>
-            </Button>
-          </Typography>
-          <Button color='inherit'>
-            <Link to='/login' className='navbutton'>Login</Link>
-          </Button>
-          <Button color='inherit'>
-            <Link to='/signup' className='navbutton'>Sign Up</Link>
-          </Button>
         </Toolbar>
       </AppBar>
       <Drawer open={drawerState.left} onClose={drawerState.toggleDrawer('left', false)}>

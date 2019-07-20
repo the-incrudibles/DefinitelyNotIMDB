@@ -209,8 +209,8 @@ const SignupForm = _ => {
           }
 
         </div>
-        <div className='loginButtons'>
-          <Button variant='contained' color='primary' onClick={userState.handleRegisterUser}>
+        <div className="loginButtons">
+          <Button variant="contained" id="submitButtons" onClick={userState.handleRegisterUser}>
             Sign Up
           </Button>
           <Button color='primary' onClick={userState.handleCancelButton}>
