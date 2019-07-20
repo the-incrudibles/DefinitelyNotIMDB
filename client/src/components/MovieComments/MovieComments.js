@@ -12,6 +12,8 @@ import Paper from '@material-ui/core/Paper';
 import AddMovieComments from '../AddMovieComments'
 import ReportCommentButton from '../ReportCommentButton/ReportCommentButton'
 
+import MovieContext from '../../utils/movieContext'
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -40,6 +42,7 @@ const MovieComments = _ =>{
 //         console.log(r.comments)
 //      })
 //  }, [])
+
     return(
         <div>
             <Paper className={classes.rootTwo}>

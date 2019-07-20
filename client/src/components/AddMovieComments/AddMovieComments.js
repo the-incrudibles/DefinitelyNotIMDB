@@ -6,6 +6,7 @@ import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
+// import MovieContext from '../../utils/movieContext'
 
 
 
@@ -30,10 +31,12 @@ const AddMovieComments = _ =>{
     // })
     const handleAddComment = event =>{
         event.preventDefault()
+        console.log('button works')
         // create ulils for post comment
-        axios.post('/movie',{
+        axios.post(`/movie/${tmdb_id}`,{
             comment: comment.current.value
         })
+        MovieContext.addComment(event.target.id)
             .then(({data}) => {
                 console.log('comment sent!')
                 setNewCommentState({...newCommentState, comment: data.comment})
@@ -58,8 +61,7 @@ const AddMovieComments = _ =>{
             }}
         />
         <Button variant="contained" color="primary" size="small"className={classes.button}
-        onClick={newCommentState.handleAddComment}
-        >
+            onClick={newCommentState.handleAddComment}>
         Send
       </Button>
         </form>
