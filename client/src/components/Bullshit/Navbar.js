@@ -80,10 +80,15 @@ const Navbar = _ => {
       </List>
       <Divider />
       <List>
-        <ListItem>
-          <i className="material-icons">vpn_key</i>
-          <Link to="/account" className="drawerLink"><ListItemText primary="Admin" /></Link>
-        </ListItem>
+        {
+          localStorage.getItem('auth') ?
+            <>
+              <ListItem>
+                <i className="material-icons">vpn_key</i>
+                <Link to="/account" className="drawerLink"><ListItemText primary="Admin" /></Link>
+              </ListItem>
+            </> : null
+        }
         <ListItem>
           <i className="material-icons">account_box</i>
           <Link to="/account" className="drawerLink"><ListItemText primary="My Account" /></Link>
