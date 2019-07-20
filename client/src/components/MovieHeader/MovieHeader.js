@@ -10,8 +10,6 @@ import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import AddWatchListButton from '../../components/AddWatchListButton'
 
-
-
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 25
@@ -26,10 +24,10 @@ const useStyles = makeStyles(theme => ({
   gridList: {
     flexWrap: 'nowrap',
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: 'translateZ(0)',
+    transform: 'translateZ(0)'
   },
   title: {
-    color: theme.palette.primary.light,
+    color: theme.palette.primary.light
   }
 }))
 

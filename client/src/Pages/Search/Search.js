@@ -4,14 +4,21 @@ import SearchContext from '../../utils/searchContext'
 import SearchMovie from '../../components/SearchMovie'
 import SearchTV from '../../components/SearchTV'
 import SearchCelebrities from '../../components/SearchCelebrities'
-import SearchResults from '../../components/SearchResults'
+import SearchResult from '../../utils/SearchResult.js'
 
 const Search = _ => {
   const [searchState, setSearchState] = useState({
     searchArea: '',
     movies: [],
     shows: [],
-    celebs: []
+    celebs: [],
+    searchTerm: '',
+    searchMovies: false,
+    searchTV: false,
+    searchCelebs: false,
+    addCelebToDB: celeb => {
+      SearchResult.addCelebrity(celeb)
+    }
   })
 
   const searchTerm = useRef()
@@ -20,21 +27,23 @@ const Search = _ => {
     setSearchState({ ...searchState, searchArea: event.target.value })
   }
 
-  searchState.buttonClick = event => {
-    event.preventDefault()
-
+  searchState.buttonClick = e => {
+    e.preventDefault()
     // if title
-    if (searchState.searchArea === 'title') {
+    if (searchState.searchArea === 'movie') {
       axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
         .then(({ data }) => {
-          let movieArr = data.results
-          setSearchState({ ...searchState, movies: movieArr })
-          axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
-            .then(({ data }) => {
-              searchTerm.current.value = ''
-              setSearchState({ ...searchState, shows: data.results, searchArea: '' })
-            })
-            .catch(e => console.log(e))
+          searchTerm.current.value = ''          
+          setSearchState({ ...searchState, movies: data.results, searchArea: '', searchMovies: true, searchTV: false, searchCelebs: false })
+        })
+        .catch(e => console.log(e))
+
+      // if tv
+    } else if (searchState.searchArea === 'tv') {
+      axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
+        .then(({ data }) => {
+          searchTerm.current.value = ''
+          setSearchState({ ...searchState, shows: data.results, searchArea: '', searchMovies: false, searchTV: true, searchCelebs: false })
         })
         .catch(e => console.log(e))
 
@@ -43,7 +52,7 @@ const Search = _ => {
       axios.get(`https://api.themoviedb.org/3/search/person?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
         .then(({ data }) => {
           searchTerm.current.value = ''
-          setSearchState({ ...searchState, celebs: data.results, searchArea: '' })
+          setSearchState({ ...searchState, celebs: data.results, searchArea: '', searchMovies: false, searchTV: false, searchCelebs: true })
         })
         .catch(e => console.log(e))
 
@@ -64,7 +73,8 @@ const Search = _ => {
           id='searchArea'
         >
           <option />
-          <option value='title'>Title Search</option>
+          <option value='movie'>Movie Search</option>
+          <option value='tv'>TV Show Search</option>
           <option value='celebrity'>Celebrity Search</option>
         </select>
         <button id='someBtn' onClick={searchState.buttonClick}>Click me</button>
@@ -72,9 +82,15 @@ const Search = _ => {
 
       <div>
         <SearchContext.Provider value={searchState}>
-          <SearchResults />
-          {/* <SearchTV /> */}
-          {/* <SearchCelebrities /> */}
+          {
+            searchState.searchMovies ? <SearchMovie /> : ''
+          }
+          {
+            searchState.searchTV ? <SearchTV /> : ''
+          }
+          {
+            searchState.searchCelebs ? <SearchCelebrities /> : ''
+          }
         </SearchContext.Provider>
       </div>
     </>
