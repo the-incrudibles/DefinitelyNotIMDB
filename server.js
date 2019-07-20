@@ -5,6 +5,7 @@ const { Strategy } = require('passport-local')
 const { Strategy: JWTStrategy, ExtractJwt } = require('passport-jwt')
 const { User } = require('./models')
 const app = express()
+require('dotenv').config()
 
 app.use(express.static(join(__dirname, 'client', 'build')))
 app.use(express.urlencoded({ extended: true }))
@@ -32,7 +33,7 @@ passport.use(new JWTStrategy({
 
 require('./routes')(app)
 
-require('mongoose').connect('mongodb://Nick:ZSETcEus7ZfxBtn@ds251877.mlab.com:51877/heroku_tpghhn6q', { useNewUrlParser: true, useFindAndModify: true, useCreateIndex: true })
+require('mongoose').connect(process.env.MONGO_LINK, { useNewUrlParser: true, useFindAndModify: true, useCreateIndex: true })
   .then(_ => {
     app.listen(process.env.PORT || 3001)
     console.log('png')
