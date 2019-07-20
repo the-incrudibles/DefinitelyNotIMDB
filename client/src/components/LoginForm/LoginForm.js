@@ -16,19 +16,14 @@ const LoginForm = _ => {
   const password = useRef()
 
   const [userState, setUserState] = useState({
-    redirect: false,
     isLoggedIn: false,
     failedLogin: false,
     stayLoggedIn: false,
     user: ''
   })
 
-  userState.setRedirect = _ => {
-    setUserState({ ...userState, redirect: true })
-  }
-
   userState.renderRedirect = _ => {
-    if (userState.redirect) {
+    if (userState.isLoggedIn) {
       return <Redirect to='/' />
     }
   }
@@ -65,8 +60,7 @@ const LoginForm = _ => {
 
   return (
     <div className="loginDiv">
-      {userState.renderRedirect()}
-
+      {userState.isLoggedIn ? <Redirect to='/' /> : null}
       <div className="blockTypography">
         <Typography >In order to leave comments or reviews, or join movie clubs, you'll have to log into your account.</Typography>
       </div>
