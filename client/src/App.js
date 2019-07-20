@@ -8,67 +8,7 @@ import Search from './Pages/Search'
 import Movie from './Pages/Movie'
 
 const App = _ => {
-  const name = useRef()
-  const username = useRef()
-  const email = useRef()
-  const password = useRef()
-  const _username = useRef()
-  const _password = useRef()
 
-  const [userState, setUserState] = useState({
-    isLoggedIn: false,
-    user: ''
-  })
-
-  userState.handleRegisterUser = event => {
-    event.preventDefault()
-
-    axios.post('/register', {
-      name: name.current.value,
-      username: username.current.value,
-      email: email.current.value,
-      passord: password.current.value
-    })
-      .then(({ data }) => {
-        if (data.isLoggedIn) {
-          localStorage.setItem('token', data.token)
-          localStorage.setItem('user', data.user)
-          setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
-        }
-      })
-      .catch(e => console.error(e))
-  }
-
-  userState.handleLogInUser = event => {
-    event.preventDefault()
-
-    axios.post('/login', {
-      username: _username.current.value,
-      passord: _password.current.value
-    })
-      .then(({ data }) => {
-        if (data.isLoggedIn) {
-          localStorage.setItem('token', data.token)
-          localStorage.setItem('user', data.user)
-          setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
-        } else {
-          alert('Invalid username or password')
-        }
-      })
-      .catch(e => console.error(e))
-  }
-
-  useEffect(_ => {
-    axios.post('/verify', {}, {
-      headers: { 'Authorization': `bearer ${localStorage.getItem('token')}` }
-    })
-      .then(_ => {
-        setUserState({ ...userState, isLoggedIn: true, user: localStorage.getItem('user') })
-      })
-      .catch(_ => {
-        setUserState({ ...userState, isLoggedIn: false, user: '' })
-      })
-  }, [])
   return (
       <>
         <Router>
@@ -76,7 +16,7 @@ const App = _ => {
           <Route path='/search' render={_ => (
             <Search />
           )} />
-          <Route path='/movie' render={_ => ( <Movie />)} />
+          <Route path='/movie' render={_ => (<Movie />)} />
           <Route path='/login' render={_ => (<LoginPage />)} />
           <Route path='/signup' render={_ => (<SignupForm />)} />
         </Router>
@@ -84,4 +24,4 @@ const App = _ => {
   )
 }
 
-export default App;
+export default App
