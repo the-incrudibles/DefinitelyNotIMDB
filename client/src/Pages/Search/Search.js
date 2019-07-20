@@ -14,7 +14,10 @@ const Search = _ => {
     searchTerm: '',
     searchMovies: false,
     searchTV: false,
-    searchCelebs: false
+    searchCelebs: false,
+    addCelebToDB: celeb => {
+      
+    }
   })
 
   const searchTerm = useRef()
