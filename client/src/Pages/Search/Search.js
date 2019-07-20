@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import Axios from 'axios';
+import Axios from 'axios'
 
 const Search = _ => {
   const [searchState, setSearchState] = useState({
@@ -19,7 +19,7 @@ const Search = _ => {
     // axios stuff here
     // if movie
     if (searchState.searchArea === 'movie') {
-      Axios.get(`https://api.themoviedb.org/3/search/multi?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
+      Axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
         .then(data => {
           console.log(data.data)
           searchTerm.current.value = ''
@@ -28,7 +28,7 @@ const Search = _ => {
         .catch(e => console.log(e))
     } else if (searchState.searchArea === 'celebrity') {
       // if celeb
-      Axios.get(`https://api.themoviedb.org/3/search/person?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
+      Axios.get(`https://api.themoviedb.org/3/search/person?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
         .then(data => {
           console.log(data.data)
           searchTerm.current.value = ''
@@ -36,7 +36,7 @@ const Search = _ => {
         })
         .catch(e => console.log(e))
     } else if (searchState.searchArea === 'tv') {
-      Axios.get(`https://api.themoviedb.org/3/search/tv?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US&query=${searchTerm.current.value}&page=1`)
+      Axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_TMDB_APIKEYY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
         .then(data => {
           console.log(data.data)
           searchTerm.current.value = ''
