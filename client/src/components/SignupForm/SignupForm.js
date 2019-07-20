@@ -38,6 +38,7 @@ const SignupForm = _ => {
         if (data.isLoggedIn) {
           localStorage.setItem('token', data.token)
           localStorage.setItem('user', data.user)
+          localStorage.setItem('admin', data.admin)
           setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
         } else {
           userState.handleCheckboxClick = _ => {

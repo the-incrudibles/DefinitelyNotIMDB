@@ -34,7 +34,7 @@ require('./routes')(app)
 
 require('mongoose').connect('mongodb://Nick:ZSETcEus7ZfxBtn@ds251877.mlab.com:51877/heroku_tpghhn6q', { useNewUrlParser: true, useFindAndModify: true, useCreateIndex: true })
   .then(_ => {
-    app.listen(process.env.PORT || 3001) 
+    app.listen(process.env.PORT || 3001)
     console.log('png')
   })
   .catch(e => console.log(e))
