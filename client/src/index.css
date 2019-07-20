@@ -69,3 +69,8 @@ code {
 .checkBox {
   margin-top: 15px;
 }
+
+.drawerLink {
+  text-decoration: none;
+  color: black;
+}
