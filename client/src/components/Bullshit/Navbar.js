@@ -46,6 +46,9 @@ const Navbar = _ => {
           <Button color="inherit">
             <Link to="/signup" className="navbutton">Sign Up</Link>
           </Button>
+          <Button color="inherit">
+            <Link to="/Toprated" className="navbutton">Top Rated</Link>
+          </Button>
         </Toolbar>
       </AppBar>
     </div >
