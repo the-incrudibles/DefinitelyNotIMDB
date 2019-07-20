@@ -24,7 +24,7 @@ code {
   margin-bottom: 25px;
 }
 
-.usernameInput, .passwordInput, .textInput{
+.usernameInput, .passwordInput, .textInput, .emailInput{
   width: 100%;
 }
 
@@ -41,4 +41,31 @@ code {
   margin-top: 25px;
   text-decoration: none;
   text-align: center;
+}
+
+.navbutton {
+  color: white;
+  text-decoration: none;
+}
+
+.failedCard {
+  margin-bottom: 30px;
+}
+
+.failedCardText {
+  color: red;
+  text-align: center;
+}
+
+#uncheckedBox, .emptyInput {
+  color: red;
+}
+
+.emptyInput {
+  margin-top: 0;
+  margin-bottom: 0
+}
+
+.checkBox {
+  margin-top: 15px;
 }
