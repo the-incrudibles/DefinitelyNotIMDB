@@ -13,6 +13,7 @@ import AddMovieComments from '../AddMovieComments'
 import ReportCommentButton from '../ReportCommentButton/ReportCommentButton'
 
 
+
 const useStyles = makeStyles(theme => ({
     root: {
       width: '100%',
@@ -42,7 +43,9 @@ const MovieComments = _ =>{
     return(
         <div>
             <Paper className={classes.rootTwo}>
-            <AddMovieComments/>
+            <Typography>
+                Leave a comment below!
+            </Typography>
             <List className={classes.root}>
             <ListItem alignItems="flex-start">
                 <ListItemAvatar>
@@ -89,6 +92,7 @@ const MovieComments = _ =>{
             </ListItem>
             <Divider variant="inset" component="li" />
             </List>
+            <AddMovieComments />
             </Paper>
      </div>
     )
