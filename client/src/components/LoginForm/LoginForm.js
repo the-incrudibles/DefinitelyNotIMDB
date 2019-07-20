@@ -31,60 +31,13 @@ const LoginForm = _ => {
     if (userState.redirect) {
       return <Redirect to='/' />
     }
-
-  // const [userState, setUserState] = useState({
-  //   username: '',
-  //   password: '',
-  //   isLoggedIn: false
-  // })
-
-  // userState.handleInputChange = event => {
-  //   setUserState({ ...userState, [event.target.id]: event.target.value })
-  // }
-
-  // userState.handleSignUp = _ => {
-  //   Login.loginUser(userState)
-  // }
-  const name = useRef()
-  const username = useRef()
-  const email = useRef()
-  const password = useRef()
-  const _username = createRef()
-  const _password = createRef()
-
-  const [userState, setUserState] = useState({
-    isLoggedIn: false,
-    user: ''
-  })
-
-  userState.handleRegisterUser = event => {
-    event.preventDefault()
-    console.log(password.current.value)
-
-    axios.post('/register', {
-      name: name.current.value,
-      username: username.current.value,
-      email: email.current.value,
-      password: password.current.value
-    })
-      .then(({ data }) => {
-        console.log(data)
-        if (data.isLoggedIn) {
-          localStorage.setItem('token', data.token)
-          localStorage.setItem('user', data.user)
-          setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
-        }
-      })
-      .catch(e => console.error(e))
   }
 
   userState.handleLogInUser = event => {
     event.preventDefault()
-    console.log(_password.current.value)
-
     axios.post('/login', {
-      username: _username.current.value,
-      password: _password.current.value
+      username: username.current.value,
+      password: password.current.value
     })
       .then(({ data }) => {
         if (data.isLoggedIn) {
