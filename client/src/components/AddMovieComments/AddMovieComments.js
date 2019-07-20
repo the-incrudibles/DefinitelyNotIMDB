@@ -8,11 +8,10 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 
 
-
-const useStyles = makeStyles(theme =>({
-    root:{
-        padding: 25
-    }
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: 25
+  }
 }))
 
 
@@ -34,9 +33,8 @@ const AddMovieComments = _ =>{
         axios.post('/movie',{
             comment: comment.current.value
         })
-            .then(({data}) => {
+            .then(_ => {
                 console.log('comment sent!')
-                setNewCommentState({...newCommentState, comment: data.comment})
             })
             .catch(e => console.log('message not sent'))
             
