@@ -11,8 +11,9 @@ import axios from 'axios';
 import Paper from '@material-ui/core/Paper';
 import AddMovieComments from '../AddMovieComments'
 import ReportCommentButton from '../ReportCommentButton/ReportCommentButton'
+import DeleteCommentButton from '../DeleteCommentButton/DeleteCommentButton'
 
-import MovieContext from '../../utils/movieContext'
+import CommentData from './commentData'
 
 
 
@@ -36,12 +37,6 @@ const MovieComments = _ =>{
  const [comments, setComments]= useState([])
  const classes = useStyles()
 
-//  useEffect(_=>{
-//      Axios.get('')
-//      .then(r =>{
-//         console.log(r.comments)
-//      })
-//  }, [])
 
     return(
         <div>
@@ -50,50 +45,36 @@ const MovieComments = _ =>{
                 Leave a comment below!
             </Typography>
             <List className={classes.root}>
-            <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
-                </ListItemAvatar>
-                <ListItemText
-                secondary={
-                    <React.Fragment>
-                    <Typography
-                        component="span"
-                        variant="body2"
-                        className={classes.inline}
-                        color="textPrimary"
-                    >
-                        Quinton Fultz
-                    </Typography>
-                    {" — Best movie EVA"}
-                    </React.Fragment>
+                {/* {CommentData.map(data => {
+                    return(
+                    <> */}
+                    <ListItem alignItems="flex-start">
+                    <ListItemAvatar>
+                    <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
+                    </ListItemAvatar>
+                    <ListItemText
+                    secondary={
+                        <React.Fragment>
+                        <Typography
+                            component="span"
+                            variant="body2"
+                            className={classes.inline}
+                            color="textPrimary"
+                        >
+                            {'Dien'}
+                        </Typography>
+                        {' - hello'}
+                        </React.Fragment>
                 }
-                
-                />
-            </ListItem>
-            <Divider variant="inset" component="li" />
-            <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
-                </ListItemAvatar>
-                <ListItemText
-                secondary={
-                    <React.Fragment>
-                    <Typography
-                        component="span"
-                        variant="body2"
-                        className={classes.inline}
-                        color="textPrimary"
-                    >
-                        Justin Biele
-                    </Typography>
-                    {" — Movie sucks"}
-                    </React.Fragment>
-                }
-                />
-                <ReportCommentButton/>
-            </ListItem>
-            <Divider variant="inset" component="li" />
+                    />
+                    <ReportCommentButton/>
+                    <DeleteCommentButton/>
+                </ListItem>
+                <Divider variant="inset" component="li" />
+                    {/* </>   
+                    )
+                })
+                } */}
             </List>
             <AddMovieComments />
             </Paper>
