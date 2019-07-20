@@ -4,6 +4,7 @@ import SearchContext from '../../utils/searchContext'
 import SearchMovie from '../../components/SearchMovie'
 import SearchTV from '../../components/SearchTV'
 import SearchCelebrities from '../../components/SearchCelebrities'
+import SearchResults from '../../components/SearchResults'
 
 const Search = _ => {
   const [searchState, setSearchState] = useState({
@@ -71,9 +72,9 @@ const Search = _ => {
 
       <div>
         <SearchContext.Provider value={searchState}>
-          <SearchMovie />
-          <SearchTV />
-          <SearchCelebrities />
+          <SearchResults />
+          {/* <SearchTV /> */}
+          {/* <SearchCelebrities /> */}
         </SearchContext.Provider>
       </div>
     </>
