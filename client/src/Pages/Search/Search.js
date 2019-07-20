@@ -1,9 +1,12 @@
 import React, { useState, useRef } from 'react'
-import Axios from 'axios';
+import axios from 'axios'
 
 const Search = _ => {
   const [searchState, setSearchState] = useState({
-    searchArea: ''
+    searchArea: '',
+    movies: [],
+    shows: [],
+    celebs: []
   })
 
   const searchTerm = useRef()
@@ -14,35 +17,35 @@ const Search = _ => {
 
   searchState.buttonClick = event => {
     event.preventDefault()
-    console.log(searchState.searchArea)
-    console.log(searchTerm.current.value)
-    // axios stuff here
-    // if movie
-    if (searchState.searchArea === 'movie') {
-      Axios.get(`https://api.themoviedb.org/3/search/multi?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
-        .then(data => {
-          console.log(data.data)
-          searchTerm.current.value = ''
-          setSearchState({ ...searchState, searchArea: '' })
+
+    // if title
+    if (searchState.searchArea === 'title') {
+      axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
+        .then(({ data }) => {
+          let movieArr = data.results
+          setSearchState({ ...searchState, movies: movieArr })
+          axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
+            .then(({ data }) => {
+              searchTerm.current.value = ''
+              setSearchState({ ...searchState, shows: data.results, searchArea: '' })
+            })
+            .catch(e => console.log(e))
         })
         .catch(e => console.log(e))
-    } else if (searchState.searchArea === 'celebrity') {
+
       // if celeb
-      Axios.get(`https://api.themoviedb.org/3/search/person?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
+    } else if (searchState.searchArea === 'celebrity') {
+      axios.get(`https://api.themoviedb.org/3/search/person?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
         .then(data => {
           console.log(data.data)
           searchTerm.current.value = ''
           setSearchState({ ...searchState, searchArea: '' })
         })
         .catch(e => console.log(e))
-    } else if (searchState.searchArea === 'tv') {
-      Axios.get(`https://api.themoviedb.org/3/search/tv?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US&query=${searchTerm.current.value}&page=1`)
-        .then(data => {
-          console.log(data.data)
-          searchTerm.current.value = ''
-          setSearchState({ ...searchState, searchArea: '' })
-        })
-        .catch(e => console.log(e))
+
+      // if nothing selected
+    } else if (searchState.searchArea === '') {
+      console.log('wrong')
     }
   }
 
@@ -57,9 +60,8 @@ const Search = _ => {
           id='searchArea'
         >
           <option />
-          <option value='movie'>Movie</option>
-          <option value='celebrity'>Celebrity</option>
-          <option value='tv'>TV Show</option>
+          <option value='title'>Title Search</option>
+          <option value='celebrity'>Celebrity Search</option>
         </select>
         <button id='someBtn' onClick={searchState.buttonClick}>Click me</button>
       </form>
