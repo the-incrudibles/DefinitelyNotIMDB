@@ -1,7 +1,16 @@
 module.exports = (Schema, model) => model(`Celebrity`, new Schema({
-  popularity: Number,
+  adult: Boolean,
+  also_known_as: Array,
+  biography: String,
+  birthday: String,
+  deathday: String,
+  gender: Number,
+  homepage: String,
   id: Number,
-  profile_path: String,
+  imdb_id: String,
+  known_for_department: String,
   name: String,
-  known_for: Array
+  place_of_birth: String,
+  popularity: Number,
+  profile_path: String
 }))
