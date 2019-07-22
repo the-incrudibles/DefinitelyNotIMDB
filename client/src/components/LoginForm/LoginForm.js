@@ -59,7 +59,7 @@ const LoginForm = _ => {
   }, [])
 
   return (
-    <div className='loginDiv'>
+    <div className='containerDiv'>
       {userState.isLoggedIn ? userState.renderRedirect() : null}
       <div className='blockTypography'>
         <Typography >In order to leave comments or reviews, or join movie clubs, you'll have to log into your account.</Typography>
