@@ -21,6 +21,4 @@ module.exports = app => {
       })
       .catch(e => console.log(e))
   })
-
-  //   // do a find, based on what you get back (if you find something or not) then either run the post, or run the put
 }

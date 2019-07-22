@@ -113,6 +113,20 @@ const Navbar = _ => {
           <IconButton edge='start' className={classes.menuButton} color='inherit' aria-label='Menu' onClick={drawerState.toggleDrawer('left', true)}>
             <MenuIcon />
           </IconButton>
+          <Typography variant='h6' className={classes.title}>
+            <Button className={classes.navTitle}>
+              <Link className={classes.navTitle} to='/movie'>Movie</Link>
+            </Button>
+          </Typography>
+          <Button color="inherit">
+            <Link to="/login" className="navbutton">Login</Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/signup" className="navbutton">Sign Up</Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/Toprated" className="navbutton">Top Rated</Link>
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer open={drawerState.left} onClose={drawerState.toggleDrawer('left', false)}>

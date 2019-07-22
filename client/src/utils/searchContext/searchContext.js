@@ -4,7 +4,9 @@ const SearchContext = createContext({
   movies: [],
   shows: [],
   celebs: [],
-  addCelebToDB: celeb => { }
+  searchForCeleb: celeb => { },
+  searchForMovie: movie => { },
+  searchForShow: show => { }
 })
 
 export default SearchContext
