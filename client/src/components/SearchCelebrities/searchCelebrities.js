@@ -10,9 +10,9 @@ const searchCelebrities = _ => {
   return (
     <SearchContext.Consumer>
       {
-        ({ celebs, addCelebToDB }) => (
+        ({ celebs, searchForCeleb }) => (
           celebs.map(celeb =>
-            <div key={celeb.id} onClick={addCelebToDB(celeb)} >
+            <div key={celeb.id} onClick={_ => searchForCeleb(celeb.id)} >
               <h1>{celeb.name}</h1>
               <img src={`https://image.tmdb.org/t/p/original${celeb.profile_path}`} alt={celeb.name} style={{ width: '200px' }} />
             </div>

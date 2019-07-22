@@ -16,9 +16,7 @@ const Search = _ => {
     searchMovies: false,
     searchTV: false,
     searchCelebs: false,
-    addCelebToDB: celeb => {
-      SearchResult.addCelebrity(celeb)
-    }
+    searchForCeleb: id => SearchResult.axiosForCeleb(id)
   })
 
   const searchTerm = useRef()
