@@ -1,12 +1,7 @@
-import React, { useState } from 'react'
-// import { Redirect } from 'react-router-dom'
+import React from 'react'
 import SearchContext from '../../utils/searchContext'
 
 const searchCelebrities = _ => {
-  // onClick
-  // add to DB
-  // Redirect to /celebrity
-
   return (
     <SearchContext.Consumer>
       {
