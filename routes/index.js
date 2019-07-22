@@ -1,5 +1,7 @@
 module.exports = app => {
   require(`./userRoutes`)(app)
   require(`./movieRoutes`)(app)
-  require('./celebrityRoutes.js')(app)
+  require('./commentRoutes')(app)
+  require('./genreRoutes')(app)
+  require('./celebrityRoutes')(app)
 }
