@@ -61,7 +61,7 @@ const Search = _ => {
   }
 
   return (
-    <>
+    <div className="containerDiv">
       <form>
         <input type='text' name='search' id='searchTerm' ref={searchTerm} />
         <br />
@@ -91,7 +91,7 @@ const Search = _ => {
           }
         </SearchContext.Provider>
       </div>
-    </>
+    </div>
   )
 }
 

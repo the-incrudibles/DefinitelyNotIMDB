@@ -83,7 +83,7 @@ const SignupForm = _ => {
   }, [])
 
   return (
-    <div className='loginDiv'>
+    <div className='containerDiv'>
       {userState.isLoggedIn ? userState.renderRedirect() : null}
 
       {
