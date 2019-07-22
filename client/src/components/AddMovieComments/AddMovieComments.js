@@ -55,7 +55,7 @@ const AddMovieComments = _ =>{
             shrink: true,
             }}
         />
-        <Button variant="contained" color="primary" size="small"className={classes.button}
+        <Button variant="contained" id="commentButton" color="primary" size="small" className={classes.button}
             onClick={handleAddComment}>
         Send
       </Button>
