@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
-import Signup from '../../utils/Signup.js'
 import axios from 'axios'
 
 const SignupForm = _ => {
