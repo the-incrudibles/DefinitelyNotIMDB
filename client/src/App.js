@@ -19,7 +19,7 @@ const App = _ => {
         <Route path='/movie' render={_ => (<Movie />)} />
         <Route path='/login' render={_ => (<LoginPage />)} />
         <Route path='/signup' render={_ => (<SignupForm />)} />
-        <Route path='/TopRated' render={_ => (<TopRated />)} />
+        <Route path='/Toprated' render={_ => (<TopRated />)} />
 
       </Router>
     </>
