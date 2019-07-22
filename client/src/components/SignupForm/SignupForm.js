@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
-import Signup from '../../utils/Signup.js'
 import axios from 'axios'
 
 const SignupForm = _ => {
@@ -88,8 +87,8 @@ const SignupForm = _ => {
       {userState.isLoggedIn ? userState.renderRedirect() : null}
 
       {
-        userState.failedRegistration === true
-          ? <div className='blockTypography'>
+        userState.failedRegistration === true ?
+          <div className='blockTypography'>
             <Typography variant='h6' className='failedCardText'>
               * Please be sure to completely fill out the form! *
             </Typography>
@@ -103,8 +102,8 @@ const SignupForm = _ => {
         </div>
 
         {
-          userState.failedRegistration && name.current.value === ''
-            ? <>
+          userState.failedRegistration && name.current.value === '' ?
+            <>
               <TextField
                 label='Full Name'
                 margin='normal'
@@ -124,8 +123,8 @@ const SignupForm = _ => {
         }
 
         {
-          userState.failedRegistration && username.current.value === ''
-            ? <>
+          userState.failedRegistration && username.current.value === '' ?
+            <>
               <TextField
                 label='Username'
                 margin='normal'
@@ -145,8 +144,8 @@ const SignupForm = _ => {
         }
 
         {
-          userState.failedRegistration && email.current.value === ''
-            ? <>
+          userState.failedRegistration && email.current.value === '' ?
+            <>
               <TextField
                 label='Email'
                 margin='normal'
@@ -166,8 +165,8 @@ const SignupForm = _ => {
         }
 
         {
-          userState.failedRegistration && password.current.value === ''
-            ? <>
+          userState.failedRegistration && password.current.value === '' ?
+            <>
               <TextField
                 label='Password'
                 margin='normal'
@@ -188,8 +187,8 @@ const SignupForm = _ => {
 
         <div>
           {
-            userState.failedRegistration && userState.checkedA === false
-              ? <>
+            userState.failedRegistration && userState.checkedA === false ?
+              <>
                 <FormControlLabel
                   control={
                     <Checkbox value='checkedA' onClick={userState.handleCheckboxClick} />
@@ -209,8 +208,8 @@ const SignupForm = _ => {
           }
 
         </div>
-        <div className='loginButtons'>
-          <Button variant='contained' color='primary' onClick={userState.handleRegisterUser}>
+        <div className="loginButtons">
+          <Button variant="contained" id="submitButtons" onClick={userState.handleRegisterUser}>
             Sign Up
           </Button>
           <Button color='primary' onClick={userState.handleCancelButton}>
