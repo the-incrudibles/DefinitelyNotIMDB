@@ -21,7 +21,7 @@ class TopRatedHeader extends Component {
    handlefetch=_=>{
     // dotenv.config()
     //  console.log(`${process.env.REACT_APP_TMDB_APIKEY}`)
-    axios.get(`https://api.themoviedb.org/3/movie/399579?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US&sort_by=popularity.desc`)
+    axios.get(`https://api.themoviedb.org/3/movie/399579?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&sort_by=popularity.desc`)
     .then(r => {
       let imageArr=[]
       let titleArr=[]
