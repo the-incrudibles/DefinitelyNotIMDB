@@ -100,7 +100,7 @@ code {
   color: #4d4c59
 }
 
-#submitButtons {
+#submitButtons, #commentButton {
   background-color: #71777d;
   color: white;
 }
@@ -108,4 +108,8 @@ code {
 .searchButton {
   display: inline-block;
   padding-top: 15px;
+}
+
+#commentButton {
+  margin-top: 10px;
 }

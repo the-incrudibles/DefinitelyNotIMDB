@@ -55,6 +55,8 @@ const TestSearch = _ => {
     searchTV: false,
     searchCelebs: false,
     searchForCeleb: id => SearchResult.axiosForCeleb(id),
+    searchForMovie: id => SearchResult.axiosForMovie(id),
+    searchForShow: id => SearchResult.axiosForShow(id),
     incompleteSearch: false
   })
 

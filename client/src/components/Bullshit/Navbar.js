@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-// material ui imports
+// Material UI Imports:
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
@@ -11,6 +11,9 @@ import List from '@material-ui/core/List'
 import Divider from '@material-ui/core/Divider'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -66,7 +69,7 @@ const Navbar = _ => {
         </ListItem>
         <ListItem>
           <i className="material-icons">local_movies</i>
-          <Link to="/topmovie" className="drawerLink"><ListItemText primary="Top Movies" /></Link>
+          <Link to="/toprated" className="drawerLink"><ListItemText primary="Top Movies" /></Link>
         </ListItem>
         <ListItem>
           <i className="material-icons">search</i>
@@ -82,16 +85,16 @@ const Navbar = _ => {
                 <i className="material-icons">vpn_key</i>
                 <Link to="/account" className="drawerLink"><ListItemText primary="Admin" /></Link>
               </ListItem>
+              <ListItem>
+                <i className="material-icons">comment</i>
+                <Link to="/account" className="drawerLink"><ListItemText primary="My Comments" /></Link>
+              </ListItem>
+              <ListItem>
+                <i className="material-icons">video_library</i>
+                <Link to="/account" className="drawerLink"><ListItemText primary="My Watchlist" /></Link>
+              </ListItem>
             </> : null
         }
-        <ListItem>
-          <i className="material-icons">comment</i>
-          <Link to="/account" className="drawerLink"><ListItemText primary="My Comments" /></Link>
-        </ListItem>
-        <ListItem>
-          <i className="material-icons">video_library</i>
-          <Link to="/account" className="drawerLink"><ListItemText primary="My Watchlist" /></Link>
-        </ListItem>
         {
           localStorage.getItem('user') ? null :
             <>
@@ -113,20 +116,6 @@ const Navbar = _ => {
           <IconButton edge='start' className={classes.menuButton} color='inherit' aria-label='Menu' onClick={drawerState.toggleDrawer('left', true)}>
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' className={classes.title}>
-            <Button className={classes.navTitle}>
-              <Link className={classes.navTitle} to='/movie'>Movie</Link>
-            </Button>
-          </Typography>
-          <Button color="inherit">
-            <Link to="/login" className="navbutton">Login</Link>
-          </Button>
-          <Button color="inherit">
-            <Link to="/signup" className="navbutton">Sign Up</Link>
-          </Button>
-          <Button color="inherit">
-            <Link to="/Toprated" className="navbutton">Top Rated</Link>
-          </Button>
         </Toolbar>
       </AppBar>
       <Drawer open={drawerState.left} onClose={drawerState.toggleDrawer('left', false)}>
