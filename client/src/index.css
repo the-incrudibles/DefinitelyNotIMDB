@@ -24,7 +24,7 @@ code {
   margin-bottom: 25px;
 }
 
-.usernameInput, .passwordInput, .textInput, .emailInput{
+.usernameInput, .passwordInput, .textInput, .emailInput {
   width: 100%;
 }
 
@@ -36,7 +36,7 @@ code {
   margin-top: 20px;
 }
 
-.signupLink, .loginLink{
+.signupLink, .loginLink {
   margin: auto;
   margin-top: 25px;
   text-decoration: none;
@@ -68,4 +68,35 @@ code {
 
 .checkBox {
   margin-top: 15px;
+}
+
+.drawerLink {
+  text-decoration: none;
+  color: black;
+}
+
+.material-icons {
+  margin: 0 10px 0 0;
+}
+
+.movieImg {
+  width: 165px;
+  height: 244px;
+}
+
+.movieText {
+  text-align: center;
+}
+
+.addWatchlistButton {
+  margin-top: 20px;
+}
+
+.appBar {
+  color: #4d4c59
+}
+
+#submitButtons {
+  background-color: #71777d;
+  color: white;
 }

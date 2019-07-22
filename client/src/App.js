@@ -7,6 +7,8 @@ import axios from 'axios'
 import Search from './Pages/Search'
 import Movie from './Pages/Movie'
 import TopRated from './Pages/TopRated'
+import Celebrity from './Pages/Celebrity'
+import AdminComments from './Pages/AdminComments'
 
 const App = _ => {
   return (
@@ -20,7 +22,8 @@ const App = _ => {
         <Route path='/login' render={_ => (<LoginPage />)} />
         <Route path='/signup' render={_ => (<SignupForm />)} />
         <Route path='/Toprated' render={_ => (<TopRated />)} />
-
+        <Route path='/celebrity' render={_ => (<Celebrity />)} />
+        <Route path='/admincomments' render={_ => (<AdminComments />)} />
       </Router>
     </>
   )
