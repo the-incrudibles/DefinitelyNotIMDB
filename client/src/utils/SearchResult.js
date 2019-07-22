@@ -16,7 +16,7 @@ const SearchResult = {
   },
   postCeleb: id => {
     console.log(id)
-    axios.get(`https://api.themoviedb.org/3/person/${id}?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US`)
+    axios.get(`https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
       .then(({ data: celeb }) => {
         axios.post('/celebrity', { celeb })
       })
@@ -24,7 +24,7 @@ const SearchResult = {
   },
   putCeleb: id => {
     console.log(id)
-    axios.get(`https://api.themoviedb.org/3/person/${id}?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US`)
+    axios.get(`https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
       .then(({ data: celeb }) => {
         axios.put(`/celebrity/${celeb.id}`, { celeb })
       })

@@ -20,8 +20,12 @@ code {
   width: 90%;
 }
 
-.blockTypography {
+.blockTypography, .searchTypography{
   margin-bottom: 25px;
+}
+
+.searchTypography {
+  text-align: center;
 }
 
 .usernameInput, .passwordInput, .textInput, .emailInput {
@@ -99,4 +103,9 @@ code {
 #submitButtons {
   background-color: #71777d;
   color: white;
+}
+
+.searchButton {
+  display: inline-block;
+  padding-top: 15px;
 }
