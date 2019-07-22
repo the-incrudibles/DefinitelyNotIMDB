@@ -5,7 +5,8 @@ const db = {
   Movie: require(`./Movie.js`)(Schema, model),
   Celebrity: require('./Celebrity.js')(Schema, model),
   Genre: require('./Genre.js')(Schema, model),
-  TVShow: require('./TVShow.js')(Schema, model)
+  TVShow: require('./TVShow.js')(Schema, model),
+  Comment: require('./Comment.js')(Schema, model)
 }
 
 module.exports = db
