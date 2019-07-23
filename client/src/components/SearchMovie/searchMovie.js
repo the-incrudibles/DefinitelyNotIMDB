@@ -8,23 +8,30 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+import Placeholder from '../../images/placeholder_poster.jpg'
 
 const searchMovie = _ => {
   return (
     <SearchContext.Consumer>
       {
         ({ movies, searchForMovie }) => (
+          // movies.forEach(movie => {
+          //   console.log(movie)
+          // })
           movies.map(movie =>
             <Card key={movie.id} className="resultsDiv" onClick={_ => searchForMovie(movie.id)} >
               <CardActionArea>
                 <CardContent>
                   <Typography gutterBottom variant="h6" component="h2">
-                    {movie.title}
+                    {movie.title ? movie.title : movie.original_name}
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     {movie.genres}
                   </Typography>
-                  <img className="resultsPoster" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} />
+                  {
+                    movie.poster_path ? <img className="resultsPoster" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} /> : <img className="resultsPoster" src={Placeholder} alt={movie.title} />
+                  }
+                  
                 </CardContent>
               </CardActionArea>
               <CardActions>
