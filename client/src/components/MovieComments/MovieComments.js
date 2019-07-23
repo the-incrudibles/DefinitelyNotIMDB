@@ -15,8 +15,6 @@ import DeleteCommentButton from '../DeleteCommentButton/DeleteCommentButton'
 
 import CommentData from './commentData'
 
-
-
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -37,49 +35,48 @@ const MovieComments = _ => {
   const [comments, setComments] = useState([])
   const classes = useStyles()
 
-
-    return(
-        <div>
-            <Paper className={classes.rootTwo}>
-            <Typography>
+  return (
+    <div>
+      <Paper className={classes.rootTwo}>
+        <Typography>
                 Leave a comment below!
-            </Typography>
-            <List className={classes.root}>
-                {/* {CommentData.map(data => {
+        </Typography>
+        <List className={classes.root}>
+          {/* {CommentData.map(data => {
                     return(
                     <> */}
-                    <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                    <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
-                    </ListItemAvatar>
-                    <ListItemText
-                    secondary={
-                        <React.Fragment>
-                        <Typography
-                            component="span"
-                            variant="body2"
-                            className={classes.inline}
-                            color="textPrimary"
-                        >
-                            {'Dien'}
-                        </Typography>
-                        {' - hello'}
-                        </React.Fragment>
-                }
-                    />
-                    <ReportCommentButton/>
-                    <DeleteCommentButton/>
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                    {/* </>   
+          <ListItem alignItems='flex-start'>
+            <ListItemAvatar>
+              <Avatar alt='Remy Sharp' src='https://image.flaticon.com/icons/svg/195/195158.svg' />
+            </ListItemAvatar>
+            <ListItemText
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    component='span'
+                    variant='body2'
+                    className={classes.inline}
+                    color='textPrimary'
+                  >
+                    {'Dien'}
+                  </Typography>
+                  {' - hello'}
+                </React.Fragment>
+              }
+            />
+            <ReportCommentButton />
+            <DeleteCommentButton />
+          </ListItem>
+          <Divider variant='inset' component='li' />
+          {/* </>
                     )
                 })
                 } */}
-            </List>
-            <AddMovieComments />
-            </Paper>
-     </div>
-    )
+        </List>
+        <AddMovieComments />
+      </Paper>
+    </div>
+  )
 }
 
 export default MovieComments
