@@ -13,7 +13,7 @@ import AddMovieComments from '../AddMovieComments'
 import ReportCommentButton from '../ReportCommentButton/ReportCommentButton'
 import DeleteCommentButton from '../DeleteCommentButton/DeleteCommentButton'
 
-import CommentData from './commentData'
+import commentData from './commentData'
 
 
 
@@ -34,9 +34,18 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 const MovieComments = _ => {
-  const [comments, setComments] = useState([])
+  const [commentsState, setCommentsState] = useState({
+      comments: []
+  })
   const classes = useStyles()
 
+//   fetch movie comments
+useEffect(_ =>{
+    axios.get(`/movie/${'id'}`)
+    .then( r =>{
+        setCommentsState({...commentsState, comments: r.comments})
+    })
+}, [commentsState])
 
     return(
         <div>
@@ -45,36 +54,33 @@ const MovieComments = _ => {
                 Leave a comment below!
             </Typography>
             <List className={classes.root}>
-                {/* {CommentData.map(data => {
-                    return(
-                    <> */}
-                    <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                    <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
-                    </ListItemAvatar>
-                    <ListItemText
-                    secondary={
-                        <React.Fragment>
-                        <Typography
-                            component="span"
-                            variant="body2"
-                            className={classes.inline}
-                            color="textPrimary"
-                        >
-                            {'Dien'}
-                        </Typography>
-                        {' - hello'}
-                        </React.Fragment>
-                }
-                    />
-                    <ReportCommentButton/>
-                    <DeleteCommentButton/>
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                    {/* </>   
-                    )
-                })
-                } */}
+                    {
+                        // change commentData to comments when available
+                    commentData.map(data => (
+                        <ListItem alignItems="flex-start">
+                        <ListItemAvatar>
+                        <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
+                        </ListItemAvatar>
+                        <ListItemText
+                        secondary={
+                            <React.Fragment>
+                            <Typography
+                                component="span"
+                                variant="body2"
+                                className={classes.inline}
+                                color="textPrimary"
+                            >
+                                {data.name}
+                            </Typography>
+                            {'- ' + data.comment}
+                            </React.Fragment>
+                    }
+                        />
+                        <ReportCommentButton/>
+                        <DeleteCommentButton/>
+                    </ListItem>
+                    ))
+                    }
             </List>
             <AddMovieComments />
             </Paper>

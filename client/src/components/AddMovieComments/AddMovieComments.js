@@ -23,14 +23,14 @@ const AddMovieComments = _ =>{
     const [newCommentState, setNewCommentState] = useState({comment: ''})
 
     const fetchCommentsAgain = _ =>{
-
+      axios.get(`/movie`)
     }
 
     const handleAddComment = event =>{
         event.preventDefault()
         console.log('button works')
         // create ulils for post comment
-        axios.post(`/movie`,{
+        axios.post(`/movie/`,{
             comment: comment.current.value
         })
             .then(_ => {

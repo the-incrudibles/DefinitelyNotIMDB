@@ -15,3 +15,5 @@ const commentData = [
         report: false
     }
 ]
+
+export default commentData

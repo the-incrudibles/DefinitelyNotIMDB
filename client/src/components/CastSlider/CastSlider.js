@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import tileData from './tileData.js'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
+import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
   rootTwo: {
@@ -30,12 +31,26 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const CastSlider = _ => {
+  const [castSlidersState, setCastSlidersState] = useState({
+    casts: []
+  })
   const classes = useStyles()
+
+  //
+  useEffect(_ =>{
+    axios.get(`/movies/${'id'}`)
+      .then(data =>{
+        console.log(data)
+        setCastSlidersState({...castSlidersState, casts: data.casts})
+      })
+  },[])
 
   return (
     <div className={classes.rootTwo}>
       <GridList className={classes.gridList} cols={2.5}>
-        {tileData.map(tile => (
+        {
+          // change to tileData to casts
+          tileData.map(tile => (
           <GridListTile key={tile.img}>
             <img src={tile.img} alt={tile.name} />
             <Link to='/'>
@@ -47,7 +62,8 @@ const CastSlider = _ => {
               />
             </Link>
           </GridListTile>
-        ))}
+        ))
+        }
       </GridList>
     </div>
   )

@@ -24,19 +24,20 @@ const useStyles = makeStyles(theme => ({
   },
   gridList: {
     flexWrap: 'nowrap',
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)'
   },
   title: {
     color: theme.palette.primary.light
   }
 }))
+let movieID = localStorage.getItem('id')
 
 const MovieHeader = _ => {
   const [data, setData] = useState([])
   const classes = useStyles()
 
   useEffect(_ => {
+    //   fetch movie database on product '/movie/${id}'
     axios.get(`https://api.themoviedb.org/3/movie/399579?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
       .then(r => {
         setData(r.data)
@@ -49,35 +50,22 @@ const MovieHeader = _ => {
       <Paper className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={6}>
-            <img className="movieImg" src="https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Alita_Battle_Angel_%282019_poster%29.png/220px-Alita_Battle_Angel_%282019_poster%29.png" alt="" />
-            {/* <Card className={classes.card}> */}
-            {/* <CardContent> */}
-
-            {/* <CardMedia
-                  component='img'
-                  className={classes.media}
-                  image='https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Alita_Battle_Angel_%282019_poster%29.png/220px-Alita_Battle_Angel_%282019_poster%29.png'
-                  title='Alita'
-                /> */}
-            {/* </CardContent> */}
-            {/* </Card> */}
+          
+          <img className="movieImg" src={`https://image.tmdb.org/t/p/original`} alt="" />
+          
           </Grid>
           <Grid item xs={6}>
-            <Typography variant='h5' component='h3' className="movieText">
+            <Typography variant='h5' component='h3'>
               {data.title}
             </Typography>
-            <Typography component='p' className="movieText">
-              Rating: {data.vote_average}
+            <Typography component='p'>
+                Rating: {data.vote_average}
             </Typography>
-            <Grid container>
-              <Grid item xs={5}>
-              </Grid>
-              <Grid item xs={7}>
-                <AddWatchListButton />
-              </Grid>
-            </Grid>
-          </Grid>
+            <Typography>
+              <AddWatchListButton />
+            </Typography>
 
+          </Grid>
           <Typography variant='h6' gutterBottom>
             <strong>Overview</strong>
           </Typography>
