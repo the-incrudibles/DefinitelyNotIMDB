@@ -13,15 +13,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.loginDiv {
+.containerDiv {
   margin: auto;
   margin-top: 50px;
   text-align: left;
   width: 90%;
 }
 
-.blockTypography {
+.blockTypography, .searchTypography{
   margin-bottom: 25px;
+}
+
+.searchTypography {
+  text-align: center;
 }
 
 .usernameInput, .passwordInput, .textInput, .emailInput {
@@ -73,4 +77,39 @@ code {
 .drawerLink {
   text-decoration: none;
   color: black;
+}
+
+.material-icons {
+  margin: 0 10px 0 0;
+}
+
+.movieImg {
+  width: 165px;
+  height: 244px;
+}
+
+.movieText {
+  text-align: center;
+}
+
+.addWatchlistButton {
+  margin-top: 20px;
+}
+
+.appBar {
+  color: #4d4c59
+}
+
+#submitButtons, #commentButton {
+  background-color: #71777d;
+  color: white;
+}
+
+.searchButton {
+  display: inline-block;
+  padding-top: 15px;
+}
+
+#commentButton {
+  margin-top: 10px;
 }

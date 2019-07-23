@@ -4,6 +4,7 @@ import SearchContext from '../../utils/searchContext'
 import SearchMovie from '../../components/SearchMovie'
 import SearchTV from '../../components/SearchTV'
 import SearchCelebrities from '../../components/SearchCelebrities'
+import SearchResult from '../../utils/SearchResult.js'
 
 const Search = _ => {
   const [searchState, setSearchState] = useState({
@@ -15,9 +16,9 @@ const Search = _ => {
     searchMovies: false,
     searchTV: false,
     searchCelebs: false,
-    addCelebToDB: celeb => {
-      
-    }
+    searchForCeleb: id => SearchResult.axiosForCeleb(id),
+    searchForMovie: id => SearchResult.axiosForMovie(id),
+    searchForShow: id => SearchResult.axiosForShow(id)
   })
 
   const searchTerm = useRef()
@@ -32,7 +33,7 @@ const Search = _ => {
     if (searchState.searchArea === 'movie') {
       axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
         .then(({ data }) => {
-          searchTerm.current.value = ''          
+          searchTerm.current.value = ''
           setSearchState({ ...searchState, movies: data.results, searchArea: '', searchMovies: true, searchTV: false, searchCelebs: false })
         })
         .catch(e => console.log(e))
@@ -62,7 +63,7 @@ const Search = _ => {
   }
 
   return (
-    <>
+    <div className="containerDiv">
       <form>
         <input type='text' name='search' id='searchTerm' ref={searchTerm} />
         <br />
@@ -92,7 +93,7 @@ const Search = _ => {
           }
         </SearchContext.Provider>
       </div>
-    </>
+    </div>
   )
 }
 
