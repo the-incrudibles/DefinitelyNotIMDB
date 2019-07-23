@@ -7,6 +7,7 @@ import axios from 'axios'
 import Search from './Pages/Search'
 import Movie from './Pages/Movie'
 import Celebrity from './Pages/Celebrity'
+import Landing from './Pages/Landing'
 import AdminComments from './Pages/AdminComments'
 
 const App = _ => {
@@ -14,6 +15,9 @@ const App = _ => {
     <>
       <Router>
         <Navbar />
+        <Route exact path='/' render={_ => (
+          <Landing />
+        )} />
         <Route path='/search' render={_ => (
           <Search />
         )} />

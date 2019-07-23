@@ -5,4 +5,5 @@ module.exports = app => {
   require('./showRoutes')(app)
   require('./commentRoutes')(app)
   require('./genreRoutes')(app)
+  require('./articleRoutes')(app)
 }
