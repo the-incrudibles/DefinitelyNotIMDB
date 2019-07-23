@@ -1,13 +1,12 @@
-import React, {useState, useEffect, useRef} from 'react'
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import axios from 'axios';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
+import React, { useState, useEffect, useRef } from 'react'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import axios from 'axios'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+import Icon from '@material-ui/core/Icon'
 import MovieContext from '../../utils/movieContext'
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,12 +14,11 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
+const AddMovieComments = _ => {
+  const comment = useRef()
 
-const AddMovieComments = _ =>{
-    const comment = useRef()
-
-    const classes = useStyles()
-    const [newCommentState, setNewCommentState] = useState({comment: ''})
+  const classes = useStyles()
+  const [newCommentState, setNewCommentState] = useState({ comment: '' })
 
     const fetchCommentsAgain = _ =>{
       // axios.get(`/movie`)
@@ -55,13 +53,13 @@ const AddMovieComments = _ =>{
             shrink: true,
             }}
         />
-        <Button variant="contained" id="commentButton" color="primary" size="small" className={classes.button}
-            onClick={handleAddComment}>
+        <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.button}
+          onClick={handleAddComment}>
         Send
-      </Button>
-        </form>
-        </div>
-    )
+        </Button>
+      </form>
+    </div>
+  )
 }
 
 export default AddMovieComments

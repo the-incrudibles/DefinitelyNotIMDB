@@ -20,7 +20,7 @@ code {
   width: 90%;
 }
 
-.blockTypography, .searchTypography{
+.blockTypography, .searchTypography {
   margin-bottom: 25px;
 }
 
@@ -112,4 +112,23 @@ code {
 
 #commentButton {
   margin-top: 10px;
+}
+
+.resultsDiv {
+  text-align: center;
+  margin: auto;
+  margin-top: 30px;
+  color: #4d4c59;
+  width: 80%;
+}
+
+.resultsPoster {
+  width: 80%;
+  margin: auto;
+  object-fit: cover;
+  box-shadow: 4px 4px 2px grey;
+}
+
+.MuiCardContent-root, .MuiCardActions-root {
+  background-color: #e0e2d5
 }

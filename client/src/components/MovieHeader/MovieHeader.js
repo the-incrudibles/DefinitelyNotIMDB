@@ -61,6 +61,7 @@ useEffect(_ =>{
       <Paper className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={6}>
+<<<<<<< HEAD
           
           <img className="movieImg" src={`https://image.tmdb.org/t/p/original`} alt="" />
           
@@ -75,6 +76,35 @@ useEffect(_ =>{
             <Typography>
               <AddWatchListButton />
             </Typography>
+=======
+            <img className='movieImg' src='https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Alita_Battle_Angel_%282019_poster%29.png/220px-Alita_Battle_Angel_%282019_poster%29.png' alt='' />
+            {/* <Card className={classes.card}> */}
+            {/* <CardContent> */}
+
+            {/* <CardMedia
+                  component='img'
+                  className={classes.media}
+                  image='https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Alita_Battle_Angel_%282019_poster%29.png/220px-Alita_Battle_Angel_%282019_poster%29.png'
+                  title='Alita'
+                /> */}
+            {/* </CardContent> */}
+            {/* </Card> */}
+          </Grid>
+          <Grid item xs={6}>
+            <Typography variant='h5' component='h3' className='movieText'>
+              {data.title}
+            </Typography>
+            <Typography component='p' className='movieText'>
+              Rating: {data.vote_average}
+            </Typography>
+            <Grid container>
+              <Grid item xs={5} />
+              <Grid item xs={7}>
+                <AddWatchListButton />
+              </Grid>
+            </Grid>
+          </Grid>
+>>>>>>> master
 
           </Grid>
           <Typography variant='h6' gutterBottom>

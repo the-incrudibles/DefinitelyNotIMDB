@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Flag from '@material-ui/icons/Flag'
 import axios from 'axios'
-import { makeStyles } from '@material-ui/styles';
-import IconButton from '@material-ui/core/IconButton';
+import { makeStyles } from '@material-ui/styles'
+import IconButton from '@material-ui/core/IconButton'
 
 const useStyles = makeStyles(theme => ({
   flagNotReport: {

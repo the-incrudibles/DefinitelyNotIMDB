@@ -6,6 +6,7 @@ import axios from 'axios'
 
 
 const AddWatchListButton = _ => {
+<<<<<<< HEAD
 
 const handleAddWatchList = event =>{
     axios.put(`/user/${'id'}`)
@@ -21,6 +22,15 @@ const handleAddWatchList = event =>{
             </Fab>
         </div>
     )
+=======
+  return (
+    <div className='addWatchlistButton'>
+      <Fab color='default' aria-label='Add' size='small'>
+        <AddIcon />
+      </Fab>
+    </div>
+  )
+>>>>>>> master
 }
 
 export default AddWatchListButton
