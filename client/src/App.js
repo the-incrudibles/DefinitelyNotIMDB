@@ -8,6 +8,7 @@ import Movie from './Pages/Movie'
 import TopRated from './Pages/TopRated'
 import Celebrity from './Pages/Celebrity'
 import Landing from './Pages/Landing'
+import Latest from './Pages/Latest'
 import AdminComments from './Pages/AdminComments'
 
 const App = _ => {
@@ -16,6 +17,7 @@ const App = _ => {
       <Router>
         <Navbar />
         <Route exact path='/' render={_ => (<Landing />)} />
+        <Route path='/latest' render={_ => (<Latest />)} />
         <Route path='/movie' render={_ => (<Movie />)} />
         <Route path='/login' render={_ => (<LoginPage />)} />
         <Route path='/signup' render={_ => (<SignupForm />)} />

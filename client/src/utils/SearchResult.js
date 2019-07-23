@@ -1,3 +1,5 @@
+import React from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 const SearchResult = {
@@ -8,9 +10,13 @@ const SearchResult = {
         if (!celeb.data) {
           console.log('post')
           SearchResult.postCeleb(id)
+          localStorage.setItem('celebID', id)
+          return <Redirect to='/celebrity' />
         } else {
           console.log('put')
           SearchResult.putCeleb(id)
+          localStorage.setItem('celebID', id)
+          return <Redirect to='/celebrity' />
         }
       })
       .catch(e => console.log(e))
@@ -39,9 +45,13 @@ const SearchResult = {
         if (!show.data) {
           console.log('post')
           SearchResult.postShow(id)
+          localStorage.setItem('showID', id)
+          return <Redirect to='/show' />
         } else {
           console.log('put')
           SearchResult.putShow(id)
+          localStorage.setItem('showID', id)
+          return <Redirect to='/show' />
         }
       })
       .catch(e => console.log(e))
@@ -69,9 +79,13 @@ const SearchResult = {
         if (!movie.data) {
           console.log('post')
           SearchResult.postMovie(id)
+          localStorage.setItem('movieID', id)
+          return <Redirect to='/movie' />
         } else {
           console.log('put')
           SearchResult.putMovie(id)
+          localStorage.setItem('movieID', id)
+          return <Redirect to='/movie' />
         }
       })
       .catch(e => console.log(e))

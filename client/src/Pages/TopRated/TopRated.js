@@ -3,11 +3,10 @@ import axios from 'axios'
 import TopRatedHeader from '../../components/TopRatedHeader'
 
 const TopRated = _ => {
+  return (
+    <div>
+      <TopRatedHeader />
 
-    return(
-        <div>
-        <TopRatedHeader/>
-      
     </div>
   )
 }
