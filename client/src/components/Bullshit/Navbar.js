@@ -132,6 +132,9 @@ const Navbar = _ => {
           <Button color="inherit">
             <Link to="/Toprated" className="navbutton">Top Rated</Link>
           </Button>
+          <Button color="inherit">
+            <Link to="/watchlist" className="navbutton">Watch List</Link>
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer open={drawerState.left} onClose={drawerState.toggleDrawer('left', false)}>
