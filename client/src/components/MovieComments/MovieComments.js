@@ -37,7 +37,6 @@ const MovieComments = _ => {
   })
   const classes = useStyles()
 
-<<<<<<< HEAD
 //   fetch movie comments
 commentsState.renderComments = _ => {
     axios.get(`/comments/${'id'}`)
@@ -88,50 +87,6 @@ useEffect(_ =>{
             </Paper>
      </div>
     )
-=======
-  return (
-    <div>
-      <Paper className={classes.rootTwo}>
-        <Typography>
-                Leave a comment below!
-        </Typography>
-        <List className={classes.root}>
-          {/* {CommentData.map(data => {
-                    return(
-                    <> */}
-          <ListItem alignItems='flex-start'>
-            <ListItemAvatar>
-              <Avatar alt='Remy Sharp' src='https://image.flaticon.com/icons/svg/195/195158.svg' />
-            </ListItemAvatar>
-            <ListItemText
-              secondary={
-                <React.Fragment>
-                  <Typography
-                    component='span'
-                    variant='body2'
-                    className={classes.inline}
-                    color='textPrimary'
-                  >
-                    {'Dien'}
-                  </Typography>
-                  {' - hello'}
-                </React.Fragment>
-              }
-            />
-            <ReportCommentButton />
-            <DeleteCommentButton />
-          </ListItem>
-          <Divider variant='inset' component='li' />
-          {/* </>
-                    )
-                })
-                } */}
-        </List>
-        <AddMovieComments />
-      </Paper>
-    </div>
-  )
->>>>>>> master
 }
 
 export default MovieComments
