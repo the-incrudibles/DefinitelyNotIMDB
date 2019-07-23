@@ -10,7 +10,6 @@ const Landing = _ => {
       MainArticles.getArticles()
         .then(({ data: articles }) => {
           console.log(articles)
-          setMainState({ ...mainState, [articles]: articles })
         })
         .catch(e => console.log(e))
     }
