@@ -132,7 +132,7 @@ const LoginForm = _ => {
         </div>
 
         <div className='loginButtons'>
-          <Button variant='contained' id="submitButtons" onClick={userState.handleLogInUser}>
+          <Button variant='contained' id='submitButtons' onClick={userState.handleLogInUser}>
             Login
           </Button>
           <Button color='primary'>
