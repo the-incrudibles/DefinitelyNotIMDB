@@ -1,1 +1,1 @@
-export { default } from './TestSearch.js'
+export { default } from './Search.js'
