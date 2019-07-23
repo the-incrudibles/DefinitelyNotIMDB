@@ -5,14 +5,14 @@ const Article = _ => {
   return (
     <MainContext.Consumer>
       {
+        // console.log(article)
         ({ articles }) => (
           articles.map(article =>
-            //   <div key={article.id} >
-            //     <h1>{article.picture}</h1>
-            //     <h1>{article.title}</h1>
-            //     <h1>{article.body}</h1>
-            //   </div>
-            console.log(article)
+            <div key={article.id} >
+              <h6>{article.picture}</h6>
+              <h2>{article.title}</h2>
+              <h5>{article.body}</h5>
+            </div>
           )
         )
       }
