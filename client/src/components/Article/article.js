@@ -5,15 +5,15 @@ const Article = _ => {
   return (
     <MainContext.Consumer>
       {
-        ({ articles, serachForArticles }) => (
-          // articles.map(article =>
-          //   <div key={article.id} >
-          //     <h1>{article.picture}</h1>
-          //     <h1>{article.title}</h1>
-          //     <h1>{article.body}</h1>
-          //   </div>
-          // )
-          console.log(articles)
+        ({ articles }) => (
+          articles.map(article =>
+            //   <div key={article.id} >
+            //     <h1>{article.picture}</h1>
+            //     <h1>{article.title}</h1>
+            //     <h1>{article.body}</h1>
+            //   </div>
+            console.log(article)
+          )
         )
       }
     </MainContext.Consumer>

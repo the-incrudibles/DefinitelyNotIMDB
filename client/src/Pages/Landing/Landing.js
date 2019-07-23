@@ -5,19 +5,20 @@ import MainArticles from '../../utils/MainArticles.js'
 
 const Landing = _ => {
   const [mainState, setMainState] = useState({
-    articles: [],
-    searchForArticles: _ => {
-      MainArticles.getArticles()
-        .then(({ data: articles }) => {
-          console.log(articles)
-        })
-        .catch(e => console.log(e))
-    }
+    articles: []
   })
 
-  // on page load, grab all the articles and display on the page
+  const searchForArticles = _ => {
+    MainArticles.getArticles()
+      .then(({ data: articles }) => {
+        setMainState({ ...mainState, articles: articles })
+        console.log(articles)
+      })
+      .catch(e => console.log(e))
+  }
+
   useEffect(_ => {
-    mainState.searchForArticles()
+    searchForArticles()
   },
     [])
 
@@ -25,7 +26,7 @@ const Landing = _ => {
     <>
       <div>
         <h1>Welcome to definitely not IMDB</h1>
-        {/* news stories go here */}
+        {/* news articles go here */}
         <MainContext.Provider value={mainState}>
           <Article />
         </MainContext.Provider>
