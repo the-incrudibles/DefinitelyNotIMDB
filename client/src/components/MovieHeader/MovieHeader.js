@@ -33,17 +33,28 @@ const useStyles = makeStyles(theme => ({
 let movieID = localStorage.getItem('id')
 
 const MovieHeader = _ => {
-  const [data, setData] = useState([])
+  const [movieState, setMovieState] = useState([])
   const classes = useStyles()
 
-  useEffect(_ => {
-    //   fetch movie database on product '/movie/${id}'
+
+  movieState.renderMovie = _ =>{
     axios.get(`https://api.themoviedb.org/3/movie/399579?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
-      .then(r => {
-        setData(r.data)
-        console.log(r)
-      })
-  }, [])
+    .then(({data}) => {
+        setMovieState(data)
+      console.log(data)
+    })
+  }
+//   useEffect(_ => {
+//     //   fetch movie database on product '/movie/${id}'
+//     axios.get(`https://api.themoviedb.org/3/movie/399579?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
+//       .then(r => {
+//         setData(r.data)
+//         console.log(r)
+//       })
+//   }, [])
+useEffect(_ =>{
+    movieState.renderMovie()
+}, [])
 
   return (
     <div>
@@ -56,10 +67,10 @@ const MovieHeader = _ => {
           </Grid>
           <Grid item xs={6}>
             <Typography variant='h5' component='h3'>
-              {data.title}
+              {movieState.title}
             </Typography>
             <Typography component='p'>
-                Rating: {data.vote_average}
+                Rating: {movieState.vote_average}
             </Typography>
             <Typography>
               <AddWatchListButton />
@@ -70,7 +81,7 @@ const MovieHeader = _ => {
             <strong>Overview</strong>
           </Typography>
           <Typography>
-            {data.overview}
+            {movieState.overview}
           </Typography>
         </Grid>
       </Paper>

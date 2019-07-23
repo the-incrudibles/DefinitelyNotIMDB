@@ -23,7 +23,7 @@ const AddMovieComments = _ =>{
     const [newCommentState, setNewCommentState] = useState({comment: ''})
 
     const fetchCommentsAgain = _ =>{
-      axios.get(`/movie`)
+      // axios.get(`/movie`)
     }
 
     const handleAddComment = event =>{

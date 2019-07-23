@@ -40,12 +40,15 @@ const MovieComments = _ => {
   const classes = useStyles()
 
 //   fetch movie comments
+commentsState.renderComments = _ => {
+    axios.get(`/comments/${'id'}`)
+      .then(({ data }) => {
+        setCommentsState({ ...commentsState, comments: data })
+      })
+  }
 useEffect(_ =>{
-    axios.get(`/movie/${'id'}`)
-    .then( r =>{
-        setCommentsState({...commentsState, comments: r.comments})
-    })
-}, [commentsState])
+    commentsState.renderComments()
+}, [])
 
     return(
         <div>
