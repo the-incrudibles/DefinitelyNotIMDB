@@ -23,7 +23,7 @@ const searchMovie = _ => {
               <CardActionArea>
                 <CardContent>
                   <Typography gutterBottom variant="h6" component="h2">
-                    {movie.title ? movie.title : movie.original_name}
+                    {movie.title ? movie.title : movie.name}
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     {movie.genres}
