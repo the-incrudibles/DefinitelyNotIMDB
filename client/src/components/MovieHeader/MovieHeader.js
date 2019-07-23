@@ -9,6 +9,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import AddWatchListButton from '../../components/AddWatchListButton'
+// import MovieContext from '../../utils/movieContext'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,7 +37,7 @@ const MovieHeader = _ => {
   const classes = useStyles()
 
   useEffect(_ => {
-    axios.get('https://api.themoviedb.org/3/movie/399579?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US')
+    axios.get(`https://api.themoviedb.org/3/movie/399579?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
       .then(r => {
         setData(r.data)
         console.log(r)

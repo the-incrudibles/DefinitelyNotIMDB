@@ -24,28 +24,30 @@ const SignupForm = _ => {
 
   userState.handleRegisterUser = event => {
     event.preventDefault()
-    console.log(password.current.value)
-
-    axios.post('/register', {
-      name: name.current.value,
-      username: username.current.value,
-      email: email.current.value,
-      password: password.current.value
-    })
-      .then(({ data }) => {
-        console.log(data)
-        if (data.isLoggedIn) {
-          localStorage.setItem('token', data.token)
-          localStorage.setItem('user', data.user)
-          localStorage.setItem('admin', data.admin)
-          setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
-        } else {
-          userState.handleCheckboxClick = _ => {
-            setUserState({ ...userState, checkedA: !userState.checkedA })
-          }
-        }
+    if (userState.checkedA === false || name.current.value === '' || username.current.value === '' || email.current.value === '' || password.current.value === '') {
+      setUserState({ ...userState, failedRegistration: true })
+    } else {
+      axios.post('/register', {
+        name: name.current.value,
+        username: username.current.value,
+        email: email.current.value,
+        password: password.current.value
       })
-      .catch(e => console.error(e))
+        .then(({ data }) => {
+          console.log(data)
+          if (data.isLoggedIn) {
+            localStorage.setItem('token', data.token)
+            localStorage.setItem('user', data.user)
+            localStorage.setItem('admin', data.admin)
+            setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
+          } else {
+            userState.handleCheckboxClick = _ => {
+              setUserState({ ...userState, checkedA: !userState.checkedA })
+            }
+          }
+        })
+        .catch(e => console.error(e))
+    }
   }
 
   userState.handleCancelButton = _ => {
@@ -58,7 +60,6 @@ const SignupForm = _ => {
       password.current.value = ''
     }
   }
-
   userState.setRedirect = _ => {
     setUserState({ ...userState, redirect: true })
   }
@@ -83,7 +84,7 @@ const SignupForm = _ => {
   }, [])
 
   return (
-    <div className='loginDiv'>
+    <div className='containerDiv'>
       {userState.isLoggedIn ? userState.renderRedirect() : null}
 
       {

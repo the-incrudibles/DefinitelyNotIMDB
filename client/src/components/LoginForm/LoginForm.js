@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
-import Login from '../../utils/Login.js'
 
 const LoginForm = _ => {
   const username = useRef()
@@ -29,21 +28,25 @@ const LoginForm = _ => {
 
   userState.handleLogInUser = event => {
     event.preventDefault()
-    axios.post('/login', {
-      username: username.current.value,
-      password: password.current.value
-    })
-      .then(({ data }) => {
-        if (data.isLoggedIn) {
-          localStorage.setItem('token', data.token)
-          localStorage.setItem('user', data.user)
-          localStorage.setItem('admin', data.admin)
-          setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
-        } else {
-          alert('Invalid username or password')
-        }
+    if (username.current.value === '' || password.current.value === '') {
+      setUserState({ ...userState, failedLogin: true })
+    } else {
+      axios.post('/login', {
+        username: username.current.value,
+        password: password.current.value
       })
-      .catch(e => console.error(e))
+        .then(({ data }) => {
+          if (data.isLoggedIn) {
+            localStorage.setItem('token', data.token)
+            localStorage.setItem('user', data.user)
+            localStorage.setItem('admin', data.admin)
+            setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
+          } else {
+            alert('Invalid username or password')
+          }
+        })
+        .catch(e => console.error(e))
+    }
   }
 
   useEffect(_ => {
@@ -59,7 +62,7 @@ const LoginForm = _ => {
   }, [])
 
   return (
-    <div className='loginDiv'>
+    <div className='containerDiv'>
       {userState.isLoggedIn ? userState.renderRedirect() : null}
       <div className='blockTypography'>
         <Typography >In order to leave comments or reviews, or join movie clubs, you'll have to log into your account.</Typography>

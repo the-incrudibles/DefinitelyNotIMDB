@@ -1,21 +1,19 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-// material ui imports
+// Material UI Imports:
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
 import MenuIcon from '@material-ui/icons/Menu'
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import Drawer from '@material-ui/core/Drawer'
+import List from '@material-ui/core/List'
+import Divider from '@material-ui/core/Divider'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -71,7 +69,7 @@ const Navbar = _ => {
         </ListItem>
         <ListItem>
           <i className="material-icons">local_movies</i>
-          <Link to="/topmovie" className="drawerLink"><ListItemText primary="Top Movies" /></Link>
+          <Link to="/toprated" className="drawerLink"><ListItemText primary="Top Movies" /></Link>
         </ListItem>
         <ListItem>
           <i className="material-icons">search</i>
@@ -87,16 +85,16 @@ const Navbar = _ => {
                 <i className="material-icons">vpn_key</i>
                 <Link to="/account" className="drawerLink"><ListItemText primary="Admin" /></Link>
               </ListItem>
+              <ListItem>
+                <i className="material-icons">comment</i>
+                <Link to="/account" className="drawerLink"><ListItemText primary="My Comments" /></Link>
+              </ListItem>
+              <ListItem>
+                <i className="material-icons">video_library</i>
+                <Link to="/account" className="drawerLink"><ListItemText primary="My Watchlist" /></Link>
+              </ListItem>
             </> : null
         }
-        <ListItem>
-          <i className="material-icons">account_box</i>
-          <Link to="/account" className="drawerLink"><ListItemText primary="My Account" /></Link>
-        </ListItem>
-        <ListItem>
-          <i className="material-icons">video_library</i>
-          <Link to="/account" className="drawerLink"><ListItemText primary="My Watchlist" /></Link>
-        </ListItem>
         {
           localStorage.getItem('user') ? null :
             <>

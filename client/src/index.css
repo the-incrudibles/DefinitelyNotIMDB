@@ -13,15 +13,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.loginDiv {
+.containerDiv {
   margin: auto;
   margin-top: 50px;
   text-align: left;
   width: 90%;
 }
 
-.blockTypography {
+.blockTypography, .searchTypography {
   margin-bottom: 25px;
+}
+
+.searchTypography {
+  text-align: center;
 }
 
 .usernameInput, .passwordInput, .textInput, .emailInput {
@@ -96,7 +100,32 @@ code {
   color: #4d4c59
 }
 
-#submitButtons {
+#submitButtons, #commentButton {
   background-color: #71777d;
   color: white;
+}
+
+.searchButton {
+  display: inline-block;
+  padding-top: 15px;
+}
+
+#commentButton {
+  margin-top: 10px;
+}
+
+.resultsDiv {
+  text-align: center;
+  margin-top: 30px;
+  color: #4d4c59;
+}
+
+.resultsPoster {
+  width: 100%;
+  margin: auto;
+  object-fit: cover;
+}
+
+.MuiCardContent-root, .MuiCardActions-root {
+  background-color: #e0e2d5
 }
