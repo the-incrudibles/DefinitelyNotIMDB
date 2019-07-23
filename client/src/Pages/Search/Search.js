@@ -120,7 +120,6 @@ const TestSearch = _ => {
               margin='normal'
               variant='outlined'
               inputRef={searchTerm}
-              value={searchTerm.current.value}
               error id
             />
           </>
