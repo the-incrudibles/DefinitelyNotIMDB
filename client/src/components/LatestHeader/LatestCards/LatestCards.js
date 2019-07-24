@@ -6,7 +6,7 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import topRatedContext from '../../../utils/topRatedContext'
+import latestContext from '../../../utils/latestContext'
 
 
 const useStyles = makeStyles({
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 
 const Cards = _ => {
   const classes = useStyles()
-  const movie = useContext(topRatedContext)
+  const movie = useContext(latestContext)
   console.log(movie[0])
   return (
     <Card className='resultsDiv'>

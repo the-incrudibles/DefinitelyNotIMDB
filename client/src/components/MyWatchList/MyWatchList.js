@@ -15,9 +15,18 @@ import Container from '@material-ui/core/Container'
 import Link from '@material-ui/core/Link'
 import axios from 'axios'
 import CardActionArea from '@material-ui/core/CardActionArea'
+import Watchlist from '../../utils/Watchlist.js'
 
 
 const MyWatchList = _ => {
+  const [watchlistState, setWatchlistState] = useState({
+    movies: []
+  })
+
+  // useEffect(_ => {
+  //   Watchlist.populate()
+  // }, [])
+
   useEffect(_ => {
     axios.get('https://api.themoviedb.org/3/movie/399579?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US')
       .then(({ data: movie }) => {
