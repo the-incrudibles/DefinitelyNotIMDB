@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import Fab from '@material-ui/core/Fab'
 import AddIcon from '@material-ui/icons/Add'
 import axios from 'axios'
@@ -6,15 +6,15 @@ import axios from 'axios'
 
 
 const AddWatchListButton = _ => {
-const watchlist = useRef()
 const handleAddWatchList = event =>{
-    axios.put(`/user/${localStorage.getItem('userID')}`, {
-        watchlist: watchlist.current.value
-    })
-    .then(_ =>{
-        console.log('success')
-    })
-    .catch(e => console.log(e))
+    // axios.put(`/user/${localStorage.getItem('userID')}`, {
+    //     watchlist: watchlist.current.value
+    // })
+    // .then(_ =>{
+    //     console.log('success')
+    // })
+    // .catch(e => console.log(e))
+    console.log('ping')
 }
     return (
         <div className="addWatchlistButton">

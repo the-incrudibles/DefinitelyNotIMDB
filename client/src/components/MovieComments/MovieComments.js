@@ -32,16 +32,14 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 const MovieComments = _ => {
-  const [commentsState, setCommentsState] = useState({
-      comments: []
-  })
+  const [commentsState, setCommentsState] = useState([])
   const classes = useStyles()
 
 //   fetch movie comments
 commentsState.renderComments = _ => {
     axios.get(`/comments/${'id'}`)
       .then(({ data }) => {
-        setCommentsState({ ...commentsState, comments: data })
+        setCommentsState(data.comments)
       })
   }
 useEffect(_ =>{

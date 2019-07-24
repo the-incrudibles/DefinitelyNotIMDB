@@ -103,5 +103,6 @@ const MovieHeader = _ => {
     </div>
   )
 }
+}
 
 export default MovieHeader
