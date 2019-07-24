@@ -21,22 +21,21 @@ const useStyles = makeStyles({
 
 const Cards = (props) => {
   const classes = useStyles()
-
+console.log(props.movie)
   return (
     <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={props.movie.Image}
-          title={props.movie.Title}
+          image={props.movie.topRatedImage}
+          title={props.movie.topRatedTitle}
         />
         <CardContent>
           <Typography gutterBottom variant='h5' component='h2'>
-            Lizard
+            {props.movie.topRatedTitle}
           </Typography>
           <Typography variant='body2' color='textSecondary' component='p'>
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+            {props.movie.overview}
           </Typography>
         </CardContent>
       </CardActionArea>
