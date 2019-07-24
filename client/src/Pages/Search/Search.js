@@ -76,7 +76,7 @@ const TestSearch = _ => {
   searchState.buttonClick = e => {
     e.preventDefault()
     // if title
-    if (searchState.searchArea === 'movie') {
+    if (searchState.searchArea === 'movie' && searchTerm.current.value !== '') {
       axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
         .then(({ data }) => {
           searchTerm.current.value = ''
@@ -85,7 +85,7 @@ const TestSearch = _ => {
         .catch(e => console.log(e))
 
       // if tv
-    } else if (searchState.searchArea === 'tv') {
+    } else if (searchState.searchArea === 'tv' && searchTerm.current.value !== '') {
       axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
         .then(({ data }) => {
           searchTerm.current.value = ''
@@ -94,7 +94,7 @@ const TestSearch = _ => {
         .catch(e => console.log(e))
 
       // if celeb
-    } else if (searchState.searchArea === 'celebrity') {
+    } else if (searchState.searchArea === 'celebrity' && searchTerm.current.value !== '') {
       axios.get(`https://api.themoviedb.org/3/search/person?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
         .then(({ data }) => {
           searchTerm.current.value = ''
@@ -103,7 +103,7 @@ const TestSearch = _ => {
         .catch(e => console.log(e))
 
       // if nothing selected
-    } else if (searchState.searchArea === '') {
+    } else if (searchState.searchArea === '' || searchTerm.current.value === '') {
       setSearchState({ ...searchState, incompleteSearch: true })
     }
   }
@@ -127,7 +127,6 @@ const TestSearch = _ => {
               margin='normal'
               variant='outlined'
               inputRef={searchTerm}
-              value={searchTerm.current.value}
               error id
             />
           </>
