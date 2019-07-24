@@ -57,8 +57,15 @@ const TestSearch = _ => {
     searchForCeleb: id => SearchResult.axiosForCeleb(id),
     searchForMovie: id => SearchResult.axiosForMovie(id),
     searchForShow: id => SearchResult.axiosForShow(id),
-    incompleteSearch: false
+    incompleteSearch: false,
+    movieRedirect: false,
+    showRedirect: false,
+    celebRedirect: false
   })
+
+  useEffect(() => {
+    console.log('celeb changed')
+  }, [localStorage.getItem('celebID')])
 
   const searchTerm = useRef()
 
