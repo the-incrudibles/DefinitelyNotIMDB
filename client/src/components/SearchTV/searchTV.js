@@ -13,6 +13,9 @@ const searchTV = _ => {
     <SearchContext.Consumer>
       {
         ({ shows, searchForShow }) => (
+          // shows.forEach(show => {
+          //   console.log(show)
+          // })
           shows.map(show =>
             <Card key={show.id} onClick={_ => searchForShow(show.id)} className='resultsDiv'>
               <CardActionArea>
@@ -23,6 +26,11 @@ const searchTV = _ => {
                   {
                     show.poster_path ? <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${show.poster_path}`} alt={show.title} /> : <img className='resultsPoster' src={Placeholder} alt={show.title} />
                   }
+                  <div className="cardTypography">
+                    <Typography variant='body2' color='textSecondary' component='p'>
+                      {show.overview ? <> {show.overview.slice(0, 150)}<span>...</span> </> : null}
+                    </Typography>
+                  </div>
                 </CardContent>
               </CardActionArea>
               <CardActions>

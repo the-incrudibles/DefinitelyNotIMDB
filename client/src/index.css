@@ -130,5 +130,10 @@ code {
 }
 
 .MuiCardContent-root, .MuiCardActions-root {
-  background-color: #e0e2d5
+  background-color: #f7f6f0
+}
+
+.cardTypography {
+  margin-top: 25px;
+  text-align: left;
 }
