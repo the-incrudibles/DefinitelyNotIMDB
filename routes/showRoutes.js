@@ -14,7 +14,7 @@ module.exports = app => {
   })
 
   app.put('/show/:id', (req, res) => {
-    TVShow.findOneAndUpdate({ id: req.params.id })
+    TVShow.findOneAndUpdate({ id: req.params.id }, req.body)
       .then(_ => {
         // res.sendStatus(200)
         console.log('updated in db')
