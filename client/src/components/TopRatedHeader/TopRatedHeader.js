@@ -29,7 +29,6 @@ const TopRatedHeader=_=> {
           titleArr:r.data.results[i].title,
           overviewArr:r.data.results[i].overview
         })
-        
       }
 
       
