@@ -1,7 +1,6 @@
-import React, { useState, useEffect, Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Cards from './Cards'
-import Grid from '@material-ui/core/Grid'
 import topRatedContext from '../../utils/topRatedContext'
 import Typography from '@material-ui/core/Typography'
 
@@ -9,8 +8,7 @@ const TopRatedHeader = _ => {
 
   const [topRatedState, setTopRatedState] = useState(
     {
-      topRatedMovie: [],
-
+      topRatedMovie: []
     }
   )
   useEffect(_ => {
@@ -40,7 +38,7 @@ const TopRatedHeader = _ => {
   return (
     <div className="containerDiv">
       <div className='searchTypography'>
-        <Typography variant='h6'>These movies are currently trending:</Typography>
+        <Typography variant='h6'>Trending Movies</Typography>
       </div>
       {topRatedState.topRatedMovie.map(elem => {
         console.log(elem)
