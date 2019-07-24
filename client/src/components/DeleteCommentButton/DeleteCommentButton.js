@@ -25,7 +25,7 @@ const DeleteCommentButton = _ => {
     console.log(event.target)
     axios.delete(`/movie/comment/id`)
       .then(_ => console.log('deleted!'))
-      .catch(e => console.log('not deleted'))
+      .catch(e => console.error('not deleted'))
   }
   const checkIsAdmin = _ =>{
     let getAdmin = localStorage.getItem('admin', isAdminState)
@@ -34,12 +34,12 @@ const DeleteCommentButton = _ => {
   return (
         <>
         {
-          checkIsAdmin.isAdmin === true ?
+          checkIsAdmin.isAdmin === 'admin' ?
           <IconButton className={classes.isAdmin} size='small' aria-label='Delete' onClick={handleDeleteCommentButton}>
             <DeleteIcon />
           </IconButton>
           :
-          <IconButton className={classes.isNotAdmin} size='small' aria-label='Delete' onClick={handleDeleteCommentButton}>
+          <IconButton className={classes.isNotAdmin} size='small' aria-label='Delete' >
             <DeleteIcon />
           </IconButton>
         }

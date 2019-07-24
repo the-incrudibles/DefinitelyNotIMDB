@@ -31,31 +31,34 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const CastSlider = _ => {
-  const [castSlidersState, setCastSlidersState] = useState({
-    casts: []
-  })
+  const [castSlidersState, setCastSlidersState] = useState([])
   const classes = useStyles()
 
   //
   useEffect(_ =>{
-    axios.get(`/movies/${'id'}`)
-      .then(data =>{
+    // https://api.themoviedb.org/3/movie/399579/credits?api_key=d12a96cdcfe3d81297140ffea9dca118
+    // axios.get(`/movies/${'id'}`)
+    axios.get(`https://api.themoviedb.org/3/movie/399579/credits?api_key=d12a96cdcfe3d81297140ffea9dca118`)
+      .then(({data}) =>{
+        setCastSlidersState({...castSlidersState, casts: data.cast})
         console.log(data)
-        setCastSlidersState({...castSlidersState, casts: data.casts})
       })
+      .catch(e => console.error(e))
   },[])
+
+  console.log(castSlidersState)
 
   return (
     <div className={classes.rootTwo}>
       <GridList className={classes.gridList} cols={2.5}>
         {
           // change to tileData to casts
-          tileData.map(tile => (
-          <GridListTile key={tile.img}>
-            <img src={tile.img} alt={tile.name} />
+          castSlidersState.map(cast => (
+          <GridListTile key={cast.id}>
+            <img src={`https://image.tmdb.org/t/p/original${cast.poster_path}`} alt={''} />
             <Link to='/'>
               <GridListTileBar
-                title={tile.name}
+                title={cast.name}
                 titlePosition='top'
                 actionPosition='left'
                 className={classes.titleBar}
