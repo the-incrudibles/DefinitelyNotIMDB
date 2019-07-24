@@ -63,7 +63,7 @@ const MyWatchList = _ => {
   return (
     <React.Fragment>
       <CssBaseline />
-      {/* <div className="containerDiv">
+      <div className="containerDiv">
         <div className='searchTypography'>
           <Typography variant='h6'>Your Watchlist</Typography>
         </div>
@@ -94,20 +94,20 @@ const MyWatchList = _ => {
             </Card >
           ))
         }
-      </div> */}
-      <AppBar position='relative' />
-      <main>
-        {/* Hero unit */}
-        <div className={classes.heroContent}>
+      </div>
+      {/* <AppBar position='relative' /> */}
+      {/* <main> */}
+      {/* Hero unit */}
+      {/* <div className={classes.heroContent}>
           <Container maxWidth='sm'>
             <Typography variant='h4' align='center' color='textSecondary' paragraph>
               My Watch List
             </Typography>
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth='md'>
-          {/* End hero unit */}
-          <Grid container spacing={4}>
+        <Container className={classes.cardGrid} maxWidth='md'> */}
+      {/* End hero unit */}
+      {/* <Grid container spacing={4}>
             {cards.map(card => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
@@ -137,7 +137,7 @@ const MyWatchList = _ => {
             ))}
           </Grid>
         </Container>
-      </main>
+      </main> */}
     </React.Fragment>
   )
 }
