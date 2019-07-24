@@ -18,6 +18,7 @@ const LatestHeader = _ => {
 
         let latestArr = []
         r.data.results.map(elem => {
+          console.log(elem)
           latestArr.push({
             imageArr: 'https://image.tmdb.org/t/p/original' + elem.poster_path,
             titleArr: elem.title,

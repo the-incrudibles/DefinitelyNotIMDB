@@ -15,7 +15,7 @@ const searchCelebrities = _ => {
       {
         ({ celebs, searchForCeleb }) => (
           celebs.map(celeb =>
-            <Link to='/celebrity'>
+            <Link to='/celebrity' className="cardLink">
               <Card key={celeb.id} onClick={_ => searchForCeleb(celeb.id)} className='resultsDiv'>
                 <CardActionArea>
                   <CardContent>
