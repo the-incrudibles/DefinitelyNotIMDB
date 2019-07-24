@@ -15,7 +15,7 @@ const searchMovie = _ => {
       {
         ({ movies, searchForMovie }) => (
           movies.map(movie =>
-           <Link to='/movie'>
+           <Link to='/movie' className="cardLink">
             <Card key={movie.id} className='resultsDiv' onClick={_ => searchForMovie(movie.id)} >
               <CardActionArea>
                 <CardContent>
