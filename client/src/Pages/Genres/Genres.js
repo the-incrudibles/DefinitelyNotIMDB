@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import GenreCalls from '../../utils/genreCalls.js'
+import GenreResults from '../../components/GenreResults'
 
 const Genre = _ => {
   const [genreState, setGenreState] = useState({
@@ -32,6 +33,8 @@ const Genre = _ => {
           )
         })
       }
+      {/* I only had GenreResults render here so that I could see and test stuff with it */}
+      <GenreResults />
     </>
   )
 }

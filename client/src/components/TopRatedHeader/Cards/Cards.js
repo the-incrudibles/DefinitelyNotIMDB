@@ -21,7 +21,6 @@ const useStyles = makeStyles({
 const Cards = _ => {
   const classes = useStyles()
   const movie = useContext(topRatedContext)
-  console.log(movie[0])
   return (
     <Card className='resultsDiv'>
       <CardActionArea>
@@ -32,7 +31,7 @@ const Cards = _ => {
           <img className="resultsPoster" src={movie.imageArr} alt={movie.titleArr} />
           <div className="cardTypography">
             <Typography variant='body2' color='textSecondary' component='p'>
-              {movie.overviewArr ? <> {movie.overviewArr.slice(0, 100)}<span>...</span> </> : null}
+              {movie.overviewArr ? <> {movie.overviewArr.slice(0, 150)}<span>...</span> </> : null}
             </Typography>
           </div>
         </CardContent>

@@ -5,10 +5,10 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import latestContext from '../../../utils/latestContext'
+import genreResultsContext from '../../../utils/genreResultsContext'
 
-const LatestCards = _ => {
-  const movie = useContext(latestContext)
+const GenreResultsCards = _ => {
+  const movie = useContext(genreResultsContext)
   return (
     <Card className='resultsDiv'>
       <CardActionArea>
@@ -32,4 +32,4 @@ const LatestCards = _ => {
     </Card >
   )
 }
-export default LatestCards
+export default GenreResultsCards
