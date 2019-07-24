@@ -137,3 +137,7 @@ code {
   margin-top: 25px;
   text-align: left;
 }
+
+.cardLink {
+  text-decoration: none;
+}
