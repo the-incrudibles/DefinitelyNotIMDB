@@ -84,12 +84,6 @@ useEffect(_ =>{
                 )
               }
             </div>
-            <Grid container>
-              <Grid item xs={5} />
-              <Grid item xs={7}>
-                <AddWatchListButton />
-              </Grid>
-            </Grid>
           </Grid>
           <Typography variant='h6' gutterBottom>
             <strong>Overview</strong>
