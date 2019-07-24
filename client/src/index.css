@@ -90,6 +90,7 @@ code {
 
 .movieText {
   text-align: center;
+  margin: auto;
 }
 
 .addWatchlistButton {
@@ -140,4 +141,10 @@ code {
 
 .cardLink {
   text-decoration: none;
+}
+
+.genreChips {
+  margin: auto;
+  text-align: center;
+  margin-top: 5px;
 }
