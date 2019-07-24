@@ -14,6 +14,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Link from '@material-ui/core/Link'
 import axios from 'axios'
+import CardActionArea from '@material-ui/core/CardActionArea'
+
 
 const MyWatchList = _ => {
   useEffect(_ => {
@@ -29,7 +31,6 @@ const MyWatchList = _ => {
       marginRight: theme.spacing(2)
     },
     heroContent: {
-      backgroundColor: theme.palette.background.paper,
       padding: theme.spacing(8, 0, 6)
     },
     heroButtons: {
@@ -62,14 +63,45 @@ const MyWatchList = _ => {
   return (
     <React.Fragment>
       <CssBaseline />
+      {/* <div className="containerDiv">
+        <div className='searchTypography'>
+          <Typography variant='h6'>Your Watchlist</Typography>
+        </div>
+        {
+          cards.map(card => (
+            <Card className='resultsDiv'>
+              <CardActionArea>
+                <CardContent>
+                  <Typography gutterBottom variant="h6" component="h2">
+                    Title
+                </Typography>
+                  <img className="resultsPoster" src={"https://image.tmdb.org/t/p/original/xRWht48C2V8XNfzvPehyClOvDni.jpg"} alt="title" />
+                  <div className="cardTypography">
+                    <Typography variant='body2' color='textSecondary' component='p'>
+                      Mia, an aspiring actress, serves lattes to movie stars in between auditions and Sebastian, a jazz musician, scrapes by playing cocktail party gigs in dingy bars, but as success mounts they are faced...
+                  </Typography>
+                  </div>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size='small' color='primary'>
+                  More Info
+              </Button>
+                <Button size='small' color='primary'>
+                  Remove
+              </Button>
+              </CardActions>
+            </Card >
+          ))
+        }
+      </div> */}
       <AppBar position='relative' />
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth='sm'>
-
             <Typography variant='h4' align='center' color='textSecondary' paragraph>
-                      My Watch List
+              My Watch List
             </Typography>
           </Container>
         </div>
@@ -86,18 +118,18 @@ const MyWatchList = _ => {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant='h5' component='h2'>
-                              Title
+                      Title
                     </Typography>
                     <Typography>
-                              Here we put the plot
+                      Mia, an aspiring actress, serves lattes to movie stars in between auditions and Sebastian, a jazz musician, scrapes by playing cocktail party gigs in dingy bars, but as success mounts they are faced...
                     </Typography>
                   </CardContent>
                   <CardActions>
                     <Button size='small' color='primary'>
-                              View
+                      View
                     </Button>
                     <Button size='small' color='primary'>
-                              Remove
+                      Remove
                     </Button>
                   </CardActions>
                 </Card>
