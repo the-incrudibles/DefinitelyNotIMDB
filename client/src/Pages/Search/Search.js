@@ -57,10 +57,6 @@ const TestSearch = _ => {
     searchForCeleb: id => SearchResult.axiosForCeleb(id),
     searchForMovie: id => SearchResult.axiosForMovie(id),
     searchForShow: id => SearchResult.axiosForShow(id)
-    // incompleteSearch: false,
-    // movieRedirect: false,
-    // showRedirect: false,
-    // celebRedirect: false
   })
 
   const searchTerm = useRef()
