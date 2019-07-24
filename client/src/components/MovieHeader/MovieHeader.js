@@ -34,22 +34,29 @@ const useStyles = makeStyles(theme => ({
 const MovieHeader = _ => {
   const [data, setData] = useState({ genres: [] })
   const [movieState, setMovieState] = useState([])
-
+  
   const classes = useStyles()
 
   movieState.renderMovie = _ =>{
-    //   use localStorage.getItem('movieID')
-    // let movieID = localStorage.getItem('movieID')
-    axios.get(`/movie/${localStorage.getItem('movieID')}`)
-    .then(({data}) => {
-        setMovieState(data)
-      console.log(data)
-    })
-  }
- 
-useEffect(_ =>{
-    movieState.renderMovie()
-}, [])
+    const [movieState, setMovieState] = useState({
+        movie: {},
+        renderMovie: _ => {
+          console.log('has run')
+          axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
+            .then(({ data }) => {
+              if (!data) {
+                movieState.renderMovie()
+              } else {
+                setMovieState({ ...movieState, movie: data })
+                console.log(data)
+              }
+            })
+            .catch(e => console.log(e))
+        }
+      })    
+      useEffect(_ => {
+        movieState.renderMovie()
+      }, [])
 
   return (
     <div>
@@ -95,6 +102,7 @@ useEffect(_ =>{
       </Paper>
     </div>
   )
+}
 }
 
 export default MovieHeader

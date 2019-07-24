@@ -1,17 +1,13 @@
-
 import React, { useState, useEffect, Component } from 'react'
 import axios from 'axios'
 import Cards from './Cards'
 import Grid from '@material-ui/core/Grid'
+import topRatedContext from '../../utils/topRatedContext'
 
 
 
 const TopRatedHeader=_=> {
-  // state={
-  //   Image:[],
-  //   Title:[]
-  // }
-  // render(){
+  
   const [topRatedState,setTopRatedState]=useState(
     {topRatedMovie:[],
     
@@ -22,15 +18,16 @@ const TopRatedHeader=_=> {
     .then(r => {
      
       let topMovieArr=[]
-      for(let i=0; i<20;i++)
+      r.data.results.map(elem=>
       {
+        console.log(elem)
+
         topMovieArr.push({
-          imageArr:'https://image.tmdb.org/t/p/original'+r.data.results[i].poster_path,
-          titleArr:r.data.results[i].title,
-          overviewArr:r.data.results[i].overview
+          imageArr:'https://image.tmdb.org/t/p/original'+elem.poster_path,
+          titleArr:elem.title,
+          overviewArr:elem.overview
         })
       }
-
       
       setTopRatedState({...topRatedState,topRatedMovie:topMovieArr})
     
@@ -49,7 +46,9 @@ const TopRatedHeader=_=> {
       return(
       <>
       <Grid item xs={3} sm={3}>
-      <Cards movie={elem} />
+        <topRatedContext.Provider value={elem}>
+      <Cards />
+      </topRatedContext.Provider>
       </Grid>
       </>
       )
