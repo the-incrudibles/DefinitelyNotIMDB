@@ -1,43 +1,66 @@
-
 import React, { useState, useEffect, Component } from 'react'
 import axios from 'axios'
 import Cards from './Cards'
+import Grid from '@material-ui/core/Grid'
+import topRatedContext from '../../utils/topRatedContext'
 
 
-class TopRatedHeader extends Component {
-  state={
-    Image:[],
-    Title:[]
-  }
-  render(){
+
+const TopRatedHeader=_=> {
+  
+  const [topRatedState,setTopRatedState]=useState(
+    {topRatedMovie:[],
+    
+    }
+  )
+  useEffect(_=>{
+    axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_APIKEY}`)
+    .then(r => {
+     
+      let topMovieArr=[]
+      r.data.results.map(elem=>
+      {
+        console.log(elem)
+
+        topMovieArr.push({
+          imageArr:'https://image.tmdb.org/t/p/original'+elem.poster_path,
+          titleArr:elem.title,
+          overviewArr:elem.overview
+        })
+        
+      })
+
+      
+      setTopRatedState({...topRatedState,topRatedMovie:topMovieArr})
+    
+    })
+    .catch(e=>console.log('error:', e))
+  }, [])
+
+    
+   
+  
   return(
     <>
-    <Cards movie={this.state}>
-      
-    </Cards>
+    <Grid container>
+    {topRatedState.topRatedMovie.map(elem=>{
+      console.log(elem)
+      return(
+      <>
+      <Grid item xs={3} sm={3}>
+        <topRatedContext.Provider value={elem}>
+      <Cards />
+      </topRatedContext.Provider>
+      </Grid>
+      </>
+      )
+    })}
+    </Grid>
+     
+    
+    
     </>
   )
+  
   }
-   handlefetch=_=>{
-    // dotenv.config()
-    //  console.log(`${process.env.REACT_APP_TMDB_APIKEY}`)
-    axios.get(`https://api.themoviedb.org/3/movie/399579?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US&sort_by=popularity.desc`)
-    .then(r => {
-      let imageArr=[]
-      let titleArr=[]
-      for(let i=0;i<10;i++)
-      {
-        imageArr.push(r.data.poster_path)
-        titleArr.push(r.data.title)
-       
-
-      }
-      this.setState({image:imageArr})
-      this.setState({title:titleArr})
-      console.log(this.state.Image)
-    })
-    .catch(e=>console.log(e))
-
-   }
-  }  
 export default TopRatedHeader
