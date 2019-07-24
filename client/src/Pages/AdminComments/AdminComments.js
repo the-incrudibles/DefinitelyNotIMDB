@@ -7,15 +7,12 @@ const AdminComments = _ => {
   })
 
   commentsState.renderComents = _ => {
-    axios.get('/comments')
+    axios.get('/flagged')
       .then(({ data }) => {
         setCommentsState({ ...commentsState, comments: data })
       })
+      .catch(e => console.log(e))
   }
-
-  // commentsState.deleteComment = _ => {
-  //   axios.delete(`/comments/${id}`)
-  // }
 
   useEffect(_ => {
     commentsState.renderComents()
@@ -24,7 +21,9 @@ const AdminComments = _ => {
   return (
     <>
       {
-        commentsState.comments.map(comment => (!comment.flagged ? <h1>Hello</h1> : null))
+        commentsState.comments.map(comment => (
+          <h1>Hello World</h1>
+        ))
       }
     </>
   )

@@ -26,4 +26,9 @@ module.exports = app => {
       res.json({ isLoggedIn: !!user, user: user.username, token: jwt.sign({ id: user._id }, 'help'), admin: user.admin })
     })
   })
+  app.put('/user/:id', (req, res) => {
+    User.findByIdAndUpdate({ _id: req.params.id }, req.body)
+      .then(_ => res.sendStatus(200))
+      .catch(e => console.log(e))
+  })
 }

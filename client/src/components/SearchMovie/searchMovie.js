@@ -18,28 +18,30 @@ const SearchMovie = _ => {
       {
         ({ movies, searchForMovie }) => (
           movies.map(movie =>
-            <Link to='/movie'>
-              <Card key={movie.id} className='resultsDiv' onClick={_ => searchForMovie(movie.id)} >
-                <CardActionArea>
-                  <CardContent>
-                    <Typography gutterBottom variant='h6' component='h2'>
-                      {movie.title ? movie.title : movie.name}
-                    </Typography>
+           <Link to='/movie' className="cardLink">
+            <Card key={movie.id} className='resultsDiv' onClick={_ => searchForMovie(movie.id)} >
+              <CardActionArea>
+                <CardContent>
+                  <Typography gutterBottom variant="h6" component="h2">
+                    {movie.title ? movie.title : movie.name}
+                  </Typography>
+                  {
+                    movie.poster_path ? <img className="resultsPoster" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} /> : <img className="resultsPoster" src={Placeholder} alt={movie.title} />
+                  }
+                  <div className="cardTypography">
                     <Typography variant='body2' color='textSecondary' component='p'>
-                      {movie.genres}
+                      {movie.overview ? <> {movie.overview.slice(0, 150)}<span>...</span> </> : null}
                     </Typography>
-                    {
-                      movie.poster_path ? <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} /> : <img className='resultsPoster' src={Placeholder} alt={movie.title} />
-                    }
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button size='small' color='primary'>
-                    More Info
-                  </Button>
-                </CardActions>
-              </Card>
-            </Link>
+                  </div>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button className={movie.id} size='small' color='primary'>
+                  More Info
+                </Button>
+              </CardActions>
+            </Card>
+           </Link>
           )
         )
       }

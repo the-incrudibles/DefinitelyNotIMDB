@@ -78,7 +78,7 @@ const Navbar = _ => {
       <Divider />
       <List>
         {
-          localStorage.getItem('auth')
+          localStorage.getItem('admin')
             ? <>
               <ListItem>
                 <i className='material-icons'>vpn_key</i>
