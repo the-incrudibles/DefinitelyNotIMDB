@@ -23,16 +23,18 @@ const searchMovie = _ => {
                   <Typography gutterBottom variant="h6" component="h2">
                     {movie.title ? movie.title : movie.name}
                   </Typography>
-                  <Typography variant='body2' color='textSecondary' component='p'>
-                    {movie.genres}
-                  </Typography>
                   {
                     movie.poster_path ? <img className="resultsPoster" src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} /> : <img className="resultsPoster" src={Placeholder} alt={movie.title} />
                   }
+                  <div className="cardTypography">
+                    <Typography variant='body2' color='textSecondary' component='p'>
+                      {movie.overview ? <> {movie.overview.slice(0, 150)}<span>...</span> </> : null}
+                    </Typography>
+                  </div>
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size='small' color='primary'>
+                <Button className={movie.id} size='small' color='primary'>
                   More Info
                 </Button>
               </CardActions>
