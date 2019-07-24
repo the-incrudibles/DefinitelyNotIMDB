@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import { Link } from 'react-router-dom'
 
 // Material-UI imports:
 import OutlinedInput from '@material-ui/core/OutlinedInput'
@@ -33,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const TestSearch = _ => {
+const TestSearch = props => {
   const classes = useStyles()
 
   const inputLabel = useRef()
@@ -43,7 +44,7 @@ const TestSearch = _ => {
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth)
   }, [])
-
+  console.log(props)
   // Sammi's code:
   const [searchState, setSearchState] = useState({
     searchArea: '',
