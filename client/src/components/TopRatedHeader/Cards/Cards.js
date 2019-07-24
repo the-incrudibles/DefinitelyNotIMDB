@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios'
 // import Card from './Card'
 import { makeStyles } from '@material-ui/core/styles'
@@ -9,6 +9,8 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+import topRatedContext from '../../../utils/topRatedContext'
+
 
 const useStyles = makeStyles({
   card: {
@@ -19,23 +21,25 @@ const useStyles = makeStyles({
   }
 })
 
-const Cards = (props) => {
+const Cards = _=> {
   const classes = useStyles()
-console.log(props.movie)
+  const movie=useContext(topRatedContext)
+  console.log(movie[0])
   return (
+ 
     <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={props.movie.imageArr}
-          title={props.movie.titleArr}
+          image={movie.imageArr}
+          title={movie.titleArr}
         />
         <CardContent>
           <Typography gutterBottom variant='h5' component='h2'>
-            {props.movie.titleArr}
+            {movie.titleArr}
           </Typography>
           <Typography variant='body2' color='textSecondary' component='p'>
-            {props.movie.overviewArr}
+            { movie.overviewArr? <> {movie.overviewArr.slice(0, 100)}<span>...</span> </> : null}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -48,6 +52,8 @@ console.log(props.movie)
         </Button>
       </CardActions>
     </Card>
+     
+
   )
 }
 export default Cards
