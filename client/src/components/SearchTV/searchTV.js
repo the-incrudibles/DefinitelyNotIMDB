@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import SearchContext from '../../utils/searchContext'
 import Typography from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card'
