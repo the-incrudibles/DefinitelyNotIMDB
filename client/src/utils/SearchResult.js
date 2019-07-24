@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Link } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
@@ -11,6 +11,7 @@ const SearchResult = {
           console.log('post')
           SearchResult.postCeleb(id)
           localStorage.setItem('celebID', id)
+          
         } else {
           console.log('put')
           SearchResult.putCeleb(id)
