@@ -32,10 +32,10 @@ console.log(props.movie)
         />
         <CardContent>
           <Typography gutterBottom variant='h5' component='h2'>
-            {props.movie.topRatedTitle}
+            {props.movie.titleArr}
           </Typography>
           <Typography variant='body2' color='textSecondary' component='p'>
-            {props.movie.overview}
+            {props.movie.overviewArr}
           </Typography>
         </CardContent>
       </CardActionArea>

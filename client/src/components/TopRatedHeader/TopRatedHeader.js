@@ -2,6 +2,8 @@
 import React, { useState, useEffect, Component } from 'react'
 import axios from 'axios'
 import Cards from './Cards'
+import Grid from '@material-ui/core/Grid'
+
 
 
 const TopRatedHeader=_=> {
@@ -11,26 +13,27 @@ const TopRatedHeader=_=> {
   // }
   // render(){
   const [topRatedState,setTopRatedState]=useState(
-    {topRatedImage:[],
-    topRatedTitle:[],
-    topRatedOverview:[]
+    {topRatedMovie:[],
+    
     }
   )
   useEffect(_=>{
     axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_APIKEY}`)
     .then(r => {
-      let imageArr=[]
-      let titleArr=[]
-      let overviewArr=[]
+     
+      let topMovieArr=[]
       for(let i=0; i<20;i++)
       {
-        imageArr.push('https://image.tmdb.org/t/p/original'+r.data.results[i].poster_path)
-        titleArr.push(r.data.results[i].title)
-        overviewArr.push(r.data.results[i].overview)
+        topMovieArr.push({
+          imageArr:'https://image.tmdb.org/t/p/original'+r.data.results[i].poster_path,
+          titleArr:r.data.results[i].title,
+          overviewArr:r.data.results[i].overview
+        })
+        
       }
 
       
-      setTopRatedState({...topRatedState,topRatedImage:imageArr, topRatedTitle:titleArr})
+      setTopRatedState({...topRatedState,topRatedMovie:topMovieArr})
     
     })
     .catch(e=>console.log('error:', e))
@@ -41,13 +44,18 @@ const TopRatedHeader=_=> {
   
   return(
     <>
-    {topRatedState.map(elem=>{
+    <Grid container>
+    {topRatedState.topRatedMovie.map(elem=>{
       console.log(elem)
       return(
+      <>
+      <Grid item xs={3} sm={3}>
       <Cards movie={elem} />
+      </Grid>
+      </>
       )
     })}
-    
+    </Grid>
      
     
     
