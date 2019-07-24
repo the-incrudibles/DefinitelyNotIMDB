@@ -21,39 +21,31 @@ const useStyles = makeStyles({
   }
 })
 
-const Cards = _=> {
+const Cards = _ => {
   const classes = useStyles()
-  const movie=useContext(topRatedContext)
+  const movie = useContext(topRatedContext)
   console.log(movie[0])
   return (
- 
-    <Card className={classes.card}>
+    <Card className='resultsDiv'>
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={movie.imageArr}
-          title={movie.titleArr}
-        />
         <CardContent>
-          <Typography gutterBottom variant='h5' component='h2'>
+          <Typography gutterBottom variant="h6" component="h2">
             {movie.titleArr}
           </Typography>
-          <Typography variant='body2' color='textSecondary' component='p'>
-            { movie.overviewArr? <> {movie.overviewArr.slice(0, 100)}<span>...</span> </> : null}
-          </Typography>
+          <img className="resultsPoster" src={movie.imageArr} alt={movie.titleArr} />
+          <div className="cardTypography">
+            <Typography variant='body2' color='textSecondary' component='p'>
+              {movie.overviewArr ? <> {movie.overviewArr.slice(0, 100)}<span>...</span> </> : null}
+            </Typography>
+          </div>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button size='small' color='primary'>
-          Share
-        </Button>
-        <Button size='small' color='primary'>
-          Learn More
+          More Info
         </Button>
       </CardActions>
-    </Card>
-     
-
+    </Card >
   )
 }
 export default Cards
