@@ -8,7 +8,6 @@ const Latest = _ => {
       </div>
     </>
   )
-
 }
 
 export default Latest

@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import SearchContext from '../../utils/searchContext'
 import Typography from '@material-ui/core/Typography'
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import Button from '@material-ui/core/Button'
 import Placeholder from '../../images/placeholder_poster.jpg'
 
 const searchMovie = _ => {
@@ -13,10 +14,8 @@ const searchMovie = _ => {
     <SearchContext.Consumer>
       {
         ({ movies, searchForMovie }) => (
-          // movies.forEach(movie => {
-          //   console.log(movie)
-          // })
           movies.map(movie =>
+           <Link to='/movie'>
             <Card key={movie.id} className='resultsDiv' onClick={_ => searchForMovie(movie.id)} >
               <CardActionArea>
                 <CardContent>
@@ -39,6 +38,7 @@ const searchMovie = _ => {
                 </Button>
               </CardActions>
             </Card>
+           </Link>
           )
         )
       }
