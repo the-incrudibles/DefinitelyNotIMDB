@@ -27,8 +27,8 @@ console.log(props.movie)
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={props.movie.topRatedImage}
-          title={props.movie.topRatedTitle}
+          image={props.movie.imageArr}
+          title={props.movie.titleArr}
         />
         <CardContent>
           <Typography gutterBottom variant='h5' component='h2'>
