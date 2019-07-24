@@ -38,7 +38,7 @@ const MovieHeader = _ => {
   movieState.renderMovie = _ =>{
     //   use localStorage.getItem('movieID')
     // let movieID = localStorage.getItem('movieID')
-    axios.get(`https://api.themoviedb.org/3/movie/${localStorage.getItem('movieID')}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
+    axios.get(`/movie/${localStorage.getItem('movieID')}`)
     .then(({data}) => {
         setMovieState(data)
       console.log(data)
@@ -55,7 +55,7 @@ useEffect(_ =>{
         <Grid container spacing={1}>
           <Grid item xs={6}>
           
-          <img className="movieImg" src={`https://image.tmdb.org/t/p/original`} alt="" />
+          <img className="movieImg" src={`https://image.tmdb.org/t/p/original${movieState.poster_path}`} alt="" />
           
           </Grid>
           <Grid item xs={6}>

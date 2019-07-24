@@ -34,18 +34,19 @@ const CastSlider = _ => {
   const [castSlidersState, setCastSlidersState] = useState([])
   const classes = useStyles()
 
-  //
-  useEffect(_ =>{
-    // https://api.themoviedb.org/3/movie/399579/credits?api_key=d12a96cdcfe3d81297140ffea9dca118
+  // // https://api.themoviedb.org/3/movie/399579/credits?api_key=d12a96cdcfe3d81297140ffea9dca118
     // axios.get(`/movies/${'id'}`)
+
+  const renderCast= _ => {
     axios.get(`https://api.themoviedb.org/3/movie/399579/credits?api_key=d12a96cdcfe3d81297140ffea9dca118`)
       .then(({data}) =>{
-        setCastSlidersState({...castSlidersState, casts: data.cast})
-        console.log(data)
+        setCastSlidersState(data.cast)
       })
       .catch(e => console.error(e))
-  },[])
-
+  }
+useEffect(_=>{
+  renderCast()
+},[])
   console.log(castSlidersState)
 
   return (
@@ -54,8 +55,8 @@ const CastSlider = _ => {
         {
           // change to tileData to casts
           castSlidersState.map(cast => (
-          <GridListTile key={cast.id}>
-            <img src={`https://image.tmdb.org/t/p/original${cast.poster_path}`} alt={''} />
+          <GridListTile key='' item>
+            {cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={''} /> : <img src="" />}
             <Link to='/'>
               <GridListTileBar
                 title={cast.name}
