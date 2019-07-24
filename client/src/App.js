@@ -23,7 +23,7 @@ const App = _ => {
         <Route path='/movie' render={_ => (<Movie />)} />
         <Route path='/login' render={_ => (<LoginPage />)} />
         <Route path='/signup' render={_ => (<SignupForm />)} />
-        <Route path='/search' render={_ => (<Search />)} />
+        <Route path='/search' component={Search} />
         <Route path='/toprated' render={_ => (<TopRated />)} />
         <Route path='/celebrity' render={_ => (<Celebrity />)} />
         <Route path='/genres' render={_ => (<Genres />)} />
