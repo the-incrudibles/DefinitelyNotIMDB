@@ -20,7 +20,7 @@ const AddMovieComments = _ => {
   const classes = useStyles()
   const [newCommentState, setNewCommentState] = useState({ comment: '' })
 
-    const fetchCommentsAgain = _ =>{
+    const fetchComments = _ =>{
       // axios.get(`/movie`)
     }
 
