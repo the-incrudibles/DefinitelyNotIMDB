@@ -1,7 +1,7 @@
 const { Comment } = require('../models')
 
 module.exports = app => {
-  app.get('/moviecomment/:movie', (req, res) => {
+  app.get('/comment/:movie', (req, res) => {
     Comment.findAll({ movie: req.params.movie })
       .then(comments => res.json(comments))
       .catch(e => console.log(e))
