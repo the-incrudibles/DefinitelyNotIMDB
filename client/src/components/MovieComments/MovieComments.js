@@ -13,7 +13,7 @@ import AddMovieComments from '../AddMovieComments'
 import ReportCommentButton from '../ReportCommentButton/ReportCommentButton'
 import DeleteCommentButton from '../DeleteCommentButton/DeleteCommentButton'
 
-import CommentData from './commentData'
+import commentData from './commentData'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,51 +32,61 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 const MovieComments = _ => {
-  const [comments, setComments] = useState([])
+  const [commentsState, setCommentsState] = useState({
+      comments: []
+  })
   const classes = useStyles()
 
-  return (
-    <div>
-      <Paper className={classes.rootTwo}>
-        <Typography>
+//   fetch movie comments
+commentsState.renderComments = _ => {
+    axios.get(`/comments/${'id'}`)
+      .then(({ data }) => {
+        setCommentsState({ ...commentsState, comments: data })
+      })
+  }
+useEffect(_ =>{
+    commentsState.renderComments()
+}, [])
+
+    return(
+        <div>
+            <Paper className={classes.rootTwo}>
+            <Typography>
                 Leave a comment below!
-        </Typography>
-        <List className={classes.root}>
-          {/* {CommentData.map(data => {
-                    return(
-                    <> */}
-          <ListItem alignItems='flex-start'>
-            <ListItemAvatar>
-              <Avatar alt='Remy Sharp' src='https://image.flaticon.com/icons/svg/195/195158.svg' />
-            </ListItemAvatar>
-            <ListItemText
-              secondary={
-                <React.Fragment>
-                  <Typography
-                    component='span'
-                    variant='body2'
-                    className={classes.inline}
-                    color='textPrimary'
-                  >
-                    {'Dien'}
-                  </Typography>
-                  {' - hello'}
-                </React.Fragment>
-              }
-            />
-            <ReportCommentButton />
-            <DeleteCommentButton />
-          </ListItem>
-          <Divider variant='inset' component='li' />
-          {/* </>
-                    )
-                })
-                } */}
-        </List>
-        <AddMovieComments />
-      </Paper>
-    </div>
-  )
+            </Typography>
+            <List className={classes.root}>
+                    {
+                        // change commentData to comments when available
+                    commentData.map(data => (
+                        <ListItem alignItems="flex-start">
+                        <ListItemAvatar>
+                        <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
+                        </ListItemAvatar>
+                        <ListItemText
+                        secondary={
+                            <React.Fragment>
+                            <Typography
+                                component="span"
+                                variant="body2"
+                                className={classes.inline}
+                                color="textPrimary"
+                            >
+                                {data.name}
+                            </Typography>
+                            {'- ' + data.comment}
+                            </React.Fragment>
+                    }
+                        />
+                        <ReportCommentButton/>
+                        <DeleteCommentButton/>
+                    </ListItem>
+                    ))
+                    }
+            </List>
+            <AddMovieComments />
+            </Paper>
+     </div>
+    )
 }
 
 export default MovieComments

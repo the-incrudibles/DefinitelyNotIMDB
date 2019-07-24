@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import SearchContext from '../../utils/searchContext'
 import Typography from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card'
@@ -14,23 +15,25 @@ const searchCelebrities = _ => {
       {
         ({ celebs, searchForCeleb }) => (
           celebs.map(celeb =>
-            <Card key={celeb.id} onClick={_ => searchForCeleb(celeb.id)} className='resultsDiv'>
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant='h6' component='h2'>
-                    {celeb.name}
-                  </Typography>
-                  {
-                    celeb.profile_path ? <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${celeb.profile_path}`} alt={celeb.name} /> : <img className='resultsPoster' src={Placeholder} alt={celeb.name} />
-                  }
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button size='small' color='primary'>
-                  More Info
-                </Button>
-              </CardActions>
-            </Card>
+            <Link to='/celebrity'>
+              <Card key={celeb.id} onClick={_ => searchForCeleb(celeb.id)} className='resultsDiv'>
+                <CardActionArea>
+                  <CardContent>
+                    <Typography gutterBottom variant='h6' component='h2'>
+                      {celeb.name}
+                    </Typography>
+                    {
+                      celeb.profile_path ? <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${celeb.profile_path}`} alt={celeb.name} /> : <img className='resultsPoster' src={Placeholder} alt={celeb.name} />
+                    }
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button size='small' color='primary'>
+                    More Info
+                  </Button>
+                </CardActions>
+              </Card>
+            </Link>
           )
         )
       }

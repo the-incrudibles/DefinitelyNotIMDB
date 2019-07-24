@@ -9,14 +9,21 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Placeholder from '../../images/placeholder_poster.jpg'
 
-const searchMovie = _ => {
+
+
+const SearchMovie = _ => {
+
   return (
     <SearchContext.Consumer>
       {
         ({ movies, searchForMovie }) => (
           movies.map(movie =>
-            <Link to='/movie' className="cardLink">
-              <Card key={movie.id} className='resultsDiv' onClick={_ => searchForMovie(movie.id)} >
+            <Link to='/movie' className="cardLink" onClick={_ => {
+              searchForMovie(movie.id)
+              localStorage.setItem('movieID', movie.id)
+            }
+            }>
+              <Card key={movie.id} className='resultsDiv' >
                 <CardActionArea>
                   <CardContent>
                     <Typography gutterBottom variant="h6" component="h2">
@@ -35,15 +42,15 @@ const searchMovie = _ => {
                 <CardActions>
                   <Button className={movie.id} size='small' color='primary'>
                     More Info
-                </Button>
+                  </Button>
                 </CardActions>
               </Card>
             </Link>
           )
         )
       }
-    </SearchContext.Consumer>
+    </SearchContext.Consumer >
   )
 }
 
-export default searchMovie
+export default SearchMovie

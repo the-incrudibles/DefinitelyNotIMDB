@@ -21,7 +21,6 @@ const useStyles = makeStyles(theme => ({
   },
   gridList: {
     flexWrap: 'nowrap',
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)'
   },
   title: {
@@ -34,29 +33,40 @@ const useStyles = makeStyles(theme => ({
 
 const MovieHeader = _ => {
   const [data, setData] = useState({ genres: [] })
+  const [movieState, setMovieState] = useState([])
+
   const classes = useStyles()
 
-  useEffect(_ => {
-    axios.get(`https://api.themoviedb.org/3/movie/399579?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
-      .then(r => {
-        setData(r.data)
-        console.log(r)
-      })
-  }, [])
+  movieState.renderMovie = _ =>{
+    //   use localStorage.getItem('movieID')
+    // let movieID = localStorage.getItem('movieID')
+    axios.get(`/movie/${localStorage.getItem('movieID')}`)
+    .then(({data}) => {
+        setMovieState(data)
+      console.log(data)
+    })
+  }
+ 
+useEffect(_ =>{
+    movieState.renderMovie()
+}, [])
 
   return (
     <div>
       <Paper className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={6}>
-            <img className='movieImg' src='https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Alita_Battle_Angel_%282019_poster%29.png/220px-Alita_Battle_Angel_%282019_poster%29.png' alt='' />
+          <img className="movieImg" src={`https://image.tmdb.org/t/p/original${movieState.poster_path}`} alt="" />
           </Grid>
           <Grid item xs={6}>
-            <Typography variant='h5' component='h3' className='movieText'>
-              {data.title}
+            <Typography variant='h5' component='h3'>
+              {movieState.title}
             </Typography>
-            <Typography component='p' className='movieText'>
-              Rating: {data.vote_average}
+            <Typography component='p'>
+                Rating: {movieState.vote_average}
+            </Typography>
+            <Typography>
+              <AddWatchListButton />
             </Typography>
             <div className="genreChips">
               {
@@ -85,7 +95,7 @@ const MovieHeader = _ => {
             <strong>Overview</strong>
           </Typography>
           <Typography>
-            {data.overview}
+            {movieState.overview}
           </Typography>
         </Grid>
       </Paper>
