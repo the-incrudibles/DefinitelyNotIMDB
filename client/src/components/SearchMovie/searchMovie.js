@@ -26,7 +26,7 @@ const searchMovie = _ => {
                       {movie.genres}
                     </Typography>
                     {
-                      movie.poster_path ? <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} /> : <img className='resultsPoster' src={Placeholder} alt={movie.title} />
+                      movie.poster_path ? <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} /> : <img className='resultsPoster' src={'https://imdbphotos.s3-us-west-1.amazonaws.com/placeholder_poster.jpg'} alt={movie.title} />
                     }
                   </CardContent>
                 </CardActionArea>
