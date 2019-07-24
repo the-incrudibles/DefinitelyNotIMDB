@@ -11,7 +11,6 @@ const SearchResult = {
           console.log('post')
           SearchResult.postCeleb(id)
           localStorage.setItem('celebID', id)
-          
         } else {
           console.log('put')
           SearchResult.putCeleb(id)

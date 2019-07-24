@@ -11,6 +11,7 @@ import Landing from './Pages/Landing'
 import Latest from './Pages/Latest'
 import Genres from './Pages/Genress'
 import AdminComments from './Pages/AdminComments'
+import WatchList from './Pages/WatchList'
 
 const App = _ => {
   return (
@@ -27,6 +28,7 @@ const App = _ => {
         <Route path='/celebrity' render={_ => (<Celebrity />)} />
         <Route path='/genres' render={_ => (<Genres />)} />
         <Route path='/admincomments' render={_ => (<AdminComments />)} />
+        <Route path='/watchlist' render={_ => (<WatchList />)} />
       </Router>
     </>
   )
