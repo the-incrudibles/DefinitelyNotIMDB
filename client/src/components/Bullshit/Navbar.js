@@ -72,7 +72,7 @@ const Navbar = _ => {
         </ListItem>
         <ListItem>
           <i className='material-icons'>search</i>
-          <Link to='/search' className='drawerLink'><ListItemText primary='Search Movies' /></Link>
+          <Link to='/search' className='drawerLink'><ListItemText primary='Search' /></Link>
         </ListItem>
       </List>
       <Divider />
