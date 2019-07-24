@@ -24,28 +24,30 @@ const SignupForm = _ => {
 
   userState.handleRegisterUser = event => {
     event.preventDefault()
-    console.log(password.current.value)
-
-    axios.post('/register', {
-      name: name.current.value,
-      username: username.current.value,
-      email: email.current.value,
-      password: password.current.value
-    })
-      .then(({ data }) => {
-        console.log(data)
-        if (data.isLoggedIn) {
-          localStorage.setItem('token', data.token)
-          localStorage.setItem('user', data.user)
-          localStorage.setItem('admin', data.admin)
-          setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
-        } else {
-          userState.handleCheckboxClick = _ => {
-            setUserState({ ...userState, checkedA: !userState.checkedA })
-          }
-        }
+    if (userState.checkedA === false || name.current.value === '' || username.current.value === '' || email.current.value === '' || password.current.value === '') {
+      setUserState({ ...userState, failedRegistration: true })
+    } else {
+      axios.post('/register', {
+        name: name.current.value,
+        username: username.current.value,
+        email: email.current.value,
+        password: password.current.value
       })
-      .catch(e => console.error(e))
+        .then(({ data }) => {
+          console.log(data)
+          if (data.isLoggedIn) {
+            localStorage.setItem('token', data.token)
+            localStorage.setItem('user', data.user)
+            localStorage.setItem('admin', data.admin)
+            setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
+          } else {
+            userState.handleCheckboxClick = _ => {
+              setUserState({ ...userState, checkedA: !userState.checkedA })
+            }
+          }
+        })
+        .catch(e => console.error(e))
+    }
   }
 
   userState.handleCancelButton = _ => {
@@ -58,7 +60,6 @@ const SignupForm = _ => {
       password.current.value = ''
     }
   }
-
   userState.setRedirect = _ => {
     setUserState({ ...userState, redirect: true })
   }
@@ -83,12 +84,12 @@ const SignupForm = _ => {
   }, [])
 
   return (
-    <div className='loginDiv'>
+    <div className='containerDiv'>
       {userState.isLoggedIn ? userState.renderRedirect() : null}
 
       {
-        userState.failedRegistration === true ?
-          <div className='blockTypography'>
+        userState.failedRegistration === true
+          ? <div className='blockTypography'>
             <Typography variant='h6' className='failedCardText'>
               * Please be sure to completely fill out the form! *
             </Typography>
@@ -102,8 +103,8 @@ const SignupForm = _ => {
         </div>
 
         {
-          userState.failedRegistration && name.current.value === '' ?
-            <>
+          userState.failedRegistration && name.current.value === ''
+            ? <>
               <TextField
                 label='Full Name'
                 margin='normal'
@@ -123,8 +124,8 @@ const SignupForm = _ => {
         }
 
         {
-          userState.failedRegistration && username.current.value === '' ?
-            <>
+          userState.failedRegistration && username.current.value === ''
+            ? <>
               <TextField
                 label='Username'
                 margin='normal'
@@ -144,8 +145,8 @@ const SignupForm = _ => {
         }
 
         {
-          userState.failedRegistration && email.current.value === '' ?
-            <>
+          userState.failedRegistration && email.current.value === ''
+            ? <>
               <TextField
                 label='Email'
                 margin='normal'
@@ -165,8 +166,8 @@ const SignupForm = _ => {
         }
 
         {
-          userState.failedRegistration && password.current.value === '' ?
-            <>
+          userState.failedRegistration && password.current.value === ''
+            ? <>
               <TextField
                 label='Password'
                 margin='normal'
@@ -187,8 +188,8 @@ const SignupForm = _ => {
 
         <div>
           {
-            userState.failedRegistration && userState.checkedA === false ?
-              <>
+            userState.failedRegistration && userState.checkedA === false
+              ? <>
                 <FormControlLabel
                   control={
                     <Checkbox value='checkedA' onClick={userState.handleCheckboxClick} />
@@ -208,8 +209,8 @@ const SignupForm = _ => {
           }
 
         </div>
-        <div className="loginButtons">
-          <Button variant="contained" id="submitButtons" onClick={userState.handleRegisterUser}>
+        <div className='loginButtons'>
+          <Button variant='contained' id='submitButtons' onClick={userState.handleRegisterUser}>
             Sign Up
           </Button>
           <Button color='primary' onClick={userState.handleCancelButton}>

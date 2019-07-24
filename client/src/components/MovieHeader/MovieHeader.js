@@ -37,7 +37,7 @@ const MovieHeader = _ => {
   const classes = useStyles()
 
   useEffect(_ => {
-    axios.get('https://api.themoviedb.org/3/movie/399579?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US')
+    axios.get(`https://api.themoviedb.org/3/movie/399579?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
       .then(r => {
         setData(r.data)
         console.log(r)
@@ -49,7 +49,7 @@ const MovieHeader = _ => {
       <Paper className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={6}>
-            <img className="movieImg" src="https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Alita_Battle_Angel_%282019_poster%29.png/220px-Alita_Battle_Angel_%282019_poster%29.png" alt="" />
+            <img className='movieImg' src='https://upload.wikimedia.org/wikipedia/en/thumb/e/ee/Alita_Battle_Angel_%282019_poster%29.png/220px-Alita_Battle_Angel_%282019_poster%29.png' alt='' />
             {/* <Card className={classes.card}> */}
             {/* <CardContent> */}
 
@@ -63,15 +63,14 @@ const MovieHeader = _ => {
             {/* </Card> */}
           </Grid>
           <Grid item xs={6}>
-            <Typography variant='h5' component='h3' className="movieText">
+            <Typography variant='h5' component='h3' className='movieText'>
               {data.title}
             </Typography>
-            <Typography component='p' className="movieText">
+            <Typography component='p' className='movieText'>
               Rating: {data.vote_average}
             </Typography>
             <Grid container>
-              <Grid item xs={5}>
-              </Grid>
+              <Grid item xs={5} />
               <Grid item xs={7}>
                 <AddWatchListButton />
               </Grid>
