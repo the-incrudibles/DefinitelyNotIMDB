@@ -64,7 +64,7 @@ const Navbar = _ => {
         </ListItem>
         <ListItem>
           <i className='material-icons'>new_releases</i>
-          <Link to='/latest' className='drawerLink'><ListItemText primary='Latest Movies' /></Link>
+          <Link to='/latest' className='drawerLink'><ListItemText primary='In Theaters' /></Link>
         </ListItem>
         <ListItem>
           <i className='material-icons'>local_movies</i>
