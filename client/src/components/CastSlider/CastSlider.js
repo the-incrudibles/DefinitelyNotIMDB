@@ -35,7 +35,7 @@ const CastSlider = _ => {
   const classes = useStyles()
 
   const renderCast= _ => {
-    axios.get(`https://api.themoviedb.org/3/movie/${localStorage.getItem('movieID')}/credits?api_key=d12a96cdcfe3d81297140ffea9dca118`)
+    axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}/credits?api_key=d12a96cdcfe3d81297140ffea9dca118`)
       .then(({data}) =>{
         setCastSlidersState(data.cast)
       })
