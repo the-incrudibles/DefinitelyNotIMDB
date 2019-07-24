@@ -1,1 +1,1 @@
-export { default } from './Genre.js'
+export { default } from './genrePage.js'

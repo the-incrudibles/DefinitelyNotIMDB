@@ -20,37 +20,38 @@ const AddMovieComments = _ => {
   const classes = useStyles()
   const [newCommentState, setNewCommentState] = useState({ comment: '' })
 
-  const fetchCommentsAgain = _ => {
+    const fetchCommentsAgain = _ =>{
+      // axios.get(`/movie`)
+    }
 
-  }
-
-  const handleAddComment = event => {
-    event.preventDefault()
-    console.log('button works')
-    // create ulils for post comment
-    axios.post(`/movie`, {
-      comment: comment.current.value
-    })
-      .then(_ => {
-        console.log('it worked')
-      })
-      .catch(e => console.log('message not sent'))
-  }
-  return (
-    <div>
-      <form>
-        <TextField
-          id='outlined-full-width'
-          label='Comment'
-          style={{ margin: 8 }}
-          placeholder='Leave a comment'
-          fullWidth
-          margin='normal'
-          variant='outlined'
-          ref={comment}
-          InputLabelProps={{
-            shrink: true
-          }}
+    const handleAddComment = event =>{
+        event.preventDefault()
+        console.log('button works')
+        // create ulils for post comment  
+        axios.post(`/movie/`,{
+            comment: comment.current.value
+        })
+            .then(_ => {
+                console.log('it worked')
+            })
+            .catch(e => console.log('message not sent'))
+            
+    }
+    return(
+        <div>
+            <form>
+            <TextField
+            id="outlined-full-width"
+            label="Comment"
+            style={{ margin: 8 }}
+            placeholder="Leave a comment"
+            fullWidth
+            margin="normal"
+            variant="outlined"
+            ref={comment}
+            InputLabelProps={{
+            shrink: true,
+            }}
         />
         <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.button}
           onClick={handleAddComment}>

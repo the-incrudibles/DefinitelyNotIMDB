@@ -90,6 +90,7 @@ code {
 
 .movieText {
   text-align: center;
+  margin: auto;
 }
 
 .addWatchlistButton {
@@ -130,5 +131,20 @@ code {
 }
 
 .MuiCardContent-root, .MuiCardActions-root {
-  background-color: #e0e2d5
+  background-color: #f7f6f0
+}
+
+.cardTypography {
+  margin-top: 25px;
+  text-align: left;
+}
+
+.cardLink {
+  text-decoration: none;
+}
+
+.genreChips {
+  margin: auto;
+  text-align: center;
+  margin-top: 5px;
 }

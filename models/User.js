@@ -3,6 +3,7 @@ module.exports = (Schema, model) => {
     name: String,
     username: String,
     email: String,
+    watchlist: Array,
     admin: { type: Boolean, default: false }
   })
 

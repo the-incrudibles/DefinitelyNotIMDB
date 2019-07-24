@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import { Link } from 'react-router-dom'
 
 // Material-UI imports:
 import OutlinedInput from '@material-ui/core/OutlinedInput'
@@ -33,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const TestSearch = _ => {
+const TestSearch = props => {
   const classes = useStyles()
 
   const inputLabel = useRef()
@@ -43,7 +44,7 @@ const TestSearch = _ => {
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth)
   }, [])
-
+  console.log(props)
   // Sammi's code:
   const [searchState, setSearchState] = useState({
     searchArea: '',
@@ -56,8 +57,7 @@ const TestSearch = _ => {
     searchCelebs: false,
     searchForCeleb: id => SearchResult.axiosForCeleb(id),
     searchForMovie: id => SearchResult.axiosForMovie(id),
-    searchForShow: id => SearchResult.axiosForShow(id),
-    incompleteSearch: false
+    searchForShow: id => SearchResult.axiosForShow(id)
   })
 
   const searchTerm = useRef()
@@ -70,7 +70,7 @@ const TestSearch = _ => {
     e.preventDefault()
     // if title
     if (searchState.searchArea === 'movie' && searchTerm.current.value !== '') {
-      axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&query=${searchTerm.current.value}&page=1&include_adult=false`)
         .then(({ data }) => {
           searchTerm.current.value = ''
           setSearchState({ ...searchState, movies: data.results, searchArea: '', searchMovies: true, searchTV: false, searchCelebs: false, incompleteSearch: false })
