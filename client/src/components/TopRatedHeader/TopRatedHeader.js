@@ -27,7 +27,7 @@ const TopRatedHeader=_=> {
           titleArr:elem.title,
           overviewArr:elem.overview
         })
-      }
+      })
       
       setTopRatedState({...topRatedState,topRatedMovie:topMovieArr})
     
