@@ -1,1 +1,1 @@
-export {default } from './MyWatchList.js'
+export { default } from './MyWatchList.js'

@@ -20,7 +20,7 @@ module.exports = app => {
   })
 
   app.put('/comment/:id', (req, res) => {
-    Comment.findOneAndUpdate({ id: req.params.id }, req.body )
+    Comment.findOneAndUpdate({ id: req.params.id }, req.body)
       .then(_ => res.sendStatus(200))
       .catch(e => console.log(e))
   })

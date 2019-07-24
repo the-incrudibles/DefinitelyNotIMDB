@@ -4,7 +4,7 @@ import MyWatchList from '../../components/MyWatchList'
 const WatchList = _ => {
   return (
     <>
-        <MyWatchList />
+      <MyWatchList />
     </>
   )
 }
