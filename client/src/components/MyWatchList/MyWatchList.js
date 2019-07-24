@@ -97,7 +97,7 @@ const MyWatchList = _ => {
                               View
                     </Button>
                     <Button size='small' color='primary'>
-                              Rate
+                              Remove
                     </Button>
                   </CardActions>
                 </Card>
