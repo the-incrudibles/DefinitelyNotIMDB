@@ -78,10 +78,18 @@ const SearchResult = {
       .then(movie => {
         if (!movie.data) {
           console.log('post')
-          SearchResult.postMovie(id)
+          axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
+            .then(({ data: movie }) => {
+              axios.post('/movie', { movie })
+            })
+            .catch(e => console.log(e))
         } else {
           console.log('put')
-          SearchResult.putMovie(id)
+          axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
+            .then(({ data: movie }) => {
+              axios.put(`/movie/${movie.id}`, { movie })
+            })
+            .catch(e => console.log(e))
         }
       })
       .catch(e => console.log(e))

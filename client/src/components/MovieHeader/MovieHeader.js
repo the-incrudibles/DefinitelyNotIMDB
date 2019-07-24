@@ -32,45 +32,45 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const MovieHeader = _ => {
+  const [movieState, setMovieState] = useState({
+    movie: {},
+    renderMovie: _ => {
+      console.log('has run')
+      axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
+        .then(({ data }) => {
+          if (!data) {
+            movieState.renderMovie()
+          } else {
+            setMovieState({ ...movieState, movie: data })
+            console.log(data)
+          }
+        })
+        .catch(e => console.log(e))
+    }
+  })
+
   const [data, setData] = useState({ genres: [] })
-  const [movieState, setMovieState] = useState([])
-  
+
   const classes = useStyles()
 
-  movieState.renderMovie = _ =>{
-    const [movieState, setMovieState] = useState({
-        movie: {},
-        renderMovie: _ => {
-          console.log('has run')
-          axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
-            .then(({ data }) => {
-              if (!data) {
-                movieState.renderMovie()
-              } else {
-                setMovieState({ ...movieState, movie: data })
-                console.log(data)
-              }
-            })
-            .catch(e => console.log(e))
-        }
-      })    
-      useEffect(_ => {
-        movieState.renderMovie()
-      }, [])
+  useEffect(_ => {
+    movieState.renderMovie()
+  }, [])
 
   return (
     <div>
+      {console.log(movieState.movie)}
       <Paper className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={6}>
-          <img className="movieImg" src={`https://image.tmdb.org/t/p/original${movieState.poster_path}`} alt="" />
+            <img className="movieImg" src={`https://image.tmdb.org/t/p/original${movieState.movie.poster_path}`} alt="" />
           </Grid>
           <Grid item xs={6}>
             <Typography variant='h5' component='h3'>
-              {movieState.title}
+              {movieState.movie.title}
             </Typography>
             <Typography component='p'>
-                Rating: {movieState.vote_average}
+              Rating: {movieState.movie.vote_average}
             </Typography>
             <Typography>
               <AddWatchListButton />
@@ -96,7 +96,7 @@ const MovieHeader = _ => {
             <strong>Overview</strong>
           </Typography>
           <Typography>
-            {movieState.overview}
+            {movieState.movie.overview}
           </Typography>
         </Grid>
       </Paper>
