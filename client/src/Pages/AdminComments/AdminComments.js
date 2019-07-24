@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import DeleteCommentButton from '../DeleteCommentButton/DeleteCommentButton'
+import DeleteCommentButton from '../../components/DeleteCommentButton'
 import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -50,7 +50,7 @@ const AdminComments = _ => {
       <List className={classes.root}>
                     {
                         // change commentData to comments when available
-                    commentState.comments.map(comment => (
+                    commentsState.comments.map(comment => (
                         <ListItem alignItems="flex-start">
                         <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
@@ -64,9 +64,9 @@ const AdminComments = _ => {
                                 className={classes.inline}
                                 color="textPrimary"
                             >
-                                {'comments.name'}
+                                {'comment.name'}
                             </Typography>
-                            {'- ' + 'comments.comment'}
+                            {'- ' + 'comment.comment'}
                             </React.Fragment>
                     }
                         />
