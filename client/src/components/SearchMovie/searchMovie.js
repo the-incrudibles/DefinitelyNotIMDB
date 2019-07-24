@@ -43,7 +43,7 @@ const SearchMovie = _ => {
               <CardActions>
                 <Button className={movie.id} size='small' color='primary'>
                   More Info
-                  </Button>
+                </Button>
               </CardActions>
             </Card>
             // </Link>
