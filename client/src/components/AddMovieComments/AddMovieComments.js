@@ -11,10 +11,12 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const AddMovieComments = _ => {
-  const comment = useRef()
+  const text = useRef()
 
   const classes = useStyles()
-  const [newCommentState, setNewCommentState] = useState({ comment: '' })
+  const [newCommentState, setNewCommentState] = useState({
+    comments:[]
+  })
 
   const fetchComments = _ => {
     // axios.get(`/movie`)
@@ -24,8 +26,11 @@ const AddMovieComments = _ => {
     event.preventDefault()
     console.log('button works')
     // create ulils for post comment
-    axios.post(`/movie/`, {
-      comment: comment.current.value
+    axios.post(`/comments/${'id'}`, {
+      text: text.current.value,
+      author: localStorage.getItem('user'),
+      flagged: false,
+      movie: parseInt(localStorage.getItem('movieID'))
     })
       .then(_ => {
         console.log('it worked')
@@ -43,7 +48,7 @@ const AddMovieComments = _ => {
           fullWidth
           margin='normal'
           variant='outlined'
-          ref={comment}
+          ref={text}
           InputLabelProps={{
             shrink: true
           }}
