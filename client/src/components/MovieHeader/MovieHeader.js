@@ -58,10 +58,7 @@ const MovieHeader = _ => {
 
   return (
     <div>
-<<<<<<< HEAD
-=======
       {console.log(movieState.movie.genres)}
->>>>>>> master
       <Paper className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={6}>
