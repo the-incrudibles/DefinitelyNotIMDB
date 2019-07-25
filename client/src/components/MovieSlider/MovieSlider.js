@@ -35,7 +35,6 @@ const MovieSlider = _ => {
   const classes = useStyles()
 
   const renderMovie = _ => {
-    // axios.get(`https://api.themoviedb.org/3/person/{person_id}?api_key=<<api_key>>&language=en-US`)
     axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('celebID'))}/credits?api_key=${process.env.REACT_APP_TMDB_APIKEY}`)
       .then(({ data }) => {
         setMovieSlidersState(data.movie)

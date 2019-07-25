@@ -48,7 +48,6 @@ const CastSlider = _ => {
     <div className={classes.rootTwo}>
       <GridList className={classes.gridList} cols={2.5}>
         {
-          // change to tileData to casts
           castSlidersState.map(cast => (
             <GridListTile key='' item>
               {cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={cast.name} /> : <img src='' alt='' />}
