@@ -9,8 +9,8 @@ import Typography from '@material-ui/core/Typography'
 import axios from 'axios'
 import Paper from '@material-ui/core/Paper'
 import AddCelebrityComments from '../AddCelebrityComments'
-import ReportCommentButton from '../ReportCommentButton/ReportCelebrityCommentButton'
-import DeleteCommentButton from '../DeleteCommentButton/DeleteCelebrityCommentButton'
+import ReportCommentButton from '../ReportCommentButton/ReportCommentButton'
+import DeleteCommentButton from '../DeleteCommentButton/DeleteCommentButton'
 
 import commentData from './commentData'
 
