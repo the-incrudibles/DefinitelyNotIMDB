@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import tileData from './tileData.js'
+// import tileData from './tileData.js'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
@@ -25,24 +25,25 @@ const useStyles = makeStyles(theme => ({
   },
   titleBar: {
     background:
-          'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
-          'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)'
+      'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+      'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)'
   }
 }))
 
-const CastSlider = _ => {
-  const [castSlidersState, setCastSlidersState] = useState([])
+const MovieSlider = _ => {
+  const [movieSlidersState, setMovieSlidersState] = useState([])
   const classes = useStyles()
 
-  const renderCast= _ => {
-    axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}/credits?api_key=${process.env.REACT_APP_TMDB_APIKEY}`)
-      .then(({data}) =>{
-        setCastSlidersState(data.cast)
+  const renderMovie = _ => {
+    // axios.get(`https://api.themoviedb.org/3/person/{person_id}?api_key=<<api_key>>&language=en-US`)
+    axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('celebID'))}/credits?api_key=${process.env.REACT_APP_TMDB_APIKEY}`)
+      .then(({ data }) => {
+        setMovieSlidersState(data.movie)
       })
       .catch(e => console.error(e))
   }
   useEffect(_ => {
-    renderCast()
+    renderMovie()
   }, [])
 
   return (
@@ -50,12 +51,12 @@ const CastSlider = _ => {
       <GridList className={classes.gridList} cols={2.5}>
         {
           // change to tileData to casts
-          castSlidersState.map(cast => (
+          movieSlidersState.map(movie => (
             <GridListTile key='' item>
-              {cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={''} /> : <img src='' />}
+              {movieSlidersState.data.movie.poster_path ? <img src={`https://image.tmdb.org/t/p/original${movieSlidersState.data.movie.poster_path}`} alt={''} /> : null}
               <Link to='/'>
                 <GridListTileBar
-                  title={cast.name}
+                  title={movieSlidersState.data.title}
                   titlePosition='top'
                   actionPosition='left'
                   className={classes.titleBar}
@@ -69,4 +70,4 @@ const CastSlider = _ => {
   )
 }
 
-export default CastSlider
+export default MovieSlider

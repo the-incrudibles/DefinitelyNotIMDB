@@ -8,9 +8,9 @@ import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
 import axios from 'axios'
 import Paper from '@material-ui/core/Paper'
-import AddMovieComments from '../AddMovieComments'
-import ReportCommentButton from '../ReportCommentButton/ReportCommentButton'
-import DeleteCommentButton from '../DeleteCommentButton/DeleteCommentButton'
+import AddCelebrityComments from '../AddCelebrityComments'
+import ReportCommentButton from '../ReportCommentButton/ReportCelebrityCommentButton'
+import DeleteCommentButton from '../DeleteCommentButton/DeleteCelebrityCommentButton'
 
 import commentData from './commentData'
 
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     color: 'red'
   }
 }))
-const MovieComments = _ => {
+const CelebrityComments = _ => {
   const [commentsState, setCommentsState] = useState([])
   const classes = useStyles()
 
@@ -49,24 +49,24 @@ const MovieComments = _ => {
     <div>
       <Paper className={classes.rootTwo}>
         <Typography>
-                Leave a comment below!
-        </Typography>
+          Leave a comment below!
+            </Typography>
         <List className={classes.root}>
           {
             // change commentData to comments when available
             commentData.map(data => (
-              <ListItem alignItems='flex-start'>
+              <ListItem alignItems="flex-start">
                 <ListItemAvatar>
-                  <Avatar alt='Remy Sharp' src='https://image.flaticon.com/icons/svg/195/195158.svg' />
+                  <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
                 </ListItemAvatar>
                 <ListItemText
                   secondary={
                     <React.Fragment>
                       <Typography
-                        component='span'
-                        variant='body2'
+                        component="span"
+                        variant="body2"
                         className={classes.inline}
-                        color='textPrimary'
+                        color="textPrimary"
                       >
                         {data.name}
                       </Typography>
@@ -80,10 +80,10 @@ const MovieComments = _ => {
             ))
           }
         </List>
-        <AddMovieComments />
+        <AddCelebrityComments />
       </Paper>
     </div>
   )
 }
 
-export default MovieComments
+export default CelebrityComments
