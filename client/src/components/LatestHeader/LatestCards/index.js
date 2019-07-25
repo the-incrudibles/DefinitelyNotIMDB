@@ -1,1 +1,1 @@
-export {default} from './LatestCards.js'
+export { default } from './LatestCards.js'

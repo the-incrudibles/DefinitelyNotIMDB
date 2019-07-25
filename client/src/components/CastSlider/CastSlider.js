@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import tileData from './tileData.js'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
@@ -41,9 +41,9 @@ const CastSlider = _ => {
       })
       .catch(e => console.error(e))
   }
-useEffect(_=>{
-  renderCast()
-},[])
+  useEffect(_ => {
+    renderCast()
+  }, [])
 
   return (
     <div className={classes.rootTwo}>
@@ -51,18 +51,18 @@ useEffect(_=>{
         {
           // change to tileData to casts
           castSlidersState.map(cast => (
-          <GridListTile key='' item>
-            {cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={''} /> : <img src="" />}
-            <Link to='/'>
-              <GridListTileBar
-                title={cast.name}
-                titlePosition='top'
-                actionPosition='left'
-                className={classes.titleBar}
-              />
-            </Link>
-          </GridListTile>
-        ))
+            <GridListTile key='' item>
+              {cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={''} /> : <img src='' />}
+              <Link to='/'>
+                <GridListTileBar
+                  title={cast.name}
+                  titlePosition='top'
+                  actionPosition='left'
+                  className={classes.titleBar}
+                />
+              </Link>
+            </GridListTile>
+          ))
         }
       </GridList>
     </div>

@@ -51,18 +51,18 @@ const AdminComments = _ => {
         {
           // change commentData to comments when available
           commentsState.comments.map(comment => (
-            <ListItem alignItems="flex-start">
+            <ListItem alignItems='flex-start'>
               <ListItemAvatar>
-                <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
+                <Avatar alt='Remy Sharp' src='https://image.flaticon.com/icons/svg/195/195158.svg' />
               </ListItemAvatar>
               <ListItemText
                 secondary={
                   <React.Fragment>
                     <Typography
-                      component="span"
-                      variant="body2"
+                      component='span'
+                      variant='body2'
                       className={classes.inline}
-                      color="textPrimary"
+                      color='textPrimary'
                     >
                       {'comment.name'}
                     </Typography>

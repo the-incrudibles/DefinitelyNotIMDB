@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
 const genreResultsContext = createContext({
-  movies: []
+  genreResultsMovies: []
 })
 
 export default genreResultsContext

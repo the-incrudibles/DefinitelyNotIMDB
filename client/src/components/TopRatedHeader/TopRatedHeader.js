@@ -5,7 +5,6 @@ import topRatedContext from '../../utils/topRatedContext'
 import Typography from '@material-ui/core/Typography'
 
 const TopRatedHeader = _ => {
-
   const [topRatedState, setTopRatedState] = useState(
     {
       topRatedMovie: []
@@ -14,10 +13,10 @@ const TopRatedHeader = _ => {
   useEffect(_ => {
     axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_APIKEY}`)
       .then(r => {
-
         let topMovieArr = []
         r.data.results.map(elem => {
           topMovieArr.push({
+            id: elem.id,
             imageArr: 'https://image.tmdb.org/t/p/original' + elem.poster_path,
             titleArr: elem.title,
             overviewArr: elem.overview
@@ -25,16 +24,12 @@ const TopRatedHeader = _ => {
         })
 
         setTopRatedState({ ...topRatedState, topRatedMovie: topMovieArr })
-
       })
       .catch(e => console.log('error:', e))
   }, [])
 
-
-
-
   return (
-    <div className="containerDiv">
+    <div className='containerDiv'>
       <div className='searchTypography'>
         <Typography variant='h6'>Trending Movies</Typography>
       </div>
@@ -49,6 +44,5 @@ const TopRatedHeader = _ => {
       })}
     </div>
   )
-
 }
 export default TopRatedHeader
