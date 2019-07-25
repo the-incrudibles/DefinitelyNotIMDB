@@ -9,7 +9,6 @@ const Genre = _ => {
       GenreCalls.getThoseGenres()
         .then(({ data }) => {
           setGenreState({ ...genreState, genres: data })
-          console.log(data)
         })
         .catch(e => console.log(e))
     },
@@ -44,8 +43,6 @@ const Genre = _ => {
           )
         })
       }
-      {/* I only had GenreResults render here so that I could see and test stuff with it */}
-      {/* <GenreResults /> */}
     </>
   )
 }

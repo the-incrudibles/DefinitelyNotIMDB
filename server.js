@@ -36,6 +36,5 @@ require('./routes')(app)
 require('mongoose').connect(process.env.MONGO_LINK, { useNewUrlParser: true, useFindAndModify: true, useCreateIndex: true })
   .then(_ => {
     app.listen(process.env.PORT || 3001)
-    console.log('png')
   })
   .catch(e => console.log(e))

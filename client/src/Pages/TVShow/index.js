@@ -1,1 +1,1 @@
-export {default} from './TVShow.js'
+export { default } from './TVShow.js'
