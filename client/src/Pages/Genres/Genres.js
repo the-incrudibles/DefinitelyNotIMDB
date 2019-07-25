@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import GenreCalls from '../../utils/genreCalls.js'
-// import GenreResults from '../../components/GenreResults'
 
 const Genre = _ => {
   const [genreState, setGenreState] = useState({
