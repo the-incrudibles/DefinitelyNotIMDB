@@ -59,7 +59,7 @@ const LoginForm = _ => {
       .catch(_ => {
         setUserState({ ...userState, isLoggedIn: false, user: '' })
       })
-  },)
+  })
 
   return (
     <div className='containerDiv'>

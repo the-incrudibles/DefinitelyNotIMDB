@@ -18,9 +18,6 @@ const AddMovieComments = _ => {
   //   comments: []
   // })
 
-
-
-
   const handleAddComment = event => {
     event.preventDefault()
     // create ulils for post comment

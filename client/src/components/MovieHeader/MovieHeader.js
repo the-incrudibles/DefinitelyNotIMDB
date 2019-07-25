@@ -37,14 +37,14 @@ const MovieHeader = _ => {
   const [movieState, setMovieState] = useState({
     movie: {},
     renderMovie: _ => {
-    axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
-    //   axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
+      axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
+      //   axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
         .then(({ data }) => {
           if (!data) {
             movieState.renderMovie()
           } else {
-            setMovieState({ ...movieState, movie: data})
-            setData({...data, genres: data.genres})
+            setMovieState({ ...movieState, movie: data })
+            setData({ ...data, genres: data.genres })
             console.log(data)
           }
         })
@@ -56,53 +56,53 @@ const MovieHeader = _ => {
 
   useEffect(_ => {
     movieState.renderMovie()
-  },)
+  }, [])
 
   return (
     <div>
       <Paper className={classes.root}>
         <div>
-        <Grid container spacing={1}>
-          <Grid item xs={6}>
-            <img className='movieImg' src={`https://image.tmdb.org/t/p/original${movieState.movie.poster_path}`} alt='' />
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant='h5' component='h3'>
-              {movieState.movie.title}
-            </Typography>
-            <Typography component='p'>
+          <Grid container spacing={1}>
+            <Grid item xs={6}>
+              <img className='movieImg' src={`https://image.tmdb.org/t/p/original${movieState.movie.poster_path}`} alt='' />
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant='h5' component='h3'>
+                {movieState.movie.title}
+              </Typography>
+              <Typography component='p'>
               Rating: {movieState.movie.vote_average}
+              </Typography>
+              <Typography>
+                <AddWatchListButton />
+              </Typography>
+              <div className='genreChips'>
+                {
+                  data.genres.map(genre =>
+                    <Link to='/genre' onClick={_ => {
+                      localStorage.setItem('genreID', genre.id)
+                      localStorage.setItem('genreName', genre.name)
+                    }}>
+                      <Chip
+                        size='small'
+                        label={genre.name}
+                        className={classes.chip}
+                        component='a'
+                        clickable
+                        color='primary'
+                      />
+                    </Link>
+                  )
+                }
+              </div>
+            </Grid>
+            <Typography variant='h6' gutterBottom>
+              <strong>Overview</strong>
             </Typography>
             <Typography>
-              <AddWatchListButton />
+              {movieState.movie.overview}
             </Typography>
-            <div className='genreChips'>
-              {
-                data.genres.map(genre =>
-                  <Link to='/genre' onClick={_ => {
-                    localStorage.setItem('genreID', genre.id)
-                    localStorage.setItem('genreName', genre.name)
-                  }}>
-                    <Chip
-                      size='small'
-                      label={genre.name}
-                      className={classes.chip}
-                      component='a'
-                      clickable
-                      color='primary'
-                    />
-                  </Link>
-                )
-              }
-            </div>
           </Grid>
-          <Typography variant='h6' gutterBottom>
-            <strong>Overview</strong>
-          </Typography>
-          <Typography>
-            {movieState.movie.overview}
-          </Typography>
-        </Grid>
         </div>
       </Paper>
     </div>
