@@ -36,21 +36,14 @@ const MovieHeader = _ => {
   const [movieState, setMovieState] = useState({
     movie: {},
     renderMovie: _ => {
-<<<<<<< HEAD
     // axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
-=======
->>>>>>> master
       axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
         .then(({ data }) => {
           if (!data) {
             movieState.renderMovie()
           } else {
-<<<<<<< HEAD
             setMovieState({ ...movieState, movie: data})
             setData({...data, genres: data.genres})
-=======
-            setMovieState({ ...movieState, movie: data })
->>>>>>> master
           }
         })
         .catch(e => console.log(e))
