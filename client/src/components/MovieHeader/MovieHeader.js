@@ -77,7 +77,7 @@ const MovieHeader = _ => {
             </Typography>
             <div className='genreChips'>
               {
-                datax .genres.map(genre =>
+                data.genres.map(genre =>
                   <Chip
                     size='small'
                     label={genre.name}
