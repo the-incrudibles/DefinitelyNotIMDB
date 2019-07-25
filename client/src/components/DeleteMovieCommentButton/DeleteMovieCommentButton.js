@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
-const DeleteCommentButton = _ => {
+const DeleteMovieCommentButton = _ => {
   const [isAdminState, setIsAdmindState] = useState({
     isAdmin: false
   })
@@ -47,4 +47,4 @@ const DeleteCommentButton = _ => {
   )
 }
 
-export default DeleteCommentButton
+export default DeleteMovieCommentButton

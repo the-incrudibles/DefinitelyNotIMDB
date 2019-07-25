@@ -9,9 +9,8 @@ import Typography from '@material-ui/core/Typography'
 import axios from 'axios'
 import Paper from '@material-ui/core/Paper'
 import AddMovieComments from '../AddMovieComments'
-import ReportCommentButton from '../ReportCommentButton/ReportCommentButton'
-import DeleteCommentButton from '../DeleteCommentButton/DeleteCommentButton'
-
+import ReportMovieCommentButton from '../ReportMovieCommentButton'
+import DeleteMovieCommentButton from '../DeleteMovieCommentButton'
 import commentData from './commentData'
 
 const useStyles = makeStyles(theme => ({
@@ -74,8 +73,8 @@ useEffect(_ =>{
                             </React.Fragment>
                     }
                         />
-                        <ReportCommentButton/>
-                        <DeleteCommentButton/>
+                        <ReportMovieCommentButton/>
+                        <DeleteMovieCommentButton/>
                     </ListItem>
                     ))
                     }

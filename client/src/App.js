@@ -12,6 +12,7 @@ import Latest from './Pages/Latest'
 import Genres from './Pages/Genres'
 import AdminComments from './Pages/AdminComments'
 import WatchList from './Pages/WatchList'
+import TVShow from './Pages/TVShow'
 
 const App = _ => {
   return (
@@ -29,6 +30,7 @@ const App = _ => {
         <Route path='/genres' render={_ => (<Genres />)} />
         <Route path='/admincomments' render={_ => (<AdminComments />)} />
         <Route path='/watchlist' render={_ => (<WatchList />)} />
+        <Route path='/tvshow' render={_ => (<TVShow />)} />
       </Router>
     </>
   )
