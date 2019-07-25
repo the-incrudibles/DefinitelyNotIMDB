@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import SearchContext from '../../utils/searchContext'
 import Typography from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card'
@@ -26,7 +27,7 @@ const searchTV = _ => {
                   {
                     show.poster_path ? <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${show.poster_path}`} alt={show.title} /> : <img className='resultsPoster' src={Placeholder} alt={show.title} />
                   }
-                  <div className="cardTypography">
+                  <div className='cardTypography'>
                     <Typography variant='body2' color='textSecondary' component='p'>
                       {show.overview ? <> {show.overview.slice(0, 150)}<span>...</span> </> : null}
                     </Typography>

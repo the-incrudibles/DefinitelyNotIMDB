@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import { Link } from 'react-router-dom'
 
 // Material-UI imports:
 import OutlinedInput from '@material-ui/core/OutlinedInput'
@@ -19,6 +20,7 @@ import SearchContext from '../../utils/searchContext'
 import SearchMovie from '../../components/SearchMovie'
 import SearchTV from '../../components/SearchTV'
 import SearchCelebrities from '../../components/SearchCelebrities'
+import { BottomNavigationAction } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const TestSearch = _ => {
+const TestSearch = props => {
   const classes = useStyles()
 
   const inputLabel = useRef()
@@ -43,7 +45,7 @@ const TestSearch = _ => {
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth)
   }, [])
-
+  console.log(props)
   // Sammi's code:
   const [searchState, setSearchState] = useState({
     searchArea: '',
@@ -51,16 +53,9 @@ const TestSearch = _ => {
     shows: [],
     celebs: [],
     searchTerm: '',
-    searchMovies: false,
-    searchTV: false,
-    searchCelebs: false,
     searchForCeleb: id => SearchResult.axiosForCeleb(id),
-    searchForMovie: id => SearchResult.axiosForMovie(id),
+    searchForMovie: id => { SearchResult.axiosForMovie(id) },
     searchForShow: id => SearchResult.axiosForShow(id)
-    // incompleteSearch: false,
-    // movieRedirect: false,
-    // showRedirect: false,
-    // celebRedirect: false
   })
 
   const searchTerm = useRef()

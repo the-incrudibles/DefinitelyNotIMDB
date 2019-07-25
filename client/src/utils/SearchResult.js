@@ -1,5 +1,5 @@
-import React, { Link } from 'react'
-import { Redirect } from 'react-router-dom'
+import React from 'react'
+import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 
 const SearchResult = {
@@ -14,7 +14,7 @@ const SearchResult = {
         } else {
           console.log('put')
           SearchResult.putCeleb(id)
-          localStorage.setItem('celebID', id)
+          localStorage.clear('celebID')
         }
       })
       .catch(e => console.log(e))

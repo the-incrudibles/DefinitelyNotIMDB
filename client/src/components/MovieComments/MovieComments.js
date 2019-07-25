@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
-import Divider from '@material-ui/core/Divider'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
@@ -10,9 +9,8 @@ import Typography from '@material-ui/core/Typography'
 import axios from 'axios'
 import Paper from '@material-ui/core/Paper'
 import AddMovieComments from '../AddMovieComments'
-import ReportCommentButton from '../ReportCommentButton/ReportCommentButton'
-import DeleteCommentButton from '../DeleteCommentButton/DeleteCommentButton'
-
+import ReportMovieCommentButton from '../ReportMovieCommentButton'
+import DeleteMovieCommentButton from '../DeleteMovieCommentButton'
 import commentData from './commentData'
 
 const useStyles = makeStyles(theme => ({
@@ -32,61 +30,59 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 const MovieComments = _ => {
-  const [commentsState, setCommentsState] = useState({
-      comments: []
-  })
+  const [commentsState, setCommentsState] = useState([])
   const classes = useStyles()
 
-//   fetch movie comments
-commentsState.renderComments = _ => {
+  //   fetch movie comments
+  commentsState.renderComments = _ => {
     axios.get(`/comments/${'id'}`)
       .then(({ data }) => {
-        setCommentsState({ ...commentsState, comments: data })
+        setCommentsState(data.comments)
       })
   }
-useEffect(_ =>{
+  useEffect(_ => {
     commentsState.renderComments()
-}, [])
+  }, [])
 
-    return(
-        <div>
-            <Paper className={classes.rootTwo}>
-            <Typography>
+  return (
+    <div>
+      <Paper className={classes.rootTwo}>
+        <Typography>
                 Leave a comment below!
-            </Typography>
-            <List className={classes.root}>
-                    {
-                        // change commentData to comments when available
-                    commentData.map(data => (
-                        <ListItem alignItems="flex-start">
-                        <ListItemAvatar>
-                        <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
-                        </ListItemAvatar>
-                        <ListItemText
-                        secondary={
-                            <React.Fragment>
-                            <Typography
-                                component="span"
-                                variant="body2"
-                                className={classes.inline}
-                                color="textPrimary"
-                            >
-                                {data.name}
-                            </Typography>
-                            {'- ' + data.comment}
-                            </React.Fragment>
-                    }
-                        />
-                        <ReportCommentButton/>
-                        <DeleteCommentButton/>
-                    </ListItem>
-                    ))
-                    }
-            </List>
-            <AddMovieComments />
-            </Paper>
-     </div>
-    )
+        </Typography>
+        <List className={classes.root}>
+          {
+            // change commentData to comments when available
+            commentsState.map(data => (
+              <ListItem alignItems='flex-start'>
+                <ListItemAvatar>
+                  <Avatar alt='Remy Sharp' src='https://image.flaticon.com/icons/svg/195/195158.svg' />
+                </ListItemAvatar>
+                <ListItemText
+                  secondary={
+                    <React.Fragment>
+                      <Typography
+                        component='span'
+                        variant='body2'
+                        className={classes.inline}
+                        color='textPrimary'
+                      >
+                        {data.name}
+                      </Typography>
+                      {'- ' + data.comment}
+                    </React.Fragment>
+                  }
+                />
+                <ReportMovieCommentButton />
+                <DeleteMovieCommentButton />
+              </ListItem>
+            ))
+          }
+        </List>
+        <AddMovieComments />
+      </Paper>
+    </div>
+  )
 }
 
 export default MovieComments

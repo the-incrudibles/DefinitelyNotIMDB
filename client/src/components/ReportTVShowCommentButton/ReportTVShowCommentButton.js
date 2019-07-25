@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Flag from '@material-ui/icons/Flag'
-import axios from 'axios'
 import { makeStyles } from '@material-ui/styles'
 import IconButton from '@material-ui/core/IconButton'
 
@@ -8,46 +7,45 @@ const useStyles = makeStyles(theme => ({
   flagNotReport: {
     color: 'black'
   },
-  flagIsReport:{
-      color: 'red'
+  flagIsReport: {
+    color: 'red'
   }
-  
+
 }))
-const ReportButton = _ => {
+const ReportTVShowCommentButton = _ => {
   const [reportCommentState, setReportCommentState] = useState({
     isReport: false
   })
   const classes = useStyles()
 
-const handleReportComment = _ =>{
-    // axios.put(`/movie/comment/id`)
+  const handleReportComment = _ => {
+    // axios.put(`/tv/comment/id`)
     //     .then(_=>{
     //         console.log('success')
     //         setReportCommentState({...reportCommentState, isReport:true})
 
     //     })
     //     .catch(e => console.log('not updated'))
-    setReportCommentState({...reportCommentState, isReport:true})
+    setReportCommentState({ ...reportCommentState, isReport: true })
 
-}
+  }
 
-    return( 
-        <>
-
-        <div>
-            {
-            reportCommentState.isReport === false ?
+  return (
+    <>
+      <div>
+        {
+          reportCommentState.isReport === false ?
             <IconButton onClick={handleReportComment}>
-                <Flag className={classes.flagNotReport}/>
+              <Flag className={classes.flagNotReport} />
             </IconButton>
             :
             <IconButton onClick={handleReportComment}>
-                <Flag className={classes.flagIsReport}/>
+              <Flag className={classes.flagIsReport} />
             </IconButton>
-            }
-        </div>
-        </>
-    )
+        }
+      </div>
+    </>
+  )
 }
 
-export default ReportButton
+export default ReportTVShowCommentButton

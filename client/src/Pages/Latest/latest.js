@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import LatestHeader from '../../components/LatestHeader'
 
 const Latest = _ => {
   return (
-    <>
-      <div>
-        <h1>these are the latest movies</h1>
-      </div>
-    </>
+    <div>
+      <LatestHeader />
+    </div>
   )
 }
-
 export default Latest

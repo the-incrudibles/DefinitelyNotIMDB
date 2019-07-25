@@ -3,12 +3,9 @@ import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import Card from '@material-ui/core/Card'
-import CardMedia from '@material-ui/core/CardMedia'
-import CardContent from '@material-ui/core/CardContent'
-import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import AddWatchListButton from '../../components/AddWatchListButton'
+import Chip from '@material-ui/core/Chip'
 // import MovieContext from '../../utils/movieContext'
 
 const useStyles = makeStyles(theme => ({
@@ -28,53 +25,80 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     color: theme.palette.primary.light
+  },
+  chip: {
+    margin: '1px'
   }
 }))
 
 const MovieHeader = _ => {
-  const [movieState, setMovieState] = useState([])
+  const [data, setData] = useState({ genres: [] })
+  const [movieState, setMovieState] = useState({
+    movie: {},
+    renderMovie: _ => {
+    // axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
+      axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
+        .then(({ data }) => {
+          if (!data) {
+            movieState.renderMovie()
+          } else {
+            setMovieState({ ...movieState, movie: data})
+            setData({...data, genres: data.genres})
+          }
+        })
+        .catch(e => console.log(e))
+    }
+  })
+
   const classes = useStyles()
 
-  movieState.renderMovie = _ =>{
-    //   use localStorage.getItem('movieID')
-    // let movieID = localStorage.getItem('movieID')
-    axios.get(`/movie/${localStorage.getItem('movieID')}`)
-    .then(({data}) => {
-        setMovieState(data)
-      console.log(data)
-    })
-  }
- 
-useEffect(_ =>{
+  useEffect(_ => {
     movieState.renderMovie()
-}, [])
+  }, [])
 
   return (
     <div>
+<<<<<<< HEAD
+=======
+      {console.log(movieState.movie.genres)}
+>>>>>>> master
       <Paper className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={6}>
-          
-          <img className="movieImg" src={`https://image.tmdb.org/t/p/original${movieState.poster_path}`} alt="" />
-          
+            <img className='movieImg' src={`https://image.tmdb.org/t/p/original${movieState.movie.poster_path}`} alt='' />
           </Grid>
           <Grid item xs={6}>
             <Typography variant='h5' component='h3'>
-              {movieState.title}
+              {movieState.movie.title}
             </Typography>
             <Typography component='p'>
-                Rating: {movieState.vote_average}
+              Rating: {movieState.movie.vote_average}
             </Typography>
             <Typography>
               <AddWatchListButton />
             </Typography>
-
+            <div className='genreChips'>
+              {
+                data.genres.map(genre =>
+                  <Chip
+                    size='small'
+                    label={genre.name}
+                    className={classes.chip}
+                    component='a'
+                    href='/genre'
+                    clickable
+                    color='primary'
+                  // onClick={handleClick}
+                  />
+                )
+              }
+            </div>
           </Grid>
           <Typography variant='h6' gutterBottom>
             <strong>Overview</strong>
           </Typography>
           <Typography>
-            {movieState.overview}
+            {movieState.movie.overview}
           </Typography>
         </Grid>
       </Paper>
