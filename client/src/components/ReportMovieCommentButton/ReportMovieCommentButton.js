@@ -27,24 +27,23 @@ const ReportMovieCommentButton = _ => {
     //     })
     //     .catch(e => console.log('not updated'))
     setReportCommentState({ ...reportCommentState, isReport: true })
-
   }
 
   return (
-    <>
-      <div>
-        {
-          reportCommentState.isReport === false ?
-            <IconButton onClick={handleReportComment}>
-              <Flag className={classes.flagNotReport} />
-            </IconButton>
-            :
-            <IconButton onClick={handleReportComment}>
-              <Flag className={classes.flagIsReport} />
-            </IconButton>
-        }
-      </div>
-    </>
+        <>
+
+          <div>
+            {
+              reportCommentState.isReport === false
+                ? <IconButton onClick={handleReportComment}>
+                  <Flag className={classes.flagNotReport} />
+                </IconButton>
+                : <IconButton onClick={handleReportComment}>
+                  <Flag className={classes.flagIsReport} />
+                </IconButton>
+            }
+          </div>
+        </>
   )
 }
 

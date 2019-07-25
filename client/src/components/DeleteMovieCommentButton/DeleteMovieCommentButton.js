@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
@@ -27,22 +27,21 @@ const DeleteMovieCommentButton = _ => {
       .then(_ => console.log('deleted!'))
       .catch(e => console.error('not deleted'))
   }
-  const checkIsAdmin = _ =>{
+  const checkIsAdmin = _ => {
     let getAdmin = localStorage.getItem('admin', isAdminState)
-    setIsAdmindState({...isAdminState, isAdmin: getAdmin})
+    setIsAdmindState({ ...isAdminState, isAdmin: getAdmin })
   }
   return (
         <>
-        {
-          checkIsAdmin.isAdmin === 'admin' ?
-          <IconButton className={classes.isAdmin} size='small' aria-label='Delete' onClick={handleDeleteCommentButton}>
-            <DeleteIcon />
-          </IconButton>
-          :
-          <IconButton className={classes.isNotAdmin} size='small' aria-label='Delete' >
-            <DeleteIcon />
-          </IconButton>
-        }
+          {
+            checkIsAdmin.isAdmin === 'admin'
+              ? <IconButton className={classes.isAdmin} size='small' aria-label='Delete' onClick={handleDeleteCommentButton}>
+                <DeleteIcon />
+              </IconButton>
+              : <IconButton className={classes.isNotAdmin} size='small' aria-label='Delete' >
+                <DeleteIcon />
+              </IconButton>
+          }
         </>
   )
 }
