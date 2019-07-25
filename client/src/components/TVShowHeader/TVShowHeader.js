@@ -35,14 +35,12 @@ const TVShowHeader = _ => {
   const [tvState, setTvState] = useState({
     tvshow: {},
     renderTv: _ => {
-      console.log('has run')
       axios.get(`/tv/${parseInt(localStorage.getItem('tvID'))}`)
         .then(({ data }) => {
           if (!data) {
             tvState.renderTv()
           } else {
             setTvState({ ...tvState, tvshow: data })
-            console.log(data)
           }
         })
         .catch(e => console.log(e))

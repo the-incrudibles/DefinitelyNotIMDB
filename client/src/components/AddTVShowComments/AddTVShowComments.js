@@ -22,7 +22,6 @@ const AddTVShowComments = _ => {
 
   const handleAddComment = event => {
     event.preventDefault()
-    console.log('button works')
     // create ulils for post comment
     axios.post(`/movie/`, {
       comment: comment.current.value
