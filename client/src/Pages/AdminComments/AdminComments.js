@@ -48,34 +48,34 @@ const AdminComments = _ => {
   return (
     <>
       <List className={classes.root}>
-                    {
-                        // change commentData to comments when available
-                    commentsState.comments.map(comment => (
-                        <ListItem alignItems="flex-start">
-                        <ListItemAvatar>
-                        <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
-                        </ListItemAvatar>
-                        <ListItemText
-                        secondary={
-                            <React.Fragment>
-                            <Typography
-                                component="span"
-                                variant="body2"
-                                className={classes.inline}
-                                color="textPrimary"
-                            >
-                                {'comment.name'}
-                            </Typography>
-                            {'- ' + 'comment.comment'}
-                            </React.Fragment>
-                    }
-                        />
-                        {/* I believe the logic in DeleteCommentButton should work— */}
-                        <DeleteCommentButton/>
-                    </ListItem>
-                    ))
-                    }
-            </List>
+        {
+          // change commentData to comments when available
+          commentsState.comments.map(comment => (
+            <ListItem alignItems='flex-start'>
+              <ListItemAvatar>
+                <Avatar alt='Remy Sharp' src='https://image.flaticon.com/icons/svg/195/195158.svg' />
+              </ListItemAvatar>
+              <ListItemText
+                secondary={
+                  <React.Fragment>
+                    <Typography
+                      component='span'
+                      variant='body2'
+                      className={classes.inline}
+                      color='textPrimary'
+                    >
+                      {'comment.name'}
+                    </Typography>
+                    {'- ' + 'comment.comment'}
+                  </React.Fragment>
+                }
+              />
+              {/* I believe the logic in DeleteCommentButton should work— */}
+              <DeleteCommentButton />
+            </ListItem>
+          ))
+        }
+      </List>
     </>
   )
 }

@@ -5,7 +5,6 @@ import latestContext from '../../utils/latestContext'
 import Typography from '@material-ui/core/Typography'
 
 const LatestHeader = _ => {
-
   const [latestState, setLatestState] = useState(
     {
       latestMovie: []
@@ -15,7 +14,6 @@ const LatestHeader = _ => {
   useEffect(_ => {
     axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&page=1`)
       .then(r => {
-
         let latestArr = []
         r.data.results.map(elem => {
           console.log(elem)
@@ -27,16 +25,12 @@ const LatestHeader = _ => {
         })
 
         setLatestState({ ...latestState, latestMovie: latestArr })
-
       })
       .catch(e => console.log('error:', e))
   }, [])
 
-
-
-
   return (
-    <div className="containerDiv">
+    <div className='containerDiv'>
       <div className='searchTypography'>
         <Typography variant='h6'>Now Playing in Theaters</Typography>
       </div>

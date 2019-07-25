@@ -10,7 +10,7 @@ import Celebrity from './Pages/Celebrity'
 import Landing from './Pages/Landing'
 import Latest from './Pages/Latest'
 import Genres from './Pages/Genres'
-import GenreResults from './Pages/'
+import GenreResults from './Pages/GenreResults'
 import AdminComments from './Pages/AdminComments'
 import WatchList from './Pages/WatchList'
 

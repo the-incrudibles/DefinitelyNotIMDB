@@ -21,7 +21,7 @@ import SearchContext from '../../utils/searchContext'
 import SearchMovie from '../../components/SearchMovie'
 import SearchTV from '../../components/SearchTV'
 import SearchCelebrities from '../../components/SearchCelebrities'
-import { BottomNavigationAction } from '@material-ui/core';
+import { BottomNavigationAction } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -57,7 +57,7 @@ const TestSearch = props => {
     celebs: [],
     searchTerm: '',
     searchForCeleb: id => SearchResult.axiosForCeleb(id),
-    searchForMovie: id => { SearchResult.axiosForMovie(id)},
+    searchForMovie: id => { SearchResult.axiosForMovie(id) },
     searchForShow: id => SearchResult.axiosForShow(id),
     history: props.history
   })

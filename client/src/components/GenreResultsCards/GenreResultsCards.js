@@ -5,7 +5,7 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import genreResultsContext from '../../../utils/genreResultsContext'
+import genreResultsContext from '../../utils/genreResultsContext'
 
 const GenreResultsCards = _ => {
   const movie = useContext(genreResultsContext)
@@ -13,11 +13,11 @@ const GenreResultsCards = _ => {
     <Card className='resultsDiv'>
       <CardActionArea>
         <CardContent>
-          <Typography gutterBottom variant="h6" component="h2">
+          <Typography gutterBottom variant='h6' component='h2'>
             {movie.titleArr}
           </Typography>
-          <img className="resultsPoster" src={movie.imageArr} alt={movie.titleArr} />
-          <div className="cardTypography">
+          <img className='resultsPoster' src={movie.imageArr} alt={movie.titleArr} />
+          <div className='cardTypography'>
             <Typography variant='body2' color='textSecondary' component='p'>
               {movie.overviewArr ? <> {movie.overviewArr.slice(0, 150)}<span>...</span> </> : null}
             </Typography>

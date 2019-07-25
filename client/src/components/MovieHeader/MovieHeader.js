@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.light
   },
   chip: {
-    margin: "1px",
+    margin: '1px'
   }
 }))
 
@@ -63,7 +63,7 @@ const MovieHeader = _ => {
       <Paper className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={6}>
-            <img className="movieImg" src={`https://image.tmdb.org/t/p/original${movieState.movie.poster_path}`} alt="" />
+            <img className='movieImg' src={`https://image.tmdb.org/t/p/original${movieState.movie.poster_path}`} alt='' />
           </Grid>
           <Grid item xs={6}>
             <Typography variant='h5' component='h3'>
@@ -75,17 +75,17 @@ const MovieHeader = _ => {
             <Typography>
               <AddWatchListButton />
             </Typography>
-            <div className="genreChips">
+            <div className='genreChips'>
               {
                 data.genres.map(genre =>
                   <Chip
-                    size="small"
+                    size='small'
                     label={genre.name}
                     className={classes.chip}
-                    component="a"
-                    href="/genre"
+                    component='a'
+                    href='/genre'
                     clickable
-                    color="primary"
+                    color='primary'
                   // onClick={handleClick}
                   />
                 )
@@ -103,6 +103,5 @@ const MovieHeader = _ => {
     </div>
   )
 }
-
 
 export default MovieHeader
