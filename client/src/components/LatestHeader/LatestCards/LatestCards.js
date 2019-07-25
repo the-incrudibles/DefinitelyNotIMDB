@@ -12,7 +12,7 @@ import SearchResult from '../../../utils/SearchResult.js'
 const LatestCards = _ => {
   const movie = useContext(latestContext)
   return (
-    <Link to='/movie' className="cardLink" onClick={_ => {
+    <Link to='/movie' className='cardLink' onClick={_ => {
       localStorage.setItem('movieID', movie.id)
       SearchResult.axiosForMovie(movie.id)
     }}>
@@ -33,7 +33,7 @@ const LatestCards = _ => {
         <CardActions>
           <Button size='small' color='primary'>
             More Info
-        </Button>
+          </Button>
         </CardActions>
       </Card >
     </Link >

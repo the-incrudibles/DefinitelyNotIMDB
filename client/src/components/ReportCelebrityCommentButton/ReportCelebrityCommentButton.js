@@ -27,19 +27,17 @@ const ReportCelebrityCommentButton = _ => {
     //     })
     //     .catch(e => console.log('not updated'))
     setReportCommentState({ ...reportCommentState, isReport: true })
-
   }
 
   return (
     <>
       <div>
         {
-          reportCommentState.isReport === false ?
-            <IconButton onClick={handleReportComment}>
+          reportCommentState.isReport === false
+            ? <IconButton onClick={handleReportComment}>
               <Flag className={classes.flagNotReport} />
             </IconButton>
-            :
-            <IconButton onClick={handleReportComment}>
+            : <IconButton onClick={handleReportComment}>
               <Flag className={classes.flagIsReport} />
             </IconButton>
         }

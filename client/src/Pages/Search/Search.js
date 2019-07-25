@@ -45,7 +45,7 @@ const TestSearch = _ => {
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth)
   }, [])
-  
+
   // Sammi's code:
   const [searchState, setSearchState] = useState({
     searchArea: '',

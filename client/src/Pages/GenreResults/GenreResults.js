@@ -20,7 +20,7 @@ const GenreResults = _ => {
 
   return (
     <>
-      <div className="containerDiv">
+      <div className='containerDiv'>
         <div className='searchTypography'>
           <Typography variant='h6'>{localStorage.getItem('genreName')}</Typography>
         </div>

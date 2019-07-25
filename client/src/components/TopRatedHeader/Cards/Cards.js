@@ -23,7 +23,7 @@ const Cards = _ => {
   const classes = useStyles()
   const movie = useContext(topRatedContext)
   return (
-    <Link to='/movie' className="cardLink" onClick={_ => {
+    <Link to='/movie' className='cardLink' onClick={_ => {
       localStorage.setItem('movieID', movie.id)
       SearchResult.axiosForMovie(movie.id)
     }}>
