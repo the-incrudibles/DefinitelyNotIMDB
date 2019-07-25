@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Flag from '@material-ui/icons/Flag'
-import axios from 'axios'
 import { makeStyles } from '@material-ui/styles'
 import IconButton from '@material-ui/core/IconButton'
 
@@ -13,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   }
 
 }))
-const ReportButton = _ => {
+const ReportMovieCommentButton = _ => {
   const [reportCommentState, setReportCommentState] = useState({
     isReport: false
   })
@@ -48,4 +47,4 @@ const ReportButton = _ => {
   )
 }
 
-export default ReportButton
+export default ReportMovieCommentButton

@@ -13,6 +13,7 @@ import Genres from './Pages/Genres'
 import GenreResults from './Pages/GenreResults'
 import AdminComments from './Pages/AdminComments'
 import WatchList from './Pages/WatchList'
+import TVShow from './Pages/TVShow'
 
 const App = _ => {
   return (
@@ -31,6 +32,7 @@ const App = _ => {
         <Route path='/genre' render={_ => (<GenreResults />)} />
         <Route path='/admincomments' render={_ => (<AdminComments />)} />
         <Route path='/watchlist' render={_ => (<WatchList />)} />
+        <Route path='/tvshow' render={_ => (<TVShow />)} />
       </Router>
     </>
   )

@@ -16,14 +16,14 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
-const DeleteCommentButton = _ => {
+const DeleteTVShowCommentButton = _ => {
   const [isAdminState, setIsAdmindState] = useState({
     isAdmin: false
   })
   const classes = useStyles()
   const handleDeleteCommentButton = event => {
     console.log(event.target)
-    axios.delete(`/movie/comment/id`)
+    axios.delete(`/tv/comment/id`)
       .then(_ => console.log('deleted!'))
       .catch(e => console.error('not deleted'))
   }
@@ -32,18 +32,19 @@ const DeleteCommentButton = _ => {
     setIsAdmindState({ ...isAdminState, isAdmin: getAdmin })
   }
   return (
-        <>
-          {
-            checkIsAdmin.isAdmin === 'admin'
-              ? <IconButton className={classes.isAdmin} size='small' aria-label='Delete' onClick={handleDeleteCommentButton}>
-                <DeleteIcon />
-              </IconButton>
-              : <IconButton className={classes.isNotAdmin} size='small' aria-label='Delete' >
-                <DeleteIcon />
-              </IconButton>
-          }
-        </>
+    <>
+      {
+        checkIsAdmin.isAdmin === 'admin' ?
+          <IconButton className={classes.isAdmin} size='small' aria-label='Delete' onClick={handleDeleteCommentButton}>
+            <DeleteIcon />
+          </IconButton>
+          :
+          <IconButton className={classes.isNotAdmin} size='small' aria-label='Delete' >
+            <DeleteIcon />
+          </IconButton>
+      }
+    </>
   )
 }
 
-export default DeleteCommentButton
+export default DeleteTVShowCommentButton
