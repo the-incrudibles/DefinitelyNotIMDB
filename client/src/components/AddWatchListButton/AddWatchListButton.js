@@ -12,11 +12,12 @@ const AddWatchListButton = _ => {
     //     console.log('success')
     // })
     // .catch(e => console.log(e))
+    console.log(event.target)
     console.log('ping')
   }
   return (
     <div className='addWatchlistButton'>
-      <Fab color='default' aria-label='Add' size='small' onClick={handleAddWatchList}>
+      <Fab color='default' aria-label='Add' size='small' onClick={handleAddWatchList} value={parseInt(localStorage.getItem('movieID'))}>
         <AddIcon />
       </Fab>
     </div>

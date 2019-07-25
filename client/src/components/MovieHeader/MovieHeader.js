@@ -32,25 +32,23 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const MovieHeader = _ => {
+  const [data, setData] = useState({ genres: [] })
   const [movieState, setMovieState] = useState({
     movie: {},
     renderMovie: _ => {
-      console.log('has run')
-    axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
-    //   axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
+    // axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
+      axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
         .then(({ data }) => {
           if (!data) {
             movieState.renderMovie()
           } else {
-            setMovieState({ ...movieState, movie: data })
-            console.log(data)
+            setMovieState({ ...movieState, movie: data})
+            setData({...data, genres: data.genres})
           }
         })
         .catch(e => console.log(e))
     }
   })
-
-  const [data, setData] = useState({ genres: [] })
 
   const classes = useStyles()
 
@@ -60,7 +58,6 @@ const MovieHeader = _ => {
 
   return (
     <div>
-      {console.log(movieState.movie)}
       <Paper className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={6}>
