@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import GenreCalls from '../../utils/genreCalls.js'
-import GenreResults from '../../components/GenreResults'
+// import GenreResults from '../../components/GenreResults'
 
 const Genre = _ => {
   const [genreState, setGenreState] = useState({
@@ -32,7 +32,8 @@ const Genre = _ => {
         genreState.genres.map(genre => {
           return (
             <div id={genre.id} onClick={_ => {
-              console.log('genre has been clicked')
+              localStorage.setItem('genreID', genre.id)
+              console.log('check local storage')
             }}>
               <h3>{genre.id}</h3>
               <h2>{genre.name}</h2>
@@ -42,7 +43,7 @@ const Genre = _ => {
         })
       }
       {/* I only had GenreResults render here so that I could see and test stuff with it */}
-      <GenreResults />
+      {/* <GenreResults /> */}
     </>
   )
 }
