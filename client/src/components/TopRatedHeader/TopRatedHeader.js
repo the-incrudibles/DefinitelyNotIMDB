@@ -16,6 +16,7 @@ const TopRatedHeader = _ => {
         let topMovieArr = []
         r.data.results.map(elem => {
           topMovieArr.push({
+            id: elem.id,
             imageArr: 'https://image.tmdb.org/t/p/original' + elem.poster_path,
             titleArr: elem.title,
             overviewArr: elem.overview
