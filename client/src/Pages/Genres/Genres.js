@@ -36,7 +36,6 @@ const Genre = _ => {
               <div id={genre.id} onClick={_ => {
                 localStorage.setItem('genreID', genre.id)
                 localStorage.setItem('genreName', genre.name)
-                console.log('check local storage')
               }}>
                 <h3>{genre.id}</h3>
                 <h2>{genre.name}</h2>

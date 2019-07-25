@@ -6,16 +6,17 @@ import Typography from '@material-ui/core/Typography'
 
 const GenreResults = _ => {
   const [genreResultsState, setGenreResultsState] = useState({
-    genreResultsMovies: []
+    genreResultsMovies: [],
+    display: false
   })
 
   useEffect(_ => {
     // API link needs to be changed to grab all movies instead of ones that are now playing in theaters
-    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_APIKEY}& language=en - US & sort_by=popularity.desc & include_adult=false & include_video=false & page=1 & with_genres=${28}`)
+    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_APIKEY}& language=en - US & sort_by=popularity.desc & include_adult=false & include_video=false & page=1 & with_genres=${localStorage.getItem('genreID')}`)
       // parseInt(localStorage.getItem('genreID'))
       .then(({ data }) => {
-        setGenreResultsState({ ...genreResultsState, genreResultsMovie: data.results })
-        console.log(data)
+        setGenreResultsState({ ...genreResultsState, genreResultsMovie: data.results, display: true })
+        // console.log(data.results)
       })
       .catch(e => console.log('error:', e))
   }, [])
@@ -26,11 +27,9 @@ const GenreResults = _ => {
       <div className='searchTypography'>
         <Typography variant='h6'>{localStorage.getItem('genreName')}</Typography>
       </div>
-      {
-        <genreResultsContext.Provider value={genreResultsState.genreResultsMovies}>
-          <GenreResultsCards />
-        </genreResultsContext.Provider>
-      }
+      <genreResultsContext.Provider value={genreResultsState}>
+        <GenreResultsCards />
+      </genreResultsContext.Provider>
     </div>
   )
 }
