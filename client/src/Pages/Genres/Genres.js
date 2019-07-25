@@ -44,8 +44,6 @@ const Genre = _ => {
           )
         })
       }
-      {/* I only had GenreResults render here so that I could see and test stuff with it */}
-      {/* <GenreResults /> */}
     </>
   )
 }
