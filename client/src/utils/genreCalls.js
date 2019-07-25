@@ -1,4 +1,3 @@
-import React, { Link } from 'react'
 import axios from 'axios'
 
 const GenreCalls = {
