@@ -28,7 +28,7 @@ const MyWatchList = _ => {
   // }, [])
 
   useEffect(_ => {
-    axios.get('https://api.themoviedb.org/3/movie/399579?api_key=d12a96cdcfe3d81297140ffea9dca118&language=en-US')
+    axios.get(`https://api.themoviedb.org/3/movie/399579?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
       .then(({ data: movie }) => {
         console.log(movie.poster_path)
       })
