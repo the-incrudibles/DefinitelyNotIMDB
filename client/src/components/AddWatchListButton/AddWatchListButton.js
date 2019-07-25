@@ -1,28 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Fab from '@material-ui/core/Fab'
 import AddIcon from '@material-ui/icons/Add'
 import axios from 'axios'
+import Watchlist from '../../utils/Watchlist.js'
 
 const AddWatchListButton = _ => {
-  const [watchlistState, setWatchList] = useState([])
-  
-  const getWatchList = _ =>{
-    axios.get(`/user/${(localStorage.getItem('user'))}`)
-    .then(({data})=>{
-        setWatchList(data.watchlist)
+    const Movie = useRef()
+
+    const [newWatchlistState, setNewWatchlistState] = useState({
+      watchlist:[]
     })
+  const handleGetWatchList = _ => {
+      Watchlist.getWatchlist()
+        .then(({ data: movies}) => this.setState({ movies}))
+        .catch(e => console.error(e))
   }
   const handleAddWatchList = event => {
-    getWatchList()
-    axios.put(`/user/${(localStorage.getItem('user'))}`, {
-        watchlist: watchlistState
-    })
-    .then(_ =>{
-        console.log('success')
-    })
-    .catch(e => console.log(e))
-
+    // axios.put(`/user/${localStorage.getItem('userID')}`, {
+    //     watchlist: watchlist.current.value
+    // })
+    // .then(_ =>{
+    //     console.log('success')
+    // })
+    // .catch(e => console.log(e))
+    console.log(event.target)
+    console.log('ping')
+    Watchlist.addWatchlist(event.target.id)
+        .then(_ => this.handleGetWatchList())
+        .catch(e => console.error(e))
   }
+
   return (
     <div className='addWatchlistButton'>
       <Fab color='default' aria-label='Add' size='small' onClick={handleAddWatchList} value={parseInt(localStorage.getItem('movieID'))}>
