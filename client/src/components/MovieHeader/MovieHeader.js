@@ -35,14 +35,12 @@ const MovieHeader = _ => {
   const [movieState, setMovieState] = useState({
     movie: {},
     renderMovie: _ => {
-      console.log('has run')
       axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
         .then(({ data }) => {
           if (!data) {
             movieState.renderMovie()
           } else {
             setMovieState({ ...movieState, movie: data })
-            console.log(data)
           }
         })
         .catch(e => console.log(e))
@@ -59,7 +57,7 @@ const MovieHeader = _ => {
 
   return (
     <div>
-      {console.log(movieState.movie)}
+      {console.log(movieState.movie.genres)}
       <Paper className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={6}>

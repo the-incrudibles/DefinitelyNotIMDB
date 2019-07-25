@@ -5,7 +5,6 @@ const Article = _ => {
   return (
     <MainContext.Consumer>
       {
-        // console.log(article)
         ({ articles }) => (
           articles.map(article =>
             <div key={article.id} >
