@@ -6,12 +6,13 @@ import ListItemText from '@material-ui/core/ListItemText'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
-import axios from 'axios'
 import Paper from '@material-ui/core/Paper'
 import AddMovieComments from '../AddMovieComments'
 import ReportMovieCommentButton from '../ReportMovieCommentButton'
 import DeleteMovieCommentButton from '../DeleteMovieCommentButton'
-import commentData from './commentData'
+// import commentData from './commentData'
+import MovieContext from '../../utils/movieContext'
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,7 +36,7 @@ const MovieComments = _ => {
 
   //   fetch movie comments
   commentsState.renderComments = _ => {
-    axios.get(`/comments/${'id'}`)
+      MovieContext.getComment(parseInt(localStorage.getItem('movieID')))
       .then(({ data }) => {
         setCommentsState(data.comments)
       })

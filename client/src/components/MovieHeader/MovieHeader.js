@@ -36,14 +36,15 @@ const MovieHeader = _ => {
   const [movieState, setMovieState] = useState({
     movie: {},
     renderMovie: _ => {
-    // axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
-      axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
+    axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
+    //   axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
         .then(({ data }) => {
           if (!data) {
             movieState.renderMovie()
           } else {
             setMovieState({ ...movieState, movie: data})
             setData({...data, genres: data.genres})
+            console.log(data)
           }
         })
         .catch(e => console.log(e))
@@ -58,11 +59,8 @@ const MovieHeader = _ => {
 
   return (
     <div>
-<<<<<<< HEAD
-=======
-      {console.log(movieState.movie.genres)}
->>>>>>> master
       <Paper className={classes.root}>
+        <div>
         <Grid container spacing={1}>
           <Grid item xs={6}>
             <img className='movieImg' src={`https://image.tmdb.org/t/p/original${movieState.movie.poster_path}`} alt='' />
@@ -101,6 +99,7 @@ const MovieHeader = _ => {
             {movieState.movie.overview}
           </Typography>
         </Grid>
+        </div>
       </Paper>
     </div>
   )
