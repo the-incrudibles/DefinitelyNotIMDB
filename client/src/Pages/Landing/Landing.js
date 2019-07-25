@@ -18,8 +18,7 @@ const Landing = _ => {
 
   useEffect(_ => {
     searchForArticles()
-  },
-  [])
+  },)
 
   return (
     <>

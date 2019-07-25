@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import MovieContext from '../../utils/movieContext'
+// import MovieContext from '../../utils/movieContext'
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 25
@@ -14,9 +14,9 @@ const AddMovieComments = _ => {
   const text = useRef()
 
   const classes = useStyles()
-  const [newCommentState, setNewCommentState] = useState({
-    comments: []
-  })
+  // const [newCommentState, setNewCommentState] = useState({
+  //   comments: []
+  // })
 
 
 

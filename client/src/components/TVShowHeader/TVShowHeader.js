@@ -47,13 +47,13 @@ const TVShowHeader = _ => {
     }
   })
 
-  const [data, setData] = useState({ genres: [] })
+  const [data] = useState({ genres: [] })
 
   const classes = useStyles()
 
   useEffect(_ => {
     tvState.renderTv()
-  }, [])
+  },)
 
   return (
     <div>

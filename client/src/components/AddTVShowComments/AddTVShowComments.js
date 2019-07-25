@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import TextField from '@material-ui/core/TextField'
@@ -14,11 +14,11 @@ const AddTVShowComments = _ => {
   const comment = useRef()
 
   const classes = useStyles()
-  const [newCommentState, setNewCommentState] = useState({ comment: '' })
+  // const [newCommentState, setNewCommentState] = useState({ comment: '' })
 
-  const fetchComments = _ => {
-    // axios.get(`/movie`)
-  }
+  // const fetchComments = _ => {
+  //   // axios.get(`/movie`)
+  // }
 
   const handleAddComment = event => {
     event.preventDefault()

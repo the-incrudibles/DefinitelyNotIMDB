@@ -17,13 +17,11 @@ const Genre = _ => {
 
   useEffect(_ => {
     genreState.searchForGenres()
-  },
-  [])
+  },)
 
   useEffect(_ => {
     genreState.searchForGenres()
-  },
-  [])
+  },)
 
   return (
     <>

@@ -27,7 +27,7 @@ const LatestHeader = _ => {
         setLatestState({ ...latestState, latestMovie: latestArr })
       })
       .catch(e => console.log('error:', e))
-  }, [])
+  },)
 
   return (
     <div className='containerDiv'>
