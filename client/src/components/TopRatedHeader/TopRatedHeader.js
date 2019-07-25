@@ -26,7 +26,7 @@ const TopRatedHeader = _ => {
         setTopRatedState({ ...topRatedState, topRatedMovie: topMovieArr })
       })
       .catch(e => console.log('error:', e))
-  }, [])
+  })
 
   return (
     <div className='containerDiv'>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, createRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import Typography from '@material-ui/core/Typography'
@@ -59,7 +59,7 @@ const LoginForm = _ => {
       .catch(_ => {
         setUserState({ ...userState, isLoggedIn: false, user: '' })
       })
-  }, [])
+  },)
 
   return (
     <div className='containerDiv'>

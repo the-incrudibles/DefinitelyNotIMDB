@@ -34,7 +34,6 @@ const SignupForm = _ => {
         password: password.current.value
       })
         .then(({ data }) => {
-          console.log(data)
           if (data.isLoggedIn) {
             localStorage.setItem('token', data.token)
             localStorage.setItem('user', data.user)
@@ -81,7 +80,7 @@ const SignupForm = _ => {
       .catch(_ => {
         setUserState({ ...userState, isLoggedIn: false, user: '' })
       })
-  }, [])
+  },)
 
   return (
     <div className='containerDiv'>

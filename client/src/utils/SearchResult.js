@@ -1,5 +1,3 @@
-import React from 'react'
-import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 
 const SearchResult = {

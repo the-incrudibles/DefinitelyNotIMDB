@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-
+// import MovieContext from '../../utils/movieContext'
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 25
@@ -14,28 +14,27 @@ const AddMovieComments = _ => {
   const text = useRef()
 
   const classes = useStyles()
-  const [newCommentState, setNewCommentState] = useState({
-    comments: []
-  })
+  // const [newCommentState, setNewCommentState] = useState({
+  //   comments: []
+  // })
 
-  const fetchComments = _ => {
-    // axios.get(`/movie`)
-  }
+
+
 
   const handleAddComment = event => {
     event.preventDefault()
-    console.log('button works')
     // create ulils for post comment
-    axios.post(`/comments/${'id'}`, {
+    axios.post(`/comments/${parseInt(localStorage.getItem('movieID'))}`, {
       text: text.current.value,
       author: localStorage.getItem('user'),
       flagged: false,
       movie: parseInt(localStorage.getItem('movieID'))
     })
       .then(_ => {
-        console.log('it worked')
+        // console.log(GetComments(parseInt(localStorage.getItem('movieID'))))
+        console.log('success')
       })
-      .catch(e => console.log('message not sent'))
+      .catch(e => console.log('not sent'))
   }
   return (
     <div>
