@@ -11,8 +11,6 @@ import List from '@material-ui/core/List'
 import Divider from '@material-ui/core/Divider'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles(theme => ({
   root: {

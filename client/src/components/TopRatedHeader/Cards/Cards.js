@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
@@ -10,17 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import topRatedContext from '../../../utils/topRatedContext'
 import SearchResult from '../../../utils/SearchResult.js'
 
-const useStyles = makeStyles({
-  card: {
-    maxWidth: 345
-  },
-  media: {
-    height: 140
-  }
-})
-
 const Cards = _ => {
-  const classes = useStyles()
   const movie = useContext(topRatedContext)
   return (
     <Link to='/movie' className='cardLink' onClick={_ => {
