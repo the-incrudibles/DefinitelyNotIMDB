@@ -8,10 +8,9 @@ import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
 import axios from 'axios'
 import Paper from '@material-ui/core/Paper'
-import AddCelebrityComments from '../AddCelebrityComments'
-import ReportCommentButton from '../ReportCelebrityCommentButton'
-import DeleteCommentButton from '../DeleteCelebrityCommentButton'
-
+import AddTVShowComments from '../AddTVShowComments'
+import ReportTVShowCommentButton from '../ReportTVShowCommentButton'
+import DeleteTVShowCommentButton from '../DeleteTVShowCommentButton'
 import commentData from './commentData'
 
 const useStyles = makeStyles(theme => ({
@@ -30,12 +29,12 @@ const useStyles = makeStyles(theme => ({
     color: 'red'
   }
 }))
-const CelebrityComments = _ => {
+const TVShowComments = _ => {
   const [commentsState, setCommentsState] = useState([])
   const classes = useStyles()
 
-  //   fetch movie comments
-  // Connor note: need help writing this!
+  // fetch tv show comments 
+  // Connor note: need help with writing this out!
   commentsState.renderComments = _ => {
     axios.get(`/comments/${'id'}`)
       .then(({ data }) => {
@@ -75,16 +74,16 @@ const CelebrityComments = _ => {
                     </React.Fragment>
                   }
                 />
-                <ReportCommentButton />
-                <DeleteCommentButton />
+                <ReportTVShowCommentButton />
+                <DeleteTVShowCommentButton />
               </ListItem>
             ))
           }
         </List>
-        <AddCelebrityComments />
+        <AddTVShowComments />
       </Paper>
     </div>
   )
 }
 
-export default CelebrityComments
+export default TVShowComments
