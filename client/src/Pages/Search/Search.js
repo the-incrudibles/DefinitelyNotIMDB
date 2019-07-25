@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
-import { createBrowserHistory } from 'history'
 
 // Material-UI imports:
 import OutlinedInput from '@material-ui/core/OutlinedInput'
@@ -21,7 +20,7 @@ import SearchContext from '../../utils/searchContext'
 import SearchMovie from '../../components/SearchMovie'
 import SearchTV from '../../components/SearchTV'
 import SearchCelebrities from '../../components/SearchCelebrities'
-import { BottomNavigationAction } from '@material-ui/core';
+import { BottomNavigationAction } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,8 +34,6 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2)
   }
 }))
-
-const history = createBrowserHistory()
 
 const TestSearch = props => {
   const classes = useStyles()
@@ -56,10 +53,9 @@ const TestSearch = props => {
     shows: [],
     celebs: [],
     searchTerm: '',
-    searchForCeleb: id => { SearchResult.axiosForCeleb(id) },
-    searchForMovie: id => { SearchResult.axiosForMovie(id)},
-    searchForShow: id => {SearchResult.axiosForShow(id)},
-    history: props.history
+    searchForCeleb: id => SearchResult.axiosForCeleb(id),
+    searchForMovie: id => { SearchResult.axiosForMovie(id) },
+    searchForShow: id => SearchResult.axiosForShow(id)
   })
 
   const searchTerm = useRef()

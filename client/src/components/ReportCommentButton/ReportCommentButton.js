@@ -8,10 +8,10 @@ const useStyles = makeStyles(theme => ({
   flagNotReport: {
     color: 'black'
   },
-  flagIsReport:{
-      color: 'red'
+  flagIsReport: {
+    color: 'red'
   }
-  
+
 }))
 const ReportButton = _ => {
   const [reportCommentState, setReportCommentState] = useState({
@@ -19,7 +19,7 @@ const ReportButton = _ => {
   })
   const classes = useStyles()
 
-const handleReportComment = _ =>{
+  const handleReportComment = _ => {
     // axios.put(`/movie/comment/id`)
     //     .then(_=>{
     //         console.log('success')
@@ -27,27 +27,25 @@ const handleReportComment = _ =>{
 
     //     })
     //     .catch(e => console.log('not updated'))
-    setReportCommentState({...reportCommentState, isReport:true})
+    setReportCommentState({ ...reportCommentState, isReport: true })
+  }
 
-}
-
-    return( 
+  return (
         <>
 
-        <div>
+          <div>
             {
-            reportCommentState.isReport === false ?
-            <IconButton onClick={handleReportComment}>
-                <Flag className={classes.flagNotReport}/>
-            </IconButton>
-            :
-            <IconButton onClick={handleReportComment}>
-                <Flag className={classes.flagIsReport}/>
-            </IconButton>
+              reportCommentState.isReport === false
+                ? <IconButton onClick={handleReportComment}>
+                  <Flag className={classes.flagNotReport} />
+                </IconButton>
+                : <IconButton onClick={handleReportComment}>
+                  <Flag className={classes.flagIsReport} />
+                </IconButton>
             }
-        </div>
+          </div>
         </>
-    )
+  )
 }
 
 export default ReportButton
