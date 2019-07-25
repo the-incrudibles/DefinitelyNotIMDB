@@ -2,13 +2,13 @@ const { Comment } = require('../models')
 
 module.exports = app => {
   app.get('/comment/:movie', (req, res) => {
-    Comment.findAll({ movie: req.params.movie })
+    Comment.find({ movie: req.params.movie })
       .then(comments => res.json(comments))
       .catch(e => console.log(e))
   })
 
   app.get('/flag', (req, res) => {
-    Comment.FindAll({ flagged: true })
+    Comment.find({ flagged: true })
       .then(comments => res.json(comments))
       .catch(e => console.log(e))
   })
