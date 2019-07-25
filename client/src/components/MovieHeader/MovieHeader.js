@@ -28,7 +28,8 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.light
   },
   chip: {
-    margin: '1px'
+    margin: '1px',
+    textDecoration: 'none'
   }
 }))
 
@@ -36,16 +37,15 @@ const MovieHeader = _ => {
   const [data, setData] = useState({ genres: [] })
   const [movieState, setMovieState] = useState({
     movie: {},
+    release_date: [],
     renderMovie: _ => {
       axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
-      //   axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
         .then(({ data }) => {
           if (!data) {
             movieState.renderMovie()
           } else {
-            setMovieState({ ...movieState, movie: data })
+            setMovieState({ ...movieState, movie: data, release_date: data.release_date })
             setData({ ...data, genres: data.genres })
-            console.log(data)
           }
         })
         .catch(e => console.log(e))
@@ -67,19 +67,29 @@ const MovieHeader = _ => {
               <img className='movieImg' src={`https://image.tmdb.org/t/p/original${movieState.movie.poster_path}`} alt='' />
             </Grid>
             <Grid item xs={6}>
-              <Typography variant='h5' component='h3'>
+              <Typography variant='h6' component='h3' className="movieHeaderText">
                 {movieState.movie.title}
               </Typography>
-              <Typography component='p'>
-              Rating: {movieState.movie.vote_average}
+              <Typography component='p' className="movieHeaderText">
+                Rating: {movieState.movie.vote_average}/10
+            </Typography>
+              <Typography component='p' className="movieHeaderText">
+                {
+                  movieState.release_date ?
+                    <>
+                      <Typography component='p' className="movieHeaderText">Released:</Typography>{`${movieState.release_date.slice(5, 7)}-${movieState.release_date.slice(8, 10)}-${movieState.release_date.slice(0, 4)}`}
+                    </> : null
+                }
               </Typography>
-              <Typography>
-                <AddWatchListButton />
-              </Typography>
+              <div className="addWatchlistButton">
+                <Typography>
+                  <AddWatchListButton />
+                </Typography>
+              </div>
               <div className='genreChips'>
                 {
                   data.genres.map(genre =>
-                    <Link to='/genre' onClick={_ => {
+                    <Link className='genreChips' to='/genre' onClick={_ => {
                       localStorage.setItem('genreID', genre.id)
                       localStorage.setItem('genreName', genre.name)
                     }}>

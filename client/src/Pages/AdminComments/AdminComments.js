@@ -42,7 +42,8 @@ const AdminComments = _ => {
 
   useEffect(_ => {
     commentsState.renderComents()
-  })
+  }, [])
+
 
   return (
     <>

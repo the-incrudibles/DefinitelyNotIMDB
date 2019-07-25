@@ -16,7 +16,7 @@ const GenreResults = _ => {
         setGenreResultsState({ ...genreResultsState, genreResultsMovies: data.results })
       })
       .catch(e => console.log('error:', e))
-  })
+  }, [])
 
   return (
     <>
