@@ -23,7 +23,6 @@ const SearchMovie = _ => {
             <Card key={movie.id} className='resultsDiv' onClick={_ => {
               localStorage.setItem('movieID', movie.id)
               searchForMovie(movie.id)
-              history.push('/movie')
             }}>
               <CardActionArea>
                 <CardContent>

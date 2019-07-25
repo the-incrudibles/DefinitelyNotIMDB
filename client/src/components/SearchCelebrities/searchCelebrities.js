@@ -16,7 +16,11 @@ const searchCelebrities = _ => {
         ({ celebs, searchForCeleb }) => (
           celebs.map(celeb =>
             <Link to='/celebrity' className="cardLink">
-              <Card key={celeb.id} onClick={_ => searchForCeleb(celeb.id)} className='resultsDiv'>
+              <Card key={celeb.id} className='resultsDiv'
+                onClick={_ => {
+                  localStorage.setItem('celebID', celeb.id)
+                  searchForCeleb(celeb.id)
+                }}>
                 <CardActionArea>
                   <CardContent>
                     <Typography gutterBottom variant='h6' component='h2'>

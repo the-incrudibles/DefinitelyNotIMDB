@@ -56,9 +56,9 @@ const TestSearch = props => {
     shows: [],
     celebs: [],
     searchTerm: '',
-    searchForCeleb: id => SearchResult.axiosForCeleb(id),
+    searchForCeleb: id => { SearchResult.axiosForCeleb(id) },
     searchForMovie: id => { SearchResult.axiosForMovie(id)},
-    searchForShow: id => SearchResult.axiosForShow(id),
+    searchForShow: id => {SearchResult.axiosForShow(id)},
     history: props.history
   })
 
