@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import TopRatedHeader from '../../components/TopRatedHeader'
 
 const TopRated = _ => {

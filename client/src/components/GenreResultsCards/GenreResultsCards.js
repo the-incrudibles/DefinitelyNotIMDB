@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
@@ -6,7 +6,7 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import Placeholder from '../../images/placeholder_poster.jpg'
+// import Placeholder from '../../images/placeholder_poster.jpg'
 import genreResultsContext from '../../utils/genreResultsContext'
 import SearchResult from '../../utils/SearchResult.js'
 
@@ -16,7 +16,7 @@ const GenreResultsCards = _ => {
       {
         ({ genreResultsMovies }) => (
           genreResultsMovies.map(movie =>
-            <Link to='/movie' className="cardLink" onClick={_ => {
+            <Link to='/movie' className='cardLink' onClick={_ => {
               localStorage.setItem('movieID', movie.id)
               SearchResult.axiosForMovie(movie.id)
             }}>

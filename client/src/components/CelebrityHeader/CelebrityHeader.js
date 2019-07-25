@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
-import AddWatchListButton from '../../components/AddWatchListButton'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.light
   },
   chip: {
-    margin: "1px",
+    margin: '1px'
   }
 }))
 
@@ -33,27 +32,23 @@ const CelebrityHeader = _ => {
   const [celebrityState, setCelebrityState] = useState({
     celebrity: {},
     renderCelebrity: _ => {
-      console.log('has run')
       axios.get(`/celebrity/${parseInt(localStorage.getItem('celebrityID'))}`)
         .then(({ data }) => {
           if (!data) {
             celebrityState.renderCelebrity()
           } else {
             setCelebrityState({ ...celebrityState, celebrity: data })
-            console.log(data)
           }
         })
         .catch(e => console.log(e))
     }
   })
 
-  const [data, setData] = useState({ genres: [] })
-
   const classes = useStyles()
 
   useEffect(_ => {
     celebrityState.renderCelebrity()
-  }, [])
+  },)
 
   return (
     <div>
@@ -61,7 +56,7 @@ const CelebrityHeader = _ => {
       <Paper className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={6}>
-            <img className="movieImg" src={`https://image.tmdb.org/t/p/original${celebrityState.celebrity.profile_path}`} alt={celebrityState.celebrity.name} />
+            <img className='movieImg' src={`https://image.tmdb.org/t/p/original${celebrityState.celebrity.profile_path}`} alt={celebrityState.celebrity.name} />
           </Grid>
           <Grid item xs={6}>
             <Typography variant='h5' component='h3'>
@@ -85,6 +80,5 @@ const CelebrityHeader = _ => {
     </div>
   )
 }
-
 
 export default CelebrityHeader

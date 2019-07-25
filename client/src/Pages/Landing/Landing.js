@@ -12,15 +12,13 @@ const Landing = _ => {
     MainArticles.getArticles()
       .then(({ data: articles }) => {
         setMainState({ ...mainState, articles: articles })
-        console.log(articles)
       })
       .catch(e => console.log(e))
   }
 
   useEffect(_ => {
     searchForArticles()
-  },
-  [])
+  },)
 
   return (
     <>
