@@ -33,7 +33,7 @@ const TVShowComments = _ => {
   const [commentsState, setCommentsState] = useState([])
   const classes = useStyles()
 
-  // fetch tv show comments 
+  // fetch tv show comments
   // Connor note: need help with writing this out!
   commentsState.renderComments = _ => {
     axios.get(`/comments/${'id'}`)
@@ -50,23 +50,23 @@ const TVShowComments = _ => {
       <Paper className={classes.rootTwo}>
         <Typography>
           Leave a comment below!
-            </Typography>
+        </Typography>
         <List className={classes.root}>
           {
             // change commentData to comments when available
             commentData.map(data => (
-              <ListItem alignItems="flex-start">
+              <ListItem alignItems='flex-start'>
                 <ListItemAvatar>
-                  <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/svg/195/195158.svg" />
+                  <Avatar alt='Remy Sharp' src='https://image.flaticon.com/icons/svg/195/195158.svg' />
                 </ListItemAvatar>
                 <ListItemText
                   secondary={
                     <React.Fragment>
                       <Typography
-                        component="span"
-                        variant="body2"
+                        component='span'
+                        variant='body2'
                         className={classes.inline}
-                        color="textPrimary"
+                        color='textPrimary'
                       >
                         {data.name}
                       </Typography>

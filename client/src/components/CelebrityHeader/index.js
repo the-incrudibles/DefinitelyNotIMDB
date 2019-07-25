@@ -1,1 +1,1 @@
-export {default} from './CelebrityHeader.js'
+export { default } from './CelebrityHeader.js'

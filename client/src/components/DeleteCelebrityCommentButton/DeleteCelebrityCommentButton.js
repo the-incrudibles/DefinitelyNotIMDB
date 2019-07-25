@@ -34,12 +34,11 @@ const DeleteCelebrityCommentButton = _ => {
   return (
     <>
       {
-        checkIsAdmin.isAdmin === 'admin' ?
-          <IconButton className={classes.isAdmin} size='small' aria-label='Delete' onClick={handleDeleteCommentButton}>
+        checkIsAdmin.isAdmin === 'admin'
+          ? <IconButton className={classes.isAdmin} size='small' aria-label='Delete' onClick={handleDeleteCommentButton}>
             <DeleteIcon />
           </IconButton>
-          :
-          <IconButton className={classes.isNotAdmin} size='small' aria-label='Delete' >
+          : <IconButton className={classes.isNotAdmin} size='small' aria-label='Delete' >
             <DeleteIcon />
           </IconButton>
       }
