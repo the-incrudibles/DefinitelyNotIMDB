@@ -16,8 +16,7 @@ module.exports = app => {
   app.put('/celebrity/:id', (req, res) => {
     Celebrity.findOneAndUpdate({ id: req.params.id }, req.body)
       .then(_ => {
-        // res.sendStatus(200)
-        console.log('updated in db')
+        res.sendStatus(200)
       })
       .catch(e => console.log(e))
   })

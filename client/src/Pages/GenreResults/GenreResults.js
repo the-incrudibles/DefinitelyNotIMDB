@@ -14,7 +14,6 @@ const GenreResults = _ => {
     axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${localStorage.getItem('genreID')}`)
       .then(({ data }) => {
         setGenreResultsState({ ...genreResultsState, genreResultsMovies: data.results })
-        // console.log(data.results)
       })
       .catch(e => console.log('error:', e))
   }, [])

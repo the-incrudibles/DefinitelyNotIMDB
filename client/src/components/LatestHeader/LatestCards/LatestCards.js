@@ -13,6 +13,7 @@ const LatestCards = _ => {
   const movie = useContext(latestContext)
   return (
     <Link to='/movie' className="cardLink" onClick={_ => {
+      localStorage.setItem('movieID', movie.id)
       SearchResult.axiosForMovie(movie.id)
     }}>
       <Card className='resultsDiv'>

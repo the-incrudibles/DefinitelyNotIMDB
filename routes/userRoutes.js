@@ -6,7 +6,7 @@ module.exports = app => {
   app.post('/verify', passport.authenticate('jwt', { session: false }), (req, res) => res.sendStatus(200))
 
   app.post('/register', (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     User.register(new User({
       name: req.body.name,
       username: req.body.username,
