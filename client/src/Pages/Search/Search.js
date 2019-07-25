@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const TestSearch = props => {
+const TestSearch = _ => {
   const classes = useStyles()
 
   const inputLabel = useRef()
@@ -45,7 +45,7 @@ const TestSearch = props => {
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth)
   }, [])
-  console.log(props)
+
   // Sammi's code:
   const [searchState, setSearchState] = useState({
     searchArea: '',

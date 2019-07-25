@@ -15,7 +15,7 @@ const AddMovieComments = _ => {
 
   const classes = useStyles()
   const [newCommentState, setNewCommentState] = useState({
-    comments:[]
+    comments: []
   })
 
 

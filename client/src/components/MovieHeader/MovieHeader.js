@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
@@ -78,16 +79,19 @@ const MovieHeader = _ => {
             <div className='genreChips'>
               {
                 data.genres.map(genre =>
-                  <Chip
-                    size='small'
-                    label={genre.name}
-                    className={classes.chip}
-                    component='a'
-                    href='/genre'
-                    clickable
-                    color='primary'
-                  // onClick={handleClick}
-                  />
+                  <Link to='/genre' onClick={_ => {
+                    localStorage.setItem('genreID', genre.id)
+                    localStorage.setItem('genreName', genre.name)
+                  }}>
+                    <Chip
+                      size='small'
+                      label={genre.name}
+                      className={classes.chip}
+                      component='a'
+                      clickable
+                      color='primary'
+                    />
+                  </Link>
                 )
               }
             </div>

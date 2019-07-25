@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.light
   },
   chip: {
-    margin: "1px",
+    margin: '1px'
   }
 }))
 
@@ -72,17 +72,17 @@ const TVShowHeader = _ => {
             <Typography>
               <AddWatchListButton />
             </Typography>
-            <div className="genreChips">
+            <div className='genreChips'>
               {
                 data.genres.map(genre =>
                   <Chip
-                    size="small"
+                    size='small'
                     label={genre.name}
                     className={classes.chip}
-                    component="a"
-                    href="/genre"
+                    component='a'
+                    href='/genre'
                     clickable
-                    color="primary"
+                    color='primary'
                   // onClick={handleClick}
                   />
                 )
@@ -100,6 +100,5 @@ const TVShowHeader = _ => {
     </div>
   )
 }
-
 
 export default TVShowHeader
