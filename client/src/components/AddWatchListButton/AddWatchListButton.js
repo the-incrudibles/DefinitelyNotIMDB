@@ -5,15 +5,15 @@ import axios from 'axios'
 import Watchlist from '../../utils/Watchlist.js'
 
 const AddWatchListButton = _ => {
-    const Movie = useRef()
+  const Movie = useRef()
 
-    const [newWatchlistState, setNewWatchlistState] = useState({
-      watchlist:[]
-    })
+  const [newWatchlistState, setNewWatchlistState] = useState({
+    watchlist: []
+  })
   const handleGetWatchList = _ => {
-      Watchlist.getWatchlist()
-        .then(({ data: movies}) => this.setState({ movies}))
-        .catch(e => console.error(e))
+    Watchlist.getWatchlist()
+      .then(({ data: movies }) => this.setState({ movies }))
+      .catch(e => console.error(e))
   }
   const handleAddWatchList = event => {
     // axios.put(`/user/${localStorage.getItem('userID')}`, {
@@ -26,8 +26,8 @@ const AddWatchListButton = _ => {
     console.log(event.target)
     console.log('ping')
     Watchlist.addWatchlist(event.target.id)
-        .then(_ => this.handleGetWatchList())
-        .catch(e => console.error(e))
+      .then(_ => this.handleGetWatchList())
+      .catch(e => console.error(e))
   }
 
   return (

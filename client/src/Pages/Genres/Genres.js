@@ -31,7 +31,7 @@ const Genre = _ => {
               }}>
                 <h3>{genre.id}</h3>
                 <h2>{genre.name}</h2>
-                <h6>{genre.picture_aws}</h6>
+                <img src={genre.picture_aws} alt='oof' />
               </div>
             </Link>
           )
