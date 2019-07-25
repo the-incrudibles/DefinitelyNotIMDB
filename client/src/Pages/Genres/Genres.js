@@ -12,8 +12,14 @@ const Genre = _ => {
           console.log(data)
         })
         .catch(e => console.log(e))
-    }
+    },
+    hasChosenGenre: false
   })
+
+  useEffect(_ => {
+    genreState.searchForGenres()
+  },
+    [])
 
   useEffect(_ => {
     genreState.searchForGenres()
@@ -25,7 +31,9 @@ const Genre = _ => {
       {
         genreState.genres.map(genre => {
           return (
-            <div id={genre.id}>
+            <div id={genre.id} onClick={_ => {
+              console.log('genre has been clicked')
+            }}>
               <h3>{genre.id}</h3>
               <h2>{genre.name}</h2>
               <h6>{genre.picture_aws}</h6>
