@@ -7,7 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Typography from '@material-ui/core/Typography'
 import axios from 'axios'
 import CardActionArea from '@material-ui/core/CardActionArea'
-// import Watchlist from '../../utils/Watchlist.js'
+import Watchlist from '../../utils/Watchlist.js'
 
 const MyWatchList = _ => {
 
