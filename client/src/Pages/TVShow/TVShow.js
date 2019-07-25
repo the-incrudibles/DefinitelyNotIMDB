@@ -8,7 +8,7 @@ const TVShow = _ => {
     <div>
       <TVShowHeader />
       <TVCastSlider />
-      <TVShowComments />
+      {/* <TVShowComments /> */}
     </div>
   )
 }
