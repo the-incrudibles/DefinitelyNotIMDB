@@ -30,7 +30,6 @@ const Genre = _ => {
     <>
       {
         genreState.genres.map(genre => {
-          console.log(genre)
           return (
             <Link to='/genre' className='cardLink' onClick={_ => {
               localStorage.setItem('genreID', genre.id)

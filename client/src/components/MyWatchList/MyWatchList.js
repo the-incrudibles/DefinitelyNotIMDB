@@ -7,19 +7,11 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Typography from '@material-ui/core/Typography'
 import axios from 'axios'
 import CardActionArea from '@material-ui/core/CardActionArea'
-// import Watchlist from '../../utils/Watchlist.js'
+import Watchlist from '../../utils/Watchlist.js'
 
 const MyWatchList = _ => {
-  // const [watchlistState, setWatchlistState] = useState({
-  //   movies: []
-  // })
-
-  // useEffect(_ => {
-  //   Watchlist.populate()
-  // }, [])
-
   useEffect(_ => {
-    axios.get(`https://api.themoviedb.org/3/movie/399579?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
+    Watchlist.getWatchlist()
       .then(({ data: movie }) => {
       })
       .catch(e => console.error(e))
