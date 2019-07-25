@@ -10,7 +10,7 @@ import Chip from '@material-ui/core/Chip'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: 25
+    padding: 15
   },
   card: {
     maxWidth: 350
@@ -59,7 +59,7 @@ const TVShowHeader = _ => {
     <div>
       {console.log(tvState.tvshow)}
       <Paper className={classes.root}>
-        <Grid container spacing={1}>
+        <Grid container spacing={0}>
           <Grid item xs={6}>
             <img className='movieImg' src={`https://image.tmdb.org/t/p/original${tvState.tvshow.poster_path}`} alt='' />
           </Grid>
