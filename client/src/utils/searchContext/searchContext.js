@@ -8,8 +8,7 @@ const SearchContext = createContext({
   searchTerm: '',
   searchForCeleb: id => { },
   searchForMovie: id => { },
-  searchForShow: id => { },
-  history: ''
+  searchForShow: id => { }
 })
 
 export default SearchContext

@@ -13,39 +13,35 @@ const SearchMovie = _ => {
   return (
     <SearchContext.Consumer>
       {
-        ({ movies, searchForMovie, history }) => (
+        ({ movies, searchForMovie }) => (
           movies.map(movie =>
-            // <Link to='/movie' className="cardLink" onClick={_ => {
-            //   localStorage.setItem('movieID', movie.id)
-            //   searchForMovie(movie.id)
-            // }}>
-            <Card key={movie.id} className='resultsDiv' onClick={_ => {
+            <Link to='/movie' className="cardLink" onClick={_ => {
               localStorage.setItem('movieID', movie.id)
               searchForMovie(movie.id)
-              history.push('/movie')
             }}>
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant='h6' component='h2'>
-                    {movie.title ? movie.title : movie.name}
-                  </Typography>
-                  {
-                    movie.poster_path ? <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} /> : <img className='resultsPoster' src={Placeholder} alt={movie.title} />
-                  }
-                  <div className='cardTypography'>
-                    <Typography variant='body2' color='textSecondary' component='p'>
-                      {movie.overview ? <> {movie.overview.slice(0, 150)}<span>...</span> </> : null}
+              <Card key={movie.id} className='resultsDiv'>
+                <CardActionArea>
+                  <CardContent>
+                    <Typography gutterBottom variant='h6' component='h2'>
+                      {movie.title ? movie.title : movie.name}
                     </Typography>
-                  </div>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button className={movie.id} size='small' color='primary'>
-                  More Info
+                    {
+                      movie.poster_path ? <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} /> : <img className='resultsPoster' src={Placeholder} alt={movie.title} />
+                    }
+                    <div className='cardTypography'>
+                      <Typography variant='body2' color='textSecondary' component='p'>
+                        {movie.overview ? <> {movie.overview.slice(0, 150)}<span>...</span> </> : null}
+                      </Typography>
+                    </div>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button className={movie.id} size='small' color='primary'>
+                    More Info
                 </Button>
-              </CardActions>
-            </Card>
-            // </Link>
+                </CardActions>
+              </Card>
+            </Link>
           )
         )
       }

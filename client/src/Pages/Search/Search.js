@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
-import { createBrowserHistory } from 'history'
 
 // Material-UI imports:
 import OutlinedInput from '@material-ui/core/OutlinedInput'
@@ -36,8 +35,6 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const history = createBrowserHistory()
-
 const TestSearch = props => {
   const classes = useStyles()
 
@@ -58,8 +55,7 @@ const TestSearch = props => {
     searchTerm: '',
     searchForCeleb: id => SearchResult.axiosForCeleb(id),
     searchForMovie: id => { SearchResult.axiosForMovie(id) },
-    searchForShow: id => SearchResult.axiosForShow(id),
-    history: props.history
+    searchForShow: id => SearchResult.axiosForShow(id)
   })
 
   const searchTerm = useRef()
