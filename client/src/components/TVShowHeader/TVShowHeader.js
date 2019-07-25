@@ -53,7 +53,7 @@ const TVShowHeader = _ => {
 
   useEffect(_ => {
     tvState.renderTv()
-  },)
+  }, [])
 
   return (
     <div>

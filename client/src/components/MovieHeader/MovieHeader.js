@@ -56,7 +56,7 @@ const MovieHeader = _ => {
 
   useEffect(_ => {
     movieState.renderMovie()
-  },)
+  },[])
 
   return (
     <div>
