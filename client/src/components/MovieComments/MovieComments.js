@@ -73,8 +73,8 @@ const MovieComments = _ => {
                     </React.Fragment>
                   }
                 />
-                <ReportCommentButton />
-                <DeleteCommentButton />
+                <ReportMovieCommentButton />
+                <DeleteMovieCommentButton />
               </ListItem>
             ))
           }
