@@ -64,11 +64,15 @@ const Navbar = _ => {
         </ListItem>
         <ListItem>
           <i className='material-icons'>new_releases</i>
-          <Link to='/latest' className='drawerLink'><ListItemText primary='Latest Movies' /></Link>
+          <Link to='/latest' className='drawerLink'><ListItemText primary='In Theaters' /></Link>
+        </ListItem>
+        <ListItem>
+          <i className='material-icons'>movie</i>
+          <Link to='/toprated' className='drawerLink'><ListItemText primary='Top Movies' /></Link>
         </ListItem>
         <ListItem>
           <i className='material-icons'>local_movies</i>
-          <Link to='/toprated' className='drawerLink'><ListItemText primary='Top Movies' /></Link>
+          <Link to='/genres' className='drawerLink'><ListItemText primary='Genres' /></Link>
         </ListItem>
         <ListItem>
           <i className='material-icons'>search</i>

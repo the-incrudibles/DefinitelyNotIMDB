@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import tileData from './tileData.js'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
@@ -34,20 +34,16 @@ const CastSlider = _ => {
   const [castSlidersState, setCastSlidersState] = useState([])
   const classes = useStyles()
 
-  // // https://api.themoviedb.org/3/movie/399579/credits?api_key=d12a96cdcfe3d81297140ffea9dca118
-    // axios.get(`/movies/${'id'}`)
-
-  const renderCast= _ => {
-    axios.get(`https://api.themoviedb.org/3/movie/399579/credits?api_key=d12a96cdcfe3d81297140ffea9dca118`)
-      .then(({data}) =>{
+  const renderCast = _ => {
+    axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}/credits?api_key=${process.env.REACT_APP_TMDB_APIKEY}`)
+      .then(({ data }) => {
         setCastSlidersState(data.cast)
       })
       .catch(e => console.error(e))
   }
-useEffect(_=>{
-  renderCast()
-},[])
-  console.log(castSlidersState)
+  useEffect(_ => {
+    renderCast()
+  }, [])
 
   return (
     <div className={classes.rootTwo}>
@@ -55,18 +51,18 @@ useEffect(_=>{
         {
           // change to tileData to casts
           castSlidersState.map(cast => (
-          <GridListTile key='' item>
-            {cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={''} /> : <img src="" />}
-            <Link to='/'>
-              <GridListTileBar
-                title={cast.name}
-                titlePosition='top'
-                actionPosition='left'
-                className={classes.titleBar}
-              />
-            </Link>
-          </GridListTile>
-        ))
+            <GridListTile key='' item>
+              {cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={''} /> : <img src='' />}
+              <Link to='/'>
+                <GridListTileBar
+                  title={cast.name}
+                  titlePosition='top'
+                  actionPosition='left'
+                  className={classes.titleBar}
+                />
+              </Link>
+            </GridListTile>
+          ))
         }
       </GridList>
     </div>

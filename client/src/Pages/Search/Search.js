@@ -20,6 +20,7 @@ import SearchContext from '../../utils/searchContext'
 import SearchMovie from '../../components/SearchMovie'
 import SearchTV from '../../components/SearchTV'
 import SearchCelebrities from '../../components/SearchCelebrities'
+import { BottomNavigationAction } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const TestSearch = props => {
+const TestSearch = _ => {
   const classes = useStyles()
 
   const inputLabel = useRef()
@@ -44,7 +45,7 @@ const TestSearch = props => {
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth)
   }, [])
-  console.log(props)
+
   // Sammi's code:
   const [searchState, setSearchState] = useState({
     searchArea: '',
@@ -52,11 +53,8 @@ const TestSearch = props => {
     shows: [],
     celebs: [],
     searchTerm: '',
-    searchMovies: false,
-    searchTV: false,
-    searchCelebs: false,
     searchForCeleb: id => SearchResult.axiosForCeleb(id),
-    searchForMovie: id => SearchResult.axiosForMovie(id),
+    searchForMovie: id => { SearchResult.axiosForMovie(id) },
     searchForShow: id => SearchResult.axiosForShow(id)
   })
 
