@@ -22,7 +22,6 @@ const AddCelebrityComments = _ => {
 
   const handleAddComment = event => {
     event.preventDefault()
-    console.log('button works')
     // create ulils for post comment
     axios.post(`/celebrity/`, {
       comment: comment.current.value

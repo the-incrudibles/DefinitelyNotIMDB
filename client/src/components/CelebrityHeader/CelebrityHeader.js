@@ -33,14 +33,12 @@ const CelebrityHeader = _ => {
   const [celebrityState, setCelebrityState] = useState({
     celebrity: {},
     renderCelebrity: _ => {
-      console.log('has run')
       axios.get(`/celebrity/${parseInt(localStorage.getItem('celebrityID'))}`)
         .then(({ data }) => {
           if (!data) {
             celebrityState.renderCelebrity()
           } else {
             setCelebrityState({ ...celebrityState, celebrity: data })
-            console.log(data)
           }
         })
         .catch(e => console.log(e))
