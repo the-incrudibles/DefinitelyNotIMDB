@@ -48,7 +48,7 @@ const CelebrityHeader = _ => {
 
   useEffect(_ => {
     celebrityState.renderCelebrity()
-  },)
+  })
 
   return (
     <div>

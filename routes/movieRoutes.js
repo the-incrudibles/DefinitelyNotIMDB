@@ -20,4 +20,15 @@ module.exports = app => {
       })
       .catch(e => console.log(e))
   })
+
+  app.get('/watchlist', (req,res) => {
+    Movie.find({ watchlist: true})
+      .then(movie => res.json(movie))
+      .catch(e => console.log(e))
+  })
+  app.put('/watchlist/:id', (req, res) => {
+    Movie.findOneAndUpdate(req.params.id, { watchlist: true})
+      .then(_ => res.sendStatus(200))
+      .catch(e => console.log(e))
+  })
 }
