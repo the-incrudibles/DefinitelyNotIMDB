@@ -13,7 +13,6 @@ import DeleteMovieCommentButton from '../DeleteMovieCommentButton'
 // import commentData from './commentData'
 import MovieContext from '../../utils/movieContext'
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -31,12 +30,12 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 const MovieComments = _ => {
-  const [commentsState, setCommentsState] = useState([])
+  const [commentsState, setCommentsState] = useState({})
   const classes = useStyles()
 
   //   fetch movie comments
   commentsState.renderComments = _ => {
-      MovieContext.getComment(parseInt(localStorage.getItem('movieID')))
+    MovieContext.getComment(parseInt(localStorage.getItem('movieID')))
       .then(({ data }) => {
         setCommentsState(data.comments)
       })
