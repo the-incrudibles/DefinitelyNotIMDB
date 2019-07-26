@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Flag from '@material-ui/icons/Flag'
 import { makeStyles } from '@material-ui/styles'
 import IconButton from '@material-ui/core/IconButton'
+import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
   flagNotReport: {
@@ -19,14 +20,14 @@ const ReportMovieCommentButton = _ => {
   const classes = useStyles()
 
   const handleReportComment = _ => {
-    // axios.put(`/movie/comment/id`)
-    //     .then(_=>{
-    //         console.log('success')
-    //         setReportCommentState({...reportCommentState, isReport:true})
-
-    //     })
-    //     .catch(e => console.log('not updated'))
-    setReportCommentState({ ...reportCommentState, isReport: true })
+    axios.put(`/comment/${'id'}`, {
+      flagged: true
+    })
+      .then(_ => {
+        console.log('success')
+        setReportCommentState({ ...reportCommentState, isReport:true })
+      })
+      .catch(e => console.log('not updated'))
   }
 
   return (

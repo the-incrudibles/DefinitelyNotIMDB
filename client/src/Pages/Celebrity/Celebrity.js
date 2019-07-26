@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import CelebrityHeader from '../../components/CelebrityHeader'
-import MovieSlider from '../../components/MovieSlider'
+// import MovieSlider from '../../components/MovieSlider'
 import CelebrityComments from '../../components/CelebrityComments'
-import AddCelebrityComments from '../../components/AddMovieComments'
 
 const Celebrity = _ => {
   return (

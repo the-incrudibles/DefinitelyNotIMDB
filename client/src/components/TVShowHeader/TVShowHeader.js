@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
@@ -6,11 +7,10 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import AddWatchListButton from '../../components/AddWatchListButton'
 import Chip from '@material-ui/core/Chip'
-// import MovieContext from '../../utils/movieContext'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: 25
+    padding: 15
   },
   card: {
     maxWidth: 350
@@ -32,25 +32,23 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const TVShowHeader = _ => {
+  const [data, setData] = useState({ genres: [] })
   const [tvState, setTvState] = useState({
     tvshow: {},
+    first_air_date: [],
     renderTv: _ => {
-      console.log('has run')
-      axios.get(`/tv/${parseInt(localStorage.getItem('tvID'))}`)
+      axios.get(`https://api.themoviedb.org/3/tv/${parseInt(localStorage.getItem('tvID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
         .then(({ data }) => {
           if (!data) {
             tvState.renderTv()
           } else {
-            setTvState({ ...tvState, tvshow: data })
-            console.log(data)
+            setTvState({ ...tvState, tvshow: data, first_air_date: data.first_air_date })
+            setData({ ...data, genres: data.genres })
           }
         })
         .catch(e => console.log(e))
     }
   })
-
-  const [data, setData] = useState({ genres: [] })
-
   const classes = useStyles()
 
   useEffect(_ => {
@@ -61,30 +59,46 @@ const TVShowHeader = _ => {
     <div>
       {console.log(tvState.tvshow)}
       <Paper className={classes.root}>
-        <Grid container spacing={1}>
+        <Grid container spacing={0}>
           <Grid item xs={6}>
-            <Typography variant='h5' component='h3'>
-              {/* {tvState.tv.name} */}
+            <img className='movieImg' src={`https://image.tmdb.org/t/p/original${tvState.tvshow.poster_path}`} alt='' />
+          </Grid>
+          <Grid item xs={6}>
+            <Typography variant='h5' component='h3' className="movieHeaderText">
+              {tvState.tvshow.name}
             </Typography>
-            <Typography component='p'>
-              {/* Rating: {tvState.tv.vote_average} */}
+            <Typography component='p' className="movieHeaderText">
+              Rating: {tvState.tvshow.vote_average}
             </Typography>
-            <Typography>
-              <AddWatchListButton />
-            </Typography>
+            {/* <Typography component='p' className="movieHeaderText">
+              {
+                tvState.first_air_date ?
+                  <>
+                    <Typography component='p' className="movieHeaderText">First aired:</Typography>{`${tvState.first_air_date.slice(5, 7)}-${tvState.first_air_date.slice(8, 10)}-${tvState.first_air_date.slice(0, 4)}`}
+                  </> : null
+              }
+            </Typography> */}
+            <div className="addWatchlistButton">
+              <Typography>
+                <AddWatchListButton />
+              </Typography>
+            </div>
             <div className='genreChips'>
               {
                 data.genres.map(genre =>
-                  <Chip
-                    size='small'
-                    label={genre.name}
-                    className={classes.chip}
-                    component='a'
-                    href='/genre'
-                    clickable
-                    color='primary'
-                  // onClick={handleClick}
-                  />
+                  <Link className='genreChips' to='/genre' onClick={_ => {
+                    localStorage.setItem('genreID', genre.id)
+                    localStorage.setItem('genreName', genre.name)
+                  }}>
+                    <Chip
+                      size='small'
+                      label={genre.name}
+                      className={classes.chip}
+                      component='a'
+                      clickable
+                      color='primary'
+                    />
+                  </Link>
                 )
               }
             </div>
@@ -93,7 +107,7 @@ const TVShowHeader = _ => {
             <strong>Overview</strong>
           </Typography>
           <Typography>
-            {/* {tvState.tv.overview} */}
+            {tvState.tvshow.overview}
           </Typography>
         </Grid>
       </Paper>

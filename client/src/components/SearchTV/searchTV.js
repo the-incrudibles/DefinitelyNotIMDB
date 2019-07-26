@@ -18,28 +18,33 @@ const searchTV = _ => {
           //   console.log(show)
           // })
           shows.map(show =>
-            <Card key={show.id} onClick={_ => searchForShow(show.id)} className='resultsDiv'>
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant='h6' component='h2'>
-                    {show.name}
-                  </Typography>
-                  {
-                    show.poster_path ? <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${show.poster_path}`} alt={show.title} /> : <img className='resultsPoster' src={Placeholder} alt={show.title} />
-                  }
-                  <div className='cardTypography'>
-                    <Typography variant='body2' color='textSecondary' component='p'>
-                      {show.overview ? <> {show.overview.slice(0, 150)}<span>...</span> </> : null}
+            <Link to='/tvshow' className='cardLink' onClick={_ => {
+              localStorage.setItem('tvID', show.id)
+              searchForShow(show.id)
+            }}>
+              <Card key={show.id} onClick={_ => searchForShow(show.id)} className='resultsDiv'>
+                <CardActionArea>
+                  <CardContent>
+                    <Typography gutterBottom variant='h6' component='h2'>
+                      {show.name}
                     </Typography>
-                  </div>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button size='small' color='primary'>
-                  More Info
+                    {
+                      show.poster_path ? <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${show.poster_path}`} alt={show.title} /> : <img className='resultsPoster' src={Placeholder} alt={show.title} />
+                    }
+                    <div className='cardTypography'>
+                      <Typography variant='body2' color='textSecondary' component='p'>
+                        {show.overview ? <> {show.overview.slice(0, 150)}<span>...</span> </> : null}
+                      </Typography>
+                    </div>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button size='small' color='primary'>
+                    More Info
                 </Button>
-              </CardActions>
-            </Card>
+                </CardActions>
+              </Card>
+            </Link>
           )
         )
       }

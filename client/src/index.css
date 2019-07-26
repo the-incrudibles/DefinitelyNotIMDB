@@ -147,5 +147,18 @@ code {
 .genreChips {
   margin: auto;
   text-align: center;
-  margin-top: 5px;
+  margin-top: 15px;
+  text-decoration: none;
+}
+
+.addWatchlistButton {
+  margin: auto;
+  text-align: center;
+  margin-top: 15px;
+  text-decoration: none;
+}
+
+.movieHeaderText {
+  text-align: center;
+  margin-bottom: 5px;
 }
