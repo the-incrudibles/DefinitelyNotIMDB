@@ -31,8 +31,7 @@ const useStyles = makeStyles(theme => ({
 }))
 const MovieComments = _ => {
   const [commentsState, setCommentsState] = useState({
-    comments: [],
-    noComments: false
+    comments: []
   })
   const classes = useStyles()
 
@@ -41,9 +40,9 @@ const MovieComments = _ => {
     MovieContext.getComment(localStorage.getItem('movieID'))
       .then(({ data }) => {
         if (data) {
-          setCommentsState({ ...commentsState, comments: data.comments, noComments: false })
+          setCommentsState({ ...commentsState, comments: data })
         } else if (!data) {
-          setCommentsState({ ...commentsState, noComments: true })
+          renderComments()
         }
       })
       .catch(e => console.log(e))
