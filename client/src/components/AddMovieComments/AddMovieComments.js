@@ -20,13 +20,11 @@ const useStyles = makeStyles(theme => ({
 
 const AddMovieComments = _ => {
   const text = useRef()
-
   const classes = useStyles()
 
- 
+
   const handleAddComment = event => {
     event.preventDefault()
-    // create ulils for post comment
     axios.post(`/comment`, {
       text: text.current.value,
       author: localStorage.getItem('user'),
@@ -35,6 +33,7 @@ const AddMovieComments = _ => {
     })
       .then(_ => {
         console.log('success')
+        
         return <Redirect to='/movie' />
       })
       .catch(e => console.log('not sent'))

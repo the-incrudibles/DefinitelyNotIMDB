@@ -83,8 +83,8 @@ const MovieComments = _ => {
                     </React.Fragment>
                   }
                 />
-                <ReportMovieCommentButton  id={comment._id}/>
-                <DeleteMovieCommentButton />
+                <ReportMovieCommentButton  value={comment._id}/>
+                <DeleteMovieCommentButton value={comment._id}/>
               </ListItem>
             ))
           }
