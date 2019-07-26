@@ -174,6 +174,7 @@ const SignupForm = _ => {
                 className='passwordInput'
                 inputRef={password}
                 error id
+                type='password'
               />
               <FormHelperText><p className='emptyInput'>*Required field </p></FormHelperText>
             </> : <TextField
@@ -182,6 +183,7 @@ const SignupForm = _ => {
               variant='outlined'
               className='passwordInput'
               inputRef={password}
+              type='password'
             />
         }
 

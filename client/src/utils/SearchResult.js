@@ -6,9 +6,11 @@ const SearchResult = {
     axios.get(`/celebrity/${id}`)
       .then(celeb => {
         if (!celeb.data) {
+          console.log('this is a post request')
           SearchResult.postCeleb(id)
           localStorage.setItem('celebID', id)
         } else {
+          console.log('this is a put request')
           SearchResult.putCeleb(id)
           localStorage.clear('celebID')
         }
@@ -34,9 +36,11 @@ const SearchResult = {
     axios.get(`/show/${id}`)
       .then(show => {
         if (!show.data) {
+          console.log('this is a post request')
           SearchResult.postShow(id)
           localStorage.setItem('showID', id)
         } else {
+          console.log('this is a put request')
           SearchResult.putShow(id)
           localStorage.setItem('showID', id)
         }
@@ -62,9 +66,11 @@ const SearchResult = {
     axios.get(`/movie/${id}`)
       .then(movie => {
         if (!movie.data) {
+          console.log('this is a post request')
           SearchResult.postMovie(id)
           localStorage.setItem('movieID', id)
         } else {
+          console.log('this is a put request')
           SearchResult.putMovie(id)
           localStorage.setItem('movieID', id)
         }
