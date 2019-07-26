@@ -15,7 +15,7 @@ const Article = _ => {
         ({ articles }) => (
           articles.map(article =>
             <Link to={
-              localStorage.getItem('user') ? '/articleInfo' : 'login'
+              localStorage.getItem('user') ? '/articleinfo' : 'login'
             }
               className='cardLink' key={article._id} onClick={_ => {
                 localStorage.setItem('articleID', article._id)
