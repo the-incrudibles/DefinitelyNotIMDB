@@ -7,7 +7,6 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
-import Placeholder from '../../images/placeholder_poster.jpg'
 
 const searchCelebrities = _ => {
   return (
