@@ -30,7 +30,9 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 const TVShowComments = _ => {
-  const [commentsState, setCommentsState] = useState([])
+  const [commentsState, setCommentsState] = useState({
+    comments: []
+  })
   const classes = useStyles()
 
   // fetch tv show comments
@@ -38,7 +40,8 @@ const TVShowComments = _ => {
   commentsState.renderComments = _ => {
     axios.get(`/comments/${'id'}`)
       .then(({ data }) => {
-        setCommentsState(data.comments)
+        let comments = data
+        setCommentsState(...commentsState, comments)
       })
   }
   useEffect(_ => {

@@ -41,7 +41,7 @@ const MovieComments = _ => {
       .then(({ data }) => {
         if (data) {
           let comments = data
-          setCommentsState({ ...commentsState, comments: comments })
+          setCommentsState({ ...commentsState, comments })
         } else if (!data) {
           commentsState.renderComments()
         }
