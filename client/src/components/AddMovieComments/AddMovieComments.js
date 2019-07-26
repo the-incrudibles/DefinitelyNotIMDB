@@ -5,9 +5,16 @@ import axios from 'axios'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 // import MovieContext from '../../utils/movieContext'
+import {Redirect} from 'react-router-dom'
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 25
+  },
+  isUser: {
+    display: 'block'
+  },
+  isNotUser:{
+    display: 'none'
   }
 }))
 
@@ -16,6 +23,7 @@ const AddMovieComments = _ => {
 
   const classes = useStyles()
 
+ 
   const handleAddComment = event => {
     event.preventDefault()
     // create ulils for post comment
@@ -26,14 +34,16 @@ const AddMovieComments = _ => {
       movie: parseInt(localStorage.getItem('movieID'))
     })
       .then(_ => {
-        // console.log(GetComments(parseInt(localStorage.getItem('movieID'))))
-        console.log('successfully added a comment')
+        console.log('success')
+        return <Redirect to='/movie' />
       })
       .catch(e => console.log('not sent'))
   }
 
   return (
     <div>
+      {
+        localStorage.getItem('user') === '' || localStorage.getItem('admin') === '' ?
       <form>
         <TextField
           id='outlined-full-width'
@@ -48,13 +58,36 @@ const AddMovieComments = _ => {
             shrink: true
           }}
         />
-        <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.button}
+        <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.isNotUser}
           onClick={_ => {
             handleAddComment()
           }}>
           Send
         </Button>
       </form>
+      :
+      <form>
+        <TextField
+          id='outlined-full-width'
+          label='Comment'
+          style={{ margin: 8 }}
+          placeholder='Leave a comment'
+          fullWidth
+          margin='normal'
+          variant='outlined'
+          ref={text}
+          InputLabelProps={{
+            shrink: true
+          }}
+        />
+        <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.isUser}
+          onClick={_ => {
+            handleAddComment()
+          }}>
+          Send
+        </Button>
+      </form>
+      }
     </div>
   )
 }

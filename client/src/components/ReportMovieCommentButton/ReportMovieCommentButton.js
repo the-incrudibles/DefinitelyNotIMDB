@@ -8,6 +8,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button'
+
 import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
@@ -28,7 +29,9 @@ const ReportMovieCommentButton = _ => {
 
   function confirmReport() {
     setOpen(false);
+
     setReportCommentState({ ...reportCommentState, isReport: true })
+    reportCommentState.handleReportComment()
     // axios code to report comment?
   }
 
@@ -42,16 +45,16 @@ const ReportMovieCommentButton = _ => {
   })
   const classes = useStyles()
 
-  // const handleReportComment = _ => {
-  //   axios.put(`/movie/comment/id`)
-  //     .then(_ => {
-  //       console.log('success')
-  //       setReportCommentState({ ...reportCommentState, isReport: true })
-
-  //     })
-  //     .catch(e => console.log('not updated'))
-  //   setReportCommentState({ ...reportCommentState, isReport: true })
-  // }
+  reportCommentState.handleReportComment = event => {
+    axios.put(`/comment/${event.target.id}`,{
+      flagged: true
+    })
+        .then(_=>{
+            console.log('success')
+            setReportCommentState({...reportCommentState, isReport:true})
+        })
+        .catch(e => console.log('not updated'))
+  }
 
   return (
     <>
