@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Flag from '@material-ui/icons/Flag'
 import { makeStyles } from '@material-ui/styles'
 import IconButton from '@material-ui/core/IconButton'
+import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
   flagNotReport: {
@@ -18,7 +19,8 @@ const ReportMovieCommentButton = _ => {
   })
   const classes = useStyles()
 
-  const handleReportComment = _ => {
+  const handleReportComment = event => {
+    console.log(event.target.id)
     axios.put(`/comment/${'id'}`,{
       flagged: true
     })

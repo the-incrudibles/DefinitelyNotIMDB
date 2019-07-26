@@ -16,15 +16,6 @@ const AddWatchListButton = _ => {
         .catch(e => console.error(e))
   }
   const handleAddWatchList = event => {
-    // axios.put(`/user/${localStorage.getItem('userID')}`, {
-    //     watchlist: watchlist.current.value
-    // })
-    // .then(_ =>{
-    //     console.log('success')
-    // })
-    // .catch(e => console.log(e))
-    console.log(event.target)
-    console.log('ping')
     Watchlist.addWatchlist(event.target.id)
         .then(_ => this.handleGetWatchList())
         .catch(e => console.error(e))
