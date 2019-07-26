@@ -49,7 +49,7 @@ const MovieComments = _ => {
       })
       .catch(e => console.log(e))
   }
-  
+
   useEffect(_ => {
     commentsState.renderComments()
   }, [])
@@ -57,9 +57,16 @@ const MovieComments = _ => {
   return (
     <div>
       <Paper className={classes.rootTwo}>
-        <Typography>
-          Leave a comment below!
-        </Typography>
+        {
+          localStorage.getItem('user') ?
+            <Typography>
+              Leave a comment below!
+            </Typography>
+            : <Typography>
+              Comments: 
+            </Typography>
+        }
+
         <List className={classes.root}>
           {
             // change commentData to comments when available
@@ -83,13 +90,17 @@ const MovieComments = _ => {
                     </React.Fragment>
                   }
                 />
-                <ReportMovieCommentButton  id={comment._id}/>
+                {
+                  localStorage.getItem('user') ? <ReportMovieCommentButton id={comment._id} /> : null
+                }
                 <DeleteMovieCommentButton />
               </ListItem>
             ))
           }
         </List>
-        <AddMovieComments />
+        {
+          localStorage.getItem('user') ? <AddMovieComments /> : null
+        }
       </Paper>
     </div>
   )

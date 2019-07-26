@@ -51,10 +51,12 @@ const TVCastSlider = _ => {
           castSlidersState.map(cast => (
             <GridListTile key='' item>
               {cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={cast.name} /> : <img src='' alt='' />}
-              <Link to='/'>
+              <Link to='/celebrity' onClick={_ => {
+                localStorage.setItem('celebID', cast.id)
+              }}>
                 <GridListTileBar
                   title={cast.name}
-                  titlePosition='top'
+                  titlePosition='bottom'
                   actionPosition='left'
                   className={classes.titleBar}
                 />

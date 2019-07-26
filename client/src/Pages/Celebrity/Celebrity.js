@@ -1,13 +1,13 @@
 import React from 'react'
 import CelebrityHeader from '../../components/CelebrityHeader'
-// import MovieSlider from '../../components/MovieSlider'
+import ShowsSlider from '../../components/ShowsSliders'
 import CelebrityComments from '../../components/CelebrityComments'
 
 const Celebrity = _ => {
   return (
     <div>
       <CelebrityHeader />
-      {/* <MovieSlider /> */}
+      <ShowsSlider />
       <CelebrityComments />
     </div>
   )

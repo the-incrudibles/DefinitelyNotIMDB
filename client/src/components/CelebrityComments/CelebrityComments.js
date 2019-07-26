@@ -49,9 +49,16 @@ const CelebrityComments = _ => {
   return (
     <div>
       <Paper className={classes.rootTwo}>
-        <Typography>
-          Leave a comment below!
-        </Typography>
+        {
+          localStorage.getItem('user') ?
+            <Typography>
+              Leave a comment below!
+          </Typography>
+            : <Typography>
+              Comments:
+          </Typography>
+        }
+
         <List className={classes.root}>
           {
             // change commentData to comments when available
@@ -75,13 +82,17 @@ const CelebrityComments = _ => {
                     </React.Fragment>
                   }
                 />
-                <ReportCommentButton />
+                {
+                  localStorage.getItem('user') ? <ReportCommentButton /> : null
+                }
                 <DeleteCommentButton />
               </ListItem>
             ))
           }
         </List>
-        <AddCelebrityComments />
+        {
+          localStorage.getItem('user') ? <AddCelebrityComments /> : null
+        }
       </Paper>
     </div>
   )
