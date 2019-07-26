@@ -26,7 +26,7 @@ const searchCelebrities = _ => {
                       {celeb.name}
                     </Typography>
                     {
-                      celeb.profile_path ? <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${celeb.profile_path}`} alt={celeb.name} /> : <img className='resultsPoster' src={Placeholder} alt={celeb.name} />
+                      celeb.profile_path ? <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${celeb.profile_path}`} alt={celeb.name} /> : <img className='resultsPoster' src={'http://wiki.bdtnrm.org.au/images/8/8d/Empty_profile.jpg'} alt={celeb.name} />
                     }
                   </CardContent>
                 </CardActionArea>

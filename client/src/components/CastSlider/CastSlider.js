@@ -24,8 +24,8 @@ const useStyles = makeStyles(theme => ({
   },
   titleBar: {
     background:
-          'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
-          'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)'
+      'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+      'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)'
   }
 }))
 
@@ -50,7 +50,9 @@ const CastSlider = _ => {
         {
           castSlidersState.map(cast => (
             <GridListTile key='' item>
-              {cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={cast.name} /> : <img src='' alt='' />}
+              {
+                cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={cast.name} /> : <img src={'https://imdbphotos.s3-us-west-1.amazonaws.com/empty.png'} alt={cast.name} />
+              }
               <Link to='/'>
                 <GridListTileBar
                   title={cast.name}
@@ -63,7 +65,7 @@ const CastSlider = _ => {
           ))
         }
       </GridList>
-    </div>
+    </div >
   )
 }
 
