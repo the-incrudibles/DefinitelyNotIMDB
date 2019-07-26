@@ -38,11 +38,11 @@ const AddMovieComments = _ => {
       })
       .catch(e => console.log('not sent'))
   }
-
   return (
     <div>
       {
         localStorage.getItem('user') === '' || localStorage.getItem('admin') === '' ?
+        <>
           <form>
             <TextField
               id='outlined-full-width'
@@ -64,6 +64,7 @@ const AddMovieComments = _ => {
               Send
         </Button>
           </form>
+          </>
           :
           <form>
             <TextField
