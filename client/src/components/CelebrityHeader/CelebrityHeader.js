@@ -32,7 +32,7 @@ const CelebrityHeader = _ => {
   const [celebrityState, setCelebrityState] = useState({
     celebrity: {},
     renderCelebrity: _ => {
-      axios.get(`https://api.themoviedb.org/3/person/${parseInt(localStorage.getItem('celebrityID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
+      axios.get(`https://api.themoviedb.org/3/person/${localStorage.getItem('celebID')}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
         .then(({ data }) => {
           if (!data) {
             celebrityState.renderCelebrity()
@@ -52,7 +52,6 @@ const CelebrityHeader = _ => {
 
   return (
     <div>
-      {console.log(celebrityState.celebrity)}
       <Paper className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={6}>

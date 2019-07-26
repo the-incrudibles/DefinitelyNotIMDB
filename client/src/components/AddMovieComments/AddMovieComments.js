@@ -5,7 +5,7 @@ import axios from 'axios'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 // import MovieContext from '../../utils/movieContext'
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 25
@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   isUser: {
     display: 'block'
   },
-  isNotUser:{
+  isNotUser: {
     display: 'none'
   }
 }))
@@ -23,7 +23,7 @@ const AddMovieComments = _ => {
 
   const classes = useStyles()
 
- 
+
   const handleAddComment = event => {
     event.preventDefault()
     // create ulils for post comment
@@ -44,49 +44,49 @@ const AddMovieComments = _ => {
     <div>
       {
         localStorage.getItem('user') === '' || localStorage.getItem('admin') === '' ?
-      <form>
-        <TextField
-          id='outlined-full-width'
-          label='Comment'
-          style={{ margin: 8 }}
-          placeholder='Leave a comment'
-          fullWidth
-          margin='normal'
-          variant='outlined'
-          inputRef={text}
-          InputLabelProps={{
-            shrink: true
-          }}
-        />
-        <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.isNotUser}
-          onClick={_ => {
-            handleAddComment()
-          }}>
-          Send
+          <form>
+            <TextField
+              id='outlined-full-width'
+              label='Comment'
+              style={{ margin: 8 }}
+              placeholder='Leave a comment'
+              fullWidth
+              margin='normal'
+              variant='outlined'
+              inputRef={text}
+              InputLabelProps={{
+                shrink: true
+              }}
+            />
+            <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.isNotUser}
+              onClick={_ => {
+                handleAddComment()
+              }}>
+              Send
         </Button>
-      </form>
-      :
-      <form>
-        <TextField
-          id='outlined-full-width'
-          label='Comment'
-          style={{ margin: 8 }}
-          placeholder='Leave a comment'
-          fullWidth
-          margin='normal'
-          variant='outlined'
-          ref={text}
-          InputLabelProps={{
-            shrink: true
-          }}
-        />
-        <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.isUser}
-          onClick={_ => {
-            handleAddComment()
-          }}>
-          Send
+          </form>
+          :
+          <form>
+            <TextField
+              id='outlined-full-width'
+              label='Comment'
+              style={{ margin: 8 }}
+              placeholder='Leave a comment'
+              fullWidth
+              margin='normal'
+              variant='outlined'
+              ref={text}
+              InputLabelProps={{
+                shrink: true
+              }}
+            />
+            <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.isUser}
+              onClick={_ => {
+                handleAddComment()
+              }}>
+              Send
         </Button>
-      </form>
+          </form>
       }
     </div>
   )
