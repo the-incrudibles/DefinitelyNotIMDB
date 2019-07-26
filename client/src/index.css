@@ -167,3 +167,7 @@ code {
   text-align: center;
   margin-top: 10px;
 }
+
+.castSliderImage {
+  background-size: cover;
+}

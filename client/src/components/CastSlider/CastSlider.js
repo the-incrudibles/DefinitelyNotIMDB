@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 
+
 const useStyles = makeStyles(theme => ({
   rootTwo: {
     display: 'flex',
@@ -53,10 +54,12 @@ const CastSlider = _ => {
               {
                 cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={cast.name} /> : <img src={'https://imdbphotos.s3-us-west-1.amazonaws.com/empty.png'} alt={cast.name} />
               }
-              <Link to='/'>
+              <Link to='/celebrity' onClick={_ => {
+                localStorage.setItem('celebID', cast.id)
+              }}>
                 <GridListTileBar
                   title={cast.name}
-                  titlePosition='top'
+                  titlePosition='bottom'
                   actionPosition='left'
                   className={classes.titleBar}
                 />
