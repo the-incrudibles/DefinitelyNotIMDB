@@ -23,6 +23,5 @@ module.exports = (Schema, model) => model(`Movie`, new Schema({
   title: String,
   video: Boolean,
   vote_average: Number,
-  vote_count: Number,
-  watchlist: {type : Boolean, default: false }
+  vote_count: Number
 }))

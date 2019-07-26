@@ -7,7 +7,7 @@ import axios from 'axios'
 // }
 
 const Watchlist = {
-  getWatchlist: _ => axios.get('/watchlist'),
+  getWatchlist: id => axios.get(`user/${id}`),
   addWatchlist: id => axios.put(`/movie/${id}`)
 }
 
