@@ -36,19 +36,20 @@ const MovieComments = _ => {
   const classes = useStyles()
 
   //   fetch movie comments
-  const renderComments = _ => {
+  commentsState.renderComments = _ => {
     MovieContext.getComment(localStorage.getItem('movieID'))
       .then(({ data }) => {
         if (data) {
-          setCommentsState({ ...commentsState, comments: data })
+          let comments = data
+          setCommentsState({ ...commentsState, comments })
         } else if (!data) {
-          renderComments()
+          commentsState.renderComments()
         }
       })
       .catch(e => console.log(e))
   }
   useEffect(_ => {
-    renderComments()
+    commentsState.renderComments()
   }, [])
 
   return (
