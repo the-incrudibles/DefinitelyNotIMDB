@@ -31,7 +31,7 @@ const App = _ => {
         <Route path='/genres' render={_ => (<Genres />)} />
         <Route exact path='/genre' render={_ => (<GenreResults />)} />
         <Route path='/admincomments' render={_ => (<AdminComments />)} />
-        <Route path='/watchlist' render={_ => (<WatchList />)} />
+        <Route path='/account' render={_ => (<WatchList />)} />
         <Route path='/tvshow' render={_ => (<TVShow />)} />
       </Router>
     </>
