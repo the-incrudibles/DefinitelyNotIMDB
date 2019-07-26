@@ -7,23 +7,34 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Typography from '@material-ui/core/Typography'
 import axios from 'axios'
 import CardActionArea from '@material-ui/core/CardActionArea'
-import Watchlist from '../../utils/Watchlist.js'
+import WatchlistContext from '../../utils/Watchlist.js'
 
 const MyWatchList = _ => {
-  const [watchListState, setwatchList] = useState(
+  const [watchListState, setwatchListState] = useState(
     {
       watchList: []
     }
   )
  
   useEffect(_ => {
-    Watchlist.getWatchlist(localStorage.getItem('id'))
+    WatchlistContext.getWatchlist(localStorage.getItem('id'))
       .then(r => {
-        setwatchList({ ...watchListState,watchList: r.watchlist })
+        setwatchListState({ ...watchListState,watchList: r.watchlist })
       })
       .catch(e => console.error(e))
   }, [])
+  
+  
+  watchListState.addWatchList=movieId=>{
+      let newWatchList=watchListState.watchList
+      newWatchList.push(movieId)
+      setwatchListState({ ...watchListState,watchList: newWatchList })
+      WatchlistContext.addWatchlist()
 
+  }
+  watchListState.removeWatchList=userId=>{
+    
+  }
   // const cards = [1, 2, 3, 4, 5, 6]
   return (
     <React.Fragment>
