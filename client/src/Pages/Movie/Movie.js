@@ -8,7 +8,7 @@ const Movie = _ => {
   return (
     <div>
       <MovieHeader />
-      <GuideBox />
+      {/* <GuideBox /> */}
       <CastSlider />
       <MovieComments />
     </div>
