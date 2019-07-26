@@ -21,7 +21,7 @@ const AddMovieComments = _ => {
   const handleAddComment = event => {
     event.preventDefault()
     // create ulils for post comment
-    axios.post(`/comments/${parseInt(localStorage.getItem('movieID'))}`, {
+    axios.post(`/comment`, {
       text: text.current.value,
       author: localStorage.getItem('user'),
       flagged: false,
@@ -29,10 +29,11 @@ const AddMovieComments = _ => {
     })
       .then(_ => {
         // console.log(GetComments(parseInt(localStorage.getItem('movieID'))))
-        console.log('success')
+        console.log('successfully added a comment')
       })
       .catch(e => console.log('not sent'))
   }
+
   return (
     <div>
       <form>
@@ -44,14 +45,14 @@ const AddMovieComments = _ => {
           fullWidth
           margin='normal'
           variant='outlined'
-          ref={text}
+          inputRef={text}
           InputLabelProps={{
             shrink: true
           }}
         />
         <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.button}
           onClick={handleAddComment}>
-        Send
+          Send
         </Button>
       </form>
     </div>
