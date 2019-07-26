@@ -30,18 +30,25 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 const MovieComments = _ => {
-  const [commentsState, setCommentsState] = useState({})
+  const [commentsState, setCommentsState] = useState({
+    comments: []
+  })
   const classes = useStyles()
 
   //   fetch movie comments
-  commentsState.renderComments = _ => {
-    MovieContext.getComment(parseInt(localStorage.getItem('movieID')))
+  const renderComments = _ => {
+    MovieContext.getComment(localStorage.getItem('movieID'))
       .then(({ data }) => {
-        setCommentsState(data.comments)
+        if (data) {
+          setCommentsState({ ...commentsState, comments: data })
+        } else if (!data) {
+          renderComments()
+        }
       })
+      .catch(e => console.log(e))
   }
   useEffect(_ => {
-    commentsState.renderComments()
+    renderComments()
   }, [])
 
   return (
@@ -53,7 +60,7 @@ const MovieComments = _ => {
         <List className={classes.root}>
           {
             // change commentData to comments when available
-            commentsState.map(data => (
+            commentsState.comments.map(comment => (
               <ListItem alignItems='flex-start'>
                 <ListItemAvatar>
                   <Avatar alt='Remy Sharp' src='https://image.flaticon.com/icons/svg/195/195158.svg' />
@@ -67,9 +74,9 @@ const MovieComments = _ => {
                         className={classes.inline}
                         color='textPrimary'
                       >
-                        {data.name}
+                        {comment.author}
                       </Typography>
-                      {'- ' + data.comment}
+                      {'- ' + comment.text}
                     </React.Fragment>
                   }
                 />

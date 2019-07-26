@@ -15,7 +15,7 @@ const SearchMovie = _ => {
       {
         ({ movies, searchForMovie }) => (
           movies.map(movie =>
-            <Link to='/movie' className='cardLink' onClick={_ => {
+            <Link to='/movie' className='cardLink' key={movie.id} onClick={_ => {
               localStorage.setItem('movieID', movie.id)
               searchForMovie(movie.id)
             }}>
@@ -36,7 +36,7 @@ const SearchMovie = _ => {
                   </CardContent>
                 </CardActionArea>
                 <CardActions>
-                  <Button className={movie.id} size='small' color='primary'>
+                  <Button className={movie.id.toString()} size='small' color='primary'>
                     More Info
                   </Button>
                 </CardActions>
