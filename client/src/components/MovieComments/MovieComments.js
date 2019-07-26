@@ -31,7 +31,8 @@ const useStyles = makeStyles(theme => ({
 }))
 const MovieComments = _ => {
   const [commentsState, setCommentsState] = useState({
-    comments: []
+    comments: [],
+    noComments: false
   })
   const classes = useStyles()
 
@@ -40,9 +41,9 @@ const MovieComments = _ => {
     MovieContext.getComment(localStorage.getItem('movieID'))
       .then(({ data }) => {
         if (data) {
-          setCommentsState({ ...commentsState, comments: data.comments })
-        } else {
-          console.log('no comments')
+          setCommentsState({ ...commentsState, comments: data.comments, noComments: false })
+        } else if (!data) {
+          setCommentsState({ ...commentsState, noComments: true })
         }
       })
       .catch(e => console.log(e))
@@ -60,31 +61,30 @@ const MovieComments = _ => {
         <List className={classes.root}>
           {
             // change commentData to comments when available
-            commentsState.comments.length > 0
-              ? commentsState.comments.map(data => (
-                <ListItem alignItems='flex-start'>
-                  <ListItemAvatar>
-                    <Avatar alt='Remy Sharp' src='https://image.flaticon.com/icons/svg/195/195158.svg' />
-                  </ListItemAvatar>
-                  <ListItemText
-                    secondary={
-                      <React.Fragment>
-                        <Typography
-                          component='span'
-                          variant='body2'
-                          className={classes.inline}
-                          color='textPrimary'
-                        >
-                          {data.name}
-                        </Typography>
-                        {'- ' + data.comment}
-                      </React.Fragment>
-                    }
-                  />
-                  <ReportMovieCommentButton />
-                  <DeleteMovieCommentButton />
-                </ListItem>
-              )) : console.log('no comments to show')
+            commentsState.comments.map(comment => (
+              <ListItem alignItems='flex-start'>
+                <ListItemAvatar>
+                  <Avatar alt='Remy Sharp' src='https://image.flaticon.com/icons/svg/195/195158.svg' />
+                </ListItemAvatar>
+                <ListItemText
+                  secondary={
+                    <React.Fragment>
+                      <Typography
+                        component='span'
+                        variant='body2'
+                        className={classes.inline}
+                        color='textPrimary'
+                      >
+                        {comment.author}
+                      </Typography>
+                      {'- ' + comment.text}
+                    </React.Fragment>
+                  }
+                />
+                <ReportMovieCommentButton />
+                <DeleteMovieCommentButton />
+              </ListItem>
+            ))
           }
         </List>
         <AddMovieComments />
