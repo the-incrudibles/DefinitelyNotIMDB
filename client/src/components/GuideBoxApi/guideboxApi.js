@@ -1,19 +1,24 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 const GuideBox = _ => {
   const [guideState, setGuideState] = useState({})
 
   guideState.getGuideBox = _ => {
-    http://api-public.guidebox.com/v2/search?api_key=YOUR_API_KEY&type=movie&field=id&id_type=imdb&query=tt1826940
-    //     axios.get(`http://api-public.guidebox.com/v2/search?type=movie&field=title&include_preorders=true&include_in_theaters=true&query=${searchTerm.current.value}&api_key=${process.env.REACT_APP_GUIDEBOX_APIKEY}`)
-//       .then(({ data }) => {
-//         searchTerm.current.value = ''
-//         console.log(data)
+    axios.get(`http://api-public.guidebox.com/v2/search?api_key=${process.env.REACT_APP_GUIDEBOX_APIKEY}&type=movie&field=id&id_type=themoviedb&query=${localStorage.getItem('movieID')}`)
+      .then(data => {
+        console.log(data)
+      })
+      .catch(e => console.log(e))
+    //     axios.get(`http://api-public.guidebox.com/v2/search?type=movie&field=title&include_preorders=true&include_in_theaters=true&query=${searchTerm.current.value}&api_key=`)
+    //       .then(({ data }) => {
+    //         searchTerm.current.value = ''
+    //         console.log(data)
 
-//         var preOrder = data.results.filter(
-//           e => e.pre_order === true
-//         )
-//         console.log(preOrder)
+    //         var preOrder = data.results.filter(
+    //           e => e.pre_order === true
+    //         )
+    //         console.log(preOrder)
   }
 
   return (
