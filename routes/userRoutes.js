@@ -15,28 +15,25 @@ module.exports = app => {
       if (e) throw e
       User.authenticate()(req.body.username, req.body.password, (e, user) => {
         if (e) throw e
-        console.log(user)
-        res.json({ isLoggedIn: !!user, user: user.username, token: jwt.sign({ id: user._id }, 'help'), admin: user.admin , id:user._id})
+        res.json({ isLoggedIn: !!user, user: user.username, id: user._id, token: jwt.sign({ id: user._id }, 'help'), admin: user.admin })
       })
     })
   })
   app.post('/login', (req, res) => {
     User.authenticate()(req.body.username, req.body.password, (e, user) => {
       if (e) throw e
-      console.log(user)
-
-      res.json({ isLoggedIn: !!user, user: user.username, token: jwt.sign({ id: user._id }, 'help'), admin: user.admin, id:user._id })
+      // console.log(user)
+      res.json({ isLoggedIn: !!user, user: user.username, id: user._id, token: jwt.sign({ id: user._id }, 'help'), admin: user.admin })
     })
   })
   app.put('/user/:id', (req, res) => {
-    User.findByIdAndUpdate({ _id: req.params.id }, req.body)
+    User.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(_ => res.sendStatus(200))
       .catch(e => console.log(e))
   })
-  app.get('/user/watchlist/:id', (req, res) => {
-    User.findById(req.params.id)
-    .then(r=> res.json(r))
-    .catch(e => console.log(e))
+  app.get('/user/:id', (req, res) => {
+    User.find({ _id: req.params.id })
+      .then(data => res.json(data))
+      .catch(e => console.log(e))
   })
- 
 }

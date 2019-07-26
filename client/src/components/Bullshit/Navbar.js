@@ -48,6 +48,12 @@ const Navbar = _ => {
     setDrawerState({ ...drawerState, [side]: open })
   }
 
+  const handleLogOut = _ => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    localStorage.removeItem('admin')
+  }
+
   drawerState.sideList = side => (
     <div
       className={classes.list}
@@ -81,23 +87,27 @@ const Navbar = _ => {
       <List>
         {
           localStorage.getItem('admin')
-            ? <>
-              <ListItem>
-                <i className='material-icons'>vpn_key</i>
-                <Link to='/account' className='drawerLink'><ListItemText primary='Admin' /></Link>
-              </ListItem>
-              <ListItem>
-                <i className='material-icons'>comment</i>
-                <Link to='/account' className='drawerLink'><ListItemText primary='My Comments' /></Link>
-              </ListItem>
-              <ListItem>
-                <i className='material-icons'>video_library</i>
-                <Link to='/account' className='drawerLink'><ListItemText primary='My Watchlist' /></Link>
-              </ListItem>
-            </> : null
+            ?
+            <ListItem>
+              <i className='material-icons'>vpn_key</i>
+              <Link to='/account' className='drawerLink'><ListItemText primary='Admin' /></Link>
+            </ListItem> : null
         }
         {
-          localStorage.getItem('user') ? null
+          localStorage.getItem('user') ?
+            <>
+              <ListItem>
+                <i className='material-icons'>video_library</i>
+                <Link to='/account' className='drawerLink'><ListItemText primary='My Watchlist' />
+                </Link>
+              </ListItem>
+              <ListItem>
+                <i className='material-icons'>exit_to_app</i>
+                <Link to='/' className='drawerLink'><ListItemText primary='Log Out' onClick={handleLogOut} />
+                </Link>
+              </ListItem>
+
+            </>
             : <>
               <ListItem>
                 <i className='material-icons'>exit_to_app</i>
