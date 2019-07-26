@@ -22,6 +22,10 @@ const SignupForm = _ => {
     failedRegistration: false
   })
 
+  userState.handleCheckboxClick = _ => {
+    setUserState({ ...userState, checkedA: !userState.checkedA })
+  }
+
   userState.handleRegisterUser = event => {
     event.preventDefault()
     if (userState.checkedA === false || name.current.value === '' || username.current.value === '' || email.current.value === '' || password.current.value === '') {
@@ -40,9 +44,6 @@ const SignupForm = _ => {
             localStorage.setItem('admin', data.admin)
             setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
           } else {
-            userState.handleCheckboxClick = _ => {
-              setUserState({ ...userState, checkedA: !userState.checkedA })
-            }
           }
         })
         .catch(e => console.error(e))
