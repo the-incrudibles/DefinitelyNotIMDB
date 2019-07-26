@@ -88,7 +88,7 @@ const MovieHeader = _ => {
               <div className='genreChips'>
                 {
                   data.genres.map(genre =>
-                    <Link className='genreChips' to='/genre' onClick={_ => {
+                    <Link className='genreChips' to='/genre' key={genre.name} onClick={_ => {
                       localStorage.setItem('genreID', genre.id)
                       localStorage.setItem('genreName', genre.name)
                     }}>
