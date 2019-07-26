@@ -7,8 +7,8 @@ module.exports = app => {
       .catch(e => console.log(e))
   })
 
-  app.get('/articleinfo', (req, res) => {
-    NewsStory.find({ _id: req.params.id })
+  app.get('/articleinfo/:id', (req, res) => {
+    NewsStory.findOne({ _id: req.params.id })
       .then(article => res.json(article))
       .catch(e => console.log(e))
   })
