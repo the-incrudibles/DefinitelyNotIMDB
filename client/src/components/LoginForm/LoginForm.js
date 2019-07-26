@@ -108,6 +108,7 @@ const LoginForm = _ => {
                 inputRef={password}
                 className='passwordInput'
                 error id
+                type='password'
               />
               <FormHelperText><p className='emptyInput'>*Required field </p></FormHelperText>
             </>
@@ -118,6 +119,7 @@ const LoginForm = _ => {
               variant='outlined'
               inputRef={password}
               className='passwordInput'
+              type='password'
             />
         }
 
