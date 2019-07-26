@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import AddWatchListButton from '../../components/AddWatchListButton'
 import Chip from '@material-ui/core/Chip'
+import GuideBox from '../../components/GuideBoxApi'
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -110,6 +112,7 @@ const TVShowHeader = _ => {
             {tvState.tvshow.overview}
           </Typography>
         </Grid>
+        <GuideBox />
       </Paper>
     </div>
   )
