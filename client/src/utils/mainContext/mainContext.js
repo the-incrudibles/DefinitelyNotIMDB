@@ -1,7 +1,8 @@
 import { createContext } from 'react'
 
 const MainContext = createContext({
-  articles: []
+  articles: [],
+  searchForArticles: id => {}
 })
 
 export default MainContext

@@ -51,6 +51,10 @@ const SignupForm = _ => {
     }
   }
 
+  userState.handleCheckboxClick = _ => {
+    setUserState({ ...userState, checkedA: !userState.checkedA })
+  }
+
   userState.handleCancelButton = _ => {
     if (name.current.value === '' && username.current.value === '' && email.current.value === '' && password.current.value === '') {
       userState.setRedirect()
