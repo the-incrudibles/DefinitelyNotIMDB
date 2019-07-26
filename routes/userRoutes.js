@@ -30,4 +30,10 @@ module.exports = app => {
       .then(_ => res.sendStatus(200))
       .catch(e => console.log(e))
   })
+  app.get('/user/watchlist/:id', (req, res) => {
+    User.findById({ _id: req.params.id }, req.body)
+    .then(_ => res.sendStatus(200))
+    .catch(e => console.log(e))
+  })
+ 
 }
