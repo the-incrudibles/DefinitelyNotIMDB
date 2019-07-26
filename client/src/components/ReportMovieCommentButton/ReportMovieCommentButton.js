@@ -2,6 +2,13 @@ import React, { useState } from 'react'
 import Flag from '@material-ui/icons/Flag'
 import { makeStyles } from '@material-ui/styles'
 import IconButton from '@material-ui/core/IconButton'
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from '@material-ui/core/Button'
+
 import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
@@ -14,14 +21,32 @@ const useStyles = makeStyles(theme => ({
 
 }))
 const ReportMovieCommentButton = _ => {
+  const [open, setOpen] = useState(false);
+
+  function handleClickOpen() {
+    setOpen(true);
+  }
+
+  function confirmReport() {
+    setOpen(false);
+
+    setReportCommentState({ ...reportCommentState, isReport: true })
+    reportCommentState.handleReportComment()
+    // axios code to report comment?
+  }
+
+  function handleClose() {
+    setOpen(false);
+  }
+
+
   const [reportCommentState, setReportCommentState] = useState({
     isReport: false
   })
   const classes = useStyles()
 
-  const handleReportComment = event => {
-    console.log(event.target.id)
-    axios.put(`/comment/${'id'}`,{
+  reportCommentState.handleReportComment = event => {
+    axios.put(`/comment/${event.target.id}`,{
       flagged: true
     })
         .then(_=>{
@@ -32,20 +57,40 @@ const ReportMovieCommentButton = _ => {
   }
 
   return (
-        <>
-
-          <div>
-            {
-              reportCommentState.isReport === false
-                ? <IconButton onClick={handleReportComment}>
-                  <Flag className={classes.flagNotReport} />
-                </IconButton>
-                : <IconButton onClick={handleReportComment}>
-                  <Flag className={classes.flagIsReport} />
-                </IconButton>
-            }
-          </div>
-        </>
+    <>
+      <div>
+        {
+          reportCommentState.isReport === false
+            ? <IconButton onClick={handleClickOpen}>
+              <Flag className={classes.flagNotReport} />
+            </IconButton>
+            : <IconButton onClick={handleClickOpen}>
+              <Flag className={classes.flagIsReport} />
+            </IconButton>
+        }
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Report this comment?"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Please only report comments if you feel as though they violate our community guidelines. Disagreeing with someone's opinion is not a reason to report!
+          </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={confirmReport} color="primary">
+              Report
+          </Button>
+            <Button onClick={handleClose} color="primary" autoFocus>
+              Cancel
+          </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    </>
   )
 }
 

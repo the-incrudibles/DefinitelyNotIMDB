@@ -10,7 +10,6 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 import Watchlist from '../../utils/Watchlist.js'
 
 const MyWatchList = _ => {
-
   useEffect(_ => {
     Watchlist.getWatchlist()
       .then(({ data: movie }) => {

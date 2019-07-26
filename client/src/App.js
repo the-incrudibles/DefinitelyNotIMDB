@@ -29,7 +29,7 @@ const App = _ => {
         <Route path='/toprated' render={_ => (<TopRated />)} />
         <Route path='/celebrity' render={_ => (<Celebrity />)} />
         <Route path='/genres' render={_ => (<Genres />)} />
-        <Route path='/genre' render={_ => (<GenreResults />)} />
+        <Route exact path='/genre' render={_ => (<GenreResults />)} />
         <Route path='/admincomments' render={_ => (<AdminComments />)} />
         <Route path='/watchlist' render={_ => (<WatchList />)} />
         <Route path='/tvshow' render={_ => (<TVShow />)} />

@@ -7,11 +7,10 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import AddWatchListButton from '../../components/AddWatchListButton'
 import Chip from '@material-ui/core/Chip'
-// import MovieContext from '../../utils/movieContext'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: 25
+    padding: 15
   },
   card: {
     maxWidth: 350
@@ -89,7 +88,7 @@ const MovieHeader = _ => {
               <div className='genreChips'>
                 {
                   data.genres.map(genre =>
-                    <Link className='genreChips' to='/genre' onClick={_ => {
+                    <Link className='genreChips' to='/genre' key={genre.name} onClick={_ => {
                       localStorage.setItem('genreID', genre.id)
                       localStorage.setItem('genreName', genre.name)
                     }}>

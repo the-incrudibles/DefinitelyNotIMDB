@@ -4,6 +4,7 @@ import axios from 'axios'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 // import MovieContext from '../../utils/movieContext'
+import {Redirect} from 'react-router-dom'
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 25
@@ -33,6 +34,7 @@ const AddMovieComments = _ => {
     })
       .then(_ => {
         console.log('success')
+        return <Redirect to='/movie' />
       })
       .catch(e => console.log('not sent'))
   }

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-// import tileData from './tileData.js'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
@@ -31,32 +30,30 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const TVCastSlider = _ => {
-  const [tvSlidersState, setTvSlidersState] = useState([])
+  const [castSlidersState, setCastSlidersState] = useState([])
   const classes = useStyles()
 
-  const renderTv = _ => {
-    // axios.get(`https://api.themoviedb.org/3/person/{person_id}?api_key=<<api_key>>&language=en-US`)
-    axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('tvID'))}/credits?api_key=${process.env.REACT_APP_TMDB_APIKEY}`)
+  const renderTVCast = _ => {
+    axios.get(`https://api.themoviedb.org/3/tv/${parseInt(localStorage.getItem('tvID'))}/credits?api_key=${process.env.REACT_APP_TMDB_APIKEY}`)
       .then(({ data }) => {
-        setTvSlidersState(data.tv)
+        setCastSlidersState(data.cast)
       })
       .catch(e => console.error(e))
   }
   useEffect(_ => {
-    renderTv()
+    renderTVCast()
   }, [])
 
   return (
     <div className={classes.rootTwo}>
       <GridList className={classes.gridList} cols={2.5}>
         {
-          // change to tileData to casts
-          tvSlidersState.map(tv => (
+          castSlidersState.map(cast => (
             <GridListTile key='' item>
-              {tvSlidersState.data.tv.poster_path ? <img src={`https://image.tmdb.org/t/p/original${tvSlidersState.data.tv.poster_path}`} alt={''} /> : null}
+              {cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={cast.name} /> : <img src='' alt='' />}
               <Link to='/'>
                 <GridListTileBar
-                  title={tvSlidersState.data.name}
+                  title={cast.name}
                   titlePosition='top'
                   actionPosition='left'
                   className={classes.titleBar}
