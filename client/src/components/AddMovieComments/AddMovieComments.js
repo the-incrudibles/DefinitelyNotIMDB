@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import TextField from '@material-ui/core/TextField'
@@ -26,7 +27,7 @@ const AddMovieComments = _ => {
   const handleAddComment = event => {
     event.preventDefault()
     // create ulils for post comment
-    axios.post(`/comment/`, {
+    axios.post(`/comment`, {
       text: text.current.value,
       author: localStorage.getItem('user'),
       flagged: false,
@@ -38,6 +39,7 @@ const AddMovieComments = _ => {
       })
       .catch(e => console.log('not sent'))
   }
+
   return (
     <div>
       {
@@ -51,14 +53,16 @@ const AddMovieComments = _ => {
           fullWidth
           margin='normal'
           variant='outlined'
-          ref={text}
+          inputRef={text}
           InputLabelProps={{
             shrink: true
           }}
         />
         <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.isNotUser}
-          onClick={handleAddComment}>
-        Send
+          onClick={_ => {
+            handleAddComment()
+          }}>
+          Send
         </Button>
       </form>
       :
@@ -77,8 +81,10 @@ const AddMovieComments = _ => {
           }}
         />
         <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.isUser}
-          onClick={handleAddComment}>
-        Send
+          onClick={_ => {
+            handleAddComment()
+          }}>
+          Send
         </Button>
       </form>
       }
