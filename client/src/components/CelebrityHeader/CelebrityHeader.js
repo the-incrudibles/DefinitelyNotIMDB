@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: 25
+    padding: 15
   },
   card: {
     maxWidth: 350
@@ -32,7 +32,7 @@ const CelebrityHeader = _ => {
   const [celebrityState, setCelebrityState] = useState({
     celebrity: {},
     renderCelebrity: _ => {
-      axios.get(`/celebrity/${parseInt(localStorage.getItem('celebrityID'))}`)
+      axios.get(`https://api.themoviedb.org/3/person/${parseInt(localStorage.getItem('celebrityID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
         .then(({ data }) => {
           if (!data) {
             celebrityState.renderCelebrity()
