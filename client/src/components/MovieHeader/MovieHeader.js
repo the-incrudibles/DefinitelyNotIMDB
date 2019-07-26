@@ -36,6 +36,7 @@ const MovieHeader = _ => {
   const [data, setData] = useState({ genres: [] })
   const [movieState, setMovieState] = useState({
     movie: {},
+    watchlist: [],
     release_date: [],
     renderMovie: _ => {
       axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
@@ -80,7 +81,7 @@ const MovieHeader = _ => {
                     </> : null
                 }
               </Typography>
-              <div className="addWatchlistButton">
+              <div className="addWatchlistButton" >
                 <Typography>
                   <AddWatchListButton />
                 </Typography>

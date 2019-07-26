@@ -42,6 +42,7 @@ const SignupForm = _ => {
             localStorage.setItem('token', data.token)
             localStorage.setItem('user', data.user)
             localStorage.setItem('admin', data.admin)
+            localStorage.setItem('id', data.id)
             setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
           } else {
           }
