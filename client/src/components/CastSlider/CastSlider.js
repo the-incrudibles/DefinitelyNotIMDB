@@ -49,18 +49,19 @@ const CastSlider = _ => {
       <GridList className={classes.gridList} cols={2.5}>
         {
           castSlidersState.map(cast => (
-            // console.log(cast)
-            <GridListTile key={cast.name} item >
-              {cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={cast.name} /> : <img src='' alt='' />}
-              <Link to='/celebrity' onClick={localStorage.setItem('celebID', cast.id)} >
+            <Link to='/celebrity'>
+              <GridListTile key='' item>
+                {
+                  cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={cast.name} /> : <img src={'https://imdbphotos.s3-us-west-1.amazonaws.com/empty.png'} alt={cast.name} />
+                }
                 <GridListTileBar
                   title={cast.name}
                   titlePosition='top'
                   actionPosition='left'
                   className={classes.titleBar}
                 />
-              </Link>
-            </GridListTile>
+              </GridListTile>
+            </Link>
           ))
         }
       </GridList>

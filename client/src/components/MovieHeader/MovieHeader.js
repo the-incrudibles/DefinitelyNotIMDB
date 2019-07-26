@@ -71,7 +71,7 @@ const MovieHeader = _ => {
               </Typography>
               <Typography component='p' className="movieHeaderText">
                 Rating: {movieState.movie.vote_average}/10
-            </Typography>
+              </Typography>
               <Typography component='p' className="movieHeaderText">
                 {
                   movieState.release_date ?
