@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect ,useState} from 'react'
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -10,14 +10,21 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 import Watchlist from '../../utils/Watchlist.js'
 
 const MyWatchList = _ => {
+  const [watchListState, setwatchList] = useState(
+    {
+      watchList: []
+    }
+  )
+ 
   useEffect(_ => {
-    Watchlist.getWatchlist()
-      .then(({ data: movie }) => {
+    Watchlist.getWatchlist(localStorage.getItem('id'))
+      .then(r => {
+        setwatchList({ ...watchListState,watchList: r.watchlist })
       })
       .catch(e => console.error(e))
   }, [])
 
-  const cards = [1, 2, 3, 4, 5, 6]
+  // const cards = [1, 2, 3, 4, 5, 6]
   return (
     <React.Fragment>
       <CssBaseline />
@@ -26,7 +33,9 @@ const MyWatchList = _ => {
           <Typography variant='h6'>Your Watchlist</Typography>
         </div>
         {
-          cards.map(card => (
+          watchListState.watchList.map(elem => {
+            return (
+              <>
             <Card className='resultsDiv'>
               <CardActionArea>
                 <CardContent>
@@ -42,16 +51,18 @@ const MyWatchList = _ => {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size='small' color='primary'>
-                  More Info
+                <Button size='small' color='primary' onClick={watchListState.addWatchList()}>
+                  Add to Watchlist
                 </Button>
-                <Button size='small' color='primary'>
-                  Remove
+                <Button size='small' color='primary' onClick={watchListState.removeWatchList()}>
+                  Remove from Watchlist
                 </Button>
               </CardActions>
             </Card >
-          ))
-        }
+            </>
+          )
+        })
+      }
       </div>
     </React.Fragment>
   )
