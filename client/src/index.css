@@ -171,3 +171,11 @@ code {
 .castSliderImage {
   background-size: cover;
 }
+
+.articleTypography {
+  text-align: left;
+}
+
+.articleHeadline {
+  margin: 10px 0;
+}
