@@ -162,3 +162,8 @@ code {
   text-align: center;
   margin-bottom: 5px;
 }
+
+.celebHeaderText {
+  text-align: center;
+  margin-top: 10px;
+}
