@@ -51,9 +51,15 @@ const TVShowComments = _ => {
   return (
     <div>
       <Paper className={classes.rootTwo}>
-        <Typography>
-          Leave a comment below!
-        </Typography>
+        {
+          localStorage.getItem('user') ?
+            <Typography>
+              Leave a comment below!
+            </Typography>
+            : <Typography>
+              Comments:
+            </Typography>
+        }
         <List className={classes.root}>
           {
             // change commentData to comments when available
@@ -77,13 +83,17 @@ const TVShowComments = _ => {
                     </React.Fragment>
                   }
                 />
-                <ReportTVShowCommentButton />
+                {
+                  localStorage.getItem('user') ? <ReportTVShowCommentButton /> : null
+                }
                 <DeleteTVShowCommentButton />
               </ListItem>
             ))
           }
         </List>
-        <AddTVShowComments />
+        {
+          localStorage.getItem('user') ? <AddTVShowComments /> : null
+        }
       </Paper>
     </div>
   )

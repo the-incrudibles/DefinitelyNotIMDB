@@ -59,7 +59,7 @@ const CastSlider = _ => {
               }}>
                 <GridListTileBar
                   title={cast.name}
-                  titlePosition='top'
+                  titlePosition='bottom'
                   actionPosition='left'
                   className={classes.titleBar}
                 />
