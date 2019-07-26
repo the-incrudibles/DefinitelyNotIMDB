@@ -65,7 +65,7 @@ const CastSlider = _ => {
           ))
         }
       </GridList>
-    </div>
+    </div >
   )
 }
 
