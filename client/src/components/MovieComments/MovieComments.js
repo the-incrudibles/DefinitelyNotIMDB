@@ -48,7 +48,7 @@ const MovieComments = _ => {
     <div>
       <Paper className={classes.rootTwo}>
         <Typography>
-                Leave a comment below!
+          Leave a comment below!
         </Typography>
         <List className={classes.root}>
           {
