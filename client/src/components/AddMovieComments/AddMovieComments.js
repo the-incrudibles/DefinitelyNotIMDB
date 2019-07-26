@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import TextField from '@material-ui/core/TextField'
@@ -14,9 +15,6 @@ const AddMovieComments = _ => {
   const text = useRef()
 
   const classes = useStyles()
-  // const [newCommentState, setNewCommentState] = useState({
-  //   comments: []
-  // })
 
   const handleAddComment = event => {
     event.preventDefault()
@@ -51,7 +49,9 @@ const AddMovieComments = _ => {
           }}
         />
         <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.button}
-          onClick={handleAddComment}>
+          onClick={_ => {
+            handleAddComment()
+          }}>
           Send
         </Button>
       </form>

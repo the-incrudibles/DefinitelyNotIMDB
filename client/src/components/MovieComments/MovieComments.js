@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme => ({
     color: 'red'
   }
 }))
+
 const MovieComments = _ => {
   const [commentsState, setCommentsState] = useState({
     comments: []
@@ -47,6 +48,7 @@ const MovieComments = _ => {
       })
       .catch(e => console.log(e))
   }
+  
   useEffect(_ => {
     renderComments()
   }, [])
