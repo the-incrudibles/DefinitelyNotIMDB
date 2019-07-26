@@ -7,6 +7,12 @@ module.exports = app => {
       .catch(e => console.log(e))
   })
 
+  app.get('/articleinfo', (req, res) => {
+    NewsStory.find({ _id: req.params.id })
+      .then(article => res.json(article))
+      .catch(e => console.log(e))
+  })
+
   app.post('/articles', (req, res) => {
     NewsStory.create({
       title: 'this is a throw away title',
