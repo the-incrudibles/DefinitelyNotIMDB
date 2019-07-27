@@ -4,8 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-// import MovieContext from '../../utils/movieContext'
-import { Redirect } from 'react-router-dom'
+
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 25
@@ -20,13 +19,11 @@ const useStyles = makeStyles(theme => ({
 
 const AddMovieComments = _ => {
   const text = useRef()
-
   const classes = useStyles()
 
 
   const handleAddComment = event => {
-    event.preventDefault()
-    // create ulils for post comment
+    // event.preventDefault()
     axios.post(`/comment`, {
       text: text.current.value,
       author: localStorage.getItem('user'),
@@ -35,15 +32,14 @@ const AddMovieComments = _ => {
     })
       .then(_ => {
         console.log('success')
-        return <Redirect to='/movie' />
       })
       .catch(e => console.log('not sent'))
   }
-
   return (
     <div>
       {
         localStorage.getItem('user') === '' || localStorage.getItem('admin') === '' ?
+        <>
           <form>
             <TextField
               id='outlined-full-width'
@@ -65,6 +61,7 @@ const AddMovieComments = _ => {
               Send
         </Button>
           </form>
+          </>
           :
           <form>
             <TextField
@@ -75,7 +72,7 @@ const AddMovieComments = _ => {
               fullWidth
               margin='normal'
               variant='outlined'
-              ref={text}
+              inputRef={text}
               InputLabelProps={{
                 shrink: true
               }}

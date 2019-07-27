@@ -52,7 +52,7 @@ const MovieComments = _ => {
 
   useEffect(_ => {
     commentsState.renderComments()
-  }, [])
+  }, [commentsState])
 
   return (
     <div>
@@ -93,7 +93,7 @@ const MovieComments = _ => {
                 {
                   localStorage.getItem('user') ? <ReportMovieCommentButton id={comment._id} /> : null
                 }
-                <DeleteMovieCommentButton />
+                <DeleteMovieCommentButton id={comment._id}/>
               </ListItem>
             ))
           }

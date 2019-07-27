@@ -17,24 +17,24 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const DeleteMovieCommentButton = _ => {
-  const [isAdminState, setIsAdmindState] = useState({
+  const [isAdminState, setIsAdminState] = useState({
     isAdmin: false
   })
   const classes = useStyles()
   const handleDeleteCommentButton = event => {
     console.log(event.target)
-    axios.delete(`/movie/comment/id`)
+    axios.delete(`/comment/${event.target.value}`)
       .then(_ => console.log('deleted!'))
       .catch(e => console.error('not deleted'))
   }
   const checkIsAdmin = _ => {
     let getAdmin = localStorage.getItem('admin', isAdminState)
-    setIsAdmindState({ ...isAdminState, isAdmin: getAdmin })
+    setIsAdminState({ ...isAdminState, isAdmin: getAdmin })
   }
   return (
         <>
           {
-            checkIsAdmin.isAdmin === 'admin'
+            checkIsAdmin.isAdmin === true
               ? <IconButton className={classes.isAdmin} size='small' aria-label='Delete' onClick={handleDeleteCommentButton}>
                 <DeleteIcon />
               </IconButton>

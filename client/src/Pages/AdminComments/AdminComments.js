@@ -27,9 +27,9 @@ const useStyles = makeStyles(theme => ({
 }))
 const AdminComments = _ => {
   const [commentsState, setCommentsState] = useState({
-    comments: []
-  })
-
+    comments: [],
+    })
+ 
   const classes = useStyles()
 
   commentsState.renderComents = _ => {
@@ -71,7 +71,7 @@ const AdminComments = _ => {
                 }
               />
               {/* I believe the logic in DeleteCommentButton should work— */}
-              <DeleteCommentButton />
+              <DeleteCommentButton value={comment._id}/>
             </ListItem>
           ))
         }
