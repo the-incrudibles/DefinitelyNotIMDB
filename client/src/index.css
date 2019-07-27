@@ -179,3 +179,7 @@ code {
 .articleHeadline {
   margin: 10px 0;
 }
+
+.regularTextColor {
+  color: black;
+}

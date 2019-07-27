@@ -8,22 +8,34 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import CardContext from '../../../utils/CardContext'
-import SearchResult from '../../../utils/SearchResult.js'
 import WatchlistContext from '../../../utils/Watchlist.js'
+
 
 
 const Cards = _ => {
   const movie = useContext(CardContext)
+
+  const handleDeleteButton = _ => {
+    WatchlistContext.getWatchlist(localStorage.getItem('id'))
+      .then(({ data }) => {
+        let watchListArr = data[0].watchlist
+        let removeIndex = watchListArr.indexOf(movie.id)
+        watchListArr.splice(removeIndex, 1)
+        axios.put(`/user/${localStorage.getItem('id')}`, { watchlist: watchListArr })
+          .then(_ => window.location.reload())
+          .catch(e => console.log(e))
+      })
+      .catch(e => console.log(e))
+  }
+
   return (
-    <Link to='/movie' className='cardLink' onClick={_ => {
-      // console.log(movie)
-      localStorage.setItem('movieID', movie.id)
-      SearchResult.axiosForMovie(movie.id)
-    }}>
-      <Card className='resultsDiv'>
+    <Card key={movie.id} className='resultsDiv'>
+      <Link to='/movie' className='cardLink' key={movie.id} onClick={_ => {
+        localStorage.setItem('movieID', movie.id)
+      }}>
         <CardActionArea>
           <CardContent>
-            <Typography gutterBottom variant='h6' component='h2'>
+            <Typography className="regularTextColor" gutterBottom variant='h6' component='h2'>
               {movie.title}
             </Typography>
             <img className='resultsPoster' src={movie.posterURL} alt={movie.title} />

@@ -19,7 +19,7 @@ const AddWatchListButton = _ => {
       .then(({ data }) => {
         console.log(data)
         let watchlist = []
-        watchlist.push(...data.watchlist)
+        watchlist.push([...data.watchlist])
         setNewWatchlistState({ ...newWatchlistState, watchlist })
         console.log(newWatchlistState.watchlist)
       })

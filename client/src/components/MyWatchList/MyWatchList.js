@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Button from '@material-ui/core/Button'
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import Typography from '@material-ui/core/Typography'
 import axios from 'axios'
-import CardActionArea from '@material-ui/core/CardActionArea'
 import WatchlistContext from '../../utils/Watchlist.js'
 import CardContext from '../../utils/CardContext'
 import Cards from './Cards'
@@ -32,7 +26,8 @@ const MyWatchList = _ => {
               fetchedMovieArr.push({
                 id: parseInt(elem),
                 posterURL: 'https://image.tmdb.org/t/p/original' + result.data.poster_path,
-                title: result.data.title
+                title: result.data.title,
+                overview: result.data.overview
               })
               count = count + 1
               if (count === watchListLength) {
@@ -41,7 +36,6 @@ const MyWatchList = _ => {
                 // console.log(watchListState.watchList)
               }
             })
-
             .catch(e => console.log(e))
         })
       })
@@ -65,7 +59,7 @@ const MyWatchList = _ => {
   return (
     <div className='containerDiv'>
       <div className='searchTypography'>
-        <Typography variant='h6'>My watch List</Typography>
+        <Typography variant='h6'>My Watchlist</Typography>
       </div>
       {
         watchListState.watchList ? watchListState.watchList.map(elem => {
@@ -74,7 +68,6 @@ const MyWatchList = _ => {
               {<CardContext.Provider value={elem}>
                 <Cards />
               </CardContext.Provider>}
-
             </>
           )
         }) : null
