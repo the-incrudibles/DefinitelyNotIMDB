@@ -33,8 +33,9 @@ const AdminComments = _ => {
   const classes = useStyles()
 
   commentsState.renderComents = _ => {
-    axios.get('/flagged')
+    axios.get('/flag')
       .then(({ data }) => {
+        console.log(data)
         setCommentsState({ ...commentsState, comments: data })
       })
       .catch(e => console.log(e))
