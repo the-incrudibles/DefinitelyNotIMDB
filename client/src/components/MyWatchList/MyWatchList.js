@@ -59,7 +59,7 @@ const MyWatchList = _ => {
   return (
     <div className='containerDiv'>
       <div className='searchTypography'>
-        <Typography variant='h6'>My Watchlist</Typography>
+        <Typography variant='h6'>My Watch List</Typography>
       </div>
       {
         watchListState.watchList ? watchListState.watchList.map(elem => {

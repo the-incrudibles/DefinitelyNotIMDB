@@ -97,7 +97,7 @@ const Navbar = _ => {
             ? <>
               <ListItem>
                 <i className='material-icons'>video_library</i>
-                <Link to='/account' className='drawerLink'><ListItemText primary='My Watchlist' />
+                <Link to='/account' className='drawerLink'><ListItemText primary='My Watch List' />
                 </Link>
               </ListItem>
               <ListItem>
