@@ -87,12 +87,14 @@ const MovieComments = _ => {
                       >
                         {comment.author}
                       </Typography>
+                      {/* this is to see if _id even populates */}
                       {'- ' + comment.text + ' _ID: ' + comment._id}
                     </React.Fragment>
                   }
                 />
                 {
-                  localStorage.getItem('user') ? <ReportMovieCommentButton key={comment._id}/> : null
+                  // tried with comment.movie—returns as undefined
+                  localStorage.getItem('user') ? <ReportMovieCommentButton id={comment._id}/> : null
                 }
                 <DeleteMovieCommentButton id={comment._id}/>
               </ListItem>

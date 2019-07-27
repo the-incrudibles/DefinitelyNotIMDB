@@ -64,7 +64,7 @@ const ReportMovieCommentButton = _ => {
           reportCommentState.isReport === false
             ? <IconButton onClick={e=>{
               console.log(e.target.id)
-              axios.put(`/comment/${parseInt(e.target.key)}`,{
+              axios.put(`/comment/${parseInt(e.target.id)}`,{
                 flagged: true
               })
                   .then(_=>{
