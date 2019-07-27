@@ -22,7 +22,6 @@ const DeleteCelebrityCommentButton = _ => {
   })
   const classes = useStyles()
   const handleDeleteCommentButton = event => {
-    // console.log(event.target)
     axios.delete(`/celeb/comment/id`)
       .then(_ => console.log('deleted!'))
       .catch(e => console.error('not deleted'))

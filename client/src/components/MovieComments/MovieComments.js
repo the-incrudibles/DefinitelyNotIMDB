@@ -8,7 +8,6 @@ import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 import AddMovieComments from '../AddMovieComments'
-// import ReportMovieCommentButton from '../ReportMovieCommentButton'
 import DeleteMovieCommentButton from '../DeleteMovieCommentButton'
 import MovieContext from '../../utils/movieContext'
 import axios from 'axios'
@@ -58,7 +57,6 @@ const MovieComments = _ => {
       .then(({ data }) => {
         if (data) {
           let comments = data
-          // console.log(comments)
           setCommentsState({ ...commentsState, comments })
         } else if (!data) {
           commentsState.renderComments()
@@ -75,13 +73,10 @@ const MovieComments = _ => {
     isReport: false
   })
   reportCommentState.handleReportComment = e => {
-    console.log(e.target.value)
     axios.put(`/comment/${e.target.value}`,{
       flagged: true
     })
         .then(({dataComment})=>{
-            console.log('success')
-            console.log(dataComment)
             setReportCommentState({...reportCommentState, isReport:true})
         })
         .catch(e => console.log('not updated'))
@@ -121,7 +116,6 @@ const MovieComments = _ => {
 
         <List className={classes.root}>
           {
-            // change commentData to comments when available
             commentsState.comments.map(comment => (
               <ListItem alignItems='flex-start'>
                 <ListItemAvatar>

@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import TextField from '@material-ui/core/TextField'
@@ -22,7 +21,6 @@ const AddMovieComments = _ => {
   const classes = useStyles()
 
   const handleAddComment = event => {
-    // event.preventDefault()
     axios.post(`/comment`, {
       text: text.current.value,
       author: localStorage.getItem('user'),
@@ -30,10 +28,8 @@ const AddMovieComments = _ => {
       movie: parseInt(localStorage.getItem('movieID'))
     })
       .then(_ => {
-        console.log('success')
         text.current.value = ''
       })
-      // .catch(e => console.log('not sent'))
   }
   return (
     <div>

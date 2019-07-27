@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import AddWatchListButton from '../../components/AddWatchListButton'
 import Chip from '@material-ui/core/Chip'
-import GuideBox from '../../components/GuideBoxApi'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,7 +39,6 @@ const MovieHeader = _ => {
     watchlist: [],
     release_date: [],
     renderMovie: _ => {
-      // axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
       axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
         .then(({ data }) => {
           if (!data) {

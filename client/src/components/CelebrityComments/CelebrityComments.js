@@ -34,8 +34,7 @@ const CelebrityComments = _ => {
   const [commentsState, setCommentsState] = useState([])
   const classes = useStyles()
 
-  //   fetch movie comments
-  // Connor note: need help writing this!
+ 
   commentsState.renderComments = _ => {
     axios.get(`/comments/${'id'}`)
       .then(({ data }) => {
@@ -61,7 +60,6 @@ const CelebrityComments = _ => {
 
         <List className={classes.root}>
           {
-            // change commentData to comments when available
             commentData.map(data => (
               <ListItem alignItems='flex-start'>
                 <ListItemAvatar>

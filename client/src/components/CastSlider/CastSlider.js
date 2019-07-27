@@ -16,7 +16,6 @@ const useStyles = makeStyles(theme => ({
   },
   gridList: {
     flexWrap: 'nowrap',
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)'
   },
   title: {
@@ -50,7 +49,6 @@ const CastSlider = _ => {
       <GridList className={classes.gridList} cols={2.5}>
         {
           castSlidersState.map(cast => (
-            // console.log(cast)
             <GridListTile key='' item>
               {
                 cast.profile_path ? <img src={`https://image.tmdb.org/t/p/original${cast.profile_path}`} alt={cast.name} /> : <img src={'https://imdbphotos.s3-us-west-1.amazonaws.com/empty.png'} alt={cast.name} />
