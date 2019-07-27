@@ -10,7 +10,12 @@ const AddWatchListButton = _ => {
   })
 
   newWatchlistState.handleGetWatchList = id => {
+<<<<<<< HEAD
     console.log('help')
+=======
+    // console.log('help')
+    // let userId = localStorage.getItem('id')
+>>>>>>> master
   }
 
   newWatchlistState.handleLoadWatchList = async () => {
@@ -26,7 +31,7 @@ const AddWatchListButton = _ => {
   newWatchlistState.handleAddWatchList = _ => {
     let addMovie = localStorage.getItem('movieID')
     let watchlist = newWatchlistState.watchlist
-    console.log(watchlist)
+    // console.log(watchlist)
     if (watchlist.indexOf(addMovie) === -1) {
       watchlist.push(addMovie)
       setNewWatchlistState({ ...newWatchlistState, watchlist })
@@ -34,7 +39,7 @@ const AddWatchListButton = _ => {
         .then(_ => console.log('Movie Added!'))
         .catch(e => console.log(e))
     } else {
-      console.log('Movie already in watchlist!')
+      // console.log('Movie already in watchlist!')
     }
   }
 
