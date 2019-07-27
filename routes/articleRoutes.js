@@ -2,7 +2,13 @@ const { NewsStory } = require('../models')
 
 module.exports = app => {
   app.get('/articles', (req, res) => {
-    NewsStory.findOne({ _id: req.params.id })
+    NewsStory.find({})
+      .then(articles => res.json(articles))
+      .catch(e => console.log(e))
+  })
+
+  app.get('/articles/:id'(req, res) => {
+    NewsStory.fineOne({ _id: req.params.id })
       .then(articles => res.json(articles))
       .catch(e => console.log(e))
   })
