@@ -29,19 +29,23 @@ const Cards = _ => {
   return (
 
     <Card className='resultsDiv'>
-      <CardActionArea>
-        <CardContent>
-          <Typography gutterBottom variant='h6' component='h2'>
-            {movie.title}
-          </Typography>
-          <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} />
-          <div className='cardTypography'>
-            <Typography variant='body2' color='textSecondary' component='p'>
-              {movie.overview ? <> {movie.overview.slice(0, 150)}<span>...</span> </> : null}
+      <Link to='/movie' className='cardLink' key={movie.id} onClick={_ => {
+        localStorage.setItem('movieID', movie.id)
+      }}>
+        <CardActionArea>
+          <CardContent>
+            <Typography gutterBottom variant='h6' component='h2' className="regularTextColor">
+              {movie.title}
             </Typography>
-          </div>
-        </CardContent>
-      </CardActionArea>
+            <img className='resultsPoster' src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} />
+            <div className='cardTypography'>
+              <Typography variant='body2' color='textSecondary' component='p'>
+                {movie.overview ? <> {movie.overview.slice(0, 150)}<span>...</span> </> : null}
+              </Typography>
+            </div>
+          </CardContent>
+        </CardActionArea>
+      </Link>
       <CardActions>
         <Button id={movie.id} size='small' color='primary' onClick={_ => {
           WatchlistContext.getWatchlist(localStorage.getItem('id'))
