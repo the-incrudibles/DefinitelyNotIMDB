@@ -18,14 +18,14 @@ const Article = _ => {
               localStorage.getItem('user') ? '/articleinfo' : 'login'
             }
               className='cardLink' key={article._id} onClick={_ => {
-                localStorage.setItem('articleID', article._id)
-              }}>
+              localStorage.setItem('articleID', article._id)
+            }}>
               <Card key={article._id} className='resultsDiv'>
                 <CardActionArea>
                   <CardContent>
                     <img className='articlePoster' src={article.image} alt={article.headline} />
-                    <div className="articleHeadline">
-                      <Typography variant="body1" >
+                    <div className='articleHeadline'>
+                      <Typography variant='body1' >
                         {article.headline}
                       </Typography>
                     </div>

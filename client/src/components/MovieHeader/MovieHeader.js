@@ -69,21 +69,21 @@ const MovieHeader = _ => {
               <img className='movieImg' src={`https://image.tmdb.org/t/p/original${movieState.movie.poster_path}`} alt='' />
             </Grid>
             <Grid item xs={6}>
-              <Typography variant='h6' component='h3' className="movieHeaderText">
+              <Typography variant='h6' component='h3' className='movieHeaderText'>
                 {movieState.movie.title}
               </Typography>
-              <Typography component='p' className="movieHeaderText">
+              <Typography component='p' className='movieHeaderText'>
                 Rating: {movieState.movie.vote_average}/10
               </Typography>
-              <Typography component='p' className="movieHeaderText">
+              <Typography component='p' className='movieHeaderText'>
                 {
-                  movieState.release_date ?
-                    <>
-                      <Typography component='p' className="movieHeaderText">Released:</Typography>{`${movieState.release_date.slice(5, 7)}-${movieState.release_date.slice(8, 10)}-${movieState.release_date.slice(0, 4)}`}
+                  movieState.release_date
+                    ? <>
+                      <Typography component='p' className='movieHeaderText'>Released:</Typography>{`${movieState.release_date.slice(5, 7)}-${movieState.release_date.slice(8, 10)}-${movieState.release_date.slice(0, 4)}`}
                     </> : null
                 }
               </Typography>
-              <div className="addWatchlistButton" >
+              <div className='addWatchlistButton' >
                 <Typography>
                   <AddWatchListButton />
                 </Typography>

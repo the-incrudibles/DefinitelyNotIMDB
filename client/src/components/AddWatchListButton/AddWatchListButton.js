@@ -5,7 +5,6 @@ import axios from 'axios'
 import Watchlist from '../../utils/Watchlist.js'
 
 const AddWatchListButton = _ => {
-
   const [newWatchlistState, setNewWatchlistState] = useState({
     watchlist: []
   })

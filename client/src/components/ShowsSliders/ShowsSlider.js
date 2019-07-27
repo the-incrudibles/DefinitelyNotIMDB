@@ -56,8 +56,8 @@ const ShowsSlider = _ => {
                 show.poster_path ? <img src={`https://image.tmdb.org/t/p/original${show.poster_path}`} alt={show.name} /> : <img src={Placeholder} alt={show.name} />
               }
               {
-                show.media_type === 'tv' ?
-                  <Link to='/tvshow' onClick={_ => {
+                show.media_type === 'tv'
+                  ? <Link to='/tvshow' onClick={_ => {
                     localStorage.setItem('tvID', show.id)
                   }}>
                     <GridListTileBar
@@ -68,8 +68,8 @@ const ShowsSlider = _ => {
                       actionPosition='left'
                       className={classes.titleBar}
                     />
-                  </Link> :
-                  <Link to='/movie' onClick={_ => {
+                  </Link>
+                  : <Link to='/movie' onClick={_ => {
                     localStorage.setItem('movieID', show.id)
                   }}>
                     <GridListTileBar

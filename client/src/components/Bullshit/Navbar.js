@@ -87,15 +87,14 @@ const Navbar = _ => {
       <List>
         {
           localStorage.getItem('admin') === 'true'
-            ?
-            <ListItem>
+            ? <ListItem>
               <i className='material-icons'>vpn_key</i>
               <Link to='/account' className='drawerLink'><ListItemText primary='Admin' /></Link>
             </ListItem> : null
         }
         {
-          localStorage.getItem('user') ?
-            <>
+          localStorage.getItem('user')
+            ? <>
               <ListItem>
                 <i className='material-icons'>video_library</i>
                 <Link to='/account' className='drawerLink'><ListItemText primary='My Watchlist' />

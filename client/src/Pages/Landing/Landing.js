@@ -23,7 +23,7 @@ const Landing = _ => {
 
   return (
     <>
-      <div className="containerDiv">
+      <div className='containerDiv'>
         <div className='searchTypography'>
           <Typography variant='h6'>Welcome to Definitely Not IMDB. Check out the latest news here!</Typography>
         </div>
