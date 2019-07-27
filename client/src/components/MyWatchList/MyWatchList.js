@@ -25,7 +25,7 @@ const MyWatchList = _ => {
         console.log(data)
         console.log(data.watchlist)
         data.watchlist.map(async (movie) => {
-          const result = axios.get(`/movie/${parseInt(movie)}`)
+          const result = await axios.get(`/movie/${parseInt(movie)}`)
             .then(({ data: movie }) => {
               watchlist.push(...watchListState.watchlist)
               watchlist.push(movie)
@@ -35,7 +35,7 @@ const MyWatchList = _ => {
             })
             .catch(e => console.log(e))
         })
-        setWatchListState({...watchListState, watchlist})
+        // setWatchListState({...watchListState, watchlist})
       })
       .catch(e => console.log(e))
   }, [])
