@@ -8,10 +8,20 @@ import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 import AddMovieComments from '../AddMovieComments'
-import ReportMovieCommentButton from '../ReportMovieCommentButton'
+// import ReportMovieCommentButton from '../ReportMovieCommentButton'
 import DeleteMovieCommentButton from '../DeleteMovieCommentButton'
-// import commentData from './commentData'
 import MovieContext from '../../utils/movieContext'
+import axios from 'axios'
+
+import IconButton from '@material-ui/core/IconButton'
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from '@material-ui/core/Button'
+import Flag from '@material-ui/icons/Flag'
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,6 +36,12 @@ const useStyles = makeStyles(theme => ({
     padding: 25
   },
   flag: {
+    color: 'red'
+  }, 
+  flagNotReport: {
+    color: 'black'
+  },
+  flagIsReport: {
     color: 'red'
   }
 }))
@@ -54,6 +70,41 @@ const MovieComments = _ => {
   useEffect(_ => {
     commentsState.renderComments()
   }, [commentsState])
+
+  const [reportCommentState, setReportCommentState] = useState({
+    isReport: false
+  })
+  reportCommentState.handleReportComment = e => {
+    console.log(e.target.value)
+    axios.put(`/comment/${e.target.value}`,{
+      flagged: true
+    })
+        .then(({dataComment})=>{
+            console.log('success')
+            console.log(dataComment)
+            setReportCommentState({...reportCommentState, isReport:true})
+        })
+        .catch(e => console.log('not updated'))
+  }
+  
+  const [open, setOpen] = useState(false);
+
+  function handleClickOpen() {
+    setOpen(true);
+  }
+
+  function confirmReport() {
+    setOpen(false);
+
+    setReportCommentState({ ...reportCommentState, isReport: true })
+    reportCommentState.handleReportComment()
+  }
+
+  function handleClose() {
+    setOpen(false);
+  }
+
+  
 
   return (
     <div>
@@ -87,20 +138,45 @@ const MovieComments = _ => {
                       >
                         {comment.author}
                       </Typography>
-                      {/* this is to see if _id even populates */}
-                      {'- ' + comment.text + ' _ID: ' + comment._id}
+                      {'- ' + comment.text}
                     </React.Fragment>
                   }
                 />
-                {
-                  // tried with comment.movie—returns as undefined
-                  localStorage.getItem('user') ? <ReportMovieCommentButton id={comment._id}/> : null
-                }
+               {
+                   reportCommentState.isReport === false ?
+                  <IconButton value={comment._id} onClick={handleClickOpen}>
+                    <Flag className={classes.flagNotReport} />
+                    </IconButton>
+                  : <IconButton onClick={handleClickOpen} id={comment._id}>
+                    <Flag className={classes.flagIsReport} />
+                 </IconButton>
+               }
                 <DeleteMovieCommentButton id={comment._id}/>
               </ListItem>
             ))
           }
         </List>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Report this comment?"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Please only report comments if you feel as though they violate our community guidelines. Disagreeing with someone's opinion is not a reason to report!
+          </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={confirmReport} color="primary">
+              Report
+          </Button>
+            <Button onClick={handleClose} color="primary" autoFocus>
+              Cancel
+          </Button>
+          </DialogActions>
+        </Dialog>
         {
           localStorage.getItem('user') ? <AddMovieComments /> : null
         }
