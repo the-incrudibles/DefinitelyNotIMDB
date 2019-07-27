@@ -27,14 +27,15 @@ const useStyles = makeStyles(theme => ({
 }))
 const AdminComments = _ => {
   const [commentsState, setCommentsState] = useState({
-    comments: [],
-    })
- 
+    comments: []
+  })
+
   const classes = useStyles()
 
   commentsState.renderComents = _ => {
-    axios.get('/flagged')
+    axios.get('/flag')
       .then(({ data }) => {
+        console.log(data)
         setCommentsState({ ...commentsState, comments: data })
       })
       .catch(e => console.log(e))
@@ -43,7 +44,6 @@ const AdminComments = _ => {
   useEffect(_ => {
     commentsState.renderComents()
   }, [])
-
 
   return (
     <>
@@ -71,7 +71,7 @@ const AdminComments = _ => {
                 }
               />
               {/* I believe the logic in DeleteCommentButton should work— */}
-              <DeleteCommentButton value={comment._id}/>
+              <DeleteCommentButton value={comment._id} />
             </ListItem>
           ))
         }
