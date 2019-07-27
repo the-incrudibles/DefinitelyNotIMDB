@@ -6,11 +6,9 @@ import CardContent from '@material-ui/core/CardContent'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Typography from '@material-ui/core/Typography'
 import axios from 'axios'
-import CardActionArea from '@material-ui/core/CardActionArea'
 import WatchlistContext from '../../utils/Watchlist.js'
 import CardContext from '../../utils/CardContext'
 import Cards from './Cards'
-
 
 const MyWatchList = _ => {
   const [watchListState, setWatchListState] = useState(

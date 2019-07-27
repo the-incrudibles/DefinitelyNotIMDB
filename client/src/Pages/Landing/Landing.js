@@ -12,7 +12,7 @@ const Landing = _ => {
   const searchForArticles = _ => {
     MainArticles.getArticles()
       .then(({ data: articles }) => {
-        setMainState({ ...mainState, articles: articles })
+        setMainState({ ...mainState, articles })
       })
       .catch(e => console.log(e))
   }
@@ -23,13 +23,16 @@ const Landing = _ => {
 
   return (
     <>
-      <div className="containerDiv">
+      <div className='containerDiv'>
         <div className='searchTypography'>
           <Typography variant='h6'>Welcome to Definitely Not IMDB. Check out the latest news here!</Typography>
         </div>
-        <MainContext.Provider value={mainState}>
-          <Article />
-        </MainContext.Provider>
+        {/* news articles go here */}
+        {mainState.articles ?
+          <MainContext.Provider value={mainState}>
+            <Article />
+          </MainContext.Provider>
+          : searchForArticles()}
       </div>
     </>
   )

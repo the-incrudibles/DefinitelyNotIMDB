@@ -50,13 +50,13 @@ const CelebrityComments = _ => {
     <div>
       <Paper className={classes.rootTwo}>
         {
-          localStorage.getItem('user') ?
-            <Typography>
+          localStorage.getItem('user')
+            ? <Typography>
               Leave a comment below!
-          </Typography>
+            </Typography>
             : <Typography>
               Comments:
-          </Typography>
+            </Typography>
         }
 
         <List className={classes.root}>

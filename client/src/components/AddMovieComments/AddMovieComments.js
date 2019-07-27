@@ -21,7 +21,6 @@ const AddMovieComments = _ => {
   const text = useRef()
   const classes = useStyles()
 
-
   const handleAddComment = event => {
     // event.preventDefault()
     axios.post(`/comment`, {
@@ -34,37 +33,36 @@ const AddMovieComments = _ => {
         console.log('success')
         text.current.value = ''
       })
-      .catch(e => console.log('not sent'))
+      // .catch(e => console.log('not sent'))
   }
   return (
     <div>
       {
-        localStorage.getItem('user') === '' || localStorage.getItem('admin') === '' ?
-        <>
-          <form>
-            <TextField
-              id='outlined-full-width'
-              label='Comment'
-              style={{ margin: 8 }}
-              placeholder='Leave a comment'
-              fullWidth
-              margin='normal'
-              variant='outlined'
-              inputRef={text}
-              InputLabelProps={{
-                shrink: true
-              }}
-            />
-            <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.isNotUser}
-              onClick={_ => {
-                handleAddComment()
-              }}>
+        localStorage.getItem('user') === '' || localStorage.getItem('admin') === ''
+          ? <>
+            <form>
+              <TextField
+                id='outlined-full-width'
+                label='Comment'
+                style={{ margin: 8 }}
+                placeholder='Leave a comment'
+                fullWidth
+                margin='normal'
+                variant='outlined'
+                inputRef={text}
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />
+              <Button variant='contained' id='commentButton' color='primary' size='small' className={classes.isNotUser}
+                onClick={_ => {
+                  handleAddComment()
+                }}>
               Send
-        </Button>
-          </form>
+              </Button>
+            </form>
           </>
-          :
-          <form>
+          : <form>
             <TextField
               id='outlined-full-width'
               label='Comment'
@@ -83,7 +81,7 @@ const AddMovieComments = _ => {
                 handleAddComment()
               }}>
               Send
-        </Button>
+            </Button>
           </form>
       }
     </div>

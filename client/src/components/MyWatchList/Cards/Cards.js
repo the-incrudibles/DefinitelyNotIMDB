@@ -8,11 +8,24 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import CardContext from '../../../utils/CardContext'
-import SearchResult from '../../../utils/SearchResult.js'
 import WatchlistContext from '../../../utils/Watchlist.js'
 
 const Cards = _ => {
   const movie = useContext(CardContext)
+
+  const handleDeleteButton = _ => {
+    WatchlistContext.getWatchlist(localStorage.getItem('id'))
+      .then(({ data }) => {
+        let watchListArr = data[0].watchlist
+        let removeIndex = watchListArr.indexOf(movie.id)
+        watchListArr.splice(removeIndex, 1)
+        axios.put(`/user/${localStorage.getItem('id')}`, { watchlist: watchListArr })
+          .then(_ => window.location.reload())
+          .catch(e => console.log(e))
+      })
+      .catch(e => console.log(e))
+  }
+
   return (
 
     <Card className='resultsDiv'>
@@ -44,6 +57,7 @@ const Cards = _ => {
             })
             .catch(e => console.log(e))
         }}>
+
           Delete
           </Button>
       </CardActions>

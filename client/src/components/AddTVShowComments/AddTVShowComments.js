@@ -27,9 +27,9 @@ const AddTVShowComments = _ => {
       comment: comment.current.value
     })
       .then(_ => {
-        console.log('it worked')
+        // console.log('it worked')
       })
-      .catch(e => console.log('message not sent'))
+      // .catch(e => console.log('message not sent'))
   }
   return (
     <div>
