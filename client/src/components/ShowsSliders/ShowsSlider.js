@@ -38,7 +38,7 @@ const ShowsSlider = _ => {
     axios.get(`https://api.themoviedb.org/3/person/${parseInt(localStorage.getItem('celebID'))}/combined_credits?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
       .then(({ data }) => {
         setShowsSlidersState(data.cast)
-        console.log(data.cast)
+        // console.log(data.cast)
       })
       .catch(e => console.error(e))
   }
@@ -56,8 +56,8 @@ const ShowsSlider = _ => {
                 show.poster_path ? <img src={`https://image.tmdb.org/t/p/original${show.poster_path}`} alt={show.name} /> : <img src={Placeholder} alt={show.name} />
               }
               {
-                show.media_type === 'tv' ?
-                  <Link to='/tvshow' onClick={_ => {
+                show.media_type === 'tv'
+                  ? <Link to='/tvshow' onClick={_ => {
                     localStorage.setItem('tvID', show.id)
                   }}>
                     <GridListTileBar
@@ -68,8 +68,8 @@ const ShowsSlider = _ => {
                       actionPosition='left'
                       className={classes.titleBar}
                     />
-                  </Link> :
-                  <Link to='/movie' onClick={_ => {
+                  </Link>
+                  : <Link to='/movie' onClick={_ => {
                     localStorage.setItem('movieID', show.id)
                   }}>
                     <GridListTileBar

@@ -1,1 +1,1 @@
-export {default} from './ArticleInfo.js'
+export { default } from './ArticleInfo.js'

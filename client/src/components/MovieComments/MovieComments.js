@@ -59,12 +59,12 @@ const MovieComments = _ => {
     <div>
       <Paper className={classes.rootTwo}>
         {
-          localStorage.getItem('user') ?
-            <Typography>
+          localStorage.getItem('user')
+            ? <Typography>
               Leave a comment below!
             </Typography>
             : <Typography>
-              Comments: 
+              Comments:
             </Typography>
         }
 
@@ -96,7 +96,7 @@ const MovieComments = _ => {
                   // tried with comment.movie—returns as undefined
                   localStorage.getItem('user') ? <ReportMovieCommentButton id={comment._id}/> : null
                 }
-                <DeleteMovieCommentButton id={comment._id}/>
+                <DeleteMovieCommentButton id={comment._id} />
               </ListItem>
             ))
           }

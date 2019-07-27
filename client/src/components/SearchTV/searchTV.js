@@ -41,7 +41,7 @@ const searchTV = _ => {
                 <CardActions>
                   <Button size='small' color='primary'>
                     More Info
-                </Button>
+                  </Button>
                 </CardActions>
               </Card>
             </Link>
