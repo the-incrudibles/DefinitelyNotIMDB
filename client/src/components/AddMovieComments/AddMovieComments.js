@@ -32,6 +32,7 @@ const AddMovieComments = _ => {
     })
       .then(_ => {
         console.log('success')
+        text.current.value = ''
       })
       .catch(e => console.log('not sent'))
   }

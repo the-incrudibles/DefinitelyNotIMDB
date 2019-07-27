@@ -42,6 +42,7 @@ const MovieComments = _ => {
       .then(({ data }) => {
         if (data) {
           let comments = data
+          // console.log(comments)
           setCommentsState({ ...commentsState, comments })
         } else if (!data) {
           commentsState.renderComments()
@@ -86,12 +87,12 @@ const MovieComments = _ => {
                       >
                         {comment.author}
                       </Typography>
-                      {'- ' + comment.text}
+                      {'- ' + comment.text + ' _ID: ' + comment._id}
                     </React.Fragment>
                   }
                 />
                 {
-                  localStorage.getItem('user') ? <ReportMovieCommentButton id={comment._id} /> : null
+                  localStorage.getItem('user') ? <ReportMovieCommentButton key={comment._id}/> : null
                 }
                 <DeleteMovieCommentButton id={comment._id}/>
               </ListItem>
