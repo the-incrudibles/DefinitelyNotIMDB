@@ -11,12 +11,30 @@ import CardContext from '../../../utils/CardContext'
 import WatchlistContext from '../../../utils/Watchlist.js'
 
 const Cards = _ => {
+
+  const handleDeleteButton = mID => {
+    WatchlistContext.getWatchlist(localStorage.getItem('id'))
+      .then(({ data }) => {
+        // console.log(data.watchlist)
+        // console.log(mID.stringify())
+        let index = data.watchlist.indexOf(String(mID))
+        // console.log(index)
+        let newWatchlist = data.watchlist.splice(index, 1)
+        // console.log(data.watchlist)
+        axios.put(`/user/${localStorage.getItem('id')}`, { watchlist: data.watchlist })
+          .then(_ => window.location.reload())
+          .catch(e => console.log(e))
+      })
+      .catch(e => console.log(e))
+  }
+
   return (
-    // const movie = useContext(CardContext)
     <CardContext.Consumer>
       {
         ({ watchlist }) => (
+          // console.log(watchlist)
           watchlist.map(movie => (
+            // console.log(movie.title)
             <Card className='resultsDiv'>
               <CardActionArea>
                 <CardContent>
@@ -32,20 +50,7 @@ const Cards = _ => {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button id={movie.id} size='small' color='primary' onClick={_ => {
-                  WatchlistContext.getWatchlist(localStorage.getItem('id'))
-                    .then(({ data }) => {
-                      let watchListArr = data[0].watchlist
-                      let removeIndex = watchListArr.indexOf(movie.id)
-                      console.log(watchListArr)
-                      watchListArr.splice(removeIndex, 1)
-                      console.log(watchListArr)
-                      axios.put(`/user/${localStorage.getItem('id')}`, { watchlist: watchListArr })
-                        .then(_ => console.log(watchListArr))
-                        .catch(e => console.log(e))
-                    })
-                    .catch(e => console.log(e))
-                }}>
+                <Button id={movie.id} size='small' color='primary' onClick={_ => handleDeleteButton(movie.id)}>
 
                   Delete
                   </Button>
@@ -55,22 +60,6 @@ const Cards = _ => {
         )
       }
     </CardContext.Consumer>
-    // const handleDeleteButton = _ => {
-    //   WatchlistContext.getWatchlist(localStorage.getItem('id'))
-    //     .then(({ data }) => {
-    //       let watchListArr = data[0].watchlist
-    //       let removeIndex = watchListArr.indexOf(movie.id)
-    //       watchListArr.splice(removeIndex, 1)
-    //       axios.put(`/user/${localStorage.getItem('id')}`, { watchlist: watchListArr })
-    //         .then(_ => window.location.reload())
-    //         .catch(e => console.log(e))
-    //     })
-    //     .catch(e => console.log(e))
-    // }
-
-    // return (
-
-
   )
 }
 export default Cards

@@ -31,11 +31,11 @@ const MyWatchList = _ => {
               watchlist.push(movie)
               console.log(watchlist)
               console.log('state updated')
-              return watchlist
+              setWatchListState({ ...watchListState, watchlist })
+              // return watchlist
             })
             .catch(e => console.log(e))
         })
-        // setWatchListState({...watchListState, watchlist})
       })
       .catch(e => console.log(e))
   }, [])
