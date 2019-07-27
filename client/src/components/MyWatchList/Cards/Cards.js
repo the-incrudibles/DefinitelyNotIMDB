@@ -36,7 +36,9 @@ const Cards = _ => {
             .then(({data})=> {
                  let watchListArr=data[0].watchlist
                  let removeIndex=watchListArr.indexOf(movie.id)
+                 console.log(watchListArr)
                  watchListArr.splice(removeIndex,1)
+                 console.log(watchListArr)
                  axios.put(`/user/${localStorage.getItem('id')}`,{watchlist:watchListArr})
                  .then(_=>console.log(watchListArr))
                  .catch(e=>console.log(e))
