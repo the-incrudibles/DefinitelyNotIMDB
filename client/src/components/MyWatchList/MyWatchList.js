@@ -31,11 +31,11 @@ const MyWatchList = _ => {
               watchlist.push(movie)
               console.log(watchlist)
               console.log('state updated')
-              return watchlist
+              setWatchListState({ ...watchListState, watchlist })
+              // return watchlist
             })
             .catch(e => console.log(e))
         })
-        // setWatchListState({...watchListState, watchlist})
       })
       .catch(e => console.log(e))
   }, [])
@@ -47,15 +47,9 @@ const MyWatchList = _ => {
           <div className='searchTypography'>
             <Typography variant='h6'>My Watch List</Typography>
           </div>
-          {
-            watchListState.watchlist ? 
-                <>
-                  {<CardContext.Provider value={watchListState}>
-                    <Cards />
-                  </CardContext.Provider>}
-
-                </> : null
-          }
+          <CardContext.Provider value={watchListState}>
+            <Cards />
+          </CardContext.Provider>
         </div> : ''
       }
     </>
