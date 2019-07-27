@@ -9,7 +9,6 @@ import AddWatchListButton from '../../components/AddWatchListButton'
 import Chip from '@material-ui/core/Chip'
 import GuideBox from '../../components/GuideBoxApi'
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 15
@@ -59,22 +58,22 @@ const TVShowHeader = _ => {
 
   return (
     <div>
-      {console.log(tvState.tvshow)}
+      {/* {console.log(tvState.tvshow)} */}
       <Paper className={classes.root}>
         <Grid container spacing={0}>
           <Grid item xs={6}>
             <img className='movieImg' src={`https://image.tmdb.org/t/p/original${tvState.tvshow.poster_path}`} alt='' />
           </Grid>
           <Grid item xs={6}>
-            <Typography variant='h5' component='h3' className="movieHeaderText">
+            <Typography variant='h5' component='h3' className='movieHeaderText'>
               {tvState.tvshow.name}
             </Typography>
-            <div className="celebHeaderText">
-              <Typography component='p' className="movieHeaderText">
+            <div className='celebHeaderText'>
+              <Typography component='p' className='movieHeaderText'>
                 Rating: {tvState.tvshow.vote_average}/10
               </Typography>
             </div>
-            <div className="addWatchlistButton">
+            <div className='addWatchlistButton'>
               <Typography>
                 <AddWatchListButton />
               </Typography>
@@ -106,7 +105,7 @@ const TVShowHeader = _ => {
             {tvState.tvshow.overview}
           </Typography>
         </Grid>
-        <GuideBox />
+        {/* <GuideBox /> */}
       </Paper>
     </div>
   )

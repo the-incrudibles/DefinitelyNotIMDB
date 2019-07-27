@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 
-
 const useStyles = makeStyles(theme => ({
   rootTwo: {
     display: 'flex',
@@ -27,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     background:
       'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
       'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-    fontSize: "2px"
+    fontSize: '2px'
   }
 }))
 

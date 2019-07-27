@@ -52,8 +52,8 @@ const TVShowComments = _ => {
     <div>
       <Paper className={classes.rootTwo}>
         {
-          localStorage.getItem('user') ?
-            <Typography>
+          localStorage.getItem('user')
+            ? <Typography>
               Leave a comment below!
             </Typography>
             : <Typography>
