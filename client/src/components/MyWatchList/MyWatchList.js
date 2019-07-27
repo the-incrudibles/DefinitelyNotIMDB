@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -10,14 +10,21 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 import Watchlist from '../../utils/Watchlist.js'
 
 const MyWatchList = _ => {
+
+  const [watchlistState, setWatchlistState] = useState({
+    movies: []
+  })
+
   useEffect(_ => {
     Watchlist.getWatchlist()
-      .then(({ data: movie }) => {
+      .then(({ data }) => {
+        let movies = data
+        console.log(movies)
+        setWatchlistState(...watchlistState, movies)
       })
       .catch(e => console.error(e))
   }, [])
 
-  const cards = [1, 2, 3, 4, 5, 6]
   return (
     <React.Fragment>
       <CssBaseline />
@@ -26,31 +33,32 @@ const MyWatchList = _ => {
           <Typography variant='h6'>Your Watchlist</Typography>
         </div>
         {
-          cards.map(card => (
-            <Card className='resultsDiv'>
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant='h6' component='h2'>
-                    Title
-                  </Typography>
-                  <img className='resultsPoster' src={'https://image.tmdb.org/t/p/original/xRWht48C2V8XNfzvPehyClOvDni.jpg'} alt='title' />
-                  <div className='cardTypography'>
-                    <Typography variant='body2' color='textSecondary' component='p'>
-                      Mia, an aspiring actress, serves lattes to movie stars in between auditions and Sebastian, a jazz musician, scrapes by playing cocktail party gigs in dingy bars, but as success mounts they are faced...
+          watchlistState.movies ?
+            watchlistState.movies.map(movie => (
+              <Card className='resultsDiv'>
+                <CardActionArea>
+                  <CardContent>
+                    <Typography gutterBottom variant='h6' component='h2'>
+                      {movie.title}
                     </Typography>
-                  </div>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button size='small' color='primary'>
-                  More Info
-                </Button>
-                <Button size='small' color='primary'>
-                  Remove
-                </Button>
-              </CardActions>
-            </Card >
-          ))
+                    <img className='resultsPoster' src={'https://image.tmdb.org/t/p/original/xRWht48C2V8XNfzvPehyClOvDni.jpg'} alt='title' />
+                    <div className='cardTypography'>
+                      <Typography variant='body2' color='textSecondary' component='p'>
+                        {movie.overview}
+                      </Typography>
+                    </div>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button size='small' color='primary'>
+                    More Info
+                  </Button>
+                  <Button size='small' color='primary' id={movie.id} onclick={watchlistState.handleDeleteFromWatchlist}>
+                    Remove
+                  </Button>
+                </CardActions>
+              </Card >
+            )) : ''
         }
       </div>
     </React.Fragment>

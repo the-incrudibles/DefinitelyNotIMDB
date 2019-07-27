@@ -40,6 +40,7 @@ const LoginForm = _ => {
             localStorage.setItem('token', data.token)
             localStorage.setItem('user', data.user)
             localStorage.setItem('admin', data.admin)
+            localStorage.setItem('id', data.id)
             setUserState({ ...userState, isLoggedIn: data.isLoggedIn, user: data.user })
           } else {
             alert('Invalid username or password')
@@ -65,7 +66,7 @@ const LoginForm = _ => {
     <div className='containerDiv'>
       {userState.isLoggedIn ? userState.renderRedirect() : null}
       <div className='blockTypography'>
-        <Typography >In order to leave comments or reviews, or join movie clubs, you'll have to log into your account.</Typography>
+        <Typography >In order to leave comments or view our news articles, you'll have to log into your account.</Typography>
       </div>
 
       <form>

@@ -69,17 +69,11 @@ const TVShowHeader = _ => {
             <Typography variant='h5' component='h3' className="movieHeaderText">
               {tvState.tvshow.name}
             </Typography>
-            <Typography component='p' className="movieHeaderText">
-              Rating: {tvState.tvshow.vote_average}
-            </Typography>
-            {/* <Typography component='p' className="movieHeaderText">
-              {
-                tvState.first_air_date ?
-                  <>
-                    <Typography component='p' className="movieHeaderText">First aired:</Typography>{`${tvState.first_air_date.slice(5, 7)}-${tvState.first_air_date.slice(8, 10)}-${tvState.first_air_date.slice(0, 4)}`}
-                  </> : null
-              }
-            </Typography> */}
+            <div className="celebHeaderText">
+              <Typography component='p' className="movieHeaderText">
+                Rating: {tvState.tvshow.vote_average}/10
+              </Typography>
+            </div>
             <div className="addWatchlistButton">
               <Typography>
                 <AddWatchListButton />
