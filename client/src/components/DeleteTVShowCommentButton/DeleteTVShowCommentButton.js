@@ -24,7 +24,9 @@ const DeleteTVShowCommentButton = _ => {
   const handleDeleteCommentButton = event => {
     // console.log(event.target)
     axios.delete(`/tv/comment/id`)
-      .then(_ => console.log('deleted!'))
+      .then(_ => 
+        console.log('deleted!')
+        )
       .catch(e => console.error('not deleted'))
   }
   const checkIsAdmin = _ => {

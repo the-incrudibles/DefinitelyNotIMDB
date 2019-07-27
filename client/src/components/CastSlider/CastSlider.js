@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   },
   titleBar: {
     background:
-      'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, ' +
       'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
     fontSize: '2px'
   }
@@ -60,7 +60,7 @@ const CastSlider = _ => {
               }}>
                 <GridListTileBar
                   title={cast.name}
-                  titlePosition='top'
+                  titlePosition='bottom'
                   actionPosition='left'
                   className={classes.titleBar}
                 />
