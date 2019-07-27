@@ -18,7 +18,7 @@ const Cards = _ => {
         let index = data.watchlist.indexOf(String(mID))
         let newWatchlist = data.watchlist.splice(index, 1)
         axios.put(`/user/${localStorage.getItem('id')}`, { watchlist: data.watchlist })
-          .then(_ => window.location.reload())
+          .then(_ => window.location.reload(true))
           .catch(e => console.log(e))
       })
       .catch(e => console.log(e))
