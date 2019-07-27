@@ -23,19 +23,18 @@ const useStyles = makeStyles(theme => ({
 const ReportMovieCommentButton = _ => {
   const [open, setOpen] = useState(false)
 
-  function handleClickOpen () {
+  function handleClickOpen() {
     setOpen(true)
   }
 
-  function confirmReport () {
+  function confirmReport() {
     setOpen(false)
 
     setReportCommentState({ ...reportCommentState, isReport: true })
     reportCommentState.handleReportComment()
-    // axios code to report comment?
   }
 
-  function handleClose () {
+  function handleClose() {
     setOpen(false)
   }
 
@@ -43,24 +42,36 @@ const ReportMovieCommentButton = _ => {
     isReport: false
   })
   const classes = useStyles()
+  // calling "e" was breaking the function
 
-  reportCommentState.handleReportComment = event => {
-    axios.put(`/comment/${event.target.value}`, {
-      flagged: true
-    })
-      .then(_ => {
-        console.log('success')
-        setReportCommentState({ ...reportCommentState, isReport: true })
-      })
-      .catch(e => console.log('not updated'))
-  }
+  // reportCommentState.handleReportComment = e => {
+  //   console.log(e.target)
+  //   axios.put(`/comment/${event.target.id}`,{
+  //     flagged: true
+  //   })
+  //       .then(_=>{
+  //           console.log('success')
+  //           setReportCommentState({...reportCommentState, isReport:true})
+  //       })
+  //       .catch(e => console.log('not updated'))
+  // }
 
   return (
     <>
       <div>
         {
           reportCommentState.isReport === false
-            ? <IconButton onClick={handleClickOpen}>
+            ? <IconButton onClick={e => {
+              console.log(e.target.id)
+              axios.put(`/comment/${parseInt(e.target.id)}`, {
+                flagged: true
+              })
+                .then(_ => {
+                  console.log('success')
+                  setReportCommentState({ ...reportCommentState, isReport: true })
+                })
+                .catch(e => console.log('not updated'))
+            }}>
               <Flag className={classes.flagNotReport} />
             </IconButton>
             : <IconButton onClick={handleClickOpen}>
