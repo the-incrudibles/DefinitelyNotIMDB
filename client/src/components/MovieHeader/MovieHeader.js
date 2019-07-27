@@ -116,7 +116,7 @@ const MovieHeader = _ => {
             </Typography>
           </Grid>
         </div>
-        <GuideBox />
+        {/* <GuideBox /> */}
       </Paper>
     </div>
   )

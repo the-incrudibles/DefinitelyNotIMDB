@@ -32,7 +32,7 @@ module.exports = app => {
       .catch(e => console.log(e))
   })
   app.get('/user/:id', (req, res) => {
-    User.find({ _id: req.params.id })
+    User.findOne({ _id: req.params.id })
       .then(data => res.json(data))
       .catch(e => console.log(e))
   })
