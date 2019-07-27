@@ -52,7 +52,7 @@ const MovieComments = _ => {
 
   useEffect(_ => {
     commentsState.renderComments()
-  }, [])
+  }, [commentsState])
 
   return (
     <div>
