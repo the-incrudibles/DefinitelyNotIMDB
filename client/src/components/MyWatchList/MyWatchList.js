@@ -43,7 +43,7 @@ const MyWatchList = _ => {
       {watchListState.watchlist !== [] ?
         <div className='containerDiv'>
           <div className='searchTypography'>
-            <Typography variant='h6'>My watch List</Typography>
+            <Typography variant='h6'>My Watch List</Typography>
           </div>
           {
             watchListState.watchlist ? watchListState.watchlist.map(movie => {
