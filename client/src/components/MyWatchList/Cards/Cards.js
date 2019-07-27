@@ -18,7 +18,7 @@ const Cards = _ => {
         let index = data.watchlist.indexOf(String(mID))
         let newWatchlist = data.watchlist.splice(index, 1)
         axios.put(`/user/${localStorage.getItem('id')}`, { watchlist: data.watchlist })
-          .then(_ => console.log('help'))
+          .then(_ => <Link to='/watchlist' />)
           .catch(e => console.log(e))
       })
       .catch(e => console.log(e))
@@ -44,10 +44,12 @@ const Cards = _ => {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button id={movie.id} size='small' color='primary' onClick={_ => handleDeleteButton(movie.id)}>
+                <Link to='/watchlist' >
+                  <Button id={movie.id} size='small' color='primary' onClick={_ => handleDeleteButton(movie.id)}>
 
-                  Delete
+                    Delete
                   </Button>
+                </Link>
               </CardActions>
             </Card>
           ))
