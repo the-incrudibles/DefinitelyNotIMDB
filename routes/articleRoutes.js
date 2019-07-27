@@ -8,7 +8,7 @@ module.exports = app => {
   })
 
   app.get('/articleinfo/:id', (req, res) => {
-    NewsStory.find({ _id: req.params.id })
+    NewsStory.findOne({ _id: req.params.id })
       .then(article => res.json(article))
       .catch(e => console.log(e))
   })

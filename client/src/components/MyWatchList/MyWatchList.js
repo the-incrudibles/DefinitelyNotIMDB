@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect ,useState} from 'react'
 import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -7,62 +7,82 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Typography from '@material-ui/core/Typography'
 import axios from 'axios'
 import CardActionArea from '@material-ui/core/CardActionArea'
-import Watchlist from '../../utils/Watchlist.js'
+import WatchlistContext from '../../utils/Watchlist.js'
+import CardContext from '../../utils/CardContext'
+import Cards from './Cards'
+
 
 const MyWatchList = _ => {
-
-  const [watchlistState, setWatchlistState] = useState({
-    movies: []
-  })
-
-  useEffect(_ => {
-    Watchlist.getWatchlist()
-      .then(({ data }) => {
-        let movies = data
-        console.log(movies)
-        setWatchlistState(...watchlistState, movies)
-      })
-      .catch(e => console.error(e))
-  }, [])
-
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <div className='containerDiv'>
-        <div className='searchTypography'>
-          <Typography variant='h6'>Your Watchlist</Typography>
-        </div>
-        {
-          watchlistState.movies ?
-            watchlistState.movies.map(movie => (
-              <Card className='resultsDiv'>
-                <CardActionArea>
-                  <CardContent>
-                    <Typography gutterBottom variant='h6' component='h2'>
-                      {movie.title}
-                    </Typography>
-                    <img className='resultsPoster' src={'https://image.tmdb.org/t/p/original/xRWht48C2V8XNfzvPehyClOvDni.jpg'} alt='title' />
-                    <div className='cardTypography'>
-                      <Typography variant='body2' color='textSecondary' component='p'>
-                        {movie.overview}
-                      </Typography>
-                    </div>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button size='small' color='primary'>
-                    More Info
-                  </Button>
-                  <Button size='small' color='primary' id={movie.id} onclick={watchlistState.handleDeleteFromWatchlist}>
-                    Remove
-                  </Button>
-                </CardActions>
-              </Card >
-            )) : ''
-        }
-      </div>
-    </React.Fragment>
+  const [watchListState, setWatchListState] = useState(
+    {
+      watchList: ''
+     
+    }
   )
-}
+ 
+  useEffect(_ => {
+    WatchlistContext.getWatchlist(localStorage.getItem('id'))
+      .then(({data})=> {
+          let count=0;
+          let fetchedMovieArr=[]
+          let watchListLength=data[0].watchlist.length
+          //let watchListLength=data[0].watchList.length
+         data[0].watchlist.map(elem=>{
+          axios.get(`https://api.themoviedb.org/3/movie/${parseInt(elem)}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
+         .then(result=>{
+            fetchedMovieArr.push({id:parseInt(elem),
+                                    posterURL:'https://image.tmdb.org/t/p/original' +result.data.poster_path,
+                                    title:result.data.title})
+            count=count+1
+            if(count===watchListLength) {
+              setWatchListState({...watchListState, watchList: fetchedMovieArr})
+              console.log(fetchedMovieArr)
+              console.log(watchListState.watchList)
+            }
+            })
+              
+         .catch(e=>console.log(e))
+        })
 
+          })
+      .catch(e=>console.log(e))
+
+      
+  }, [])
+  
+  
+  // watchListState.addWatchList=movieId=>{
+  //     let newWatchList=watchListState.watchList
+  //     newWatchList.push(movieId)
+  //     setwatchListState({ ...watchListState,watchList: newWatchList })
+  //     WatchlistContext.addWatchlist(watchListState.watchList)
+
+  // }
+  // watchListState.removeWatchList=movieId=>{
+  //   let newWatchList=watchListState.watchList
+  //     newWatchList.push(movieId)
+  //     setwatchListState({ ...watchListState,watchList: newWatchList })
+  //     WatchlistContext.addWatchlist(watchListState.watchList)
+  // }
+  
+  return (
+  <div className='containerDiv'>
+  <div className='searchTypography'>
+    <Typography variant='h6'>My watch List</Typography>
+  </div>
+  {
+  watchListState.watchList?watchListState.watchList.map(elem=>{
+    return(
+      <>
+       { <CardContext.Provider value={elem}>
+        <Cards />
+     </CardContext.Provider> }
+    
+    </>
+    )
+  }):null
+}
+</div>
+)
+}
 export default MyWatchList
