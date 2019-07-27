@@ -24,7 +24,7 @@ const Cards = _ => {
         <CardActionArea>
           <CardContent>
             <Typography gutterBottom variant='h6' component='h2'>
-              { movie.title}
+              {movie.title}
             </Typography>
             <img className='resultsPoster' src={movie.posterURL} alt={movie.title} />
             <div className='cardTypography'>
@@ -35,24 +35,25 @@ const Cards = _ => {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button id={movie.id}  size='small' color='primary' onClick={_=>{
+          <Button id={movie.id} size='small' color='primary' onClick={_ => {
             WatchlistContext.getWatchlist(localStorage.getItem('id'))
-            .then(({data})=> {
-                 let watchListArr=data[0].watchlist
-                 let removeIndex=watchListArr.indexOf(movie.id)
-                 console.log(watchListArr)
-                 watchListArr.splice(removeIndex,1)
-                 console.log(watchListArr)
-                 axios.put(`/user/${localStorage.getItem('id')}`,{watchlist:watchListArr})
-                 .then(_=>console.log(watchListArr))
-                 .catch(e=>console.log(e))
-                })
-            .catch(e=>console.log(e))
+              .then(({ data }) => {
+                let watchListArr = data[0].watchlist
+                let removeIndex = watchListArr.indexOf(movie.id)
+                console.log(watchListArr)
+                watchListArr.splice(removeIndex, 1)
+                console.log(watchListArr)
+                axios.put(`/user/${localStorage.getItem('id')}`, { watchlist: watchListArr })
+                  .then(_ => console.log(watchListArr))
+                  .catch(e => console.log(e))
+              })
+              .catch(e => console.log(e))
           }}>
-             Delete
+            Delete
           </Button>
         </CardActions>
-      </Card >
+      </Card>
+    </Link>
   )
 }
 export default Cards
