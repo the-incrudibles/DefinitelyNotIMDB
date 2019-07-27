@@ -22,17 +22,12 @@ const MyWatchList = _ => {
     let watchlist = []
     WatchlistContext.getWatchlist(localStorage.getItem('id'))
       .then(({ data }) => {
-        console.log(data)
-        console.log(data.watchlist)
         data.watchlist.map(async (movie) => {
           const result = await axios.get(`/movie/${parseInt(movie)}`)
             .then(({ data: movie }) => {
               watchlist.push(...watchListState.watchlist)
               watchlist.push(movie)
-              console.log(watchlist)
-              console.log('state updated')
               setWatchListState({ ...watchListState, watchlist })
-              // return watchlist
             })
             .catch(e => console.log(e))
         })
