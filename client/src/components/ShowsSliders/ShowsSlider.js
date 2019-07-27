@@ -38,7 +38,7 @@ const ShowsSlider = _ => {
     axios.get(`https://api.themoviedb.org/3/person/${parseInt(localStorage.getItem('celebID'))}/combined_credits?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
       .then(({ data }) => {
         setShowsSlidersState(data.cast)
-        console.log(data.cast)
+        // console.log(data.cast)
       })
       .catch(e => console.error(e))
   }

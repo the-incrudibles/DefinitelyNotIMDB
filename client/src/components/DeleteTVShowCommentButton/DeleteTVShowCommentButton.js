@@ -22,7 +22,7 @@ const DeleteTVShowCommentButton = _ => {
   })
   const classes = useStyles()
   const handleDeleteCommentButton = event => {
-    console.log(event.target)
+    // console.log(event.target)
     axios.delete(`/tv/comment/id`)
       .then(_ => console.log('deleted!'))
       .catch(e => console.error('not deleted'))

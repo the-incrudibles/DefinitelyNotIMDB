@@ -31,9 +31,9 @@ const AddMovieComments = _ => {
       movie: parseInt(localStorage.getItem('movieID'))
     })
       .then(_ => {
-        console.log('success')
+        // console.log('success')
       })
-      .catch(e => console.log('not sent'))
+      // .catch(e => console.log('not sent'))
   }
   return (
     <div>

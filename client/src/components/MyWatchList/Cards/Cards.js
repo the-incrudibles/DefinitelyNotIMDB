@@ -13,7 +13,7 @@ const Cards = _ => {
   const movie = useContext(CardContext)
   return (
     <Link to='/movie' className='cardLink' onClick={_ => {
-      console.log(movie)
+      // console.log(movie)
       localStorage.setItem('movieID', movie.id)
       SearchResult.axiosForMovie(movie.id)
     }}>

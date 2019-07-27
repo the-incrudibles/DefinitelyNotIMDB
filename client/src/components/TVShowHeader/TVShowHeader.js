@@ -106,7 +106,7 @@ const TVShowHeader = _ => {
             {tvState.tvshow.overview}
           </Typography>
         </Grid>
-        <GuideBox />
+        {/* <GuideBox /> */}
       </Paper>
     </div>
   )
