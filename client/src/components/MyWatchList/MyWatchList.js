@@ -20,17 +20,17 @@ const MyWatchList = _ => {
   useEffect(_ => {
     WatchlistContext.getWatchlist(localStorage.getItem('id'))
       .then(({ data }) => {
-        console.log(data)
-        console.log(data.watchlist)
+        // console.log(data)
+        // console.log(data.watchlist)
         data.watchlist.map(movie => {
           axios.get(`/movie/${parseInt(movie)}`)
             .then(({ data: movie }) => {
               let watchlist = []
               watchlist.push(...watchListState.watchlist)
               watchlist.push(movie)
-              console.log(watchlist)
+              // console.log(watchlist)
               setWatchListState({ ...watchListState, watchlist })
-              console.log('state updated')
+              // console.log('state updated')
             })
             .catch(e => console.log(e))
         })
@@ -45,18 +45,9 @@ const MyWatchList = _ => {
           <div className='searchTypography'>
             <Typography variant='h6'>My watch List</Typography>
           </div>
-          {
-            watchListState.watchlist ? watchListState.watchlist.map(movie => {
-              return (
-                <>
-                  {<CardContext.Provider value={movie}>
-                    <Cards />
-                  </CardContext.Provider>}
-
-                </>
-              )
-            }) : null
-          }
+          {<CardContext.Provider value={watchListState}>
+            <Cards />
+          </CardContext.Provider>}
         </div> : ''
       }
     </>

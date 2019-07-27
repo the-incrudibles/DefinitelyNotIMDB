@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
 const CardContext = createContext({
-  movies: []
+  mwatchlist: []
 })
 
 export default CardContext
