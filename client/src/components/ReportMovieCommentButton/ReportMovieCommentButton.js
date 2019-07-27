@@ -46,14 +46,14 @@ const ReportMovieCommentButton = _ => {
   const classes = useStyles()
 
   reportCommentState.handleReportComment = event => {
-    axios.put(`/comment/${event.target.value}`,{
+    axios.put(`/comment/${event.target.value}`, {
       flagged: true
     })
-        .then(_=>{
-            console.log('success')
-            setReportCommentState({...reportCommentState, isReport:true})
-        })
-        .catch(e => console.log('not updated'))
+      .then(_ => {
+        console.log('success')
+        setReportCommentState({ ...reportCommentState, isReport: true })
+      })
+      .catch(e => console.log('not updated'))
   }
 
   return (

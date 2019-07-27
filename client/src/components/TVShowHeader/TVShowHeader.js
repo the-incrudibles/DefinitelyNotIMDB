@@ -59,7 +59,7 @@ const TVShowHeader = _ => {
 
   return (
     <div>
-      {console.log(tvState.tvshow)}
+      {/* {console.log(tvState.tvshow)} */}
       <Paper className={classes.root}>
         <Grid container spacing={0}>
           <Grid item xs={6}>
