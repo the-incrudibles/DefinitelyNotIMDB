@@ -27,7 +27,6 @@ const Landing = _ => {
         <div className='searchTypography'>
           <Typography variant='h6'>Welcome to Definitely Not IMDB. Check out the latest news here!</Typography>
         </div>
-        {/* news articles go here */}
         <MainContext.Provider value={mainState}>
           <Article />
         </MainContext.Provider>
