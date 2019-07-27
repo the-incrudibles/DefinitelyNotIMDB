@@ -15,12 +15,8 @@ const Cards = _ => {
   const handleDeleteButton = mID => {
     WatchlistContext.getWatchlist(localStorage.getItem('id'))
       .then(({ data }) => {
-        // console.log(data.watchlist)
-        // console.log(mID.stringify())
         let index = data.watchlist.indexOf(String(mID))
-        // console.log(index)
         let newWatchlist = data.watchlist.splice(index, 1)
-        // console.log(data.watchlist)
         axios.put(`/user/${localStorage.getItem('id')}`, { watchlist: data.watchlist })
           .then(_ => window.location.reload())
           .catch(e => console.log(e))
@@ -32,9 +28,7 @@ const Cards = _ => {
     <CardContext.Consumer>
       {
         ({ watchlist }) => (
-          // console.log(watchlist)
           watchlist.map(movie => (
-            // console.log(movie.title)
             <Card className='resultsDiv'>
               <CardActionArea>
                 <CardContent>
