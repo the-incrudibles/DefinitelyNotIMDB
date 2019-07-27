@@ -9,6 +9,7 @@ import axios from 'axios'
 import WatchlistContext from '../../utils/Watchlist.js'
 import CardContext from '../../utils/CardContext'
 import Cards from './Cards'
+import { set } from 'mongoose';
 
 const MyWatchList = _ => {
   const [watchListState, setWatchListState] = useState(
@@ -18,19 +19,20 @@ const MyWatchList = _ => {
   )
 
   useEffect(_ => {
+    let watchlist = []
     WatchlistContext.getWatchlist(localStorage.getItem('id'))
       .then(({ data }) => {
         console.log(data)
         console.log(data.watchlist)
-        data.watchlist.map(movie => {
-          axios.get(`/movie/${parseInt(movie)}`)
+        data.watchlist.map(async (movie) => {
+          const result = await axios.get(`/movie/${parseInt(movie)}`)
             .then(({ data: movie }) => {
-              let watchlist = []
               watchlist.push(...watchListState.watchlist)
               watchlist.push(movie)
               console.log(watchlist)
-              setWatchListState({ ...watchListState, watchlist })
               console.log('state updated')
+              setWatchListState({ ...watchListState, watchlist })
+              // return watchlist
             })
             .catch(e => console.log(e))
         })
@@ -45,18 +47,9 @@ const MyWatchList = _ => {
           <div className='searchTypography'>
             <Typography variant='h6'>My Watch List</Typography>
           </div>
-          {
-            watchListState.watchlist ? watchListState.watchlist.map(movie => {
-              return (
-                <>
-                  {<CardContext.Provider value={movie}>
-                    <Cards />
-                  </CardContext.Provider>}
-
-                </>
-              )
-            }) : null
-          }
+          <CardContext.Provider value={watchListState}>
+            <Cards />
+          </CardContext.Provider>
         </div> : ''
       }
     </>
