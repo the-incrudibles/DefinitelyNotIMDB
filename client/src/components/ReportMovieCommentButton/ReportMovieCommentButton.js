@@ -44,34 +44,24 @@ const ReportMovieCommentButton = _ => {
   const classes = useStyles()
   // calling "e" was breaking the function
 
-  // reportCommentState.handleReportComment = e => {
-  //   console.log(e.target)
-  //   axios.put(`/comment/${event.target.id}`,{
-  //     flagged: true
-  //   })
-  //       .then(_=>{
-  //           console.log('success')
-  //           setReportCommentState({...reportCommentState, isReport:true})
-  //       })
-  //       .catch(e => console.log('not updated'))
-  // }
+  reportCommentState.handleReportComment = e=>{
+    console.log(e.target.id)
+    axios.put(`/comment/${parseInt(e.target.id)}`,{
+      flagged: true
+    })
+        .then(_=>{
+            console.log('success')
+            setReportCommentState({...reportCommentState, isReport:true})
+        })
+        .catch(e => console.log('not updated'))
+  }
 
   return (
     <>
       <div>
         {
           reportCommentState.isReport === false
-            ? <IconButton onClick={e => {
-              console.log(e.target.id)
-              axios.put(`/comment/${parseInt(e.target.id)}`, {
-                flagged: true
-              })
-                .then(_ => {
-                  console.log('success')
-                  setReportCommentState({ ...reportCommentState, isReport: true })
-                })
-                .catch(e => console.log('not updated'))
-            }}>
+            ? <IconButton onClick={handleClickOpen}>
               <Flag className={classes.flagNotReport} />
             </IconButton>
             : <IconButton onClick={handleClickOpen}>
