@@ -89,7 +89,7 @@ const Navbar = _ => {
           localStorage.getItem('admin') === 'true'
             ? <ListItem>
               <i className='material-icons'>vpn_key</i>
-              <Link to='/account' className='drawerLink'><ListItemText primary='Admin' /></Link>
+              <Link to='/admincomments' className='drawerLink'><ListItemText primary='Admin' /></Link>
             </ListItem> : null
         }
         {
