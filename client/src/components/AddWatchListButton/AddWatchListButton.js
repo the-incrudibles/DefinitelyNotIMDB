@@ -15,27 +15,36 @@ const AddWatchListButton = _ => {
     // let userId = localStorage.getItem('id')
   }
 
-  newWatchlistState.handleAddWatchList = _ => {
+  newWatchlistState.handleLoadWatchList = _ => {
     axios.get(`/user/${localStorage.getItem('id')}`)
       .then(({ data }) => {
         console.log(data)
         let watchlist = []
-        watchlist.push(newWatchlistState.watchlist)
-        if (watchlist.indexOf(localStorage.getItem('movieID'))) {
-          console.log('making array')
-          watchlist.push(localStorage.getItem('movieID'))
-          console.log('pushing to array')
-          setNewWatchlistState(...[newWatchlistState], watchlist)
-          console.log('setting state')
-          axios.put(`/user/${localStorage.getItem('id')}`, { watchlist: newWatchlistState.watchlist })
-            .then(_ => console.log('help'))
-            .catch(e => console.log(e))
-        } else {
-          console.log('oops')
-        }
+        watchlist.push(...data.watchlist)
+        setNewWatchlistState({ ...newWatchlistState, watchlist })
+        console.log(newWatchlistState.watchlist)
       })
       .catch(e => console.log(e))
   }
+
+  newWatchlistState.handleAddWatchList = _ => {
+    let addMovie = localStorage.getItem('movieID')
+    let watchlist = newWatchlistState.watchlist
+    console.log(watchlist)
+    if (watchlist.indexOf(addMovie) === -1) {
+      watchlist.push(addMovie)
+      setNewWatchlistState({ ...newWatchlistState, watchlist })
+      axios.put(`/user/${localStorage.getItem('id')}`, { watchlist: watchlist })
+        .then(_ => console.log('Movie Added!'))
+        .catch(e => console.log(e))
+    } else {
+      console.log('Movie already in watchlist!')
+    }
+  }
+
+  useEffect(_ => {
+    newWatchlistState.handleLoadWatchList()
+  }, [])
 
   return (
     <div className='addWatchlistButton'>

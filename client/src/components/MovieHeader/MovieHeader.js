@@ -41,6 +41,7 @@ const MovieHeader = _ => {
     release_date: [],
     renderMovie: _ => {
       axios.get(`https://api.themoviedb.org/3/movie/${parseInt(localStorage.getItem('movieID'))}?api_key=${process.env.REACT_APP_TMDB_APIKEY}&language=en-US`)
+      // axios.get(`/movie/${parseInt(localStorage.getItem('movieID'))}`)
         .then(({ data }) => {
           if (!data) {
             movieState.renderMovie()
@@ -115,7 +116,7 @@ const MovieHeader = _ => {
             </Typography>
           </Grid>
         </div>
-        <GuideBox />
+        {/* <GuideBox /> */}
       </Paper>
     </div>
   )
