@@ -1,1 +1,1 @@
-export { default } from './Latest.js'
+export { default } from './latest.js'
