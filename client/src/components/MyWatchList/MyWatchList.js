@@ -32,7 +32,8 @@ const MyWatchList = _ => {
          .then(result=>{
             fetchedMovieArr.push({id:parseInt(elem),
                                     posterURL:'https://image.tmdb.org/t/p/original' +result.data.poster_path,
-                                    title:result.data.title})
+                                    title:result.data.title,
+                                    overview:result.data.overview})
             count=count+1
             if(count===watchListLength) {
               setWatchListState({...watchListState, watchList: fetchedMovieArr})
