@@ -15,11 +15,11 @@ const Article = _ => {
         ({ articles }) => (
           articles.map(article =>
             <Link to={
-              localStorage.getItem('user') ? '/articleinfo' : 'login'
+              localStorage.getItem('user') ? '/articleinfo' : '/login'
             }
               className='cardLink' key={article._id} onClick={_ => {
-              localStorage.setItem('articleID', article._id)
-            }}>
+                localStorage.setItem('articleID', article._id)
+              }}>
               <Card key={article._id} className='resultsDiv'>
                 <CardActionArea>
                   <CardContent>
