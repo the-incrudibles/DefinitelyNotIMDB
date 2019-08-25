@@ -15,11 +15,7 @@ module.exports = app => {
   })
 
   app.post('/articles', (req, res) => {
-    Article.create({
-      headline: 'this is a throw away title',
-      summary: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque architecto quas aliquam itaque tempore sed vero quo pariatur, ea quidem temporibus voluptatem illo eveniet dolorum minima tempora! Harum, quidem.',
-      image: 'a sample url'
-    })
+    Article.create(req.body)
       .then(_ => res.sendStatus(200))
       .catch(e => console.log(e))
   })
